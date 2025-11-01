@@ -139,6 +139,4 @@ Three minutes later, you have a server. Deploy something. It just works.
 
 No AWS account. No kubectl. No Terraform. Just a server that runs your code.
 
----
 
-139 commits into nova-templates. Most of that was debugging Capsule policies and figuring out why DNS broke (always DNS). Multi-tenancy is hard. But it works now.
