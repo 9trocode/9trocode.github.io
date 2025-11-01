@@ -102,6 +102,7 @@ This config is tuned for:
 
 ### The Build Process
 
+{% raw %}
 ```go
 // Simplified version of what we actually do
 func buildWithBuildKit(ctx context.Context, dockerfile string, buildArgs map[string]string) error {
@@ -158,6 +159,7 @@ func buildWithBuildKit(ctx context.Context, dockerfile string, buildArgs map[str
     return eg.Wait()
 }
 ```
+{% endraw %}
 
 This is the real code pattern. We:
 - Create BuildKit client (connects to BuildKit daemon)
@@ -244,6 +246,7 @@ Multi-platform images? We push a manifest list. One tag, multiple architectures.
 
 Once image is built, we generate Kubernetes manifests. Not templated YAML - generated from Go structs.
 
+{% raw %}
 ```go
 deployment := &appsv1.Deployment{
     ObjectMeta: metav1.ObjectMeta{
@@ -287,6 +290,7 @@ deployment := &appsv1.Deployment{
     },
 }
 ```
+{% endraw %}
 
 We generate:
 - Deployment (or StatefulSet for databases)
@@ -323,6 +327,7 @@ We configure three probe types:
 **Liveness probe**: Is the app alive? Checks every 15s. Failure = pod restart.
 
 Default probes:
+{% raw %}
 ```go
 livenessProbe := &corev1.Probe{
     ProbeHandler: corev1.ProbeHandler{
@@ -337,6 +342,7 @@ livenessProbe := &corev1.Probe{
     FailureThreshold:    3,
 }
 ```
+{% endraw %}
 
 Custom health endpoints? Configure them. We'll use them.
 
