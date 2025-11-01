@@ -441,12 +441,12 @@ We don't:
 
 ## The Code
 
-10,000+ lines of Go in the Runner. Most commits are edge cases:
+The Runner is 10,000+ lines of Go. Two years of production taught us everything that can break:
 
-- AWS throttling our ECR pushes
+- AWS throttling ECR pushes
 - BuildKit daemon crashes under load
 - Kubernetes API timeouts during deploys
 - Image pull failures on slow networks
 - Race conditions in concurrent builds
 
-All handled now. Two years of production taught us everything that can break.
+All handled now.

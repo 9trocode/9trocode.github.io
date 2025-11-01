@@ -11,7 +11,7 @@ tags:
 
 The Runner is the workhorse of PipeOps. When someone clicks "Create Server," the Runner is what actually makes it happen.
 
-It's a Go service that executes Terraform across multiple cloud providers, manages state, handles failures, and streams logs back in real-time. Written over 8 months, 173 commits, countless bugs fixed.
+It's a Go service that executes Terraform across multiple cloud providers, manages state, handles failures, and streams logs back in real-time.
 
 ## The Flow
 
@@ -79,8 +79,6 @@ We don't write Terraform from scratch for each cluster. We use modules:
 **nova-tf-template**: Combines modules into full stacks
 
 Modules are versioned. We lock versions to prevent breaking changes. When we update modules, we test in staging, then gradually roll out.
-
-139 commits into nova-templates. Most of that was fixing provider-specific edge cases and adding features customers requested.
 
 ## Error Handling
 
