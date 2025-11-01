@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Nova: Multi-Tenant Kubernetes Without the Complexity"
-date: 2025-11-01
+date: 2024-11-01
 description: "Building multi-tenant Kubernetes infrastructure with Capsule and network policies. How PipeOps isolates customer workloads on shared clusters."
 tags:
 - PipeOps
