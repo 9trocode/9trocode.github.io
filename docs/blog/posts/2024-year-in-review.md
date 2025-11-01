@@ -16,7 +16,7 @@ Another year has passed, and it's time to reflect on the journey. 2024 was a yea
 
 ## Professional Growth
 
-This year at PipeOpsHQ has been transformative. Working on infrastructure automation and helping teams deploy faster and more reliably has been incredibly rewarding. Some highlights:
+This year at PipeOpsHQ focused on infrastructure automation and helping teams deploy faster and more reliably. Some highlights:
 
 ### Infrastructure at Scale
 
@@ -41,7 +41,7 @@ Contributing to open source has always been a priority. This year I:
 
 ### Moving to Platform Engineering
 
-The shift from traditional DevOps to platform engineering has been fascinating. We built an internal developer platform that abstracts away infrastructure complexity while giving developers the power they need.
+The shift from traditional DevOps to platform engineering led us to build an internal developer platform that abstracts away infrastructure complexity while giving developers the power they need.
 
 The platform includes:
 - Self-service infrastructure provisioning
@@ -51,7 +51,7 @@ The platform includes:
 
 ### Kubernetes in Production
 
-Running Kubernetes at scale taught me valuable lessons about trade-offs, complexity, and operational excellence. Some key learnings:
+Running Kubernetes at scale taught lessons about trade-offs, complexity, and operational excellence. Some key learnings:
 
 **Simplicity Wins**: We removed unnecessary complexity from our cluster architecture. Not every problem needs a new operator or custom resource.
 
@@ -134,7 +134,7 @@ Looking ahead, here's what I'm focusing on:
 
 ## Gratitude
 
-None of this would be possible without the amazing people I work with. Thanks to the PipeOpsHQ team for creating an environment where we can do our best work. Thanks to the open source community for constant inspiration and collaboration.
+Thanks to the PipeOpsHQ team for creating an environment where we can do our best work. Thanks to the open source community for constant inspiration and collaboration.
 
 To everyone who read my posts, provided feedback, or reached out with questions - thank you. These conversations make the effort worthwhile.
 

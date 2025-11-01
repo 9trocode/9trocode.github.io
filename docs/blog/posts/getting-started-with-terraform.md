@@ -83,7 +83,7 @@ terraform destroy
 
 ## Next Steps
 
-This is just scratching the surface of what Terraform can do. In future posts, I'll dive deeper into:
+This is just scratching the surface of what Terraform can do. In future posts, I'll cover:
 
 - Creating modules
 - Managing state

@@ -6,7 +6,7 @@ Currently working at [PipeOpsHQ](https://github.com/PipeOpsHQ), building scalabl
 
 ## What I Do
 
-I focus on cloud infrastructure, DevOps automation, and open source contributions. With 152+ public repositories, I'm passionate about building robust systems and sharing knowledge with the community.
+I focus on cloud infrastructure, DevOps automation, and open source contributions. With 152+ public repositories, I build reliable systems and share knowledge with the community.
 
 ### Areas of Expertise
 
@@ -20,7 +20,7 @@ Building CI/CD pipelines and infrastructure as code with Terraform, Kubernetes, 
 Contributing to and maintaining open source projects that solve real-world problems.
 
 **Software Engineering**  
-Developing robust and efficient applications with Python, Go, and TypeScript.
+Developing efficient applications with Python, Go, and TypeScript.
 
 ## Recent Posts
 

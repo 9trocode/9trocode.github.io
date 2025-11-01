@@ -9,7 +9,7 @@ categories:
 
 # Welcome to My Blog
 
-Hello and welcome to my personal blog. I'm excited to share my journey, experiences, and learnings in cloud infrastructure, DevOps, and software engineering with you.
+Welcome to my personal blog. I write about cloud infrastructure, DevOps, and software engineering.
 
 <!-- more -->
 
@@ -25,9 +25,9 @@ On this blog, you'll find content about:
 
 ## A Bit About Me
 
-I'm Alex Idowu, a Cloud Infrastructure and Software Engineer based in Lagos, Nigeria. Currently, I'm building amazing things at PipeOpsHQ, where I focus on creating scalable infrastructure solutions.
+I'm Alex Idowu, a Cloud Infrastructure and Software Engineer based in Lagos, Nigeria. Currently working at PipeOpsHQ, building scalable infrastructure solutions.
 
-I'm passionate about:
+I focus on:
 
 - Building reliable and scalable systems
 - Automating repetitive tasks (because why do manually what you can automate?)
@@ -38,7 +38,7 @@ I'm passionate about:
 
 I've always believed in the power of sharing knowledge. Throughout my career, I've learned so much from blog posts, documentation, and the generous sharing of others in the tech community. This blog is my way of giving back.
 
-Whether you're a seasoned engineer or just starting your journey, I hope you'll find something valuable here.
+Whether you're a seasoned engineer or just starting out, I hope you'll find something useful here.
 
 ## Let's Connect
 

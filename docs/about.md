@@ -6,7 +6,7 @@ I'm **Alex Idowu**, a Cloud Infrastructure and Software Engineer based in Lagos,
 
 ## My Journey
 
-I've been passionate about technology and software development since 2018. Over the years, I've:
+I've been working in technology and software development since 2018. Over the years, I've:
 
 - Built and maintained 152+ public repositories
 - Contributed to various open source projects
@@ -44,7 +44,7 @@ I'm currently:
 
 ## Let's Connect
 
-I'm always excited to connect with fellow engineers, discuss technology, or collaborate on interesting projects.
+I'm always open to connecting with fellow engineers, discussing technology, or collaborating on projects.
 
 - GitHub: [@9trocode](https://github.com/9trocode)
 - Twitter: [@nitrocode](https://twitter.com/nitrocode)
