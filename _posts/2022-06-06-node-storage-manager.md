@@ -10,8 +10,6 @@ tags:
 - Cloud Storage
 ---
 
-# node_storage_manager: Stop Rewriting Storage Code
-
 I got tired of rewriting storage code every time a project changed cloud providers.
 
 AWS S3 one month, Google Cloud Storage the next, then someone wants Cloudinary for image uploads. Each switch meant touching every file that dealt with storage. Change imports, update config, rewrite upload logic, fix tests. Again and again.

@@ -11,8 +11,6 @@ tags:
 - Infrastructure
 ---
 
-# Nova: Multi-Tenant Kubernetes Without the Headaches
-
 Nova started because we had a problem: not everyone has AWS credits. Shocking, I know.
 
 When we launched PipeOps, you could provision servers on AWS, GCP, Azure - bring your own cloud account, we'll manage it. Great for companies with cloud budgets. Not so great for side projects and solo developers.

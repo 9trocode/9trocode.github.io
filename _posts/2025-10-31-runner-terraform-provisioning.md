@@ -13,8 +13,6 @@ tags:
 - Kubernetes
 ---
 
-# The Runner: How PipeOps Provisions Thousands of Clusters
-
 The Runner is the workhorse of PipeOps. When someone clicks "Create Server," the Runner is what actually makes it happen.
 
 It's a Go service that executes Terraform across multiple cloud providers, manages state, handles failures, and streams logs back in real-time.
