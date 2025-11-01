@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Alex Idowu - Cloud Infrastructure & DevOps Engineer
-description: I build scalable infrastructure and automation tools. Writing about Kubernetes, Terraform, BuildKit, and cloud infrastructure. Building PipeOps.
+description: Technical blog about Kubernetes, Terraform, BuildKit, and cloud infrastructure automation. Building PipeOps - production-grade platform engineering.
 image: /assets/images/og-image.png
 ---
 
