@@ -450,9 +450,3 @@ We don't:
 - Race conditions in concurrent builds
 
 All handled now. Two years of production taught us everything that can break.
-
----
-
-This is how we deploy. BuildKit for builds, Kubernetes for orchestration, Go for everything. No shortcuts, no shell scripts, no "works on my machine."
-
-173 commits. Every one fixing something that broke in production or adding something customers needed. Infrastructure code is never done.
