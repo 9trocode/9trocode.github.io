@@ -12,6 +12,34 @@ layout: default
     {{ content }}
   </div>
 
+  <!-- Share Buttons -->
+  <div class="share-buttons" style="margin: 2rem 0; padding: 1rem 0; border-top: 1px solid #333; border-bottom: 1px solid #333;">
+    <h3>Share this post</h3>
+    <a href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&url={{ site.url }}{{ page.url }}" target="_blank" rel="noopener" style="margin-right: 1rem;">Twitter</a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ page.url }}" target="_blank" rel="noopener" style="margin-right: 1rem;">LinkedIn</a>
+    <a href="https://news.ycombinator.com/submitlink?u={{ site.url }}{{ page.url }}&t={{ page.title | uri_escape }}" target="_blank" rel="noopener">Hacker News</a>
+  </div>
+
+  <!-- Comments via Giscus (GitHub Discussions) -->
+  <div class="comments" style="margin: 2rem 0;">
+    <h3>Comments</h3>
+    <script src="https://giscus.app/client.js"
+        data-repo="9trocode/9trocode.github.io"
+        data-repo-id="YOUR_REPO_ID"
+        data-category="Announcements"
+        data-category-id="YOUR_CATEGORY_ID"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="dark"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+    </script>
+  </div>
+
   <footer class="post-footer">
     <p><a href="/">← Back to Home</a></p>
   </footer>
