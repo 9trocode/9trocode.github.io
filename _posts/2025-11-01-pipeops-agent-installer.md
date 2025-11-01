@@ -100,6 +100,10 @@ The installer is a bash script with way too many comments (my fault). We detect 
 
 When something goes wrong, we log everything. Error messages include the fix. No "contact support" BS - just "here's what broke, here's how to fix it."
 
+## Windows Support
+
+The agent works on Windows too. VM agent handles Windows servers - same installer pattern, different OS.
+
 ## What's Next
 
 Working on:
@@ -108,7 +112,7 @@ Working on:
 - Better health checks
 - Local dashboard (no internet? agent still works)
 
-The goal is simple: if it runs Linux or Windows, PipeOps should be able to deploy to it.
+The goal is simple: if it has an IP address, PipeOps should be able to deploy to it.
 
 ## Try It
 
