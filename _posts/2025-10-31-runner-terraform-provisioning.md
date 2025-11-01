@@ -169,6 +169,4 @@ Working on:
 
 The Runner evolved from "provision clusters" to handling all infrastructure operations. Updates, scaling, configuration changes, teardowns - all go through the Runner now.
 
----
 
-Building infrastructure platforms is complex. The Runner hides that complexity. Users click a button, get a cluster. The 10,000 lines of Go code in between? That's my problem, not theirs.

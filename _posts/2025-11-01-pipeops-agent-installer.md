@@ -123,6 +123,4 @@ Three minutes later, deploy something to it from the PipeOps dashboard.
 
 That's the magic - infrastructure should be this easy.
 
----
 
-274 commits into pipeops-k8-agent and counting. The agent just works now. Most bugs were DNS edge cases and weird network configurations. Always DNS.
