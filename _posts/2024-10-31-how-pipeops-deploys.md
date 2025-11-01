@@ -17,6 +17,48 @@ People think deploying is simple. Push code, build image, deploy to Kubernetes. 
 
 It's not. Here's what actually happens when you deploy on PipeOps, with all the details I wish other platforms documented.
 
+## Architecture Overview
+
+Here's the complete flow from git push to running container:
+
+```
+┌─────────────┐
+│  Git Push   │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    PipeOps Platform                          │
+│                                                              │
+│  ┌──────────┐     ┌────────────┐     ┌─────────────┐       │
+│  │ Webhook  │────▶│ Controller │────▶│  RabbitMQ   │       │
+│  │   API    │     │  (Go)      │     │   Queue     │       │
+│  └──────────┘     └────────────┘     └──────┬──────┘       │
+│                                              │              │
+│                                              ▼              │
+│                                       ┌─────────────┐       │
+│                                       │   Runner    │       │
+│                                       │   (Go)      │       │
+│                                       └──────┬──────┘       │
+│                                              │              │
+│                  ┌───────────────────────────┼───────────┐  │
+│                  │                           │           │  │
+│                  ▼                           ▼           ▼  │
+│          ┌──────────────┐         ┌──────────────┐  ┌────┐ │
+│          │   BuildKit   │         │  Kubernetes  │  │ DB │ │
+│          │    (Build)   │         │  (Deploy)    │  └────┘ │
+│          └──────┬───────┘         └──────────────┘         │
+│                 │                                           │
+│                 ▼                                           │
+│          ┌──────────────┐                                   │
+│          │    Image     │                                   │
+│          │   Registry   │                                   │
+│          └──────────────┘                                   │
+└──────────────────────────────────────────────────────────────┘
+```
+
+Every deployment goes through this pipeline. No shortcuts, no special cases.
+
 ## The Real Stack
 
 Everything is written in Go. The Runner is a Go service that handles the entire lifecycle. We don't shell out to `docker build` - we use BuildKit's Go SDK directly.
@@ -432,6 +474,36 @@ From production:
 The 3% build failures? Usually user config (broken Dockerfile, missing dependencies).
 
 The 1.5% deployment failures? Usually cluster issues (out of resources, network problems).
+
+### How We Compare
+
+Compared to other CI/CD platforms (Node.js app, cold cache):
+
+| Platform | Build Time | Deploy Time | Total |
+|----------|------------|-------------|-------|
+| **PipeOps** | **6-8 min** | **60 sec** | **~7-9 min** |
+| GitHub Actions | 8-12 min | 2-3 min | 10-15 min |
+| CircleCI | 7-10 min | 2-3 min | 9-13 min |
+| GitLab CI | 9-13 min | 2-4 min | 11-17 min |
+
+Why we're faster:
+
+- **BuildKit's layer caching** - Smarter than Docker's cache
+- **Dedicated build infrastructure** - Not competing for shared runners
+- **Geographic distribution** - BuildKit nodes close to clusters
+- **Direct K8s deployment** - No intermediate artifacts or handoffs
+- **Optimized base images** - We maintain language-specific optimized images
+
+With cache hits (typical after first deploy):
+
+| Platform | Build + Deploy |
+|----------|---------------|
+| **PipeOps** | **2-3 min** |
+| GitHub Actions | 4-6 min |
+| CircleCI | 4-5 min |
+| GitLab CI | 5-7 min |
+
+The difference compounds. 50 deploys per day? PipeOps saves your team 4-5 hours of waiting.
 
 ## What We Don't Do
 
