@@ -1,49 +1,34 @@
-# Hi, I'm Alex Idowu 👋
+# Alex Idowu
 
-<div class="grid cards" markdown>
+Cloud Infrastructure and Software Engineer based in Lagos, Nigeria.
 
--   :rocket: **Cloud Infrastructure Engineer**
-
-    ---
-
-    Building scalable infrastructure and automation solutions
-
--   :sparkles: **Open Sourcerer**
-
-    ---
-
-    Contributing to the open source community
-
--   :seedling: **I am Groot**
-
-    ---
-
-    Passionate about cloud-native technologies
-
-</div>
-
-## About Me
-
-I'm a Cloud Infrastructure and Software Engineer based in Lagos, Nigeria, currently working at [@PipeOpsHQ](https://github.com/PipeOpsHQ). I'm passionate about building robust infrastructure, automating workflows, and contributing to open source projects.
-
-With over 152 public repositories and a growing community of followers, I love sharing knowledge and collaborating on innovative solutions.
+Currently working at [PipeOpsHQ](https://github.com/PipeOpsHQ), building scalable infrastructure solutions.
 
 ## What I Do
 
-- **Cloud Infrastructure**: Designing and implementing scalable cloud solutions
-- **DevOps & Automation**: Building CI/CD pipelines and infrastructure as code
-- **Open Source**: Contributing to and maintaining open source projects
-- **Software Engineering**: Developing robust and efficient applications
+I focus on cloud infrastructure, DevOps automation, and open source contributions. With 152+ public repositories, I'm passionate about building robust systems and sharing knowledge with the community.
 
-## Get in Touch
+### Areas of Expertise
 
-I'm always open to interesting conversations and collaboration opportunities!
+**Cloud Infrastructure**  
+Designing and implementing scalable cloud solutions across AWS, Azure, and GCP.
 
-- **GitHub**: [@9trocode](https://github.com/9trocode)
-- **Twitter**: [@nitrocode](https://twitter.com/nitrocode)
-- **LinkedIn**: [Alex Idowu](https://www.linkedin.com/in/nitrocode/)
-- **Email**: alexidowu25@gmail.com
+**DevOps & Automation**  
+Building CI/CD pipelines and infrastructure as code with Terraform, Kubernetes, and modern tooling.
 
----
+**Open Source**  
+Contributing to and maintaining open source projects that solve real-world problems.
 
-Check out my [blog](/blog/) for articles on cloud infrastructure, DevOps, and software engineering!
+**Software Engineering**  
+Developing robust and efficient applications with Python, Go, and TypeScript.
+
+## Recent Posts
+
+Check out my [blog](/blog/) for articles on cloud infrastructure, DevOps, and software engineering.
+
+## Connect
+
+- GitHub: [@9trocode](https://github.com/9trocode)
+- Twitter: [@nitrocode](https://twitter.com/nitrocode)
+- LinkedIn: [linkedin.com/in/nitrocode](https://www.linkedin.com/in/nitrocode/)
+- Email: alexidowu25@gmail.com

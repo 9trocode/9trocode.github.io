@@ -90,7 +90,7 @@ This is just scratching the surface of what Terraform can do. In future posts, I
 - Working with workspaces
 - Advanced patterns and best practices
 
-Stay tuned! 🚀
+Stay tuned.
 
 ## Resources
 

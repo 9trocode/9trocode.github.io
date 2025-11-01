@@ -7,9 +7,9 @@ categories:
   - Welcome
 ---
 
-# Welcome to My Blog! 🎉
+# Welcome to My Blog
 
-Hello and welcome to my personal blog! I'm excited to share my journey, experiences, and learnings in cloud infrastructure, DevOps, and software engineering with you.
+Hello and welcome to my personal blog. I'm excited to share my journey, experiences, and learnings in cloud infrastructure, DevOps, and software engineering with you.
 
 <!-- more -->
 
@@ -44,12 +44,8 @@ Whether you're a seasoned engineer or just starting your journey, I hope you'll 
 
 I'd love to hear from you! Feel free to reach out:
 
-- **GitHub**: [@9trocode](https://github.com/9trocode)
-- **Twitter**: [@nitrocode](https://twitter.com/nitrocode)
-- **LinkedIn**: [Alex Idowu](https://www.linkedin.com/in/nitrocode/)
+- GitHub: [@9trocode](https://github.com/9trocode)
+- Twitter: [@nitrocode](https://twitter.com/nitrocode)
+- LinkedIn: [Alex Idowu](https://www.linkedin.com/in/nitrocode/)
 
-Stay tuned for more content, and happy reading! 🚀
-
----
-
-> "I am Groot" 🌱
+Stay tuned for more content, and happy reading!

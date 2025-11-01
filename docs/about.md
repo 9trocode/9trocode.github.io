@@ -2,16 +2,16 @@
 
 ## Who Am I?
 
-Hi! I'm **Alex Idowu**, a Cloud Infrastructure and Software Engineer based in Lagos, Nigeria. I'm currently working at **@PipeOpsHQ**, where I focus on building scalable infrastructure solutions.
+I'm **Alex Idowu**, a Cloud Infrastructure and Software Engineer based in Lagos, Nigeria. Currently working at **PipeOpsHQ**, where I focus on building scalable infrastructure solutions.
 
 ## My Journey
 
 I've been passionate about technology and software development since 2018. Over the years, I've:
 
-- Built and maintained **152+ public repositories**
+- Built and maintained 152+ public repositories
 - Contributed to various open source projects
 - Developed expertise in cloud infrastructure and DevOps practices
-- Built a community of **42+ followers** on GitHub
+- Built a community of 42+ followers on GitHub
 
 ## Technical Interests
 
@@ -46,11 +46,7 @@ I'm currently:
 
 I'm always excited to connect with fellow engineers, discuss technology, or collaborate on interesting projects.
 
-- **GitHub**: [@9trocode](https://github.com/9trocode)
-- **Twitter**: [@nitrocode](https://twitter.com/nitrocode)
-- **LinkedIn**: [linkedin.com/in/nitrocode](https://www.linkedin.com/in/nitrocode/)
-- **Email**: alexidowu25@gmail.com
-
----
-
-> "I am Groot" 🌱
+- GitHub: [@9trocode](https://github.com/9trocode)
+- Twitter: [@nitrocode](https://twitter.com/nitrocode)
+- LinkedIn: [linkedin.com/in/nitrocode](https://www.linkedin.com/in/nitrocode/)
+- Email: alexidowu25@gmail.com
