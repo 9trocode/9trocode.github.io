@@ -1,0 +1,59 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* Force dark theme for code blocks and tables */
+pre, code {
+  background-color: #1e1e1e !important;
+  color: #00ff41 !important;
+  border: 1px solid #333 !important;
+}
+
+pre code {
+  background-color: transparent !important;
+}
+
+/* Table styling for dark theme */
+table {
+  background-color: #1e1e1e !important;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+table th,
+table td {
+  background-color: #1e1e1e !important;
+  color: #b5e853 !important;
+  border: 1px solid #333 !important;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+table th {
+  background-color: #2d2d2d !important;
+  font-weight: bold;
+  color: #00ff41 !important;
+}
+
+table tr:hover td {
+  background-color: #2d2d2d !important;
+}
+
+/* ASCII art / diagrams */
+pre {
+  overflow-x: auto;
+  padding: 1rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  line-height: 1.4;
+}
+
+/* Inline code */
+p code,
+li code {
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
