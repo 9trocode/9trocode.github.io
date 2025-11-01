@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://9trocode.github.io/sitemap.xml
+Sitemap: https://nitrocode.sh/sitemap.xml
