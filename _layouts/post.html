@@ -20,24 +20,23 @@ layout: default
     <a href="https://news.ycombinator.com/submitlink?u={{ site.url }}{{ page.url }}&t={{ page.title | uri_escape }}" target="_blank" rel="noopener">Hacker News</a>
   </div>
 
-  <!-- Comments via Giscus (GitHub Discussions) -->
+  <!-- Comments via Disqus (allows anonymous) -->
   <div class="comments" style="margin: 2rem 0;">
     <h3>Comments</h3>
-    <script src="https://giscus.app/client.js"
-        data-repo="9trocode/9trocode.github.io"
-        data-repo-id="MDEwOlJlcG9zaXRvcnkyNTMzNjk3NDg="
-        data-category="General"
-        data-category-id="DIC_kwDODxodlM4CxVGt"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="dark"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function () {
+            this.page.url = "{{ site.url }}{{ page.url }}";
+            this.page.identifier = "{{ page.url }}";
+        };
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://9trocode.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
     </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
 
   <footer class="post-footer">
