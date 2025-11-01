@@ -1,52 +1,39 @@
-# About Me
+---
+hide:
+  - navigation
+---
 
-## Who Am I?
+# About
 
-I'm **Alex Idowu**, a Cloud Infrastructure and Software Engineer based in Lagos, Nigeria. Currently working at **PipeOpsHQ**, where I focus on building scalable infrastructure solutions.
+I'm Alex Idowu, a Cloud Infrastructure and Software Engineer based in Lagos, Nigeria.
 
-## My Journey
+## Work
 
-I've been working in technology and software development since 2012. Over the years, I've:
+Currently at [PipeOpsHQ](https://github.com/PipeOpsHQ), where I work on infrastructure automation and deployment platforms. Before that, I've spent over a decade building systems and tools.
 
-- Built and maintained 152+ public repositories
-- Contributed to various open source projects
-- Developed expertise in cloud infrastructure and DevOps practices
-- Built a community of 42+ followers on GitHub
+I've been working in technology since 2012, focusing on:
 
-## Technical Interests
+- Cloud infrastructure (AWS, Azure, GCP)
+- Infrastructure as code (Terraform, CloudFormation)
+- Container orchestration (Kubernetes, Docker)
+- CI/CD pipelines and automation
+- Systems programming (Python, Go, TypeScript)
 
-My areas of expertise and interest include:
+## Open Source
 
-- **Cloud Platforms**: AWS, Azure, GCP
-- **Infrastructure as Code**: Terraform, CloudFormation, Pulumi
-- **Container Orchestration**: Kubernetes, Docker
-- **CI/CD**: GitHub Actions, GitLab CI, Jenkins
-- **Programming**: Python, Go, JavaScript/TypeScript
-- **DevOps Best Practices**: Automation, monitoring, and observability
+Active contributor with 152+ public repositories. I work on Terraform providers, cloud automation tools, and infrastructure utilities. I believe in building tools that solve real problems and sharing them with the community.
 
-## Philosophy
+## Writing
 
-I believe in:
+I write about infrastructure, automation, and production systems. Topics include Terraform patterns, Kubernetes operations, cloud cost optimization, and lessons from incidents.
 
-- **Open Source First**: Sharing knowledge and contributing to the community
-- **Automation**: If you do it more than twice, automate it
-- **Continuous Learning**: Technology evolves, and so should we
-- **Collaboration**: The best solutions come from working together
+[Read my posts](/blog/)
 
-## Currently
+## Contact
 
-I'm currently:
+Open to collaboration, consulting, and interesting conversations about infrastructure.
 
-- Working on cloud infrastructure solutions at PipeOpsHQ
-- Contributing to open source projects
-- Writing about my experiences and learnings on this blog
-- **Open to opportunities**: Marked as hireable on GitHub!
-
-## Let's Connect
-
-I'm always open to connecting with fellow engineers, discussing technology, or collaborating on projects.
-
-- GitHub: [@9trocode](https://github.com/9trocode)
-- Twitter: [@nitrocode](https://twitter.com/nitrocode)
-- LinkedIn: [linkedin.com/in/nitrocode](https://www.linkedin.com/in/nitrocode/)
-- Email: alexidowu25@gmail.com
+- **Email**: [alexidowu25@gmail.com](mailto:alexidowu25@gmail.com)
+- **GitHub**: [@9trocode](https://github.com/9trocode)
+- **Twitter**: [@nitrocode](https://twitter.com/nitrocode)
+- **LinkedIn**: [linkedin.com/in/nitrocode](https://www.linkedin.com/in/nitrocode/)

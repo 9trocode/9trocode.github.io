@@ -1,34 +1,47 @@
+---
+hide:
+  - navigation
+  - toc
+---
+
+<style>
+  .md-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .md-content__inner {
+    margin-top: 2rem;
+  }
+</style>
+
 # Alex Idowu
 
-Cloud Infrastructure and Software Engineer based in Lagos, Nigeria.
+<p style="font-size: 1.2em; color: #999;">Cloud Infrastructure Engineer</p>
 
-Currently working at [PipeOpsHQ](https://github.com/PipeOpsHQ), building scalable infrastructure solutions.
+I build scalable infrastructure and automation tools. Currently at [PipeOpsHQ](https://github.com/PipeOpsHQ) in Lagos, Nigeria.
 
-## What I Do
+I work with cloud platforms (AWS, Azure, GCP), infrastructure as code (Terraform), container orchestration (Kubernetes), and write code in Python, Go, and TypeScript.
 
-I focus on cloud infrastructure, DevOps automation, and open source contributions. With 152+ public repositories, I build reliable systems and share knowledge with the community.
+---
 
-### Areas of Expertise
+## Writing
 
-**Cloud Infrastructure**  
-Designing and implementing scalable cloud solutions across AWS, Azure, and GCP.
+I write about infrastructure, automation, and lessons learned from production systems.
 
-**DevOps & Automation**  
-Building CI/CD pipelines and infrastructure as code with Terraform, Kubernetes, and modern tooling.
+[Read the blog →](/blog/){ .md-button .md-button--primary }
 
-**Open Source**  
-Contributing to and maintaining open source projects that solve real-world problems.
+---
 
-**Software Engineering**  
-Developing efficient applications with Python, Go, and TypeScript.
+## Open Source
 
-## Recent Posts
+152+ public repositories on GitHub. I contribute to Terraform providers, cloud automation tools, and developer infrastructure.
 
-Check out my [blog](/blog/) for articles on cloud infrastructure, DevOps, and software engineering.
+[View on GitHub →](https://github.com/9trocode){ .md-button }
 
-## Connect
+---
 
-- GitHub: [@9trocode](https://github.com/9trocode)
-- Twitter: [@nitrocode](https://twitter.com/nitrocode)
-- LinkedIn: [linkedin.com/in/nitrocode](https://www.linkedin.com/in/nitrocode/)
-- Email: alexidowu25@gmail.com
+## Contact
+
+**Email**: [alexidowu25@gmail.com](mailto:alexidowu25@gmail.com)  
+**Twitter**: [@nitrocode](https://twitter.com/nitrocode)  
+**LinkedIn**: [linkedin.com/in/nitrocode](https://www.linkedin.com/in/nitrocode/)

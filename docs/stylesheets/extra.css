@@ -1,0 +1,47 @@
+/* Personal site styling */
+.md-header__title {
+  font-weight: 400;
+}
+
+/* Cleaner homepage */
+.md-typeset h1 {
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+.md-typeset hr {
+  margin: 3em 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Better button styling */
+.md-button {
+  border-radius: 4px;
+  font-weight: 500;
+  text-transform: none;
+}
+
+.md-button--primary {
+  background-color: #ff5722;
+  border-color: #ff5722;
+}
+
+.md-button--primary:hover {
+  background-color: #f4511e;
+  border-color: #f4511e;
+}
+
+/* Cleaner footer */
+.md-footer-meta {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Remove unnecessary nav elements for personal site */
+.md-tabs {
+  background-color: transparent;
+}
+
+/* Blog post styling */
+.md-typeset article {
+  max-width: 720px;
+}
