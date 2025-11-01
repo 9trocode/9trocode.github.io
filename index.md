@@ -21,14 +21,6 @@ I write about infrastructure, automation, and lessons learned from production sy
 
 ---
 
-## Support My Work
-
-If you find my content valuable, consider sponsoring my open source work and technical writing.
-
-<a href="https://github.com/sponsors/9trocode" target="_blank" rel="noopener" style="display: inline-block; padding: 0.75rem 1.5rem; background: #00ff41; color: #0a0e27; text-decoration: none; font-weight: bold; border-radius: 6px; font-family: 'Courier New', monospace;">💚 Sponsor on GitHub</a>
-
----
-
 ## Connect
 
 **Twitter**: [@nitrocode](https://twitter.com/nitrocode)  
