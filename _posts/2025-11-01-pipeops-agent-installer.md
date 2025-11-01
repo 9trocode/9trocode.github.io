@@ -102,7 +102,27 @@ When something goes wrong, we log everything. Error messages include the fix. No
 
 ## Windows Support
 
-The agent works on Windows too. VM agent handles Windows servers - same installer pattern, different OS.
+The agent works on Windows. You can install via PowerShell (native Windows) or WSL (Windows Subsystem for Linux).
+
+**Native Windows** (PowerShell):
+```powershell
+# Install dependencies
+choco install curl wget -y
+
+# Set your token
+$env:PIPEOPS_TOKEN = "your-token"
+
+# Run installer
+curl -fsSL https://get.pipeops.dev/k8-install.sh | bash
+```
+
+**WSL** (recommended):
+```bash
+# Run in WSL terminal - works exactly like Linux
+curl -fsSL https://get.pipeops.dev/k8-install.sh | bash
+```
+
+Same installer, works across platforms. Windows servers are first-class citizens.
 
 ## What's Next
 
