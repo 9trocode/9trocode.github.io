@@ -133,7 +133,7 @@ In those cases, use Nova's cloud provisioning. We'll spin up VMs in your account
 
 ## Try It
 
-Go to dashboard.pipeops.io, click "New Server," choose "PipeOps Managed." Pick your resources (1 CPU, 2GB RAM, 10GB storage - starts at $5/month).
+Go to console.pipeops.io, click "New Server," choose "PipeOps Managed." Pick your resources (1 CPU, 2GB RAM, 10GB storage - starts at $5/month).
 
 Three minutes later, you have a server. Deploy something. It just works.
 
