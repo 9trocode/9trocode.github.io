@@ -1,11 +1,10 @@
 ---
 date: 2025-10-31
-authors:
-  - alex
-categories:
-  - CLI
-  - Developer Tools
-  - Go
+layout: post
+tags:
+- CLI
+- Developer Tools
+- Go
 ---
 
 # Building the PipeOps CLI

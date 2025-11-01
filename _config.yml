@@ -1,0 +1,40 @@
+title: Alex Idowu
+description: Cloud Infrastructure Engineer
+remote_theme: pages-themes/hacker@v0.2.0
+plugins:
+  - jekyll-remote-theme
+  - jekyll-feed
+  - jekyll-seo-tag
+
+author:
+  name: Alex Idowu
+  email: alexidowu25@gmail.com
+
+url: "https://9trocode.github.io"
+baseurl: ""
+
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+permalink: /blog/:year/:month/:day/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+show_downloads: false
+
+github:
+  repository_url: https://github.com/9trocode/9trocode.github.io

@@ -1,11 +1,10 @@
 ---
 date: 2025-10-31
-authors:
-  - alex
-categories:
-  - Kubernetes
-  - Infrastructure
-  - PipeOps
+layout: post
+tags:
+- Kubernetes
+- Infrastructure
+- PipeOps
 ---
 
 # Building the PipeOps Kubernetes Agent

@@ -1,11 +1,10 @@
 ---
 date: 2025-10-31
-authors:
-  - alex
-categories:
-  - Terraform
-  - Infrastructure
-  - Kubernetes
+layout: post
+tags:
+- Terraform
+- Infrastructure
+- Kubernetes
 ---
 
 # Dynamic Cluster Provisioning with Terraform Modules

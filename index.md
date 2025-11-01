@@ -1,22 +1,11 @@
 ---
-hide:
-  - navigation
-  - toc
+layout: default
+title: Home
 ---
-
-<style>
-  .md-content {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  .md-content__inner {
-    margin-top: 2rem;
-  }
-</style>
 
 # Alex Idowu
 
-<p style="font-size: 1.2em; color: #999;">Cloud Infrastructure Engineer</p>
+Cloud Infrastructure Engineer
 
 I build scalable infrastructure and automation tools. Currently at [PipeOpsHQ](https://github.com/PipeOpsHQ) in Lagos, Nigeria.
 
@@ -28,7 +17,9 @@ I work with cloud platforms (AWS, Azure, GCP), infrastructure as code (Terraform
 
 I write about infrastructure, automation, and lessons learned from production systems.
 
-[Read the blog →](/blog/){ .md-button .md-button--primary }
+{% for post in site.posts %}
+- [{{ post.title }}]({{ post.url }}) - {{ post.date | date: "%B %d, %Y" }}
+{% endfor %}
 
 ---
 
@@ -36,7 +27,7 @@ I write about infrastructure, automation, and lessons learned from production sy
 
 152+ public repositories on GitHub. I contribute to Terraform providers, cloud automation tools, and developer infrastructure.
 
-[View on GitHub →](https://github.com/9trocode){ .md-button }
+[View on GitHub →](https://github.com/9trocode)
 
 ---
 

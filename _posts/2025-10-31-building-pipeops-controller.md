@@ -1,11 +1,10 @@
 ---
 date: 2025-10-31
-authors:
-  - alex
-categories:
-  - Infrastructure
-  - Platform Engineering
-  - Go
+layout: post
+tags:
+- Infrastructure
+- Platform Engineering
+- Go
 ---
 
 # Building the PipeOps Controller

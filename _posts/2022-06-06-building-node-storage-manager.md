@@ -1,11 +1,10 @@
 ---
 date: 2022-06-06
-authors:
-  - alex
-categories:
-  - Node.js
-  - Open Source
-  - Cloud Storage
+layout: post
+tags:
+- Node.js
+- Open Source
+- Cloud Storage
 ---
 
 # Building a Universal Storage Manager for Node.js

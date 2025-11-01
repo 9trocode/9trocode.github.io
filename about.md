@@ -1,6 +1,7 @@
 ---
-hide:
-  - navigation
+layout: default
+title: About
+permalink: /about/
 ---
 
 # About
@@ -27,7 +28,7 @@ Active contributor with 152+ public repositories. I work on Terraform providers,
 
 I write about infrastructure, automation, and production systems. Topics include Terraform patterns, Kubernetes operations, cloud cost optimization, and lessons from incidents.
 
-[Read my posts](/blog/)
+[Read my posts](/)
 
 ## Contact
 
