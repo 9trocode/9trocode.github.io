@@ -26,7 +26,7 @@ People wanted to bring their own metal. We needed a way to make any Linux machin
 ## How It Works
 
 ```bash
-curl -sfL https://agents.pipeops.io/ | bash -s -- --token YOUR_TOKEN
+curl -fsSL https://get.pipeops.dev/k8-install.sh | bash
 ```
 
 That's it. One line. The script:
@@ -116,8 +116,7 @@ The goal is simple: if it has an IP address, PipeOps should be able to deploy to
 If you have a server laying around:
 
 ```bash
-# Get your token from dashboard.pipeops.io
-curl -sfL https://agents.pipeops.io/ | bash -s -- --token YOUR_TOKEN
+curl -fsSL https://get.pipeops.dev/k8-install.sh | bash
 ```
 
 Three minutes later, deploy something to it from the PipeOps dashboard.
