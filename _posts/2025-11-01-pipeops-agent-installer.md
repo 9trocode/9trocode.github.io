@@ -104,12 +104,11 @@ When something goes wrong, we log everything. Error messages include the fix. No
 
 Working on:
 
-- Windows support (yes, really)
 - Auto-updates for the agent
 - Better health checks
 - Local dashboard (no internet? agent still works)
 
-The goal is simple: if it has an IP address, PipeOps should be able to deploy to it.
+The goal is simple: if it runs Linux or Windows, PipeOps should be able to deploy to it.
 
 ## Try It
 
