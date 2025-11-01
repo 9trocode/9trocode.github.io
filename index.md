@@ -2,7 +2,7 @@
 layout: default
 title: Alex Idowu - Cloud Infrastructure & DevOps Engineer
 description: Technical blog about Kubernetes, Terraform, BuildKit, and cloud infrastructure automation. Building PipeOps - production-grade platform engineering.
-image: /assets/images/og-image.png
+image: /assets/images/nitrocode-og.svg
 ---
 
 I build scalable infrastructure and automation tools. Currently at [PipeOpsHQ](https://github.com/PipeOpsHQ) in Lagos, Nigeria.
