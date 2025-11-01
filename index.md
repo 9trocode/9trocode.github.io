@@ -23,16 +23,8 @@ I write about infrastructure, automation, and lessons learned from production sy
 
 ---
 
-## Open Source
+## Connect
 
-152+ public repositories on GitHub. I contribute to Terraform providers, cloud automation tools, and developer infrastructure.
-
-[View on GitHub →](https://github.com/9trocode)
-
----
-
-## Contact
-
-**Email**: [alexidowu25@gmail.com](mailto:alexidowu25@gmail.com)  
 **Twitter**: [@nitrocode](https://twitter.com/nitrocode)  
-**LinkedIn**: [linkedin.com/in/nitrocode](https://www.linkedin.com/in/nitrocode/)
+**LinkedIn**: [linkedin.com/in/nitrocode](https://www.linkedin.com/in/nitrocode/)  
+**GitHub**: [github.com/9trocode](https://github.com/9trocode)

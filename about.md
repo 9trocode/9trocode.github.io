@@ -30,11 +30,8 @@ I write about infrastructure, automation, and production systems. Topics include
 
 [Read my posts](/)
 
-## Contact
+## Connect
 
-Open to collaboration, consulting, and interesting conversations about infrastructure.
-
-- **Email**: [alexidowu25@gmail.com](mailto:alexidowu25@gmail.com)
-- **GitHub**: [@9trocode](https://github.com/9trocode)
 - **Twitter**: [@nitrocode](https://twitter.com/nitrocode)
 - **LinkedIn**: [linkedin.com/in/nitrocode](https://www.linkedin.com/in/nitrocode/)
+- **GitHub**: [@9trocode](https://github.com/9trocode)
