@@ -12,8 +12,6 @@ tags:
 - Automation
 ---
 
-# The PipeOps Agent: One Bash Script to Rule Them All
-
 We needed a way to turn any server into a PipeOps-managed host. Not just Kubernetes clusters - any machine. Fresh Ubuntu box? Old server gathering dust? AWS EC2 instance? Doesn't matter. One command, three minutes, done.
 
 That's how the PipeOps agent installer was born.

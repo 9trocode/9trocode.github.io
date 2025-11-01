@@ -13,8 +13,6 @@ tags:
 image: /assets/images/buildkit-deployment.png
 ---
 
-# How PipeOps Actually Deploys Your Code
-
 People think deploying is simple. Push code, build image, deploy to Kubernetes. Done.
 
 It's not. Here's what actually happens when you deploy on PipeOps, with all the details I wish other platforms documented.
