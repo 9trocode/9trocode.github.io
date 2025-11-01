@@ -9,20 +9,9 @@ repo_url: https://github.com/9trocode/9trocode.github.io
 theme:
   name: material
   palette:
-    # Dark mode (default)
-    - scheme: slate
-      primary: black
-      accent: deep orange
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
-    # Light mode
-    - scheme: default
-      primary: black
-      accent: deep orange
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
+    scheme: slate
+    primary: black
+    accent: deep orange
   font:
     text: Roboto
     code: Roboto Mono
