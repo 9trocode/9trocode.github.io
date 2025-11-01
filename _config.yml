@@ -1,17 +1,35 @@
-title: Alex Idowu
-description: Cloud Infrastructure Engineer
+title: Alex Idowu - Cloud Infrastructure & DevOps Engineer
+description: Technical blog about Kubernetes, Terraform, BuildKit, and cloud infrastructure automation. Building PipeOps - production-grade platform engineering.
 remote_theme: pages-themes/hacker@v0.2.0
 plugins:
   - jekyll-remote-theme
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 author:
   name: Alex Idowu
   email: alexidowu25@gmail.com
+  twitter: nitrocode
 
 url: "https://9trocode.github.io"
 baseurl: ""
+
+# SEO
+lang: en-US
+tagline: Cloud Infrastructure & DevOps Engineering
+logo: /assets/images/logo.png
+
+twitter:
+  username: nitrocode
+  card: summary_large_image
+
+social:
+  name: Alex Idowu
+  links:
+    - https://twitter.com/nitrocode
+    - https://github.com/9trocode
+    - https://linkedin.com/in/nitrocode
 
 markdown: kramdown
 highlighter: rouge
