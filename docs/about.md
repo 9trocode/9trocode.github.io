@@ -6,7 +6,7 @@ I'm **Alex Idowu**, a Cloud Infrastructure and Software Engineer based in Lagos,
 
 ## My Journey
 
-I've been working in technology and software development since 2018. Over the years, I've:
+I've been working in technology and software development since 2012. Over the years, I've:
 
 - Built and maintained 152+ public repositories
 - Contributed to various open source projects
