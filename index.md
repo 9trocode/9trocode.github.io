@@ -1,6 +1,8 @@
 ---
 layout: default
-title: Home
+title: Alex Idowu - Cloud Infrastructure & DevOps Engineer
+description: I build scalable infrastructure and automation tools. Writing about Kubernetes, Terraform, BuildKit, and cloud infrastructure. Building PipeOps.
+image: /assets/images/og-image.png
 ---
 
 I build scalable infrastructure and automation tools. Currently at [PipeOpsHQ](https://github.com/PipeOpsHQ) in Lagos, Nigeria.
