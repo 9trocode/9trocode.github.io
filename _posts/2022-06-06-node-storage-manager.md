@@ -1,9 +1,13 @@
 ---
 layout: post
+title: "node_storage_manager: Stop Rewriting Storage Code"
 date: 2022-06-06
+description: "Universal storage abstraction for Node.js - S3, GCS, Azure Blob, and local filesystem with one API. Published on npm."
 tags:
 - Node.js
 - Open Source
+- NPM
+- Cloud Storage
 ---
 
 # node_storage_manager: Stop Rewriting Storage Code

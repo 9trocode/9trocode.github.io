@@ -1,11 +1,16 @@
 ---
 layout: post
+title: "How PipeOps Actually Deploys Your Code"
 date: 2025-10-31
+description: "Deep dive into PipeOps deployment pipeline: BuildKit, Kubernetes, Go, and production infrastructure. Real implementation details, not marketing."
 tags:
 - PipeOps
 - Kubernetes
 - BuildKit
 - Go
+- DevOps
+- CI/CD
+image: /assets/images/buildkit-deployment.png
 ---
 
 # How PipeOps Actually Deploys Your Code
