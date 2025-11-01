@@ -3,10 +3,6 @@ layout: default
 title: Home
 ---
 
-# Alex Idowu
-
-Cloud Infrastructure Engineer
-
 I build scalable infrastructure and automation tools. Currently at [PipeOpsHQ](https://github.com/PipeOpsHQ) in Lagos, Nigeria.
 
 I work with cloud platforms (AWS, Azure, GCP), infrastructure as code (Terraform), container orchestration (Kubernetes), and write code in Python, Go, and TypeScript.
