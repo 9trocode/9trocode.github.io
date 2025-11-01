@@ -50,24 +50,29 @@ The Runner abstracts all this. User picks "AWS, us-east-1, 3 nodes" and we handl
 
 With hundreds of customers and thousands of clusters, Terraform state management is critical.
 
+Each cluster gets its own state stored in the customer's cloud provider bucket. Not our bucket - yours. You bring your AWS/GCP/Azure account, we provision infrastructure in it, state lives there too.
+
 Each cluster gets:
 
-- Separate state file in S3
-- State locking in DynamoDB (prevents concurrent modifications)
+- Separate state file in customer's S3/GCS bucket
+- State locking via DynamoDB (AWS) or native locking (GCS)
 - Automated backups every hour
 - Versioning enabled (can rollback state if needed)
 
-State bucket structure:
+State bucket structure in your account:
 ```
-s3://pipeops-terraform-state/
-  customer-123/
-    cluster-abc/
-      terraform.tfstate
-      backups/
-        terraform.tfstate.2024-10-31
+s3://customer-terraform-state-bucket/
+  cluster-production/
+    terraform.tfstate
+    backups/
+      terraform.tfstate.2025-10-31
+  cluster-staging/
+    terraform.tfstate
+    backups/
+      terraform.tfstate.2025-10-31
 ```
 
-If state gets corrupted (it happens), we can restore from backup without losing infrastructure.
+If state gets corrupted (it happens), we restore from backup. Your infrastructure, your state, your control.
 
 ## The Terraform Modules
 
