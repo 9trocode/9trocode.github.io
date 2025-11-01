@@ -20,23 +20,19 @@ layout: default
     <a href="https://news.ycombinator.com/submitlink?u={{ site.url }}{{ page.url }}&t={{ page.title | uri_escape }}" target="_blank" rel="noopener">Hacker News</a>
   </div>
 
-  <!-- Comments via Disqus (allows anonymous) -->
+  <!-- Comments via Utterances (GitHub Issues - no ads, no tracking) -->
   <div class="comments" style="margin: 2rem 0;">
     <h3>Comments</h3>
-    <div id="disqus_thread"></div>
-    <script>
-        var disqus_config = function () {
-            this.page.url = "{{ site.url }}{{ page.url }}";
-            this.page.identifier = "{{ page.url }}";
-        };
-        (function() {
-            var d = document, s = d.createElement('script');
-            s.src = 'https://9trocode.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
+    <p style="font-size: 0.9em; color: #888; margin-bottom: 1rem;">
+      Comments are powered by GitHub Issues. Sign in with GitHub to comment.
+    </p>
+    <script src="https://utteranc.es/client.js"
+        repo="9trocode/9trocode.github.io"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
 
   <footer class="post-footer">
