@@ -120,158 +120,55 @@ We don't run `docker build`. We use BuildKit - Docker's build engine - but direc
 
 ### Our BuildKit Setup
 
-We run BuildKit as a privileged pod in Kubernetes with custom configuration:
+We run BuildKit as privileged pods in Kubernetes with tuned configuration for:
 
-```toml
-[worker.oci]
-  max-parallelism = 8
-  platforms = ["linux/amd64", "linux/arm64"]
+- **High concurrency** - Multiple parallel build operations per pod
+- **Large cache retention** - Aggressive caching strategy to maximize hit rates
+- **Fast base image pulls** - Registry mirrors and geographic distribution
+- **Multi-platform builds** - ARM64 and AMD64 support out of the box
 
-[worker.containerd]
-  enabled = true
-  snapshotter = "overlayfs"
-
-[[worker.oci.gcpolicy]]
-  keepBytes = 100000000000  # 100GB cache
-  keepDuration = 604800      # 7 days
-  
-[registry."docker.io"]
-  mirrors = ["mirror.gcr.io"]
-```
-
-This config is tuned for:
-- High concurrency (8 parallel operations)
-- Large cache (100GB retention)
-- Fast pulls (registry mirrors)
-- Multi-platform builds
+The BuildKit configuration is optimized for throughput over individual build speed - we prioritize handling 50+ concurrent builds over making one build 10% faster.
 
 ### The Build Process
 
-{% raw %}
-```go
-// Simplified version of what we actually do
-func buildWithBuildKit(ctx context.Context, dockerfile string, buildArgs map[string]string) error {
-    client, err := buildkitclient.New(ctx, buildkitdAddr)
-    if err != nil {
-        return err
-    }
-    
-    // Define build frontend (Dockerfile)
-    frontend := gateway.NewGatewayForwarder(client, buildFrontend)
-    
-    // Configure build options
-    opts := bk.SolveOpt{
-        Frontend: "dockerfile.v0",
-        FrontendAttrs: map[string]string{
-            "filename": dockerfile,
-        },
-        LocalDirs: map[string]string{
-            "context":    buildContext,
-            "dockerfile": dockerfilePath,
-        },
-        CacheExports: []bk.CacheOptionsEntry{{
-            Type: "s3",
-            Attrs: map[string]string{
-                "region": "auto",
-                "bucket": cacheBucket,
-                "name":   cacheKey,
-            },
-        }},
-    }
-    
-    // Add build args
-    for k, v := range buildArgs {
-        opts.FrontendAttrs["build-arg:"+k] = v
-    }
-    
-    // Execute build
-    ch := make(chan *bk.SolveStatus)
-    eg, ctx := errgroup.WithContext(ctx)
-    
-    eg.Go(func() error {
-        _, err := client.Solve(ctx, nil, opts, ch)
-        return err
-    })
-    
-    eg.Go(func() error {
-        // Stream build output in real-time
-        for status := range ch {
-            displayProgress(status)
-        }
-        return nil
-    })
-    
-    return eg.Wait()
-}
-```
-{% endraw %}
+We use BuildKit's Go SDK directly - no shelling out to `docker build`. The flow:
 
-This is the real code pattern. We:
-- Create BuildKit client (connects to BuildKit daemon)
-- Define build context and Dockerfile location
-- Configure S3 cache exports
-- Pass build args (filtered - more on that later)
-- Execute build with progress streaming
-- Handle errors and cleanup
+1. **Connect to BuildKit daemon** - Each Runner maintains a pool of BuildKit connections
+2. **Prepare build context** - Isolated workspace with source code and Dockerfile
+3. **Configure cache backend** - S3-backed cache with content-addressable storage
+4. **Stream progress** - Real-time build output to dashboard via WebSockets
+5. **Handle completion** - Push image to registry or fail with actionable errors
+
+The BuildKit SDK gives us fine-grained control over:
+- Build parallelization (independent layers build simultaneously)
+- Cache import/export (share cache across team)
+- Secret handling (mount secrets at build time, never bake into image)
+- Multi-platform targeting (ARM64 + AMD64 from same Dockerfile)
 
 ### Build Args: Security Matters
 
-We filter what gets passed as build args. Early mistake: passing all env vars. Bad idea.
+We filter what gets passed as build args. Early mistake: passing all env vars. Bad idea - secrets ended up in image layers.
 
 Now we only pass:
 1. Args explicitly declared in Dockerfile with `ARG`
-2. Essential build vars (commit SHA, build ID)
-3. User vars that match declared ARGs
+2. Essential build metadata (commit SHA, build ID, timestamps)
+3. User-provided build args that match declared ARGs
 
-Everything else is filtered out. Your secrets don't end up in image layers.
+Everything else is filtered out. We parse your Dockerfile, extract ARG declarations, and only pass matching variables. Undeclared args are silently dropped.
 
-```go
-// From our actual code
-func prepareFilteredBuildArgs(userVars map[string]string, declaredArgs []string) map[string]string {
-    filtered := make(map[string]string)
-    
-    // Essential vars always included
-    essentialVars := []string{"PIPEOPS_BUILD_SHA", "PIPEOPS_GIT_COMMIT"}
-    for _, v := range essentialVars {
-        if val, ok := os.LookupEnv(v); ok {
-            filtered[v] = val
-        }
-    }
-    
-    // User vars only if declared as ARG
-    for k, v := range userVars {
-        if isInternalVar(k) {
-            continue // Skip PipeOps internal vars
-        }
-        if contains(declaredArgs, k) {
-            filtered[k] = v
-        }
-    }
-    
-    return filtered
-}
-```
-
-We parse your Dockerfile, extract ARG declarations, match them against user vars. Undeclared vars don't get passed.
+This prevents accidents like `--build-arg DATABASE_PASSWORD=...` ending up in image metadata that anyone can inspect with `docker history`.
 
 ### Caching Strategy
 
-Build cache lives in S3. Each project gets a cache key based on:
-- Repository URL
-- Branch name
-- Dockerfile path
-
-```
-s3://buildcache/<repo-hash>/<branch>/<dockerfile-hash>
-```
+Build cache lives in S3 with content-addressable storage. Each project gets isolated cache namespacing based on repo, branch, and Dockerfile path.
 
 First build? Slow. Downloads all base images, installs all dependencies.
 
 Second build? Fast. Only changed layers rebuild.
 
-Team member builds? Fast. Shares your cache.
+Team member builds? Fast. Shares your cache automatically.
 
-Cache expires after 7 days of no use. Automatic cleanup prevents S3 costs from exploding.
+Cache has automatic expiration and cleanup - we balance hit rates against storage costs. The system adapts: frequently-built projects get longer retention, abandoned projects get cleaned up fast.
 
 ## Push to Registry
 
@@ -289,65 +186,19 @@ Multi-platform images? We push a manifest list. One tag, multiple architectures.
 
 ## Manifest Generation: Kubernetes Resources
 
-Once image is built, we generate Kubernetes manifests. Not templated YAML - generated from Go structs.
+Once image is built, we generate Kubernetes manifests. Not templated YAML - generated programmatically from Go structs using the official Kubernetes client libraries.
 
-{% raw %}
-```go
-deployment := &appsv1.Deployment{
-    ObjectMeta: metav1.ObjectMeta{
-        Name:      projectName,
-        Namespace: namespace,
-        Labels:    labels,
-    },
-    Spec: appsv1.DeploymentSpec{
-        Replicas: ptr.To(int32(replicas)),
-        Selector: &metav1.LabelSelector{
-            MatchLabels: labels,
-        },
-        Strategy: appsv1.DeploymentStrategy{
-            Type: appsv1.RollingUpdateDeploymentStrategyType,
-            RollingUpdate: &appsv1.RollingUpdateDeployment{
-                MaxUnavailable: ptr.To(intstr.FromInt(1)),
-                MaxSurge:       ptr.To(intstr.FromInt(1)),
-            },
-        },
-        Template: corev1.PodTemplateSpec{
-            ObjectMeta: metav1.ObjectMeta{
-                Labels: labels,
-            },
-            Spec: corev1.PodSpec{
-                Containers: []corev1.Container{{
-                    Name:  projectName,
-                    Image: imageWithTag,
-                    Ports: containerPorts,
-                    Env:   envVars,
-                    Resources: corev1.ResourceRequirements{
-                        Requests: resourceRequests,
-                        Limits:   resourceLimits,
-                    },
-                    LivenessProbe:  livenessProbe,
-                    ReadinessProbe: readinessProbe,
-                    StartupProbe:   startupProbe,
-                }},
-                ImagePullSecrets: imagePullSecrets,
-            },
-        },
-    },
-}
-```
-{% endraw %}
+We generate a complete resource stack:
+- **Deployment** (or StatefulSet for stateful apps)
+- **Service** (ClusterIP, LoadBalancer, or NodePort)
+- **Ingress** (for public apps with TLS)
+- **ConfigMap** (non-sensitive environment variables)
+- **Secret** (sensitive env vars, encrypted at rest)
+- **HorizontalPodAutoscaler** (if autoscaling enabled)
+- **NetworkPolicy** (traffic isolation rules)
+- **PodDisruptionBudget** (for high availability)
 
-We generate:
-- Deployment (or StatefulSet for databases)
-- Service (ClusterIP or LoadBalancer)
-- Ingress (for public apps)
-- ConfigMap (environment variables)
-- Secret (sensitive env vars, encrypted)
-- HorizontalPodAutoscaler (if autoscaling enabled)
-- NetworkPolicy (traffic rules)
-- PodDisruptionBudget (for HA setups)
-
-All from your project configuration. No YAML editing.
+All generated from your project configuration. The advantage of Go structs over YAML templates: type safety catches errors at compile time, not when the deploy fails.
 
 ## Deployment Strategies: More Than Rolling Updates
 
@@ -365,72 +216,29 @@ You pick the strategy. We implement it correctly.
 
 We configure three probe types:
 
-**Startup probe**: Is the app starting? Checks every 5s, timeout 120s. Failure = pod never becomes ready.
+**Startup probe**: Is the app starting? High timeout tolerance for slow-starting apps.
 
-**Readiness probe**: Should this pod receive traffic? Checks every 5s. Failure = removed from service endpoints.
+**Readiness probe**: Should this pod receive traffic? Failure removes pod from service endpoints immediately.
 
-**Liveness probe**: Is the app alive? Checks every 15s. Failure = pod restart.
+**Liveness probe**: Is the app alive? Failure triggers pod restart.
 
-Default probes:
-{% raw %}
-```go
-livenessProbe := &corev1.Probe{
-    ProbeHandler: corev1.ProbeHandler{
-        HTTPGet: &corev1.HTTPGetAction{
-            Path: "/health",
-            Port: intstr.FromInt(port),
-        },
-    },
-    InitialDelaySeconds: 20,
-    PeriodSeconds:       15,
-    TimeoutSeconds:      2,
-    FailureThreshold:    3,
-}
-```
-{% endraw %}
+Default probes hit `/health` endpoints with tuned timeouts and thresholds based on app type. Node.js apps get longer startup windows than Go apps. Databases get different probe intervals than web servers.
 
-Custom health endpoints? Configure them. We'll use them.
+Custom health endpoints? Configure them in project settings. We'll use whatever you specify - HTTP, TCP, or exec probes.
 
 ## Deployment Rollout Tracking
 
-We don't just apply manifests and hope. We watch the rollout:
+We don't just apply manifests and hope. We watch the rollout using Kubernetes watch APIs to monitor deployment status in real-time.
 
-```go
-func watchRollout(ctx context.Context, deployment string, namespace string) error {
-    watcher, err := clientset.AppsV1().Deployments(namespace).Watch(ctx, metav1.ListOptions{
-        FieldSelector: fmt.Sprintf("metadata.name=%s", deployment),
-    })
-    if err != nil {
-        return err
-    }
-    defer watcher.Stop()
-    
-    for {
-        select {
-        case event := <-watcher.ResultChan():
-            deploy := event.Object.(*appsv1.Deployment)
-            
-            if deploy.Status.UpdatedReplicas == deploy.Status.Replicas &&
-               deploy.Status.ReadyReplicas == deploy.Status.Replicas &&
-               deploy.Status.AvailableReplicas == deploy.Status.Replicas {
-                return nil // Rollout complete
-            }
-            
-            if deploy.Status.Conditions != nil {
-                for _, cond := range deploy.Status.Conditions {
-                    if cond.Type == appsv1.DeploymentProgressing && cond.Reason == "ProgressDeadlineExceeded" {
-                        return fmt.Errorf("deployment deadline exceeded")
-                    }
-                }
-            }
-        case <-ctx.Done():
-            return ctx.Err()
-        }
-    }
-}
-```
+The Runner tracks:
+- **Replica counts** - Are new pods being created?
+- **Ready status** - Are new pods passing health checks?
+- **Rollout conditions** - Did we hit the progress deadline?
+- **Pod events** - Why did that pod fail to start?
 
-We stream status updates to the dashboard in real-time via WebSockets. You see exactly what's happening.
+All status updates stream to the dashboard via WebSockets. You see exactly what's happening: "Pod 2/3 ready", "Waiting for health checks", "Rollout complete".
+
+If the rollout stalls (pods not ready after deadline), we automatically rollback to the previous version. The old ReplicaSet is never deleted until the new one is healthy.
 
 ## When Things Fail
 
