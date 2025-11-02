@@ -15,7 +15,7 @@ tags:
 
 The Runner is the workhorse of PipeOps. When someone clicks "Create Server," the Runner is what actually makes it happen.
 
-It's a Go service that provisions infrastructure across multiple cloud providers, manages state, handles failures, and streams logs back in real-time.
+It's a Go service that provisions infrastructure across multiple cloud providers, manages state, handles failures, and streams logs back in real-time. The same Runner also handles [application deployments](/2024/10/31/how-pipeops-deploys.html) once infrastructure is provisioned.
 
 ## The Flow
 
@@ -54,11 +54,11 @@ The Runner abstracts all this. User picks "AWS, us-east-1, 3 nodes" and we handl
 
 With hundreds of customers and thousands of clusters, infrastructure state management is critical.
 
-Each cluster gets its own state stored in the customer's cloud provider bucket. Not our bucket - yours. You bring your AWS/GCP/Azure account, we provision infrastructure in it, state lives there too.
+**For BYOC (Bring Your Own Cloud) deployments**, each cluster's state is stored in your cloud provider account. You bring your AWS/GCP/Azure account, we provision infrastructure in it, and state lives in your bucket.
 
-Each cluster gets:
+Each BYOC cluster gets:
 
-- Separate state file in customer's S3/GCS bucket
+- Separate state file in your S3/GCS bucket
 - State locking mechanisms (DynamoDB for AWS, native for GCS)
 - Automated backups every hour
 - Versioning enabled (can rollback if needed)
@@ -76,18 +76,20 @@ s3://customer-state-bucket/
       state.2024-10-31.tf
 ```
 
-If state gets corrupted (it happens), we restore from backup. Your infrastructure, your state, your control.
+For PipeOps-managed infrastructure (Nova multi-tenant clusters), we handle state internally with the same backup and versioning guarantees.
+
+If state gets corrupted (it happens), we restore from backup automatically.
 
 ## Infrastructure Modules
 
-We don't provision infrastructure from scratch for each cluster. We use internally-built, battle-tested modules that we've developed and maintained over two years:
+We don't provision infrastructure from scratch for each cluster. The Runner uses a modular approach with well-tested components:
 
-**Kubernetes Module**: Core cluster provisioning (EKS, GKE, AKS)  
-**Network Module**: VPC, subnets, routing, security groups  
-**Essentials Module**: Ingress controllers, cert-manager, monitoring stack  
-**Template Repository**: Combines modules into complete infrastructure stacks
+**Kubernetes Module**: Core cluster provisioning (EKS, GKE, AKS)
+**Network Module**: VPC, subnets, routing, security groups
+**Essentials Module**: Ingress controllers, cert-manager, monitoring stack
+**Orchestration Layer**: Combines modules into complete infrastructure stacks
 
-All modules are developed and maintained privately by our team. They're versioned and locked to prevent breaking changes. When we update modules, we test in staging environments, then gradually roll out to production clusters.
+These modules are versioned and locked to prevent breaking changes. Updates are tested in staging environments before gradual rollout to production clusters.
 
 ## Error Handling
 
@@ -176,6 +178,13 @@ Working on:
 
 The Runner evolved from "provision clusters" to handling all infrastructure operations. Updates, scaling, configuration changes, teardowns - all go through the Runner now.
 
-Our infrastructure modules represent two years of production learnings, edge cases, and optimizations. They're not open source - they're our competitive advantage.
+These infrastructure patterns represent two years of production learnings, edge cases, and optimizations across multiple cloud providers.
+
+---
+
+**Related Posts:**
+- [How PipeOps Actually Deploys Your Code](/2024/10/31/how-pipeops-deploys.html) - The deployment pipeline the Runner powers
+- [Nova: Multi-Tenant Kubernetes Without the Complexity](/2024/11/01/nova-multitenancy.html) - Alternative to cloud provisioning
+- [The PipeOps Agent: One Script to Rule Them All](/2024/11/01/pipeops-agent-installer.html) - BYOS approach vs Terraform provisioning
 
 
