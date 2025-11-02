@@ -28,13 +28,31 @@ People wanted to bring their own metal. We needed a way to make any Linux machin
 
 ## How It Works
 
+**Linux/Mac:**
+```bash
+curl -fsSL https://get.pipeops.dev/k8-install.sh | bash
+```
+
+**Windows (PowerShell):**
+```powershell
+# Install dependencies first
+choco install curl wget -y
+
+# Set your token
+$env:PIPEOPS_TOKEN = "your-token"
+
+# Run installer
+curl -fsSL https://get.pipeops.dev/k8-install.sh | bash
+```
+
+**Windows (WSL - recommended):**
 ```bash
 curl -fsSL https://get.pipeops.dev/k8-install.sh | bash
 ```
 
 That's it. One line. The script:
 
-1. Detects your OS (Ubuntu, Debian, CentOS - we're not picky)
+1. Detects your OS (Ubuntu, Debian, CentOS, Windows - we're not picky)
 2. Installs k3s if you don't have Kubernetes
 3. Downloads and configures the PipeOps agent
 4. Registers with the control plane
@@ -67,7 +85,7 @@ If your server already has Kubernetes, cool - we'll use that. If not, k3s gets y
 
 ## Bring Your Own Server (BYOS)
 
-This is what made Nova possible. Remember Nova? Our multi-tenant platform where you can either use PipeOps-managed infrastructure or your own?
+This is what made [Nova](/2024/11/01/nova-multitenancy.html) possible. Our multi-tenant platform where you can either use PipeOps-managed infrastructure or your own.
 
 The agent is how "your own" works. Point it at any server, run the installer, boom - that machine is now part of your Nova fleet.
 
@@ -93,39 +111,16 @@ I've seen this thing installed on:
 - ARM servers (Raspberry Pi clusters, believe it or not)
 - Hetzner dedicated servers
 - DigitalOcean droplets (why not?)
+- Windows servers (both native and WSL)
 - Even a NAS running in someone's closet
 
-If it runs Linux and has 1GB RAM, the agent will probably work.
+If it has 1GB RAM and can run containers, the agent will probably work.
 
 ## The Code
 
 The installer is a bash script with way too many comments (my fault). We detect package managers, handle different init systems, and try not to break existing setups.
 
 When something goes wrong, we log everything. Error messages include the fix. No "contact support" BS - just "here's what broke, here's how to fix it."
-
-## Windows Support
-
-The agent works on Windows. You can install via PowerShell (native Windows) or WSL (Windows Subsystem for Linux).
-
-**Native Windows** (PowerShell):
-```powershell
-# Install dependencies
-choco install curl wget -y
-
-# Set your token
-$env:PIPEOPS_TOKEN = "your-token"
-
-# Run installer
-curl -fsSL https://get.pipeops.dev/k8-install.sh | bash
-```
-
-**WSL** (recommended):
-```bash
-# Run in WSL terminal - works exactly like Linux
-curl -fsSL https://get.pipeops.dev/k8-install.sh | bash
-```
-
-Same installer, works across platforms. Windows servers are first-class citizens.
 
 ## What's Next
 
@@ -148,5 +143,12 @@ curl -fsSL https://get.pipeops.dev/k8-install.sh | bash
 Three minutes later, deploy something to it from the PipeOps dashboard.
 
 That's the magic - infrastructure should be this easy.
+
+---
+
+**Related Posts:**
+- [Nova: Multi-Tenant Kubernetes Without the Complexity](/2024/11/01/nova-multitenancy.html) - How the agent enables BYOS for Nova
+- [How PipeOps Actually Deploys Your Code](/2024/10/31/how-pipeops-deploys.html) - What happens after the agent is installed
+- [The Runner: Terraform Multi-Cloud Provisioning](/2024/10/31/runner-terraform-provisioning.html) - Alternative cloud provisioning approach
 
 

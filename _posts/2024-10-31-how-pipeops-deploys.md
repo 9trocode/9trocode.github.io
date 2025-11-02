@@ -10,7 +10,6 @@ tags:
 - Go
 - DevOps
 - CI/CD
-image: /assets/images/buildkit-deployment.png
 ---
 
 People think deploying is simple. Push code, build image, deploy to Kubernetes. Done.
@@ -61,7 +60,7 @@ Every deployment goes through this pipeline. No shortcuts, no special cases.
 
 ## The Real Stack
 
-Everything is written in Go. The Runner is a Go service that handles the entire lifecycle. We don't shell out to `docker build` - we use BuildKit's Go SDK directly.
+Everything is written in Go. The [Runner](/2024/10/31/runner-terraform-provisioning.html) is a Go service that handles the entire deployment lifecycle. We don't shell out to `docker build` - we use BuildKit's Go SDK directly.
 
 Why Go? Because we need:
 - Concurrency (hundreds of simultaneous builds)
@@ -333,3 +332,10 @@ The Runner is 10,000+ lines of Go. Two years of production taught us everything 
 - Race conditions in concurrent builds
 
 All handled now.
+
+---
+
+**Related Posts:**
+- [The Runner: Terraform Multi-Cloud Provisioning](/2024/10/31/runner-terraform-provisioning.html) - How infrastructure is provisioned
+- [Nova: Multi-Tenant Kubernetes Without the Complexity](/2024/11/01/nova-multitenancy.html) - Where deployments run
+- [The PipeOps Agent: One Script to Rule Them All](/2024/11/01/pipeops-agent-installer.html) - Installing on BYOS infrastructure
