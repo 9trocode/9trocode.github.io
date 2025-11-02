@@ -15,7 +15,7 @@ tags:
 
 The Runner is the workhorse of PipeOps. When someone clicks "Create Server," the Runner is what actually makes it happen.
 
-It's a Go service that executes Terraform across multiple cloud providers, manages state, handles failures, and streams logs back in real-time.
+It's a Go service that provisions infrastructure across multiple cloud providers, manages state, handles failures, and streams logs back in real-time.
 
 ## The Flow
 
@@ -23,9 +23,9 @@ It's a Go service that executes Terraform across multiple cloud providers, manag
 2. Validates params (region, instance types, node count)
 3. Queues job in RabbitMQ
 4. Runner picks up job from queue
-5. Clones appropriate Terraform modules from nova-templates
+5. Loads our custom infrastructure modules
 6. Injects customer-specific variables
-7. Runs `terraform apply`
+7. Executes provisioning workflow
 8. Streams output back to user in real-time
 9. Extracts outputs (cluster endpoints, credentials)
 10. Updates database with results
@@ -52,52 +52,52 @@ The Runner abstracts all this. User picks "AWS, us-east-1, 3 nodes" and we handl
 
 ## State Management
 
-With hundreds of customers and thousands of clusters, Terraform state management is critical.
+With hundreds of customers and thousands of clusters, infrastructure state management is critical.
 
 Each cluster gets its own state stored in the customer's cloud provider bucket. Not our bucket - yours. You bring your AWS/GCP/Azure account, we provision infrastructure in it, state lives there too.
 
 Each cluster gets:
 
 - Separate state file in customer's S3/GCS bucket
-- State locking via DynamoDB (AWS) or native locking (GCS)
+- State locking mechanisms (DynamoDB for AWS, native for GCS)
 - Automated backups every hour
-- Versioning enabled (can rollback state if needed)
+- Versioning enabled (can rollback if needed)
 
 State bucket structure in your account:
 ```
-s3://customer-terraform-state-bucket/
+s3://customer-state-bucket/
   cluster-production/
-    terraform.tfstate
+    state.tf
     backups/
-      terraform.tfstate.2025-10-31
+      state.2024-10-31.tf
   cluster-staging/
-    terraform.tfstate
+    state.tf
     backups/
-      terraform.tfstate.2025-10-31
+      state.2024-10-31.tf
 ```
 
 If state gets corrupted (it happens), we restore from backup. Your infrastructure, your state, your control.
 
-## The Terraform Modules
+## Infrastructure Modules
 
-We don't write Terraform from scratch for each cluster. We use modules:
+We don't provision infrastructure from scratch for each cluster. We use internally-built, battle-tested modules that we've developed and maintained over two years:
 
-**tf-k8s-module**: Core Kubernetes cluster (EKS, GKE, AKS)  
-**tf-network-module**: VPC, subnets, routing  
-**tf-essentials-module**: Ingress, cert-manager, monitoring  
-**nova-tf-template**: Combines modules into full stacks
+**Kubernetes Module**: Core cluster provisioning (EKS, GKE, AKS)  
+**Network Module**: VPC, subnets, routing, security groups  
+**Essentials Module**: Ingress controllers, cert-manager, monitoring stack  
+**Template Repository**: Combines modules into complete infrastructure stacks
 
-Modules are versioned. We lock versions to prevent breaking changes. When we update modules, we test in staging, then gradually roll out.
+All modules are developed and maintained privately by our team. They're versioned and locked to prevent breaking changes. When we update modules, we test in staging environments, then gradually roll out to production clusters.
 
 ## Error Handling
 
-Terraform fails. A lot. Our error handling:
+Infrastructure provisioning fails. A lot. Our error handling:
 
 **Cloud API failures**: Retry with exponential backoff (up to 5 times)  
 **Quota limits**: Surface clear error with fix  
-**Invalid config**: Validate before running Terraform  
+**Invalid config**: Validate before execution  
 **Partial failures**: Mark what succeeded, offer cleanup or continue  
-**Terraform crashes**: Capture logs, save state, alert  
+**Process crashes**: Capture logs, save state, alert ops team  
 
 When provisioning fails, users get:
 1. What went wrong
@@ -121,11 +121,11 @@ We can run 50+ Terraform jobs simultaneously. The bottleneck is cloud provider A
 
 ## Streaming Logs
 
-Users watch `terraform apply` output in real-time in the dashboard. It's WebSocket-based:
+Users watch provisioning output in real-time in the dashboard. It's WebSocket-based:
 
 Runner → RabbitMQ → Controller → WebSocket → Browser
 
-Terraform outputs to stdout/stderr, we capture it, send to queue, controller forwards to connected clients. They see everything as it happens.
+The provisioning process outputs to stdout/stderr, we capture it, send to queue, controller forwards to connected clients. They see everything as it happens.
 
 ## Cleanup on Failure
 
@@ -134,31 +134,31 @@ If provisioning fails halfway, we clean up what was created. Otherwise users end
 The cleanup process:
 
 1. Mark resources that were successfully created
-2. Run `terraform destroy` on partial state
-3. If destroy fails, retry up to 3 times
+2. Run cleanup procedures on partial state
+3. If cleanup fails, retry up to 3 times
 4. If still failing, alert ops team
-5. Manually investigate and clean up
+5. Manually investigate and resolve
 
 We log everything for post-mortem analysis.
 
 ## Variable Injection
 
-Customers don't write Terraform. They fill out a form, we generate Terraform variables:
+Customers don't write infrastructure code. They fill out a form, we generate the required configuration:
 
-```hcl
-cluster_name     = "customer-production"
-region           = "us-east-1"
-node_count       = 3
-instance_type    = "t3.medium"
-enable_monitoring = true
-backup_schedule  = "daily"
+```yaml
+cluster_name: "customer-production"
+region: "us-east-1"
+node_count: 3
+instance_type: "t3.medium"
+enable_monitoring: true
+backup_schedule: "daily"
 ```
 
-We validate types, ranges, and dependencies before passing to Terraform. Invalid config never reaches `terraform apply`.
+We validate types, ranges, and dependencies before execution. Invalid config never reaches the provisioning stage.
 
 ## Cost Estimation
 
-Before applying, we estimate monthly costs using Terraform's plan output and cloud provider pricing APIs.
+Before provisioning, we estimate monthly costs using cloud provider pricing APIs and our infrastructure module calculations.
 
 "This cluster will cost approximately $450/month."
 
@@ -175,5 +175,7 @@ Working on:
 - Support for more cloud providers
 
 The Runner evolved from "provision clusters" to handling all infrastructure operations. Updates, scaling, configuration changes, teardowns - all go through the Runner now.
+
+Our infrastructure modules represent two years of production learnings, edge cases, and optimizations. They're not open source - they're our competitive advantage.
 
 
