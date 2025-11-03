@@ -284,18 +284,11 @@ The 3% build failures? Usually user config (broken Dockerfile, missing dependenc
 
 The 1.5% deployment failures? Usually cluster issues (out of resources, network problems).
 
-### How We Compare
+### Performance Impact
 
-Compared to other CI/CD platforms (Node.js app, cold cache):
+The BuildKit and direct Kubernetes deployment approach significantly reduces total pipeline time. From cold cache, a typical Node.js deployment completes in 7-9 minutes. With warm cache (the common case after initial deploy), this drops to 2-3 minutes.
 
-| Platform | Build Time | Deploy Time | Total |
-|----------|------------|-------------|-------|
-| **PipeOps** | **6-8 min** | **60 sec** | **~7-9 min** |
-| GitHub Actions | 8-12 min | 2-3 min | 10-15 min |
-| CircleCI | 7-10 min | 2-3 min | 9-13 min |
-| GitLab CI | 9-13 min | 2-4 min | 11-17 min |
-
-Why we're faster:
+Why this architecture is fast:
 
 - **BuildKit's layer caching** - Smarter than Docker's cache
 - **Dedicated build infrastructure** - Not competing for shared runners
@@ -303,16 +296,7 @@ Why we're faster:
 - **Direct K8s deployment** - No intermediate artifacts or handoffs
 - **Optimized base images** - We maintain language-specific optimized images
 
-With cache hits (typical after first deploy):
-
-| Platform | Build + Deploy |
-|----------|---------------|
-| **PipeOps** | **2-3 min** |
-| GitHub Actions | 4-6 min |
-| CircleCI | 4-5 min |
-| GitLab CI | 5-7 min |
-
-The difference compounds. 50 deploys per day? PipeOps saves your team 4-5 hours of waiting.
+The difference compounds when deploying frequently. Multiple deploys per day means the warm cache performance becomes the norm, not the exception.
 
 ## What We Don't Do
 
@@ -334,10 +318,3 @@ The Runner is 10,000+ lines of Go. Two years of production taught us everything 
 - Race conditions in concurrent builds
 
 All handled now.
-
----
-
-**Related Posts:**
-- [The Runner: Terraform Multi-Cloud Provisioning](/2024/10/31/runner-terraform-provisioning.html) - How infrastructure is provisioned
-- [Nova: Multi-Tenant Kubernetes Without the Complexity](/2024/11/01/nova-multitenancy.html) - Where deployments run
-- [The PipeOps Agent: One Script to Rule Them All](/2024/11/01/pipeops-agent-installer.html) - Installing on BYOS infrastructure

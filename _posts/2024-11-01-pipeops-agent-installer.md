@@ -143,12 +143,3 @@ curl -fsSL https://get.pipeops.dev/k8-install.sh | bash
 Three minutes later, deploy something to it from the PipeOps dashboard.
 
 That's the magic - infrastructure should be this easy.
-
----
-
-**Related Posts:**
-- [Nova: Multi-Tenant Kubernetes Without the Complexity](/2024/11/01/nova-multitenancy.html) - How the agent enables BYOS for Nova
-- [How PipeOps Actually Deploys Your Code](/2024/10/31/how-pipeops-deploys.html) - What happens after the agent is installed
-- [The Runner: Terraform Multi-Cloud Provisioning](/2024/10/31/runner-terraform-provisioning.html) - Alternative cloud provisioning approach
-
-

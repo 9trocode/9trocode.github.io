@@ -179,12 +179,3 @@ Working on:
 The Runner evolved from "provision clusters" to handling all infrastructure operations. Updates, scaling, configuration changes, teardowns - all go through the Runner now.
 
 These infrastructure patterns represent two years of production learnings, edge cases, and optimizations across multiple cloud providers.
-
----
-
-**Related Posts:**
-- [How PipeOps Actually Deploys Your Code](/2024/10/31/how-pipeops-deploys.html) - The deployment pipeline the Runner powers
-- [Nova: Multi-Tenant Kubernetes Without the Complexity](/2024/11/01/nova-multitenancy.html) - Alternative to cloud provisioning
-- [The PipeOps Agent: One Script to Rule Them All](/2024/11/01/pipeops-agent-installer.html) - BYOS approach vs Terraform provisioning
-
-
