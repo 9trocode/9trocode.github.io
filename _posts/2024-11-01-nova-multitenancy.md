@@ -2,7 +2,7 @@
 layout: post
 title: "Nova: Multi-Tenant Kubernetes Without the Complexity"
 date: 2024-11-01
-description: "Building multi-tenant Kubernetes infrastructure with Capsule and network policies. How PipeOps isolates customer workloads on shared clusters."
+description: "Multi-tenant Kubernetes with Capsule operator and network policies. How PipeOps Nova isolates customer workloads on shared clusters for $5/month. Real architecture."
 tags:
 - PipeOps
 - Nova

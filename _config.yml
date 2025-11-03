@@ -56,3 +56,8 @@ show_downloads: false
 
 github:
   repository_url: https://github.com/9trocode/9trocode.github.io
+
+# Analytics
+# Sign up for Google Analytics 4 at https://analytics.google.com
+# Replace with your GA4 Measurement ID (format: G-XXXXXXXXXX)
+google_analytics: # Add your GA4 Measurement ID here
