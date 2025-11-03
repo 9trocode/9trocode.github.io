@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "How PipeOps Actually Deploys Your Code"
+title: "How PipeOps Deploys Code: BuildKit, Kubernetes & Go Architecture"
 date: 2024-10-31
-description: "Deep dive into PipeOps deployment pipeline: BuildKit, Kubernetes, Go, and production infrastructure. Real implementation details, not marketing."
+description: "Deep dive into PipeOps deployment: BuildKit integration, Kubernetes orchestration, Go services, RabbitMQ queuing, and real production metrics. No marketing fluff."
 tags:
 - PipeOps
 - Kubernetes
@@ -55,6 +55,8 @@ Here's the complete flow from git push to running container:
 │          └──────────────┘                                   │
 └──────────────────────────────────────────────────────────────┘
 ```
+
+*PipeOps deployment architecture: Git webhook triggers Controller, which queues jobs in RabbitMQ. Runner processes queue, executing builds with BuildKit and deployments to Kubernetes, pushing images to registry with state stored in database.*
 
 Every deployment goes through this pipeline. No shortcuts, no special cases.
 

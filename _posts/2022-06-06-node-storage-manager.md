@@ -111,6 +111,8 @@ We use this at work for:
 
 Same codebase, different env vars. It just works.
 
+At PipeOps, we handle similar multi-cloud complexity in our deployment infrastructure. Learn more about [how PipeOps deploys code across multiple cloud providers](/2024/10/31/how-pipeops-deploys.html).
+
 ---
 
 Not every open source project needs thousands of stars. This one solves a real problem for a small group of people. That's enough.
