@@ -12,7 +12,7 @@ tags:
 - Security
 ---
 
-**TL;DR:** Fing's CLI tool is gone, their new products require subscriptions and upload your network data to their servers. I built [OpenFing](https://github.com/nitrocode/openfing) — a fast, privacy-first network scanner that runs entirely on your machine. No accounts, no subscriptions, no data collection.
+**TL;DR:** Fing's CLI tool is gone, their new products require subscriptions and upload your network data to their servers. I built [OpenFing](https://github.com/9trocode/OpenFing) — a fast, privacy-first network scanner that runs entirely on your machine. No accounts, no subscriptions, no data collection.
 
 ---
 
@@ -121,28 +121,28 @@ IP ADDRESS        | MAC ADDRESS        | VENDOR/HOST                  | PORTS
 
 **macOS (Apple Silicon):**
 ```bash
-curl -L https://github.com/nitrocode/openfing/releases/latest/download/openfing-macos-arm64 -o openfing && chmod +x openfing && sudo mv openfing /usr/local/bin/
+curl -L https://github.com/9trocode/OpenFing/releases/latest/download/openfing-macos-arm64 -o openfing && chmod +x openfing && sudo mv openfing /usr/local/bin/
 ```
 
 **macOS (Intel):**
 ```bash
-curl -L https://github.com/nitrocode/openfing/releases/latest/download/openfing-macos-x86_64 -o openfing && chmod +x openfing && sudo mv openfing /usr/local/bin/
+curl -L https://github.com/9trocode/OpenFing/releases/latest/download/openfing-macos-x86_64 -o openfing && chmod +x openfing && sudo mv openfing /usr/local/bin/
 ```
 
 **Linux (x86_64):**
 ```bash
-curl -L https://github.com/nitrocode/openfing/releases/latest/download/openfing-linux-x86_64 -o openfing && chmod +x openfing && sudo mv openfing /usr/local/bin/
+curl -L https://github.com/9trocode/OpenFing/releases/latest/download/openfing-linux-x86_64 -o openfing && chmod +x openfing && sudo mv openfing /usr/local/bin/
 ```
 
 **Linux (ARM64/Raspberry Pi):**
 ```bash
-curl -L https://github.com/nitrocode/openfing/releases/latest/download/openfing-linux-arm64 -o openfing && chmod +x openfing && sudo mv openfing /usr/local/bin/
+curl -L https://github.com/9trocode/OpenFing/releases/latest/download/openfing-linux-arm64 -o openfing && chmod +x openfing && sudo mv openfing /usr/local/bin/
 ```
 
 ### Build from Source
 
 ```bash
-git clone https://github.com/nitrocode/openfing.git
+git clone https://github.com/9trocode/OpenFing.git
 cd openfing
 zig build -Doptimize=ReleaseFast
 sudo mv zig-out/bin/openfing /usr/local/bin/
@@ -205,7 +205,7 @@ Things I'm considering for future versions:
 
 ## Try It Out
 
-The code is on GitHub: **[github.com/nitrocode/openfing](https://github.com/nitrocode/openfing)**
+The code is on GitHub: **[github.com/9trocode/OpenFing](https://github.com/9trocode/OpenFing)**
 
 Star it if you find it useful. Open issues if you find bugs. PRs welcome.
 
