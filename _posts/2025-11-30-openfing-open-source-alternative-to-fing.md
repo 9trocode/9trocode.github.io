@@ -209,16 +209,3 @@ The code is on GitHub: **[github.com/nitrocode/openfing](https://github.com/nitr
 
 Star it if you find it useful. Open issues if you find bugs. PRs welcome.
 
-And if you're still using Fing's new cloud-connected apps... maybe reconsider what you're trading for convenience.
-
----
-
-*Your network. Your data. Your business.*
-
----
-
-**Share this post:**
-- [Twitter/X](https://twitter.com/intent/tweet?text=I%20found%20an%20open%20source%20alternative%20to%20Fing%20that%20doesn%27t%20upload%20your%20network%20data%20to%20the%20cloud&url=https://nitrocode.sh/openfing)
-- [Hacker News](https://news.ycombinator.com/submitlink?u=https://nitrocode.sh/openfing&t=OpenFing%20-%20Open%20Source%20Network%20Scanner)
-- [Reddit r/selfhosted](https://www.reddit.com/r/selfhosted/submit?url=https://nitrocode.sh/openfing&title=OpenFing%20-%20Open%20Source%20Alternative%20to%20Fing)
-- [Reddit r/privacy](https://www.reddit.com/r/privacy/submit?url=https://nitrocode.sh/openfing&title=I%20built%20a%20privacy-first%20network%20scanner%20because%20Fing%20now%20uploads%20your%20data)
