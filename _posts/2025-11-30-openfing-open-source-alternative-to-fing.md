@@ -20,7 +20,7 @@ tags:
 
 If you've ever needed to see what devices are on your network, you've probably used Fing. It was the go-to tool — simple, fast, and it just worked.
 
-Back in OAU days, Fing was the go-to hack tool for detecting IPs connected to the network. You could easily shop around, pick whichever IP you wanted, and assume it on your device—which would kick out whoever was logged into Intecu's MikroTik server. It was fun. People would swear and rain curses after buying their Intecu card only to get booted off minutes later. In fact, I can't remember buying an Intecu card with my own money throughout my time there—maybe 'cause I was broke then. 🙄
+Back in uni days, Fing was the go-to hack tool for detecting IPs connected to the network. You could easily shop around, pick whichever IP you wanted, and assume it on your device—which would kick out whoever was logged into Intecu's MikroTik server. It was fun. People would swear and rain curses after buying their Intecu card only to get booted off minutes later. In fact, I can't remember buying an Intecu card with my own money throughout my time there—maybe 'cause I was broke then. 😇
 
 **Was.**
 
