@@ -21,6 +21,10 @@ That small tool turned into something bigger: a terminal control room for cloud 
 
 **TL;DR:** Rexec is a Terminal-as-a-Service platform: create network-isolated cloud terminals (Docker-backed), connect your own machines with an outbound agent, share sessions, record sessions, and integrate via CLI/SDKs or an embed widget.
 
+**Positioning:** Rexec turns terminals into infrastructure primitives.
+
+Terminals become API-managed sandboxes you can create, connect to (WebSocket), run commands in, share, record, lock down, and delete — with guardrails.
+
 ---
 
 ## The Origin Story (And the Accidental Product)
@@ -60,10 +64,11 @@ Canonical links:
 
 Rexec is intentionally boring infrastructure:
 
-- **Terminals are Docker containers** (network-isolated, disposable).
-- **Terminal I/O streams over WebSockets** (low latency, real-time).
-- **Agents connect outbound** (no inbound firewall rules, no exposed SSH port).
-- **State lives in PostgreSQL**, and recordings can go to **S3** (or an S3-compatible store).
+- **Compute**: Docker/Podman containers with hard CPU/memory/PID limits (and optional disk quotas when the host supports it).
+- **Isolation**: terminals attach to an isolated bridge network with inter-container communication disabled (`rexec-isolated`) and hardened container settings (dropped capabilities + `no-new-privileges`).
+- **Terminal UX**: WebSocket streaming to xterm.js, with `tmux` inside the container for reconnect + scrollback.
+- **BYOS**: agents connect outbound over WebSockets (no inbound SSH ports).
+- **State**: PostgreSQL for users/sessions/audit logs; optional S3 for session recordings.
 
 From the OSS README, the architecture looks like this:
 
@@ -83,6 +88,8 @@ Implementation stack (also from the repo):
 - **DB**: PostgreSQL
 
 The design goal is simple: a terminal that feels native, but is disposable by default.
+
+One implementation detail that matters: cloud terminals are kept alive (the container runs indefinitely), and interactive sessions attach via `exec` into a `tmux` session. That’s what makes disconnect/reconnect cheap.
 
 ---
 
@@ -136,12 +143,18 @@ Rexec exposes a REST API (and WebSockets for terminals). On top of that, there a
 Example (Python-style SDK usage):
 
 ```python
+import asyncio
 from rexec import RexecClient
 
-async with RexecClient("https://rexec.sh", "YOUR_API_TOKEN") as client:
-    container = await client.containers.create(image="ubuntu:24.04")
-    result = await client.containers.exec(container.id, "echo Hello from Rexec!")
-    print(result.stdout)
+async def main():
+    async with RexecClient("https://rexec.sh", "YOUR_API_TOKEN") as client:
+        container = await client.containers.create(image="ubuntu:24.04", name="sdk-demo")
+        async with client.terminal.connect(container.id) as term:
+            await term.write(b"echo 'Hello from Rexec!'\n")
+            out = await term.read()
+            print(out.decode())
+
+asyncio.run(main())
 ```
 
 ### 7) Embeddable terminal widget
@@ -181,15 +194,112 @@ Token mode (create a new terminal from your site) looks like this:
 
 This is why I think Rexec is useful for education and DevRel: you can turn “run this command” into “run it here”.
 
-### 8) Security building blocks
+---
 
-Security claims are cheap. The useful bit is what’s actually enforced:
+## Security: What’s Actually Enforced
 
-- **Container isolation** with dedicated networking per terminal
-- **JWT auth** + **MFA (TOTP)** support
-- **`no-new-privileges`** style hardening to reduce container escape impact
-- **Encrypted-at-rest storage** for sensitive data (tokens, SSH keys)
-- **Session timeouts** and cleanup for abandoned terminals
+Rexec runs arbitrary shell sessions. So security isn’t a paragraph — it’s the product.
+
+Here’s what the open-source stack enforces for **Linux terminals** today (and what you can tune when self-hosting).
+
+### Container boundaries
+
+- **No privileged containers** (Linux terminals run with `Privileged: false`) plus `SecurityOpt: no-new-privileges:true`
+- **Capabilities**: `CapDrop: ALL`, then add back a small allowlist (including `NET_BIND_SERVICE` for low ports, and `SYS_PTRACE` for debugging/TUI tools)
+- **Default seccomp** profile (not `unconfined`)
+- **Host info masking** via masked `/proc` + read-only `/proc/sys*` paths
+
+### Network isolation model
+
+- Terminals attach to a dedicated bridge network: `rexec-isolated`
+- Inter-container communication is disabled (`com.docker.network.bridge.enable_icc=false`)
+
+This doesn’t mean “no internet”. It means “don’t let user sandboxes talk to each other by default.”
+
+### Resource + abuse controls
+
+- **Hard memory limit** with swap disabled (`MemorySwap == Memory`)
+- **CPU quota** limiting (`CPUPeriod`/`CPUQuota`)
+- **PIDs limit** (fork-bomb brake)
+- **Optional disk quotas** when the host supports it (overlay2 quotas, typically XFS/ext4)
+- **Rate limiting** at multiple layers (nginx at the edge + application middleware)
+
+### Auth + audit trail
+
+- JWT auth + MFA support, plus hardened account options like **single-session mode** and **IP allowlists**
+- Sensitive stored values are protected (API tokens are stored **hashed**, and secrets like MFA/SSH material are **encrypted at rest**)
+- Audit logs stored in Postgres (action, IP, user-agent, JSON details)
+- Session recording (optional S3 backend) for replay/auditing
+
+### Caveats (the honest part)
+
+- The root filesystem is currently **writable** to support role/tool installation. If you need a stricter boundary, run with gVisor/Kata (`OCI_RUNTIME=runsc` or `OCI_RUNTIME=kata`) or isolate at the host level.
+- `/tmp` is mounted `exec` in the default profile to support some terminal tooling. Tighten it if you don’t need that.
+
+There’s also ongoing work in the repo to support **Firecracker microVM terminals** for a stronger isolation boundary than containers.
+
+---
+
+## Differentiation: Compared to the Usual Suspects
+
+If you’re evaluating Rexec, you’re probably comparing it to one of these:
+
+| Compared to | The line in the sand |
+| --- | --- |
+| GitHub Codespaces / Gitpod | Great repo-first IDE workspaces. Rexec is terminal-first: disposable sandboxes + BYOS agents + embed widget + SDKs. |
+| Cloud Shell | Usually cloud-vendor specific and tied to their control plane. Rexec is neutral and self-hostable. |
+| wetty / ttyd / “web SSH” | Mostly a UI on top of *one* machine. Rexec adds disposable sandboxes, guardrails, collaboration/recording, and an automation surface (CLI/SDK). |
+| SSH jumpboxes | You can DIY, but then you’re building auth, auditing, sharing, recordings, and access workflows yourself. Rexec packages the “terminal control room” layer. |
+
+If you want a full VS Code-in-the-browser experience, use Codespaces/Gitpod. If you want governed terminals as a primitive (sandboxes + BYOS + embed + API), that’s the lane Rexec is in.
+
+---
+
+## Performance & Scaling (The Boring Parts)
+
+- **Startup** is “create container + start container”. For faster boots, you can prebuild `rexec-*` images (`./scripts/build-images.sh`) so basics (like SSH) are already there.
+- **Reconnect** is fast because the session is `tmux`-backed, and the terminal attaches via `exec`. Scrollback is configured to be large (tmux history is set to 50,000 lines).
+- **Fairness** is enforced with hard CPU/memory/PID limits, plus per-tier container/agent limits.
+- **Abuse prevention** exists at multiple layers (edge + app). If you run a public instance, this matters.
+- **Stronger sandboxes** are a deployment choice: set `OCI_RUNTIME=runsc` (gVisor) or `OCI_RUNTIME=kata` (Kata Containers) when you self-host.
+- At “real usage” scale (dozens → hundreds of concurrent terminals), this becomes capacity planning: per-terminal caps, container-host sizing, and a load balancer that handles long-lived WebSockets properly.
+
+---
+
+## What It Looks Like in Practice
+
+### Scenario: release engineering across distros
+
+You’re shipping a CLI. You want confidence it works on real environments, not just CI containers.
+
+1. Create terminals across a few base images:
+
+```bash
+rexec create --name cli-ubuntu --image ubuntu:24.04
+rexec create --name cli-debian --image debian:12
+rexec create --name cli-alpine --image alpine:3.21
+```
+
+2. Download the binary, run the same smoke test on all three.
+3. Share one session (view/control) when something breaks, and record it if you need a replayable artifact.
+
+### Scenario: SRE debugging without SSH key chaos
+
+1. Install the agent on the box (outbound connection, no inbound SSH ports).
+2. Connect from the dashboard, share the session for pair debugging, and keep an audit trail with session recording.
+
+### Scenario: education + DevRel that actually runs
+
+Embed a terminal in docs/tutorials, hand out share codes, and let people run commands where they’re learning — without a “works on my machine” setup tax.
+
+### Scenario: agents that execute in a sandbox
+
+If you’re using AI coding tools, the safest workflow is “generate → run → test” in a disposable environment:
+
+1. Create a fresh terminal (or one per task).
+2. Run the agent (e.g., `opencode`, `aider`) inside the sandbox.
+3. Run tests in isolation.
+4. Delete the terminal when you’re done.
 
 ---
 
@@ -211,9 +321,10 @@ If you don’t, here’s who it’s built for:
 ## Pitfalls (Read This Before You Paste Tokens Into Anything)
 
 1. **Treat API tokens like passwords.** They give account-level access.
-2. **Network isolation isn’t magic.** It’s a safer execution environment, not a license to run malware.
-3. **Agents need outbound WebSockets.** Some corporate networks break this; plan accordingly.
-4. **Self-hosting defaults are for dev.** If you run the OSS stack, change default credentials and set `JWT_SECRET`.
+2. **Know the trust model.** A sandbox reduces blast radius; it doesn’t make malware “safe”. Don’t drop production secrets into random terminals.
+3. **Network isolation is about east/west by default.** If you need strict egress controls, enforce them at the host/network layer.
+4. **Agents need outbound WebSockets.** Some corporate networks break this; plan accordingly.
+5. **Self-hosting defaults are for dev.** Change default credentials, set `JWT_SECRET`, and put it behind TLS.
 
 ---
 
@@ -232,12 +343,15 @@ If you don’t, here’s who it’s built for:
 ```bash
 # Linux/macOS install script
 curl -fsSL https://rexec.sh/install-cli.sh | bash
+```
 
-# macOS via Homebrew
-brew install rexec/tap/rexec
+If you’d rather not run an install script, build from source:
 
-# or build/install via Go
-go install github.com/rexec/rexec/cmd/rexec-cli@latest
+```bash
+git clone https://github.com/PipeOpsHQ/rexec
+cd rexec
+go build -o rexec ./cmd/rexec-cli
+sudo mv rexec /usr/local/bin/rexec
 ```
 
 2. Log in and create a terminal:
@@ -266,15 +380,42 @@ If you want full control, self-host:
 ```bash
 git clone https://github.com/PipeOpsHQ/rexec
 cd rexec/docker
-docker compose up --build
 ```
 
-Then open `http://localhost:8080` and change the default creds immediately.
+Rexec’s container manager talks to a Docker/Podman daemon. In the stock `docker/docker-compose.yml`, the API container connects to a **remote Docker host over TLS** (no `docker.sock` mount), so you must provide `DOCKER_HOST` + certs.
+
+Create `rexec/docker/.env`:
+
+```bash
+DOCKER_HOST=tcp://YOUR_DOCKER_HOST:2376
+DOCKER_TLS_VERIFY=1
+DOCKER_CA_CERT="(contents of ca.pem)"
+DOCKER_CLIENT_CERT="(contents of cert.pem)"
+DOCKER_CLIENT_KEY="(contents of key.pem)"
+JWT_SECRET="change-me"
+POSTGRES_PASSWORD="change-me"
+```
+
+Then start the stack:
+
+```bash
+docker compose up -d --build
+```
+
+Open `http://localhost:8080` and change defaults immediately. For the full remote-Docker deployment model (and why it’s the recommended production shape), see: https://github.com/PipeOpsHQ/rexec/blob/main/docs/DEPLOY_STANDALONE.md
+
+For stricter isolation when self-hosting, configure a hardened runtime (gVisor/Kata) on your container host, then set `OCI_RUNTIME` for the `rexec` service (example):
+
+```yaml
+# docker/docker-compose.yml
+environment:
+  - OCI_RUNTIME=runsc
+```
 
 ---
 
 ## Summary
 
-Rexec started as a way to test a CLI on real machines. It became a terminal control room: disposable cloud terminals, a BYOS agent, an embed widget for docs, SDKs for automation, and a safer sandbox for agents.
+Rexec turns terminals into infrastructure primitives. It started as a way to test a CLI on real machines. It became a terminal control room: disposable cloud terminals, a BYOS agent, an embed widget for docs, SDKs for automation, and a safer sandbox for agents.
 
 If that sounds like your workflow, start with the docs: https://rexec.sh/docs
