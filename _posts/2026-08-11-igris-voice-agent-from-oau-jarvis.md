@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Igris: Finishing the Voice Agent I Started at OAU in 2014"
-date: 2026-08-12
+date: 2026-08-11
 description: "A personal AI agent I first built as a campus Jarvis prototype—wake word, Iron Man UI, open apps, shut down the PC—is back as Igris: Go brain, Apple clients, real tools."
 tags:
 - Igris

@@ -39,6 +39,9 @@ kramdown:
 
 permalink: /blog/:year/:month/:day/:title
 
+# Publish posts even if front-matter date is slightly ahead of build clock
+future: true
+
 defaults:
   - scope:
       path: ""

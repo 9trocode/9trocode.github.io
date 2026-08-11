@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Multi-Tenant Kubernetes: Namespaces Aren’t Isolation"
-date: 2026-08-12
+date: 2026-08-11
 description: "Why namespace-per-tenant cosplay fails—and the Capsule, NetworkPolicy, quota, and API-proxy pattern we used to isolate real workloads on shared clusters."
 tags:
 - Kubernetes
