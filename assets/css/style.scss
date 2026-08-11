@@ -945,6 +945,15 @@ img {
   color: var(--ink-2);
 }
 
+.post-content img {
+  width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--bg-2);
+}
+
 .post-panel {
   margin: 2.5rem 0;
   padding: 1.35rem 1.25rem;
