@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Agent Terminal Sandboxes: Isolation That Isn’t “Trust the Model”"
+title: "How to Safely Give AI Agents a Terminal"
 date: 2026-08-11
-description: "I got tired of coding agents treating my laptop like a free shell. Here is the isolation model I built into Rexec so untrusted tool calls run in disposable, gVisor-backed terminals instead."
+description: "AI agents need a shell to be useful. Giving them yours is a bad idea. Here is how I isolate untrusted tool calls in disposable, gVisor-backed terminals with Rexec."
 tags:
 - Agents
 - Security
@@ -13,7 +13,9 @@ tags:
 image: /assets/images/nitrocode-og-v2.png
 ---
 
-Most “AI coding agent” setups still do the dangerous thing by default: **run model-generated commands on a machine you care about**.
+AI agents need a terminal to be useful. Giving them yours is a bad idea.
+
+Most setups still do the dangerous thing by default: **run model-generated commands on a machine you care about**.
 
 Laptop. Dev VM. Shared CI runner. Sometimes worse.
 

@@ -117,7 +117,7 @@ image: /assets/images/nitrocode-og-v2.png
  <div class="pattern">
  <strong>BYOS + gVisor sandboxes</strong>
  <span>Outbound agents; disposable terminals isolated with runsc. </span>
- <a href="/blog/2026/08/11/agent-terminal-sandboxes-isolation">Agent sandboxes →</a>
+ <a href="/blog/2026/08/11/how-to-safely-give-ai-agents-a-terminal">Safe agent terminals →</a>
  </div>
  </div>
 </section>
