@@ -19,7 +19,7 @@ It’s also usually incomplete.
 
 Namespaces are a **scoping convenience**, not a security boundary. If your platform’s isolation story stops at `metadata.namespace`, you’re running shared fate with extra YAML.
 
-I learned this the expensive way while designing multi-tenant hosting for people who didn’t have (or want) a full cloud account - the path we eventually shipped as **Nova** on PipeOps. This post is the **field pattern**, not a product tour. Product notes live in the older write-up: [How Nova Isolates Tenants on Shared Kubernetes](/blog/2024/11/01/nova-multitenancy).
+I learned this the expensive way while designing multi-tenant hosting for people who didn’t have (or want) a full cloud account. That path shipped as **Nova** on PipeOps. This post is the isolation design, not a product brochure. Product notes: [How Nova Isolates Tenants on Shared Kubernetes](/blog/2024/11/01/nova-multitenancy).
 
 **TL;DR:** Soft multi-tenancy needs controls that actually enforce isolation, not a namespace label. In our stack that means API identity (no raw apiserver), NetworkPolicy, resource quotas, and a stronger runtime for tenant code (**gVisor / `runsc`**, not stock runc). Capsule, NetworkPolicies, quotas, an impersonating proxy, and gVisor work together. Namespaces alone are not enough.
 
@@ -219,20 +219,10 @@ Automate the smoke test. Manual “looks good” doesn’t scale.
 
 ---
 
-## What this advances
-
-The reusable claim:
-
-> **Namespace-per-tenant is a directory structure. Isolation is an enforced control plane: identity, network, resources, API mediation, and a sandboxed runtime (gVisor) - not hope.**
-
-If your platform slides only ship architecture diagrams with green boxes labeled “Namespace,” push for the proxy, the default-deny, the quotas, and RuntimeClass enforcement - or accept that you’re selling colocation.
-
----
-
 ## Summary
 
 We tried shared hosts without teeth. It failed. Soft multi-tenancy only became real when tenants stopped holding the real apiserver, networks defaulted to deny, quotas made noisy neighbors a local outage, and workloads ran under **gVisor** instead of plain runc cosplay.
 
-Namespaces start the story. They don’t end it.
+A namespace is a folder label. Isolation is the proxy, the policies, the quotas, and the runtime. If your diagrams only show green boxes labeled “Namespace,” you’re selling colocation.
 
-If you’re designing a platform path right now: write the threat model on one page, name the runtime boundary (gVisor / microVM / dedicated node), and refuse to ship tenant create until the checklist above is automated.
+Write the threat model on one page, name the runtime boundary (gVisor / microVM / dedicated node), and don’t ship tenant create until the checklist above is automated.

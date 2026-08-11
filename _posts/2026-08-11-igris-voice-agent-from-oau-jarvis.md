@@ -76,9 +76,9 @@ Source: [github.com/9trocode/Igris](https://github.com/9trocode/Igris)
 
 ---
 
-## The visage - state, not wallpaper
+## Face states (not wallpaper)
 
-The face is a **sigil**: slow ember pulse at rest, then clear stances for listening, assessing, speaking (with visemes), alert, dormant. The 2014 orb was the same instinct; this version is a full state machine you can read across glass.
+The face is a status display: slow pulse at rest, then clear stances for listening, assessing, speaking (with lip shapes), alert, dormant. The 2014 orb was the same idea; this version is a state machine you can read on the glass.
 
 ![Guardian states and visemes](/assets/images/igris/03-visage-states.png)
 
@@ -97,7 +97,7 @@ Igris isn’t meant to live only as an icon on a phone. The design board locks *
 
 ![Guardian forms - Sentinel, Wisp, Squire, Obelisk](/assets/images/igris/04-guardian-forms-3d.png)
 
-Same will as the software clients: **thin blade, one brain**. The desk unit is another WebSocket body, not a separate product line with its own half-broken firmware personality.
+Same idea as the software clients: **one brain, many thin clients**. The desk unit is another WebSocket body, not a separate product with its own half-broken firmware personality.
 
 ---
 
@@ -115,7 +115,7 @@ Beyond the desk, the ecosystem plan spreads the same guardian into the world: po
 - **Charger** - in-cabin escort on the road 
 - **Seal** - coin-sized find / precision ping 
 
-Every body is **another client of the same server**. Summon it from your palm, wear it, mount it, park it in the car - Igris is the will; the blades are armor.
+Every device is **another client of the same server**. Phone, wrist, desk, car: same agent, different body.
 
 ---
 
@@ -129,14 +129,12 @@ I’m building this in public as far as the repo allows. Near-term focus for me:
 4. **Local-first options** - brains and voices that don’t require every token to leave home 
 5. **Field blades** - pocket and home units after the software will is solid 
 
-If the 2014 version was a spark on a student PC, Igris is the forge. Same obsession. Better steel - and a real plan for silicon that stands watch on the desk.
+If the 2014 version was a spark on a student PC, this is the rebuild with a real stack and a real hardware plan for a desk unit that stands watch.
 
 ---
 
 ## Summary
 
-I built a Jarvis-class desktop agent at OAU before the ecosystem could carry it. Igris is me refusing to leave that idea in a drawer: voice-only, action-capable, beautiful on purpose - software bodies now, **3D guardian forms and field units** on the roadmap.
-
-Dream projects aren’t late. They’re early until the world (and you) can hold them.
+I built a voice desktop agent at OAU before the ecosystem could carry it. Igris is me finishing that work: voice-only, action-capable, software clients now, **desk forms and field units** on the roadmap.
 
 Repo: [9trocode/Igris](https://github.com/9trocode/Igris)

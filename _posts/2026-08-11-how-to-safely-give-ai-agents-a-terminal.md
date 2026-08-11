@@ -77,9 +77,9 @@ This is platform engineering, not vibes: terminals become **infrastructure primi
 
 ---
 
-## The isolation model (field pattern)
+## How the isolation model works
 
-I implemented this as two primitives in Rexec. The pattern is portable even if you roll your own.
+I implemented this as two primitives in Rexec. You can copy the shape even if you never run our code.
 
 ### Primitive 1: Cloud terminals as sandboxed containers
 
@@ -126,7 +126,7 @@ For untrusted agent code, prefer the container primitive. Use BYOS when the job 
 
 ---
 
-## Agent-shaped usage (not marketing)
+## How agents actually use it
 
 Once terminals are API-managed, agents stop needing to live on laptops.
 
@@ -153,7 +153,7 @@ I’m not going to pretend “one compose file” is a complete multi-tenant sec
 
 ---
 
-## Design choices that matter (and failure modes)
+## Design choices and failure modes
 
 ### Isolation is layered, not absolute
 
@@ -198,18 +198,6 @@ Quotas, concurrency caps, and aggressive TTLs aren’t “enterprise features.�
 
 ---
 
-## What this advances (the reusable idea)
-
-The field doesn’t need another chat UI. It needs a default execution substrate for untrusted automation:
-
-> **Ephemeral compute + gVisor-class runtime + explicit network policy + API lifecycle + audit**, aimed at *tool-using agents*, not just humans.
-
-Rexec is one implementation of that idea. The pattern still holds if you wire it with Kubernetes Jobs, RuntimeClass, Firecracker, or a cloud sandbox API, as long as you don’t run the agent as `local shell == trusted`.
-
-I built Rexec because I needed real multi-machine CLI testing, then watched agent workflows force the security model into the open. The architecture (gVisor sandboxes, outbound BYOS agents, WebSocket terminal sessions, disposable lifecycle) is the part worth copying, not the brand name.
-
----
-
 ## Practical checklist
 
 If you’re wiring agents into your company this quarter:
@@ -229,4 +217,4 @@ If you’re wiring agents into your company this quarter:
 
 Agent sandboxes fail when teams treat them as a prompt-engineering problem. They’re an isolation and lifecycle problem.
 
-Disposable, network-isolated, **gVisor-backed** terminals with hard limits and API-driven create/delete are a better default than trusting the model on a precious machine. That’s the model I designed into Rexec. Take the pattern even if you never run our compose file.
+I built Rexec because I needed real multi-machine CLI testing, then watched agent workflows force the security model into the open. Disposable, network-isolated, **gVisor-backed** terminals with hard limits and API-driven create/delete are a better default than trusting the model on a precious machine. Copy the pattern even if you never run our compose file. You can wire the same idea with Kubernetes Jobs, RuntimeClass, Firecracker, or a cloud sandbox API, as long as `local shell == trusted` is off the table.
