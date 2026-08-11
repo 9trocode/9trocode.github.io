@@ -5,40 +5,44 @@
    nitrocode.sh — Apple-caliber personal brand system
    ========================================================================== */
 
-:root {
-  /* Surfaces — soft light, product-page depth */
-  --bg: #f5f5f7;
-  --bg-elevated: #ffffff;
-  --bg-subtle: #e8e8ed;
-  --bg-ink: #000000;
+/* Dark default — Apple product night */
+:root,
+[data-theme="dark"] {
+  --bg: #000000;
+  --bg-elevated: #1c1c1e;
+  --bg-subtle: #2c2c2e;
+  --bg-ink: #f5f5f7;
+  --bg-ink-text: #1d1d1f;
+  --bg-ink-muted: rgba(0, 0, 0, 0.55);
 
-  /* Text */
-  --text: #1d1d1f;
-  --text-secondary: #6e6e73;
-  --text-tertiary: #86868b;
-  --text-on-ink: #f5f5f7;
+  --text: #f5f5f7;
+  --text-secondary: #a1a1a6;
+  --text-tertiary: #6e6e73;
+  --text-on-ink: #1d1d1f;
 
-  /* Accent — Apple blue */
-  --accent: #0071e3;
-  --accent-hover: #0077ed;
-  --accent-soft: rgba(0, 113, 227, 0.08);
+  --accent: #2997ff;
+  --accent-hover: #59acff;
+  --accent-soft: rgba(41, 151, 255, 0.14);
 
-  /* Borders & shadows */
-  --border: rgba(0, 0, 0, 0.08);
-  --border-strong: rgba(0, 0, 0, 0.12);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.08);
-  --shadow-glow: 0 12px 40px rgba(0, 113, 227, 0.15);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 24px 80px rgba(0, 0, 0, 0.55);
+  --shadow-glow: 0 12px 48px rgba(41, 151, 255, 0.22);
 
-  /* Radius */
+  --nav-bg: rgba(22, 22, 23, 0.72);
+  --hero-gradient: linear-gradient(180deg, #f5f5f7 20%, #86868b 100%);
+  --code-bg: #0a0a0a;
+  --code-fg: #f5f5f7;
+  --theme-color: #000000;
+
   --r-sm: 10px;
   --r-md: 16px;
   --r-lg: 24px;
   --r-xl: 32px;
   --r-pill: 980px;
 
-  /* Type */
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
     "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
@@ -50,6 +54,38 @@
   --max: 980px;
   --max-wide: 1120px;
   --max-prose: 680px;
+}
+
+/* Light — classic Apple marketing */
+[data-theme="light"] {
+  --bg: #f5f5f7;
+  --bg-elevated: #ffffff;
+  --bg-subtle: #e8e8ed;
+  --bg-ink: #000000;
+  --bg-ink-text: #f5f5f7;
+  --bg-ink-muted: rgba(255, 255, 255, 0.64);
+
+  --text: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --text-tertiary: #86868b;
+  --text-on-ink: #f5f5f7;
+
+  --accent: #0071e3;
+  --accent-hover: #0077ed;
+  --accent-soft: rgba(0, 113, 227, 0.08);
+
+  --border: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.12);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 12px 40px rgba(0, 113, 227, 0.15);
+
+  --nav-bg: rgba(251, 251, 253, 0.72);
+  --hero-gradient: linear-gradient(180deg, #1d1d1f 0%, #424245 100%);
+  --code-bg: #1d1d1f;
+  --code-fg: #f5f5f7;
+  --theme-color: #f5f5f7;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -148,7 +184,7 @@ a:hover {
   height: var(--nav-h);
   display: flex;
   align-items: center;
-  background: rgba(251, 251, 253, 0.72);
+  background: var(--nav-bg);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid var(--border);
@@ -223,6 +259,55 @@ a:hover {
   background: var(--accent-hover) !important;
   transform: scale(1.02);
   text-decoration: none !important;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.2s var(--ease), background 0.2s var(--ease),
+    transform 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.theme-toggle:hover {
+  opacity: 1;
+  background: var(--bg-subtle);
+  transform: scale(1.05);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.theme-toggle svg {
+  width: 15px;
+  height: 15px;
+}
+
+.theme-toggle .icon-sun {
+  display: none;
+}
+
+.theme-toggle .icon-moon {
+  display: block;
+}
+
+[data-theme="light"] .theme-toggle .icon-sun {
+  display: block;
+}
+
+[data-theme="light"] .theme-toggle .icon-moon {
+  display: none;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -348,8 +433,8 @@ a:hover {
 }
 
 .site-main pre {
-  background: #1d1d1f;
-  color: #f5f5f7;
+  background: var(--code-bg);
+  color: var(--code-fg);
   padding: 1.25rem 1.35rem;
   border-radius: var(--r-md);
   overflow-x: auto;
@@ -357,6 +442,7 @@ a:hover {
   box-shadow: var(--shadow-md);
   line-height: 1.5;
   font-size: 0.875rem;
+  border: 1px solid var(--border);
 }
 
 .site-main pre code {
@@ -415,16 +501,42 @@ a:hover {
   font-weight: 500;
 }
 
+.portrait {
+  width: 112px;
+  height: 112px;
+  margin: 0 auto 1.35rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-md), 0 0 0 6px var(--accent-soft);
+  background: var(--bg-elevated);
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portrait--lg {
+  width: 140px;
+  height: 140px;
+  margin-bottom: 1.5rem;
+}
+
+.portrait--about {
+  margin-bottom: 1.25rem;
+}
+
 .home-hero h1 {
   max-width: 14ch;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 1.1rem !important;
-  background: linear-gradient(180deg, #1d1d1f 0%, #424245 100%);
+  background: var(--hero-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* Fallback when clip unsupported */
   color: var(--text);
 }
 
@@ -717,19 +829,19 @@ a:hover {
   padding: 2.5rem 1.75rem;
   text-align: center;
   background: var(--bg-ink);
-  color: var(--text-on-ink);
+  color: var(--bg-ink-text);
   border-radius: var(--r-xl);
   box-shadow: var(--shadow-lg);
 }
 
 .connect-strip h2 {
-  color: #fff !important;
+  color: var(--bg-ink-text) !important;
   margin-top: 0 !important;
   margin-bottom: 0.5rem !important;
 }
 
 .connect-strip p {
-  color: rgba(255, 255, 255, 0.64) !important;
+  color: var(--bg-ink-muted) !important;
   margin-bottom: 1.5rem !important;
 }
 
@@ -753,8 +865,8 @@ a:hover {
   min-height: 40px;
   padding: 0.5rem 1rem;
   border-radius: var(--r-pill);
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff !important;
+  background: color-mix(in srgb, var(--bg-ink-text) 12%, transparent);
+  color: var(--bg-ink-text) !important;
   text-decoration: none !important;
   font-size: 14px;
   font-weight: 500;
@@ -762,7 +874,7 @@ a:hover {
 }
 
 .connect-links a:hover {
-  background: rgba(255, 255, 255, 0.18);
+  background: color-mix(in srgb, var(--bg-ink-text) 20%, transparent);
   transform: scale(1.03);
 }
 
@@ -1038,12 +1150,16 @@ a:hover {
 /* -------------------------------------------------------------------------- */
 
 @media (max-width: 640px) {
-  .site-nav a:not(.nav-cta) {
+  .site-nav a:not(.nav-cta):not(.nav-show-mobile) {
     display: none;
   }
 
   .site-nav .nav-show-mobile {
     display: inline !important;
+  }
+
+  .theme-toggle {
+    display: inline-flex !important;
   }
 
   .site-main {
@@ -1054,6 +1170,11 @@ a:hover {
   .home-hero {
     text-align: left;
     padding-top: 1.25rem;
+  }
+
+  .portrait {
+    margin-left: 0;
+    margin-right: auto;
   }
 
   .home-hero h1 {
@@ -1076,6 +1197,10 @@ a:hover {
   .section-intro,
   .page-hero {
     text-align: left;
+  }
+
+  .page-hero .portrait {
+    margin-left: 0;
   }
 
   .section-intro {

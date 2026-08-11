@@ -7,6 +7,9 @@ wide: true
 ---
 
 <section class="home-hero reveal">
+  <div class="portrait portrait--lg">
+    <img src="/assets/images/alex-idowu.png" width="140" height="140" alt="Portrait of Alex Idowu" />
+  </div>
   <p class="home-kicker">Alex Idowu · Lagos · <a href="https://twitter.com/nitrocode">@nitrocode</a></p>
   <h1>I build platforms that make infrastructure disappear.</h1>
   <p class="home-lede">Founder &amp; CTO of <a href="https://pipeops.io">PipeOps</a>. I design cloud deployment systems, secure sandboxes, and open source infrastructure tools — and write about what works in production.</p>

@@ -7,6 +7,9 @@ image: /assets/images/nitrocode-og.png
 ---
 
 <header class="page-hero">
+  <div class="portrait portrait--about">
+    <img src="/assets/images/alex-idowu.png" width="112" height="112" alt="Portrait of Alex Idowu" />
+  </div>
   <p class="section-label">About</p>
   <h1>Alex Idowu</h1>
   <p>Cloud infrastructure engineer. Founder. Builder of platforms that make complex systems feel simple.</p>
