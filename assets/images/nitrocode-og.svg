@@ -48,7 +48,7 @@
 
   <!-- Main identity -->
   <text x="88" y="280" class="name">Alex Idowu</text>
-  <text x="88" y="345" class="tag">Platform engineering · cloud-native security</text>
+  <text x="88" y="345" class="tag">Build · secure · operate · ship</text>
 
   <!-- Chips -->
   <g transform="translate(88, 400)">

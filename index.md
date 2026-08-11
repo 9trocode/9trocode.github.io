@@ -1,15 +1,15 @@
 ---
 layout: default
-title: Alex Idowu - Platform Engineering & Cloud-Native Security
-description: Founder & CTO at PipeOps. I build platforms that hide the hard parts of cloud, ship open source isolation tools, and write what actually survives production.
+title: Alex Idowu - Build, secure, and run systems
+description: Founder & CTO at PipeOps. I work across software, security, and operations: products, open source agents and sandboxes, and notes from production.
 image: /assets/images/nitrocode-og.png
 ---
 
 <section class="hero">
  <div class="hero__copy">
  <p class="hero__index">Founder &amp; CTO · Lagos</p>
- <h1 class="hero__title">Platforms that make infrastructure <em>disappear.</em></h1>
- <p class="hero__lede">I’m Alex Idowu. I design multi-cloud deploy systems, secure terminal sandboxes, and open tools at the edge of platform engineering and cloud-native security - then write down what actually survives production.</p>
+ <h1 class="hero__title">I build, secure, and run <em>systems.</em></h1>
+ <p class="hero__lede">I’m Alex Idowu. Developer, security-minded operator, and founder. Platforms and products, open source agents and sandboxes, and the unglamorous work of keeping software alive in production. Then I write down what actually worked.</p>
  <ul class="hero__meta">
  <li>PipeOps</li>
  <li>Igris</li>

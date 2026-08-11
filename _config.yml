@@ -1,8 +1,7 @@
 title: Alex Idowu
 description: >-
-  Founder & CTO at PipeOps. Platform engineering, cloud-native security,
-  multi-tenant Kubernetes, and production infrastructure. Writing and open
-  source by Alex Idowu.
+  Founder & CTO at PipeOps. Software, security, and operations: products,
+  open source, and production systems. Writing by Alex Idowu.
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
@@ -18,7 +17,7 @@ baseurl: ""
 
 # SEO
 lang: en-US
-tagline: Platform engineering · Cloud-native security
+tagline: Build · Secure · Operate
 logo: /assets/images/logo.png
 
 twitter:

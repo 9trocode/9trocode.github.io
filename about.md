@@ -2,14 +2,14 @@
 layout: default
 title: About
 permalink: /about/
-description: Alex Idowu builds deployment platforms and open source infra from Lagos. Founder & CTO at PipeOps, builder of Igris, Rexec, and tools that make production systems a little less hostile.
+description: Alex Idowu works across software, security, and operations from Lagos. Founder & CTO at PipeOps; builder of Igris, Rexec, and tools for systems that have to ship and stay up.
 image: /assets/images/nitrocode-og.png
 ---
 
 <header class="page-hero">
  <p class="eyebrow">About</p>
  <h1>Alex Idowu</h1>
- <p>Cloud infrastructure engineer. Founder. I build platforms that make complex systems feel simple.</p>
+ <p>Engineer and founder across development, security, and operations. I build systems that have to ship, stay secure, and stay up.</p>
 </header>
 
 <div class="about-layout">
