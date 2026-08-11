@@ -413,7 +413,7 @@ docker compose up -d --build
 
 Open `http://localhost:8080` and change defaults immediately. For the full remote-Docker deployment model (and why it’s the recommended production shape), see: https://github.com/PipeOpsHQ/rexec/blob/main/docs/DEPLOY_STANDALONE.md
 
-For stricter isolation when self-hosting, configure a hardened runtime (gVisor/Kata) on your container host, then set `OCI_RUNTIME` for the `rexec` service (example):
+For gVisor isolation when self-hosting, install `runsc` on the container host and set `OCI_RUNTIME` for the `rexec` service:
 
 ```yaml
 # docker/docker-compose.yml
@@ -425,6 +425,6 @@ environment:
 
 ## Summary
 
-Rexec turns terminals into infrastructure primitives. It started as a way to test a CLI on real machines. It became a terminal control room: disposable cloud terminals, a BYOS agent, an embed widget for docs, SDKs for automation, and a safer sandbox for agents.
+Rexec turns terminals into infrastructure primitives. It started as a way to test a CLI on real machines. It became a terminal control room: disposable **gVisor-isolated** cloud terminals, a BYOS agent, an embed widget for docs, SDKs for automation, and a safer sandbox for agents.
 
 If that sounds like your workflow, start with the docs: https://rexec.sh/docs
