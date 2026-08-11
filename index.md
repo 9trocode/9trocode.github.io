@@ -8,7 +8,14 @@ image: /assets/images/nitrocode-og.png
 <section class="hero">
  <div class="hero__copy">
  <p class="hero__index">Founder &amp; CTO · Lagos</p>
- <h1 class="hero__title">I build, secure, and run <em>systems.</em></h1>
+ <h1 class="hero__title">
+  <span class="hero__title-fixed">I</span>
+  <span class="hero__verb-slot" aria-hidden="true">
+   <span class="hero__verb" id="hero-verb" data-words="build,secure,run,ship,defend">build</span>
+  </span>
+  <span class="hero__title-fixed">systems.</span>
+  <span class="visually-hidden" id="hero-title-full">I build, secure, run, ship, and defend systems.</span>
+ </h1>
  <p class="hero__lede">I’m Alex Idowu. Developer, security-minded operator, and founder. Platforms and products, open source agents and sandboxes, and the unglamorous work of keeping software alive in production. Then I write down what actually worked.</p>
  <ul class="hero__meta">
  <li>PipeOps</li>
