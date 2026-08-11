@@ -7,3 +7,6 @@ vendor/
 .DS_Store
 Gemfile.lock
 .opencode
+
+# Local agent prompts / private planning (PII — never commit)
+agents/

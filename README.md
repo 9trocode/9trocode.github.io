@@ -2,9 +2,18 @@
 
 [![Deploy Jekyll to GitHub Pages](https://github.com/9trocode/9trocode.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/9trocode/9trocode.github.io/actions/workflows/deploy.yml)
 
-My personal website and blog built with Jekyll and the Hacker theme, featuring articles on cloud infrastructure, DevOps, and software engineering.
+Personal brand site and technical writing for Alex Idowu (nitrocode) — platform engineering, cloud-native security, and production infrastructure.
 
-🌐 **Live Site**: [https://9trocode.github.io](https://9trocode.github.io)
+🌐 **Live Site**: [https://nitrocode.sh](https://nitrocode.sh)
+
+### Site map
+
+| Path | Purpose |
+|---|---|
+| `/` | Personal brand home |
+| `/blog/` | All writing |
+| `/blog/:year/:month/:day/:title` | Individual posts |
+| `/about/` | Bio and background |
 
 ## 🚀 Tech Stack
 
