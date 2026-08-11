@@ -94,8 +94,8 @@ image: /assets/images/nitrocode-og.png
   <div class="pattern-grid">
     <div class="pattern">
       <strong>Multi-tenant Kubernetes</strong>
-      <span>Capsule, network policies, proxy boundaries on shared clusters. </span>
-      <a href="/blog/2024/11/01/nova-multitenancy">Nova →</a>
+      <span>Capsule, NetworkPolicy, API proxy, and gVisor for tenant workloads. </span>
+      <a href="/blog/2026/08/11/multi-tenant-kubernetes-namespaces-arent-enough">Deep dive →</a>
     </div>
     <div class="pattern">
       <strong>Deploy architecture</strong>
@@ -108,9 +108,9 @@ image: /assets/images/nitrocode-og.png
       <a href="/blog/2024/10/31/runner-terraform-provisioning">The Runner →</a>
     </div>
     <div class="pattern">
-      <strong>BYOS + sandboxes</strong>
-      <span>Manage hosts without exposing the API; disposable terminals. </span>
-      <a href="/blog/2026/02/27/rexec-terminal-control-room">Rexec →</a>
+      <strong>BYOS + gVisor sandboxes</strong>
+      <span>Outbound agents; disposable terminals isolated with runsc. </span>
+      <a href="/blog/2026/08/11/agent-terminal-sandboxes-isolation">Agent sandboxes →</a>
     </div>
   </div>
 </section>

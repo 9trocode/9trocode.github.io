@@ -83,6 +83,7 @@ Nova is built on:
 - **Network Policies**: Traffic isolation
 - **RBAC**: Permission boundaries
 - **Resource Quotas**: Hard limits
+- **gVisor (`runsc`)**: Sandboxed container runtime for tenant workloads—same isolation family we use in Rexec
 
 We chose Capsule over alternatives (Hierarchical Namespaces, vCluster) because:
 - Mature project, active development

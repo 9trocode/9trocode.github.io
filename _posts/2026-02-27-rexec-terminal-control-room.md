@@ -231,12 +231,21 @@ This doesn’t mean “no internet”. It means “don’t let user sandboxes ta
 - Audit logs stored in Postgres (action, IP, user-agent, JSON details)
 - Session recording (optional S3 backend) for replay/auditing
 
+### Runtime isolation: gVisor
+
+Rexec uses **gVisor** for stronger sandbox isolation on cloud terminals. Set the OCI runtime to `runsc` so guest syscalls are handled in user space instead of riding plain `runc` on the host kernel:
+
+```yaml
+# example self-host env for the rexec service
+OCI_RUNTIME=runsc
+```
+
+That matches the multi-tenant Kubernetes isolation story: untrusted workloads shouldn’t default to stock container runtimes. Kata (`OCI_RUNTIME=kata`) and **Firecracker microVM terminals** remain options when you need a harder boundary still.
+
 ### Caveats (the honest part)
 
-- The root filesystem is currently **writable** to support role/tool installation. If you need a stricter boundary, run with gVisor/Kata (`OCI_RUNTIME=runsc` or `OCI_RUNTIME=kata`) or isolate at the host level.
+- The root filesystem is currently **writable** to support role/tool installation—pair that with gVisor, don’t skip the runtime.
 - `/tmp` is mounted `exec` in the default profile to support some terminal tooling. Tighten it if you don’t need that.
-
-There’s also ongoing work in the repo to support **Firecracker microVM terminals** for a stronger isolation boundary than containers.
 
 ---
 
@@ -261,7 +270,7 @@ If you want a full VS Code-in-the-browser experience, use Codespaces/Gitpod. If 
 - **Reconnect** is fast because the session is `tmux`-backed, and the terminal attaches via `exec`. Scrollback is configured to be large (tmux history is set to 50,000 lines).
 - **Fairness** is enforced with hard CPU/memory/PID limits, plus per-tier container/agent limits.
 - **Abuse prevention** exists at multiple layers (edge + app). If you run a public instance, this matters.
-- **Stronger sandboxes** are a deployment choice: set `OCI_RUNTIME=runsc` (gVisor) or `OCI_RUNTIME=kata` (Kata Containers) when you self-host.
+- **Stronger sandboxes:** prefer **`OCI_RUNTIME=runsc` (gVisor)** for agent/multi-tenant-style isolation; Kata remains available when you need that path.
 - At “real usage” scale (dozens → hundreds of concurrent terminals), this becomes capacity planning: per-terminal caps, container-host sizing, and a load balancer that handles long-lived WebSockets properly.
 
 ---
