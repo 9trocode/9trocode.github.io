@@ -10,7 +10,7 @@ tags:
 - Platform Engineering
 - Capsule
 - gVisor
-image: /assets/images/nitrocode-og.png
+image: /assets/images/nitrocode-og-v2.png
 ---
 
 “We give every customer their own namespace” is the most common multi-tenant Kubernetes story I hear.

@@ -3,7 +3,7 @@ layout: default
 title: About
 permalink: /about/
 description: Alex Idowu works across software, security, and operations from Lagos. Founder & CTO at PipeOps; builder of Igris, Rexec, and tools for systems that have to ship and stay up.
-image: /assets/images/nitrocode-og.png
+image: /assets/images/nitrocode-og-v2.png
 ---
 
 <header class="page-hero">

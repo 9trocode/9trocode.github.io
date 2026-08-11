@@ -26,7 +26,7 @@ Private agent prompts and author dossiers live under local `agents/` (gitignored
  - `date: <YYYY-MM-DD>` (use provided date or today)
  - `description: <~140-160 chars>`
  - `tags:` as a YAML list (3-6 concise tags)
- - `image: /assets/images/nitrocode-og.png`
+ - `image: /assets/images/nitrocode-og-v2.png`
 - Body guidelines:
  - Brief intro + a short TL;DR (especially medium/long technical posts).
  - Clear sections with meaningful headings (not generic “Benefits / Conclusion”).

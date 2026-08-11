@@ -10,7 +10,7 @@ tags:
 - SRE
 - Agents
 - Security
-image: /assets/images/nitrocode-og.png
+image: /assets/images/nitrocode-og-v2.png
 ---
 
 I built **rexec** because I was tired of *pretending* my CLI worked everywhere.

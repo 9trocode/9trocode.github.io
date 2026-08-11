@@ -2,7 +2,7 @@
 layout: default
 title: Alex Idowu - Build, secure, and run systems
 description: Founder & CTO at PipeOps. I work across software, security, and operations: products, open source agents and sandboxes, and notes from production.
-image: /assets/images/nitrocode-og.png
+image: /assets/images/nitrocode-og-v2.png
 ---
 
 <section class="hero">

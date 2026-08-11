@@ -3,7 +3,7 @@ layout: default
 title: Writing
 permalink: /blog/
 description: Field notes from shipping platforms and open source. Isolation, Kubernetes, deploy pipelines, and production stories written engineer to engineer.
-image: /assets/images/nitrocode-og.png
+image: /assets/images/nitrocode-og-v2.png
 ---
 
 <header class="page-hero">

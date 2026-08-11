@@ -10,7 +10,7 @@ tags:
 - Rexec
 - Open Source
 - Platform Engineering
-image: /assets/images/nitrocode-og.png
+image: /assets/images/nitrocode-og-v2.png
 ---
 
 Most “AI coding agent” setups still do the dangerous thing by default: **run model-generated commands on a machine you care about**.

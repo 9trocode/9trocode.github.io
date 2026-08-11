@@ -3,9 +3,13 @@
 <meta property="og:url" content="{{ site.url }}{{ page.url }}">
 <meta property="og:title" content="{{ page.title | default: site.title }}">
 <meta property="og:description" content="{{ page.description | default: site.description }}">
-<meta property="og:image" content="{{ site.url }}/assets/images/nitrocode-og.png">
+{% assign og_image_path = page.image | default: '/assets/images/nitrocode-og-v2.png' %}
+<meta property="og:image" content="{{ site.url }}{{ og_image_path }}?v=20260811b">
+<meta property="og:image:secure_url" content="{{ site.url }}{{ og_image_path }}?v=20260811b">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ page.title | default: site.title }}">
 <meta property="og:site_name" content="Alex Idowu">
 
 <!-- Twitter -->
@@ -14,7 +18,8 @@
 <meta name="twitter:creator" content="@nitrocode">
 <meta name="twitter:title" content="{{ page.title | default: site.title }}">
 <meta name="twitter:description" content="{{ page.description | default: site.description }}">
-<meta name="twitter:image" content="{{ site.url }}/assets/images/nitrocode-og.png">
+<meta name="twitter:image" content="{{ site.url }}{{ og_image_path }}?v=20260811b">
+<meta name="twitter:image:alt" content="{{ page.title | default: site.title }}">
 
 <!-- Favicons -->
 <link rel="icon" type="image/png" sizes="32x32" href="{{ site.url }}/assets/images/favicon-32x32.png">
