@@ -6,7 +6,7 @@ layout: default
   <header class="post-header">
     <p class="post-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %d, %Y" }}</time>
-      {% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}
+      {% if page.author %} · <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}
     </p>
     <meta itemprop="name headline" content="{{ page.title }}">
     <meta itemprop="dateModified" content="{{ page.date | date_to_xmlschema }}">
@@ -18,51 +18,35 @@ layout: default
     {{ content }}
   </div>
 
-  <!-- Share Buttons -->
-  <div class="share-buttons" style="margin: 2rem 0; padding: 1rem 0; border-top: 1px solid #333; border-bottom: 1px solid #333;">
-    <h3>Share this post</h3>
-    <a href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&url={{ site.url }}{{ page.url }}" target="_blank" rel="noopener" style="margin-right: 1rem;">Twitter</a>
-    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ page.url }}" target="_blank" rel="noopener" style="margin-right: 1rem;">LinkedIn</a>
-    <a href="https://news.ycombinator.com/submitlink?u={{ site.url }}{{ page.url }}&t={{ page.title | uri_escape }}" target="_blank" rel="noopener">Hacker News</a>
+  <div class="post-share">
+    <h3>Share</h3>
+    <div class="share-links">
+      <a href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&url={{ site.url }}{{ page.url }}" target="_blank" rel="noopener">X / Twitter</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ page.url }}" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://news.ycombinator.com/submitlink?u={{ site.url }}{{ page.url }}&t={{ page.title | uri_escape }}" target="_blank" rel="noopener">Hacker News</a>
+    </div>
   </div>
 
-  <!-- Newsletter Subscription -->
-  <div class="newsletter" style="margin: 2rem 0; padding: 1.5rem; border: 2px solid #00ff41; border-radius: 8px; background: rgba(0, 255, 65, 0.05);">
-    <h3 style="margin-top: 0; color: #00ff41;">📬 Want more insights like this?</h3>
-    <p style="color: #7f8c8d; margin-bottom: 1rem;">
-      Subscribe to get deep dives on Kubernetes, Terraform, BuildKit, and production war stories from building PipeOps. Real-world lessons, no fluff.
-    </p>
+  <div class="post-newsletter">
+    <h3>Stay in the loop</h3>
+    <p>Deep dives on platform engineering, Kubernetes, and production systems. No fluff.</p>
     <form
       action="https://buttondown.com/api/emails/embed-subscribe/nitrocode"
       method="post"
       target="popupwindow"
       onsubmit="window.open('https://buttondown.com/nitrocode', 'popupwindow')"
-      class="embeddable-buttondown-form"
-      style="display: flex; gap: 0.5rem; flex-wrap: wrap;"
+      class="newsletter-form embeddable-buttondown-form"
     >
-      <input
-        type="email"
-        name="email"
-        id="bd-email"
-        placeholder="your@email.com"
-        required
-        style="flex: 1; min-width: 200px; padding: 0.75rem; border: 1px solid #333; background: #1e1e1e; color: #00ff41; border-radius: 4px; font-family: 'Courier New', monospace;"
-      />
-      <input type="hidden" value="1" name="embed"/>
-      <button
-        type="submit"
-        style="padding: 0.75rem 1.5rem; background: #00ff41; color: #0a0e27; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-family: 'Courier New', monospace;"
-      >
-        Subscribe
-      </button>
+      <input type="email" name="email" id="bd-email" placeholder="you@example.com" required aria-label="Email address" />
+      <input type="hidden" value="1" name="embed" />
+      <button type="submit">Subscribe</button>
     </form>
-    <p style="font-size: 0.85rem; color: #7f8c8d; margin-top: 0.5rem; margin-bottom: 0;">
-      Powered by <a href="https://buttondown.com/refer/nitrocode" target="_blank" rel="noopener" style="color: #00ff41;">Buttondown</a>
+    <p class="newsletter-note">
+      Powered by <a href="https://buttondown.com/refer/nitrocode" target="_blank" rel="noopener">Buttondown</a>
     </p>
   </div>
 
-  <!-- Comments via Giscus (GitHub Discussions) -->
-  <div class="comments" style="margin: 2rem 0;">
+  <div class="comments">
     <h3>Comments</h3>
     <script src="https://giscus.app/client.js"
         data-repo="9trocode/9trocode.github.io"
@@ -74,7 +58,7 @@ layout: default
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
-        data-theme="dark"
+        data-theme="light"
         data-lang="en"
         crossorigin="anonymous"
         async>
@@ -82,18 +66,16 @@ layout: default
   </div>
 
   <footer class="post-footer">
-    <div style="margin: 2rem 0; padding: 1.5rem; border: 1px solid #333; border-radius: 8px; text-align: center; background: rgba(0, 255, 65, 0.03);">
-      <p style="margin-bottom: 1rem; color: #7f8c8d;">
-        Enjoying this content? Support my open source work and technical writing.
-      </p>
-      <a href="https://github.com/sponsors/9trocode" target="_blank" rel="noopener" style="display: inline-block; padding: 0.75rem 1.5rem; background: #00ff41; color: #0a0e27; text-decoration: none; font-weight: bold; border-radius: 6px; font-family: 'Courier New', monospace;">Sponsor on GitHub</a>
+    <div class="post-sponsor">
+      <p>Enjoying this? Support open source and technical writing.</p>
+      <a class="btn btn--primary" href="https://github.com/sponsors/9trocode" target="_blank" rel="noopener">Sponsor on GitHub</a>
     </div>
     <p class="post-nav-links">
-      <a href="/blog/">← All writing</a>
+      <a href="{{ '/blog/' | relative_url }}">← All writing</a>
       ·
-      <a href="/">Home</a>
+      <a href="{{ '/' | relative_url }}">Home</a>
       ·
-      <a href="/about/">About</a>
+      <a href="{{ '/about/' | relative_url }}">About</a>
     </p>
   </footer>
 </article>

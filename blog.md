@@ -6,11 +6,11 @@ description: Technical writing by Alex Idowu on platform engineering, Kubernetes
 image: /assets/images/nitrocode-og.png
 ---
 
-# Writing
-
-Deep dives on **platform engineering**, **cloud-native security**, and production infrastructure — from multi-tenant Kubernetes and deploy pipelines to terminal sandboxes and privacy-first tools.
-
-Engineer-to-engineer. Architecture, tradeoffs, and failure modes. No fluff.
+<header class="page-hero">
+  <p class="section-label">Writing</p>
+  <h1>Essays &amp; deep dives</h1>
+  <p>Platform engineering, cloud-native security, and production infrastructure — architecture, tradeoffs, and failure modes. No fluff.</p>
+</header>
 
 <ul class="post-list post-list-full">
 {% for post in site.posts %}
@@ -32,7 +32,3 @@ Engineer-to-engineer. Architecture, tradeoffs, and failure modes. No fluff.
   </li>
 {% endfor %}
 </ul>
-
----
-
-<p class="home-more"><a href="/">← Home</a> · <a href="/about/">About</a></p>
