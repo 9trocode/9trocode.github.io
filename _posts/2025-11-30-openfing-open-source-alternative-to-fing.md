@@ -2,7 +2,7 @@
 layout: post
 title: "I Built an Open Source Alternative to Fing Because Privacy Matters"
 date: 2025-11-30
-description: "Fing's CLI is gone and their new products upload your network data. I built OpenFing - a fast, privacy-first network scanner that runs entirely on your machine. No accounts, no subscriptions, no data collection."
+description: "Fing's free CLI is gone, and their new apps upload network data. OpenFing is a local-only network scanner I built in Zig: no accounts, no cloud upload, no subscription."
 tags:
 - Networking
 - Privacy

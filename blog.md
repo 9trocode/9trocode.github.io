@@ -2,7 +2,7 @@
 layout: default
 title: Writing
 permalink: /blog/
-description: Technical writing by Alex Idowu on platform engineering, Kubernetes, cloud-native security, multi-tenancy, Terraform, and production systems.
+description: Technical writing by Alex Idowu. Topics include platform engineering, Kubernetes, cloud-native security, multi-tenancy, Terraform, and production systems.
 image: /assets/images/nitrocode-og.png
 ---
 

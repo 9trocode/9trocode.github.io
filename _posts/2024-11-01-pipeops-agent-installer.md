@@ -2,7 +2,7 @@
 layout: post
 title: "The PipeOps Agent: One Script to Rule Them All"
 date: 2024-11-01
-description: "Single bash script installs K3s, Istio, and monitoring, turning any server into production Kubernetes. Windows and Linux support. BYOS made simple in 3 minutes."
+description: "One install script turns a bare server into a PipeOps-managed host. It installs K3s, then wiring for the agent, Istio, and monitoring. Linux and Windows paths. About three minutes for BYOS."
 tags:
 - PipeOps
 - Kubernetes

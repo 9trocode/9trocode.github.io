@@ -2,7 +2,7 @@
 layout: post
 title: "Understanding My Continuous Work Habits"
 date: 2023-08-03
-description: "How I overcame developer burnout by creating work-life boundaries, establishing routines, and prioritizing mental health. Practical strategies that worked."
+description: "How I handled developer burnout with work-life boundaries, daily routines, and basic mental health habits. Practical notes, not theory."
 tags:
 - Personal
 - Work-Life Balance

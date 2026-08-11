@@ -2,7 +2,7 @@
 layout: post
 title: "Agent Terminal Sandboxes: Isolation That Isn’t “Trust the Model”"
 date: 2026-08-11
-description: "Why AI coding agents need disposable, network-isolated terminals - and the isolation model I built into Rexec for headless agent workloads."
+description: "AI coding agents should not shell out on machines you care about. The isolation model I built into Rexec: disposable terminals, network isolation, and gVisor for headless agent work."
 tags:
 - Agents
 - Security
@@ -19,7 +19,7 @@ Laptop. Dev VM. Shared CI runner. Sometimes worse.
 
 I hit this while building and testing CLIs and agents. The moment you let a model shell out - `npm install`, `curl | bash`, “fix the Dockerfile,” “explore the filesystem” - you’re no longer doing chat. You’re doing **untrusted remote code execution** with a friendly UI.
 
-**TL;DR:** Treat agent execution as an isolation problem, not a prompt problem. Disposable, network-isolated Linux terminals with hard resource limits, outbound-only access patterns, and **gVisor (`runsc`) as the sandbox runtime** are a safer default than “trust the model on my box.” That’s the isolation model I designed into [Rexec](https://github.com/PipeOpsHQ/Rexec).
+**TL;DR:** Treat agent execution as an isolation problem, not a prompt problem. Prefer disposable Linux terminals that are network-isolated, resource-capped, and sandboxed with **gVisor (`runsc`)**. Outbound-only BYOS access is a separate path when you need real hardware. That model is what I designed into [Rexec](https://github.com/PipeOpsHQ/Rexec).
 
 Related background: [Rexec as a terminal control room](/blog/2026/02/27/rexec-terminal-control-room).
 

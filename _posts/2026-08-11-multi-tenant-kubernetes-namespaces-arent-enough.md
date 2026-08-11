@@ -2,7 +2,7 @@
 layout: post
 title: "Multi-Tenant Kubernetes: Namespaces Aren’t Isolation"
 date: 2026-08-11
-description: "Why namespace-per-tenant cosplay fails - and Capsule, NetworkPolicy, quotas, API proxy, and gVisor for real workload isolation on shared clusters."
+description: "Namespaces alone are not multi-tenant isolation. How we stack Capsule, NetworkPolicy, quotas, an API proxy, and gVisor on shared Kubernetes clusters."
 tags:
 - Kubernetes
 - Multi-tenancy
@@ -21,7 +21,7 @@ Namespaces are a **scoping convenience**, not a security boundary. If your platf
 
 I learned this the expensive way while designing multi-tenant hosting for people who didn’t have (or want) a full cloud account - the path we eventually shipped as **Nova** on PipeOps. This post is the **field pattern**, not a product tour. Product notes live in the older write-up: [Nova: multi-tenant Kubernetes without the complexity](/blog/2024/11/01/nova-multitenancy).
 
-**TL;DR:** Soft multi-tenancy needs layers that actually enforce: **identity at the API**, **network policy**, **resource containment**, **no raw control-plane access**, and a **stronger runtime boundary** where untrusted code runs - **gVisor (`runsc`)** in our case, not “trust the default container runtime.” Capsule + NetworkPolicies + quotas + an impersonating proxy + gVisor is one coherent stack. Namespaces alone are not.
+**TL;DR:** Soft multi-tenancy needs controls that actually enforce isolation, not a namespace label. In our stack that means API identity (no raw apiserver), NetworkPolicy, resource quotas, and a stronger runtime for tenant code (**gVisor / `runsc`**, not stock runc). Capsule, NetworkPolicies, quotas, an impersonating proxy, and gVisor work together. Namespaces alone are not enough.
 
 ---
 

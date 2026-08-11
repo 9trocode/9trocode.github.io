@@ -2,7 +2,7 @@
 layout: post
 title: "How PipeOps Deploys Code: BuildKit, Kubernetes & Go Architecture"
 date: 2024-10-31
-description: "Deep dive into PipeOps deployment: BuildKit integration, Kubernetes orchestration, Go services, RabbitMQ queuing, and real production metrics. No marketing fluff."
+description: "Deep dive into how PipeOps deploys code. Covers BuildKit builds, Kubernetes rollout, Go services, RabbitMQ job queuing, and real production metrics. No marketing fluff."
 tags:
 - PipeOps
 - Kubernetes

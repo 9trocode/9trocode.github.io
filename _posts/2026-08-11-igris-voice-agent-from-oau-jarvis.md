@@ -25,7 +25,7 @@ I didn’t have the runway to chase it properly. So it lived in the back of my h
 
 ![Igris brand - sworn guardian, voice-first](/assets/images/igris/01-hero.png)
 
-**TL;DR:** Igris is my long-cycle personal agent project - from OAU prototype to a modern voice-native stack - with a full **software + 3D hardware** design: one will, many blades (bodies), from phone and Mac to desk sentinels and field units.
+**TL;DR:** Igris is my long-cycle personal agent project. The OAU prototype is now a modern voice-native stack (Go brain, Apple clients) plus a **software and 3D hardware** plan: one will, many blades (phone, Mac, desk sentinels, field units).
 
 ---
 

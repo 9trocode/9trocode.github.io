@@ -2,7 +2,7 @@
 layout: post
 title: "The Runner: Terraform Multi-Cloud Provisioning"
 date: 2024-10-31
-description: "How PipeOps Runner provisions Kubernetes across AWS, GCP, and Azure using Terraform. State management, error handling, concurrent execution, and production lessons."
+description: "How the PipeOps Runner provisions Kubernetes on AWS, GCP, and Azure with Terraform. Includes state handling, error paths, concurrent runs, and production lessons."
 tags:
 - Terraform
 - Infrastructure
