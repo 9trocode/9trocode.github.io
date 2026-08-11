@@ -12,9 +12,9 @@ image: /assets/images/nitrocode-og.png
     <p class="hero__lede">I’m Alex Idowu. I design multi-cloud deploy systems, secure terminal sandboxes, and open tools at the edge of platform engineering and cloud-native security — then write down what actually survives production.</p>
     <ul class="hero__meta">
       <li>PipeOps</li>
+      <li>Igris</li>
       <li>Rexec</li>
       <li>Aeon</li>
-      <li>OpenFing</li>
     </ul>
     <p class="hero__actions">
       <a class="btn btn--solid" href="/blog/">Read writing</a>
@@ -36,7 +36,7 @@ image: /assets/images/nitrocode-og.png
     <p class="block__num">01 — Work</p>
     <div>
       <h2 class="block__title">What I’m building</h2>
-      <p class="block__sub">Company product, security systems, and open source tools with real isolation constraints.</p>
+      <p class="block__sub">Company product, a long-running personal agent dream, security systems, and isolation tooling.</p>
     </div>
   </div>
   <ul class="project-list">
@@ -47,6 +47,14 @@ image: /assets/images/nitrocode-og.png
         <p>Code-to-cloud deployment platform: multi-cloud provisioning, BuildKit, Kubernetes runtime, BYOS agents — Go services in production.</p>
       </div>
       <a class="project__go" href="https://pipeops.io" target="_blank" rel="noopener">Visit ↗</a>
+    </li>
+    <li class="project">
+      <span class="project__kind">Dream project</span>
+      <div class="project__body">
+        <h3><a href="https://github.com/9trocode/Igris">Igris</a></h3>
+        <p>Voice-only personal AI agent — Go brain, Apple clients, arc-reactor UI. The grown-up return of a 2014/15 OAU prototype that answered “hey Jarvis,” opened apps, and shut down the PC before the world was ready.</p>
+      </div>
+      <a class="project__go" href="https://github.com/9trocode/Igris" target="_blank" rel="noopener">Repo ↗</a>
     </li>
     <li class="project">
       <span class="project__kind">Open source</span>
