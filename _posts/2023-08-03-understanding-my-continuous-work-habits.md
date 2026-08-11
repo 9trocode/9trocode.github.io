@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Understanding My Continuous Work Habits"
+title: "I Ignored Burnout Until Work Stopped Working"
 date: 2023-08-03
 description: "I ignored burnout until work and the gym both stopped working. Boundaries, routines, and a few boring habits that actually helped me recover."
 tags:

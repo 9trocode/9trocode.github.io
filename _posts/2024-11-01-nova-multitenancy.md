@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Nova: Multi-Tenant Kubernetes Without the Complexity"
+title: "How Nova Isolates Tenants on Shared Kubernetes"
 date: 2024-11-01
 description: "Not everyone has AWS credits. Nova is how we put many customers on shared Kubernetes without handing them the real cluster: Capsule, network policy, gVisor, and a path that starts around $5/month."
 tags:

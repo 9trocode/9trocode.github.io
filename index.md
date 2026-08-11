@@ -102,7 +102,7 @@ image: /assets/images/nitrocode-og-v2.png
  <div class="pattern">
  <strong>Multi-tenant Kubernetes</strong>
  <span>Capsule, NetworkPolicy, API proxy, and gVisor for tenant workloads. </span>
- <a href="/blog/2026/08/11/multi-tenant-kubernetes-namespaces-arent-enough">Deep dive →</a>
+ <a href="/blog/2026/08/11/namespaces-arent-isolation">Deep dive →</a>
  </div>
  <div class="pattern">
  <strong>Deploy architecture</strong>

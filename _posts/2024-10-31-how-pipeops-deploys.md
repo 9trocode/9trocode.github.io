@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How PipeOps Deploys Code: BuildKit, Kubernetes & Go Architecture"
+title: "How PipeOps Actually Deploys Your Code"
 date: 2024-10-31
 description: "People think deploy is git push and done. Here is what actually happens on PipeOps, from webhook to BuildKit to Kubernetes, with the Go services and queues I wish other platforms documented."
 tags:

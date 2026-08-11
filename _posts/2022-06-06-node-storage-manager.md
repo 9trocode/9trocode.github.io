@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "node_storage_manager: Stop Rewriting Storage Code"
+title: "Stop Rewriting Storage Code for Every Node Project"
 date: 2022-06-06
 description: "I was tired of rewriting S3, GCS, and local disk glue for every Node project. One API for object storage and filesystem, published on npm."
 tags:

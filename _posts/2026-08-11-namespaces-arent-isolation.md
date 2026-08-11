@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Multi-Tenant Kubernetes: Namespaces Aren’t Isolation"
+title: "Namespaces Aren't Isolation"
 date: 2026-08-11
 description: "We tried shared Kubernetes with a namespace per customer and killed it in two weeks. This is the isolation stack that survived: Capsule, NetworkPolicy, quotas, an API proxy, and gVisor."
 tags:
@@ -19,7 +19,7 @@ It’s also usually incomplete.
 
 Namespaces are a **scoping convenience**, not a security boundary. If your platform’s isolation story stops at `metadata.namespace`, you’re running shared fate with extra YAML.
 
-I learned this the expensive way while designing multi-tenant hosting for people who didn’t have (or want) a full cloud account - the path we eventually shipped as **Nova** on PipeOps. This post is the **field pattern**, not a product tour. Product notes live in the older write-up: [Nova: multi-tenant Kubernetes without the complexity](/blog/2024/11/01/nova-multitenancy).
+I learned this the expensive way while designing multi-tenant hosting for people who didn’t have (or want) a full cloud account - the path we eventually shipped as **Nova** on PipeOps. This post is the **field pattern**, not a product tour. Product notes live in the older write-up: [How Nova Isolates Tenants on Shared Kubernetes](/blog/2024/11/01/nova-multitenancy).
 
 **TL;DR:** Soft multi-tenancy needs controls that actually enforce isolation, not a namespace label. In our stack that means API identity (no raw apiserver), NetworkPolicy, resource quotas, and a stronger runtime for tenant code (**gVisor / `runsc`**, not stock runc). Capsule, NetworkPolicies, quotas, an impersonating proxy, and gVisor work together. Namespaces alone are not enough.
 
