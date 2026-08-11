@@ -2,7 +2,7 @@
 layout: post
 title: "Agent Terminal Sandboxes: Isolation That Isn’t “Trust the Model”"
 date: 2026-08-11
-description: "Why AI coding agents need disposable, network-isolated terminals—and the isolation model I built into Rexec for headless agent workloads."
+description: "Why AI coding agents need disposable, network-isolated terminals - and the isolation model I built into Rexec for headless agent workloads."
 tags:
 - Agents
 - Security
@@ -17,9 +17,9 @@ Most “AI coding agent” setups still do the dangerous thing by default: **run
 
 Laptop. Dev VM. Shared CI runner. Sometimes worse.
 
-I hit this while building and testing CLIs and agents. The moment you let a model shell out—`npm install`, `curl | bash`, “fix the Dockerfile,” “explore the filesystem”—you’re no longer doing chat. You’re doing **untrusted remote code execution** with a friendly UI.
+I hit this while building and testing CLIs and agents. The moment you let a model shell out - `npm install`, `curl | bash`, “fix the Dockerfile,” “explore the filesystem” - you’re no longer doing chat. You’re doing **untrusted remote code execution** with a friendly UI.
 
-**TL;DR:** Treat agent execution as an isolation problem, not a prompt problem. Disposable, network-isolated Linux terminals—with hard resource limits, outbound-only access patterns, and **gVisor (`runsc`) as the sandbox runtime**—are a safer default than “trust the model on my box.” That’s the isolation model I designed into [Rexec](https://github.com/PipeOpsHQ/Rexec)—and it lines up with how we isolate multi-tenant Kubernetes workloads too.
+**TL;DR:** Treat agent execution as an isolation problem, not a prompt problem. Disposable, network-isolated Linux terminals - with hard resource limits, outbound-only access patterns, and **gVisor (`runsc`) as the sandbox runtime** - are a safer default than “trust the model on my box.” That’s the isolation model I designed into [Rexec](https://github.com/PipeOpsHQ/Rexec) - and it lines up with how we isolate multi-tenant Kubernetes workloads too.
 
 Related background: [Rexec as a terminal control room](/blog/2026/02/27/rexec-terminal-control-room).
 
@@ -64,12 +64,12 @@ A sandbox for interactive *humans* and a sandbox for *agents* share plumbing, bu
 
 So the requirements I care about:
 
-1. **Disposable by default** — create, run, destroy. No “that container from last Tuesday.”
-2. **Hard resource bounds** — CPU, memory, PIDs; disk when the host can enforce it.
-3. **Network isolation as a first-class switch** — not “we’ll add NetworkPolicy later.”
-4. **API/headless entry** — agents shouldn’t need a human clicking xterm for every step.
-5. **Auditability** — session recording / logs when you’re debugging “what did it do?”
-6. **No inbound SSH theater** — prefer outbound tunnels when attaching real machines.
+1. **Disposable by default** - create, run, destroy. No “that container from last Tuesday.”
+2. **Hard resource bounds** - CPU, memory, PIDs; disk when the host can enforce it.
+3. **Network isolation as a first-class switch** - not “we’ll add NetworkPolicy later.”
+4. **API/headless entry** - agents shouldn’t need a human clicking xterm for every step.
+5. **Auditability** - session recording / logs when you’re debugging “what did it do?”
+6. **No inbound SSH theater** - prefer outbound tunnels when attaching real machines.
 
 This is platform engineering, not vibes: terminals become **infrastructure primitives** with create/delete semantics, quotas, and a control plane.
 
@@ -95,21 +95,21 @@ Conceptually:
 
 ```
 Agent / CLI / UI
-      │  (API or WebSocket)
-      ▼
- Control plane  ──create/exec/delete──►  Container runtime
-                                              │
-                                              ├─ cgroup limits
-                                              ├─ dropped caps
-                                              ├─ isolated network bridge
-                                              └─ gVisor (runsc) application kernel
+ │ (API or WebSocket)
+ ▼
+ Control plane ──create/exec/delete──► Container runtime
+ │
+ ├─ cgroup limits
+ ├─ dropped caps
+ ├─ isolated network bridge
+ └─ gVisor (runsc) application kernel
 ```
 
 The important product decision: **the environment outlives a single WebSocket flap, but not your interest in it.** Interactive UX can reattach via `tmux`/`exec`; the *security* unit is still “this sandbox, this network, these limits, this runtime.”
 
 ### Primitive 2: BYOS agents (outbound only)
 
-Sometimes the agent needs *your* GPU box or a lab server—not a fresh Ubuntu container.
+Sometimes the agent needs *your* GPU box or a lab server - not a fresh Ubuntu container.
 
 The pattern I use: an agent process on the machine opens an **outbound WebSocket** to the control plane. No inbound SSH, no “open 22 to the world,” no VPN spaghetti for a demo.
 
@@ -118,7 +118,7 @@ Tradeoff, said plainly:
 - **Cloud container:** strong isolation, weak access to “my weird hardware”
 - **BYOS:** strong access to real iron, weaker isolation (it’s still that machine)
 
-Don’t pretend BYOS is a jail. It’s **mediated access** with auth, session control, and audit—not a microVM escape boundary.
+Don’t pretend BYOS is a jail. It’s **mediated access** with auth, session control, and audit - not a microVM escape boundary.
 
 For untrusted agent code, prefer the container primitive. Use BYOS when the job *requires* the metal, and treat permissions like production access.
 
@@ -142,7 +142,7 @@ Self-host sketch (from the public Rexec path):
 git clone https://github.com/PipeOpsHQ/Rexec.git
 cd Rexec/docker
 docker compose up --build
-# UI/API on localhost:8080 — change default admin credentials immediately
+# UI/API on localhost:8080 - change default admin credentials immediately
 ```
 
 Docs and deeper product context: [rexec.sh/docs](https://rexec.sh/docs) · [source](https://github.com/PipeOpsHQ/Rexec)
@@ -159,12 +159,12 @@ I’m not going to pretend “one compose file” is a complete multi-tenant sec
 
 Ladder we actually use:
 
-1. **cgroup + caps + network isolate** — baseline hygiene  
-2. **gVisor (`runsc`)** — default stronger sandbox for Rexec terminals *and* multi-tenant K8s tenant workloads  
-3. **MicroVMs (Firecracker et al.)** — next step when the threat model demands it ([firecracker-shim](https://github.com/PipeOpsHQ/firecracker-shim)-shaped work)  
-4. **Dedicated nodes / accounts** — compliance and economics, not cosplay  
+1. **cgroup + caps + network isolate** - baseline hygiene 
+2. **gVisor (`runsc`)** - default stronger sandbox for Rexec terminals *and* multi-tenant K8s tenant workloads 
+3. **MicroVMs (Firecracker et al.)** - next step when the threat model demands it ([firecracker-shim](https://github.com/PipeOpsHQ/firecracker-shim)-shaped work) 
+4. **Dedicated nodes / accounts** - compliance and economics, not cosplay 
 
-**Pitfall:** marketing “secure sandboxes” while sharing a Docker socket with the world—or advertising gVisor while still spawning on runc. If the control plane can spawn privileged containers, you’ve moved the castle gate, not closed it.
+**Pitfall:** marketing “secure sandboxes” while sharing a Docker socket with the world - or advertising gVisor while still spawning on runc. If the control plane can spawn privileged containers, you’ve moved the castle gate, not closed it.
 
 ### Network policy is part of the product
 
@@ -188,7 +188,7 @@ Sessions need:
 - Short-lived credentials for the sandbox
 - Audit logs that answer “who/what/when”
 
-Same lesson as multi-tenant platforms: see [Nova’s isolation story](/blog/2024/11/01/nova-multitenancy)—namespaces without policy are cosplay.
+Same lesson as multi-tenant platforms: see [Nova’s isolation story](/blog/2024/11/01/nova-multitenancy) - namespaces without policy are cosplay.
 
 ### Cost and chaos engineering for agents
 
@@ -204,9 +204,9 @@ The field doesn’t need another chat UI. It needs a default execution substrate
 
 > **Ephemeral compute + gVisor-class runtime + explicit network policy + API lifecycle + audit**, aimed at *tool-using agents*, not just humans.
 
-Rexec is one implementation of that idea—the same **gVisor isolation instinct** we apply to multi-tenant Kubernetes pools. The idea still holds if you wire it with Kubernetes Jobs, RuntimeClass, Firecracker, or a cloud sandbox API—as long as you don’t run the agent as `local shell == trusted`.
+Rexec is one implementation of that idea - the same **gVisor isolation instinct** we apply to multi-tenant Kubernetes pools. The idea still holds if you wire it with Kubernetes Jobs, RuntimeClass, Firecracker, or a cloud sandbox API - as long as you don’t run the agent as `local shell == trusted`.
 
-Personal note on attribution: I built Rexec because I needed real multi-machine CLI testing, then watched agent workflows force the security model into the open. The architecture—gVisor sandboxes, outbound BYOS agents, WebSocket terminal sessions, disposable lifecycle—is the part worth copying, not the brand name.
+Personal note on attribution: I built Rexec because I needed real multi-machine CLI testing, then watched agent workflows force the security model into the open. The architecture - gVisor sandboxes, outbound BYOS agents, WebSocket terminal sessions, disposable lifecycle - is the part worth copying, not the brand name.
 
 ---
 
@@ -216,7 +216,7 @@ If you’re wiring agents into your company this quarter:
 
 1. **Ban “agent has shell on my laptop”** for anything that can touch secrets or prod.
 2. **Create/delete sandboxes per task** (or per PR), not per quarter.
-3. **Run agent sandboxes on gVisor (`runsc`)**—or stronger—not stock runc “because Docker default.”
+3. **Run agent sandboxes on gVisor (`runsc`)** - or stronger - not stock runc “because Docker default.”
 4. **Set egress policy deliberately**; log outbound destinations if you can.
 5. **Cap CPU/memory/PIDs**; kill zombies on a timer.
 6. **Record sessions** for high-risk automation until you trust the loop.
@@ -229,6 +229,6 @@ If you’re wiring agents into your company this quarter:
 
 Agent sandboxes fail when teams treat them as a prompt-engineering problem. They’re an isolation and lifecycle problem.
 
-Disposable, network-isolated, **gVisor-backed** terminals with hard limits and API-driven create/delete are a better default than trusting the model on a precious machine. That’s the model I designed into Rexec—and the same runtime story we use on multi-tenant Kubernetes. Take the pattern even if you never run our compose file.
+Disposable, network-isolated, **gVisor-backed** terminals with hard limits and API-driven create/delete are a better default than trusting the model on a precious machine. That’s the model I designed into Rexec - and the same runtime story we use on multi-tenant Kubernetes. Take the pattern even if you never run our compose file.
 
 Next up in this series (if you want the deeper cut): outbound-only fleet access vs inbound SSH, and when microVMs earn their keep beyond gVisor.

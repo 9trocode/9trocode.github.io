@@ -2,7 +2,7 @@
 
 [![Deploy Jekyll to GitHub Pages](https://github.com/9trocode/9trocode.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/9trocode/9trocode.github.io/actions/workflows/deploy.yml)
 
-Personal brand site and technical writing for Alex Idowu (nitrocode) — platform engineering, cloud-native security, and production infrastructure.
+Personal brand site and technical writing for Alex Idowu (nitrocode) - platform engineering, cloud-native security, and production infrastructure.
 
 🌐 **Live Site**: [https://nitrocode.sh](https://nitrocode.sh)
 

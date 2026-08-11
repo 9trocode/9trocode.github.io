@@ -15,7 +15,7 @@ image: /assets/images/nitrocode-og.png
 
 I built **rexec** because I was tired of *pretending* my CLI worked everywhere.
 
-I needed real-world testing across different machines and architectures — not just “works on my laptop” and not just CI logs. The quickest thing that could give me that was: **a disposable terminal I can spin up anywhere, run the binary, and throw away**.
+I needed real-world testing across different machines and architectures - not just “works on my laptop” and not just CI logs. The quickest thing that could give me that was: **a disposable terminal I can spin up anywhere, run the binary, and throw away**.
 
 That small tool turned into something bigger: a terminal control room for cloud sandboxes *and* your own machines.
 
@@ -23,7 +23,7 @@ That small tool turned into something bigger: a terminal control room for cloud 
 
 **Positioning:** Rexec turns terminals into infrastructure primitives.
 
-Terminals become API-managed sandboxes you can create, connect to (WebSocket), run commands in, share, record, lock down, and delete — with guardrails.
+Terminals become API-managed sandboxes you can create, connect to (WebSocket), run commands in, share, record, lock down, and delete - with guardrails.
 
 ---
 
@@ -37,7 +37,7 @@ Then the scope creep hit:
 2. **Cloud shell**: once you can spin terminals up quickly, it’s basically a cloud shell. So we built a proper terminal UX around it.
 3. **Widget mode**: then we added an embeddable widget, because the terminal shouldn’t live only inside the dashboard.
 4. **Students + low-spec laptops**: a hosted terminal with a curated toolchain is a cheat code for learning when your laptop is underpowered (or you don’t have one).
-5. **Agent sandboxes**: once I installed `opencode` in a terminal and started running AI-generated code in there, it clicked — this is a safer default for agents and automation.
+5. **Agent sandboxes**: once I installed `opencode` in a terminal and started running AI-generated code in there, it clicked - this is a safer default for agents and automation.
 6. **Shared expensive machines**: teams can connect a single beefy box (yes, including a GPU machine) and manage access without turning SSH keys into a company-wide group chat.
 
 Rexec is now a multipurpose tool. We use it for all of the above. And it’s open source.
@@ -74,10 +74,10 @@ From the OSS README, the architecture looks like this:
 
 ```
 [Browser UI] ←(WebSocket)→ [Rexec API] ←→ [PostgreSQL]
-                                │
-                                ├── [Container Manager] ──→ [Docker Engine]
-                                │
-                                └── [Agent Handler] ←(WebSocket)→ [Remote Agents]
+ │
+ ├── [Container Manager] ──→ [Docker Engine]
+ │
+ └── [Agent Handler] ←(WebSocket)→ [Remote Agents]
 ```
 
 Implementation stack (also from the repo):
@@ -105,7 +105,7 @@ This is the feature that makes everything else possible: once environments are c
 
 Rexec streams a proper terminal session (xterm.js) over WebSockets, with session persistence and collaboration.
 
-The “instant access” trick is that you can start typing while the environment finishes provisioning in the background — no staring at progress bars.
+The “instant access” trick is that you can start typing while the environment finishes provisioning in the background - no staring at progress bars.
 
 ### 3) Bring-your-own-server access (BYOS agent)
 
@@ -147,12 +147,12 @@ import asyncio
 from rexec import RexecClient
 
 async def main():
-    async with RexecClient("https://rexec.sh", "YOUR_API_TOKEN") as client:
-        container = await client.containers.create(image="ubuntu:24.04", name="sdk-demo")
-        async with client.terminal.connect(container.id) as term:
-            await term.write(b"echo 'Hello from Rexec!'\n")
-            out = await term.read()
-            print(out.decode())
+ async with RexecClient("https://rexec.sh", "YOUR_API_TOKEN") as client:
+ container = await client.containers.create(image="ubuntu:24.04", name="sdk-demo")
+ async with client.terminal.connect(container.id) as term:
+ await term.write(b"echo 'Hello from Rexec!'\n")
+ out = await term.read()
+ print(out.decode())
 
 asyncio.run(main())
 ```
@@ -174,9 +174,9 @@ Minimal embed example:
 <div id="terminal" style="width: 100%; height: 400px;"></div>
 
 <script>
-  const term = Rexec.embed('#terminal', {
-    shareCode: 'YOUR_SHARE_CODE'
-  });
+ const term = Rexec.embed('#terminal', {
+ shareCode: 'YOUR_SHARE_CODE'
+ });
 </script>
 ```
 
@@ -184,11 +184,11 @@ Token mode (create a new terminal from your site) looks like this:
 
 ```html
 <script>
-  const term = Rexec.embed('#terminal', {
-    token: 'YOUR_API_TOKEN',
-    image: 'ubuntu',
-    role: 'python'
-  });
+ const term = Rexec.embed('#terminal', {
+ token: 'YOUR_API_TOKEN',
+ image: 'ubuntu',
+ role: 'python'
+ });
 </script>
 ```
 
@@ -198,7 +198,7 @@ This is why I think Rexec is useful for education and DevRel: you can turn “ru
 
 ## Security: What’s Actually Enforced
 
-Rexec runs arbitrary shell sessions. So security isn’t a paragraph — it’s the product.
+Rexec runs arbitrary shell sessions. So security isn’t a paragraph - it’s the product.
 
 Here’s what the open-source stack enforces for **Linux terminals** today (and what you can tune when self-hosting).
 
@@ -244,7 +244,7 @@ That matches the multi-tenant Kubernetes isolation story: untrusted workloads sh
 
 ### Caveats (the honest part)
 
-- The root filesystem is currently **writable** to support role/tool installation—pair that with gVisor, don’t skip the runtime.
+- The root filesystem is currently **writable** to support role/tool installation - pair that with gVisor, don’t skip the runtime.
 - `/tmp` is mounted `exec` in the default profile to support some terminal tooling. Tighten it if you don’t need that.
 
 ---
@@ -299,7 +299,7 @@ rexec create --name cli-alpine --image alpine:3.21
 
 ### Scenario: education + DevRel that actually runs
 
-Embed a terminal in docs/tutorials, hand out share codes, and let people run commands where they’re learning — without a “works on my machine” setup tax.
+Embed a terminal in docs/tutorials, hand out share codes, and let people run commands where they’re learning - without a “works on my machine” setup tax.
 
 ### Scenario: agents that execute in a sandbox
 
@@ -418,7 +418,7 @@ For gVisor isolation when self-hosting, install `runsc` on the container host an
 ```yaml
 # docker/docker-compose.yml
 environment:
-  - OCI_RUNTIME=runsc
+ - OCI_RUNTIME=runsc
 ```
 
 ---

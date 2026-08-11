@@ -2,7 +2,7 @@
 layout: post
 title: "I Built an Open Source Alternative to Fing Because Privacy Matters"
 date: 2025-11-30
-description: "Fing's CLI is gone and their new products upload your network data. I built OpenFing—a fast, privacy-first network scanner that runs entirely on your machine. No accounts, no subscriptions, no data collection."
+description: "Fing's CLI is gone and their new products upload your network data. I built OpenFing - a fast, privacy-first network scanner that runs entirely on your machine. No accounts, no subscriptions, no data collection."
 tags:
 - Networking
 - Privacy
@@ -12,15 +12,15 @@ tags:
 - Security
 ---
 
-**TL;DR:** Fing's CLI tool is gone, their new products require subscriptions and upload your network data to their servers. I built [OpenFing](https://github.com/9trocode/OpenFing) — a fast, privacy-first network scanner that runs entirely on your machine. No accounts, no subscriptions, no data collection.
+**TL;DR:** Fing's CLI tool is gone, their new products require subscriptions and upload your network data to their servers. I built [OpenFing](https://github.com/9trocode/OpenFing) - a fast, privacy-first network scanner that runs entirely on your machine. No accounts, no subscriptions, no data collection.
 
 ---
 
 ## The Problem with Fing
 
-If you've ever needed to see what devices are on your network, you've probably used Fing. It was the go-to tool — simple, fast, and it just worked.
+If you've ever needed to see what devices are on your network, you've probably used Fing. It was the go-to tool - simple, fast, and it just worked.
 
-Back in uni days, Fing was the go-to hack tool for detecting IPs connected to the network. You could easily shop around, pick whichever IP you wanted, and assume it on your device—which would kick out whoever was logged into Intecu's MikroTik server. It was fun. People would swear and rain curses after buying their Intecu card only to get booted off minutes later. In fact, I can't remember buying an Intecu card with my own money throughout my time there—maybe 'cause I was broke then. 😇
+Back in uni days, Fing was the go-to hack tool for detecting IPs connected to the network. You could easily shop around, pick whichever IP you wanted, and assume it on your device - which would kick out whoever was logged into Intecu's MikroTik server. It was fun. People would swear and rain curses after buying their Intecu card only to get booted off minutes later. In fact, I can't remember buying an Intecu card with my own money throughout my time there - maybe 'cause I was broke then. 😇
 
 **Was.**
 
@@ -48,16 +48,16 @@ I built **OpenFing** over a weekend using Zig. It's everything the old Fing CLI 
 $ openfing
 
 +==============================================================================+
-|                              OpenFing v1.4.0                                 |
-|                         Fast Network Device Scanner                          |
+| OpenFing v1.4.0 |
+| Fast Network Device Scanner |
 +==============================================================================+
 
 Network Information:
 --------------------
-  Your IP       : 192.168.1.100
-  Gateway       : 192.168.1.1
-  Subnet        : 192.168.1.0/24
-  Interface     : en0
+ Your IP : 192.168.1.100
+ Gateway : 192.168.1.1
+ Subnet : 192.168.1.0/24
+ Interface : en0
 
 Scanning....... done
 
@@ -65,13 +65,13 @@ Scanning....... done
 | DEVICES FOUND: 8 (via multi-method discovery)
 +-----------------------------------------------------------------------------+
 
-IP ADDRESS        | MAC ADDRESS        | VENDOR
+IP ADDRESS | MAC ADDRESS | VENDOR
 ------------------+--------------------+-------------------------------------
-192.168.1.1       | E8:EA:4D:1D:3A:45  | Huawei (GW)
-192.168.1.50      | 4C:20:B8:DB:D5:E8  | Apple
-192.168.1.100     | BE:29:E5:69:04:E0  | Intel (THIS)
-192.168.1.105     | B0:41:6F:0D:78:17  | Shenzhen Maxtang
-192.168.1.110     | 24:0D:C2:A1:B2:C3  | Espressif (IoT)
+192.168.1.1 | E8:EA:4D:1D:3A:45 | Huawei (GW)
+192.168.1.50 | 4C:20:B8:DB:D5:E8 | Apple
+192.168.1.100 | BE:29:E5:69:04:E0 | Intel (THIS)
+192.168.1.105 | B0:41:6F:0D:78:17 | Shenzhen Maxtang
+192.168.1.110 | 24:0D:C2:A1:B2:C3 | Espressif (IoT)
 ...
 
 Total: 8 devices
@@ -110,11 +110,11 @@ Want hostnames and open ports? Use `--deep`:
 ```bash
 $ sudo openfing --deep
 
-IP ADDRESS        | MAC ADDRESS        | VENDOR/HOST                  | PORTS
+IP ADDRESS | MAC ADDRESS | VENDOR/HOST | PORTS
 ------------------+--------------------+------------------------------+----------
-192.168.1.1       | E8:EA:4D:1D:3A:45  | router.local                 | HTTP,HTTPS
-192.168.1.50      | 4C:20:B8:DB:D5:E8  | MacBook-Pro.local            | SSH
-192.168.1.110     | 24:0D:C2:A1:B2:C3  | esp-sensor.local             | HTTP
+192.168.1.1 | E8:EA:4D:1D:3A:45 | router.local | HTTP,HTTPS
+192.168.1.50 | 4C:20:B8:DB:D5:E8 | MacBook-Pro.local | SSH
+192.168.1.110 | 24:0D:C2:A1:B2:C3 | esp-sensor.local | HTTP
 ```
 
 ## Installation
@@ -153,24 +153,24 @@ sudo mv zig-out/bin/openfing /usr/local/bin/
 ## Usage Cheatsheet
 
 ```bash
-openfing                      # Quick scan (no sudo needed)
-sudo openfing                 # Full network scan
-sudo openfing --deep          # Scan with hostname + port detection
-sudo openfing en0             # Scan specific interface
-sudo openfing --install-deps  # Install arp-scan for best results
-openfing --update             # Check for updates
-openfing --no-update          # Disable auto-update check
+openfing # Quick scan (no sudo needed)
+sudo openfing # Full network scan
+sudo openfing --deep # Scan with hostname + port detection
+sudo openfing en0 # Scan specific interface
+sudo openfing --install-deps # Install arp-scan for best results
+openfing --update # Check for updates
+openfing --no-update # Disable auto-update check
 ```
 
 ## Why Zig?
 
 I chose Zig for a few reasons:
 
-1. **No runtime dependencies** — Compiles to a static binary that works anywhere
-2. **Cross-compilation is trivial** — Build for Linux ARM from my Mac with one flag
-3. **C interop** — Could easily integrate libpcap later if needed
-4. **Performance** — It's fast. Really fast.
-5. **I wanted to learn it** — And building something useful is the best way
+1. **No runtime dependencies** - Compiles to a static binary that works anywhere
+2. **Cross-compilation is trivial** - Build for Linux ARM from my Mac with one flag
+3. **C interop** - Could easily integrate libpcap later if needed
+4. **Performance** - It's fast. Really fast.
+5. **I wanted to learn it** - And building something useful is the best way
 
 ## The Technical Bits
 
@@ -184,15 +184,15 @@ When you have root privileges and `arp-scan` installed, OpenFing uses it to send
 
 Without root, we can't send raw packets. But we can be clever:
 
-1. **Ping sweep** — Send ICMP echo requests to populate the ARP cache
-2. **mDNS queries** — Apple devices and many IoT devices advertise via Bonjour
-3. **SSDP multicast** — UPnP devices respond to discovery requests
-4. **TCP connect** — Opening a TCP connection to common ports (22, 80, 443) triggers ARP resolution
-5. **Read ARP cache** — After all that activity, the kernel's ARP cache has entries for most devices
+1. **Ping sweep** - Send ICMP echo requests to populate the ARP cache
+2. **mDNS queries** - Apple devices and many IoT devices advertise via Bonjour
+3. **SSDP multicast** - UPnP devices respond to discovery requests
+4. **TCP connect** - Opening a TCP connection to common ports (22, 80, 443) triggers ARP resolution
+5. **Read ARP cache** - After all that activity, the kernel's ARP cache has entries for most devices
 
 ### MAC Vendor Lookup
 
-The first 3 bytes of a MAC address identify the manufacturer (called the OUI — Organizationally Unique Identifier). OpenFing has a built-in database covering the most common vendors: Apple, Samsung, Google, Amazon, Intel, Raspberry Pi, Espressif (ESP8266/ESP32), and more.
+The first 3 bytes of a MAC address identify the manufacturer (called the OUI - Organizationally Unique Identifier). OpenFing has a built-in database covering the most common vendors: Apple, Samsung, Google, Amazon, Intel, Raspberry Pi, Espressif (ESP8266/ESP32), and more.
 
 ## Roadmap
 
