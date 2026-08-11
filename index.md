@@ -44,7 +44,7 @@ image: /assets/images/nitrocode-og.png
  <span class="project__kind">Company</span>
  <div class="project__body">
  <h3><a href="https://pipeops.io">PipeOps</a></h3>
- <p>Code-to-cloud deployment platform: multi-cloud provisioning, BuildKit, Kubernetes runtime, BYOS agents - Go services in production.</p>
+ <p>Code-to-cloud deployment platform. Multi-cloud provisioning, BuildKit builds, Kubernetes runtime, and BYOS agents, with Go services in production.</p>
  </div>
  <a class="project__go" href="https://pipeops.io" target="_blank" rel="noopener">Visit ↗</a>
  </li>
@@ -52,7 +52,7 @@ image: /assets/images/nitrocode-og.png
  <span class="project__kind">Dream project</span>
  <div class="project__body">
  <h3><a href="https://github.com/9trocode/Igris">Igris</a></h3>
- <p>Voice-only personal AI agent - Go brain, Apple clients, arc-reactor UI. The grown-up return of a 2014/15 OAU prototype that answered “hey Jarvis,” opened apps, and shut down the PC before the world was ready.</p>
+ <p>Voice-only personal AI agent (Go brain, Apple clients, arc-reactor UI). Grown-up return of a 2014/15 OAU prototype: custom sci-fi UI, a “hey Jarvis” wake word, and desktop actions like open app or shut down PC.</p>
  </div>
  <a class="project__go" href="https://github.com/9trocode/Igris" target="_blank" rel="noopener">Repo ↗</a>
  </li>
@@ -60,7 +60,7 @@ image: /assets/images/nitrocode-og.png
  <span class="project__kind">Open source</span>
  <div class="project__body">
  <h3><a href="https://github.com/PipeOpsHQ/Rexec">Rexec</a></h3>
- <p>Terminal control room - network-isolated cloud terminals, outbound agents, recordings, sandboxes for CLIs and AI agents.</p>
+ <p>Terminal control room for disposable cloud terminals, outbound BYOS agents, session recording, and agent sandboxes for CLIs and AI tools.</p>
  </div>
  <a class="project__go" href="https://github.com/PipeOpsHQ/Rexec" target="_blank" rel="noopener">Repo ↗</a>
  </li>
@@ -76,7 +76,7 @@ image: /assets/images/nitrocode-og.png
  <span class="project__kind">Open source</span>
  <div class="project__body">
  <h3><a href="https://github.com/9trocode/OpenFing">OpenFing</a></h3>
- <p>Privacy-first network scanner in Zig. Local discovery only - no accounts, no topology leaving your machine.</p>
+ <p>Privacy-first network scanner in Zig. Scans stay on your machine: no accounts and no topology upload.</p>
  </div>
  <a class="project__go" href="https://github.com/9trocode/OpenFing" target="_blank" rel="noopener">Repo ↗</a>
  </li>
