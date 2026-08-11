@@ -2,7 +2,7 @@
 layout: post
 title: "node_storage_manager: Stop Rewriting Storage Code"
 date: 2022-06-06
-description: "A Node.js storage library with one API for S3, GCS, Azure Blob, and the local filesystem. Published on npm."
+description: "I was tired of rewriting S3, GCS, and local disk glue for every Node project. One API for object storage and filesystem, published on npm."
 tags:
 - Node.js
 - Open Source

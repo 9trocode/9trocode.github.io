@@ -2,7 +2,7 @@
 layout: post
 title: "Multi-Tenant Kubernetes: Namespaces Aren’t Isolation"
 date: 2026-08-11
-description: "Namespaces alone are not multi-tenant isolation. How we stack Capsule, NetworkPolicy, quotas, an API proxy, and gVisor on shared Kubernetes clusters."
+description: "We tried shared Kubernetes with a namespace per customer and killed it in two weeks. This is the isolation stack that survived: Capsule, NetworkPolicy, quotas, an API proxy, and gVisor."
 tags:
 - Kubernetes
 - Multi-tenancy

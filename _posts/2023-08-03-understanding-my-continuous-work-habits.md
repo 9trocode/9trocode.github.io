@@ -2,7 +2,7 @@
 layout: post
 title: "Understanding My Continuous Work Habits"
 date: 2023-08-03
-description: "How I handled developer burnout with work-life boundaries, daily routines, and basic mental health habits. Practical notes, not theory."
+description: "I ignored burnout until work and the gym both stopped working. Boundaries, routines, and a few boring habits that actually helped me recover."
 tags:
 - Personal
 - Work-Life Balance

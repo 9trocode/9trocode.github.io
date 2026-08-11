@@ -2,7 +2,7 @@
 layout: post
 title: "Agent Terminal Sandboxes: Isolation That Isn’t “Trust the Model”"
 date: 2026-08-11
-description: "AI coding agents should not shell out on machines you care about. The isolation model I built into Rexec: disposable terminals, network isolation, and gVisor for headless agent work."
+description: "I got tired of coding agents treating my laptop like a free shell. Here is the isolation model I built into Rexec so untrusted tool calls run in disposable, gVisor-backed terminals instead."
 tags:
 - Agents
 - Security

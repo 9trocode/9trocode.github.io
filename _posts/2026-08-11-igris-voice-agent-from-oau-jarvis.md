@@ -2,7 +2,7 @@
 layout: post
 title: "Igris: Finishing the Voice Agent I Started at OAU in 2014"
 date: 2026-08-11
-description: "Igris returns a 2014/15 OAU voice agent: Iron Man-inspired UI, a hey Jarvis wake word, and desktop actions. Now a Go brain with Apple clients and a 3D hardware plan."
+description: "In 2014 at OAU I built a voice agent the stack could not carry. Sci-fi UI. A hey Jarvis wake word. Apps that opened when I spoke. Igris is me finishing that dream with a Go brain, Apple clients, and a 3D guardian plan."
 tags:
 - Igris
 - Agents

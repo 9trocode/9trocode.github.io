@@ -2,7 +2,7 @@
 layout: default
 title: About
 permalink: /about/
-description: Alex Idowu is Founder & CTO at PipeOps in Lagos. Focus areas: platform engineering, cloud-native security, and open source infrastructure.
+description: Alex Idowu builds deployment platforms and open source infra from Lagos. Founder & CTO at PipeOps, builder of Igris, Rexec, and tools that make production systems a little less hostile.
 image: /assets/images/nitrocode-og.png
 ---
 

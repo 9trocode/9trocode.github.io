@@ -2,7 +2,7 @@
 layout: post
 title: "Rexec: The Terminal Control Room I Built to Test a CLI"
 date: 2026-02-27
-description: "How Rexec grew from a CLI test tool into a terminal control room. It adds disposable cloud terminals, BYOS agents over outbound tunnels, an embed widget, and agent sandboxes."
+description: "I only needed a throwaway terminal to prove a CLI worked on real machines. Scope creep built Rexec: a control room for disposable cloud terminals, outbound agents, and safer places for AI tools to run."
 tags:
 - Terminals
 - Open Source
