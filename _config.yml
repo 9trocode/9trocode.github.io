@@ -1,14 +1,17 @@
 title: Alex Idowu
-description: Founder & CTO at PipeOps. Platform engineering, cloud-native security, multi-tenant Kubernetes, and production infrastructure - writing and open source by Alex Idowu.
+description: >-
+  Founder & CTO at PipeOps. Platform engineering, cloud-native security,
+  multi-tenant Kubernetes, and production infrastructure. Writing and open
+  source by Alex Idowu.
 plugins:
- - jekyll-feed
- - jekyll-seo-tag
- - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
 author:
- name: Alex Idowu
- email: alexidowu25@gmail.com
- twitter: nitrocode
+  name: Alex Idowu
+  email: alexidowu25@gmail.com
+  twitter: nitrocode
 
 url: "https://nitrocode.sh"
 baseurl: ""
@@ -19,23 +22,23 @@ tagline: Platform engineering · Cloud-native security
 logo: /assets/images/logo.png
 
 twitter:
- username: nitrocode
- card: summary_large_image
+  username: nitrocode
+  card: summary_large_image
 
 social:
- name: Alex Idowu
- links:
- - https://twitter.com/nitrocode
- - https://github.com/9trocode
- - https://linkedin.com/in/nitrocode
+  name: Alex Idowu
+  links:
+    - https://twitter.com/nitrocode
+    - https://github.com/9trocode
+    - https://linkedin.com/in/nitrocode
 
 markdown: kramdown
 highlighter: rouge
 
 kramdown:
- input: GFM
- hard_wrap: false
- syntax_highlighter: rouge
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
 
 permalink: /blog/:year/:month/:day/:title
 
@@ -43,22 +46,22 @@ permalink: /blog/:year/:month/:day/:title
 future: true
 
 defaults:
- - scope:
- path: ""
- type: "posts"
- values:
- layout: "post"
- - scope:
- path: ""
- values:
- layout: "default"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
 
 show_downloads: false
 
 github:
- repository_url: https://github.com/9trocode/9trocode.github.io
+  repository_url: https://github.com/9trocode/9trocode.github.io
 
 # Analytics
 # Sign up for Google Analytics 4 at https://analytics.google.com
 # Replace with your GA4 Measurement ID (format: G-XXXXXXXXXX)
-google_analytics: # Add your GA4 Measurement ID here
+google_analytics:
