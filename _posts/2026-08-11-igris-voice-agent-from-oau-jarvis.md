@@ -2,7 +2,7 @@
 layout: post
 title: "Igris: Finishing the Voice Agent I Started at OAU in 2014"
 date: 2026-08-11
-description: "A personal AI agent I first built as a campus Jarvis prototype - wake word, Iron Man UI, open apps, shut down the PC - is back as Igris: Go brain, Apple clients, 3D guardian hardware plan."
+description: "Igris returns a 2014/15 OAU voice agent: Iron Man-inspired UI, a hey Jarvis wake word, and desktop actions. Now a Go brain with Apple clients and a 3D hardware plan."
 tags:
 - Igris
 - Agents
@@ -15,7 +15,7 @@ image: /assets/images/igris/hero-card.png
 
 Some projects don’t die. They wait.
 
-In **2014/2015 at OAU**, I built a personal assistant that felt like science fiction on a student machine: custom **Iron Man-inspired UI**, talk when I said **“hey Jarvis,”** listen for actions, and actually do things - open an app, close an app, shut down the PC. It worked enough to feel real. It was also **way ahead of what I could resource** then: compute, models, speech stacks, distribution, time.
+In **2014/2015 at OAU**, I built a personal assistant that felt like science fiction on a student machine. It had a custom **Iron Man-inspired UI**. Separately, a **“hey Jarvis” wake word** started listening. Then it ran **desktop actions**: open an app, close an app, shut down the PC. It worked enough to feel real. It was also **way ahead of what I could resource** then: compute, models, speech stacks, distribution, time.
 
 I didn’t have the runway to chase it properly. So it lived in the back of my head while I went deep on infrastructure, platforms, and production systems.
 

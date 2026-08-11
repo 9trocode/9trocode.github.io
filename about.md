@@ -26,7 +26,7 @@ I'm **Founder & CTO at [PipeOps](https://pipeops.io)** ([PipeOpsHQ](https://gith
 
 I'm also building **Aeon** - security software for high-trust organizations across cloud, on-prem, and hybrid environments.
 
-And **[Igris](https://github.com/9trocode/Igris)** - a voice-only personal AI agent (Go server + Apple clients). It’s a dream project I’ve been carrying since **2014/2015 at OAU**: a custom Iron Man-inspired UI, wake-word style “hey Jarvis” interaction, and desktop actions (open/close apps, shut down the machine). It was ahead of what we could resource then. The stack finally caught up; I’m building the real version now.
+And **[Igris](https://github.com/9trocode/Igris)** - a voice-only personal AI agent (Go server + Apple clients). It’s a dream project from **2014/2015 at OAU**: Iron Man-inspired UI, a separate “hey Jarvis” wake word, and desktop actions (open/close apps, shut down the machine). It was ahead of what we could resource then. The stack finally caught up; I’m building the real version now.
 
 I've been working in technology since 2012, with a decade-plus focus on:
 
