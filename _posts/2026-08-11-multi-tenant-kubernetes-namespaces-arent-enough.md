@@ -148,7 +148,6 @@ For multi-tenant pools we run tenant workloads on **[gVisor](https://gvisor.dev/
 What it buys:
 
 - Smaller host-kernel attack surface for tenant pods
-- A consistent isolation story with agent sandboxes (Rexec uses the same runtime idea - see [agent terminal sandboxes](/blog/2026/08/11/agent-terminal-sandboxes-isolation))
 - A middle ground between “hope runc is fine” and “every tenant gets a VM”
 
 What it doesn’t buy:
@@ -217,18 +216,6 @@ Automate the smoke test. Manual “looks good” doesn’t scale.
 5. **“Admin kubeconfig for support”** - support tooling becomes the real attack surface; impersonate with break-glass and audit.
 6. **Log and metric multi-tenancy** - observability backends that don’t filter by tenant leak data as surely as etcd.
 7. **RuntimeClass theater** - gVisor on paper, tenants still scheduled on runc.
-
----
-
-## How this connects to agent sandboxes
-
-Different layer, same discipline - and **the same runtime family**.
-
-- Soft multi-tenant **apps** → namespace + policy + quota + API proxy + **gVisor** 
-- Untrusted **agent shells** (Rexec) → disposable sandboxes + network isolation + TTL + **gVisor (`runsc`)** 
-
-I wrote up the agent side separately: [Agent terminal sandboxes](/blog/2026/08/11/agent-terminal-sandboxes-isolation). 
-Platforms that run both (customer apps *and* agent execution) need **both** models - or they accidentally give agents a kubeconfig to the shared estate. Don’t do that.
 
 ---
 

@@ -40,7 +40,7 @@ Private agent prompts and author dossiers live under local `agents/` (gitignored
  - Avoid unverifiable claims; prefer concrete commands and configs.
  - Do not invent customers, metrics, funding, or product features not in AUTHOR.md or user input.
  - Prefer **field-reusable** platform engineering / cloud-native security patterns with clear personal technical attribution when the topic fits.
- - **No em dashes (—).** Prefer periods, commas, colons, parentheses, or a spaced hyphen (` - `).
+ - **No em dashes.** Prefer periods, commas, colons, parentheses, or a spaced hyphen (` - `).
 
 ### Author snapshot (condensed)
 
