@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#0c0b0a">
     <script>
       (function () {
         try {
@@ -16,7 +16,7 @@
           }
           document.documentElement.setAttribute("data-theme", t);
           var m = document.querySelector('meta[name="theme-color"]');
-          if (m) m.setAttribute("content", t === "light" ? "#f5f5f7" : "#000000");
+          if (m) m.setAttribute("content", t === "light" ? "#f3efe6" : "#0c0b0a");
         } catch (e) {}
       })();
     </script>
@@ -28,7 +28,7 @@
     <div class="site-shell">
       {% include nav.html %}
       <main class="site-main" id="main_content">
-        <div class="wrap{% if page.wide %} wrap--wide{% endif %}">
+        <div class="wrap">
           {{ content }}
         </div>
       </main>

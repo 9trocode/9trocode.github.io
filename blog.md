@@ -7,28 +7,24 @@ image: /assets/images/nitrocode-og.png
 ---
 
 <header class="page-hero">
-  <p class="section-label">Writing</p>
-  <h1>Essays &amp; deep dives</h1>
-  <p>Platform engineering, cloud-native security, and production infrastructure — architecture, tradeoffs, and failure modes. No fluff.</p>
+  <p class="eyebrow">Writing</p>
+  <h1>Index</h1>
+  <p>Platform engineering, cloud-native security, and production systems — architecture, tradeoffs, and failure modes.</p>
 </header>
 
-<ul class="post-list post-list-full">
+<ul class="write-list">
 {% for post in site.posts %}
-  <li class="post-list-item">
-    <a class="post-list-title" href="{{ post.url }}">{{ post.title }}</a>
-    <div class="post-list-meta">
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+  <li class="write-item">
+    <time class="write-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %Y" }}</time>
+    <div>
+      <a class="write-title" href="{{ post.url }}">{{ post.title }}</a>
+      {% if post.description %}<p class="write-desc">{{ post.description }}</p>{% endif %}
       {% if post.tags and post.tags.size > 0 %}
-        <span class="post-list-tags">
-          {% for tag in post.tags %}
-            <span class="tag">{{ tag }}</span>
-          {% endfor %}
-        </span>
+      <div class="write-tags">
+        {% for tag in post.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+      </div>
       {% endif %}
     </div>
-    {% if post.description %}
-    <p class="post-list-desc">{{ post.description }}</p>
-    {% endif %}
   </li>
 {% endfor %}
 </ul>

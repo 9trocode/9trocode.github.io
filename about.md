@@ -7,15 +7,16 @@ image: /assets/images/nitrocode-og.png
 ---
 
 <header class="page-hero">
-  <div class="portrait portrait--about">
-    <img src="/assets/images/alex-idowu.png" width="112" height="112" alt="Portrait of Alex Idowu" />
-  </div>
-  <p class="section-label">About</p>
+  <p class="eyebrow">About</p>
   <h1>Alex Idowu</h1>
-  <p>Cloud infrastructure engineer. Founder. Builder of platforms that make complex systems feel simple.</p>
+  <p>Cloud infrastructure engineer. Founder. I build platforms that make complex systems feel simple.</p>
 </header>
 
-<div class="about-content">
+<div class="about-layout">
+  <div class="about-portrait">
+    <img src="/assets/images/alex-idowu.png" width="440" height="550" alt="Portrait of Alex Idowu" />
+  </div>
+  <div class="about-content">
 
 I'm based in Lagos, Nigeria. I build deployment platforms, open source infrastructure tools, and security systems — and write about what actually works in production.
 
@@ -54,4 +55,5 @@ Architecture deep dives, open source tools, security tradeoffs, and production l
 - **GitHub**: [@9trocode](https://github.com/9trocode)
 - **Company**: [pipeops.io](https://pipeops.io)
 
+  </div>
 </div>

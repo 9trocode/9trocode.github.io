@@ -18,7 +18,7 @@ layout: default
     {{ content }}
   </div>
 
-  <div class="post-share">
+  <div class="post-panel">
     <h3>Share</h3>
     <div class="share-links">
       <a href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&url={{ site.url }}{{ page.url }}" target="_blank" rel="noopener">X / Twitter</a>
@@ -27,8 +27,8 @@ layout: default
     </div>
   </div>
 
-  <div class="post-newsletter">
-    <h3>Stay in the loop</h3>
+  <div class="post-panel">
+    <h3>Newsletter</h3>
     <p>Deep dives on platform engineering, Kubernetes, and production systems. No fluff.</p>
     <form
       action="https://buttondown.com/api/emails/embed-subscribe/nitrocode"
@@ -46,7 +46,7 @@ layout: default
     </p>
   </div>
 
-  <div class="comments">
+  <div class="post-panel comments">
     <h3>Comments</h3>
     <script src="https://giscus.app/client.js"
         data-repo="9trocode/9trocode.github.io"
@@ -66,12 +66,12 @@ layout: default
   </div>
 
   <footer class="post-footer">
-    <div class="post-sponsor">
-      <p>Enjoying this? Support open source and technical writing.</p>
-      <a class="btn btn--primary" href="https://github.com/sponsors/9trocode" target="_blank" rel="noopener">Sponsor on GitHub</a>
+    <div class="post-panel post-sponsor">
+      <p>Support open source and technical writing.</p>
+      <a class="btn btn--solid" href="https://github.com/sponsors/9trocode" target="_blank" rel="noopener">Sponsor on GitHub</a>
     </div>
     <p class="post-nav-links">
-      <a href="{{ '/blog/' | relative_url }}">← All writing</a>
+      <a href="{{ '/blog/' | relative_url }}">← Writing index</a>
       ·
       <a href="{{ '/' | relative_url }}">Home</a>
       ·

@@ -20,7 +20,7 @@
     document.documentElement.setAttribute("data-theme", theme);
     var meta = document.querySelector('meta[name="theme-color"]');
     if (meta) {
-      meta.setAttribute("content", theme === "light" ? "#f5f5f7" : "#000000");
+      meta.setAttribute("content", theme === "light" ? "#f3efe6" : "#0c0b0a");
     }
     var btn = document.getElementById("theme-toggle");
     if (btn) {
@@ -29,7 +29,6 @@
         theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
       );
     }
-    // Giscus theme sync
     var iframe = document.querySelector("iframe.giscus-frame");
     if (iframe && iframe.contentWindow) {
       iframe.contentWindow.postMessage(
@@ -43,7 +42,6 @@
     }
   }
 
-  // Apply ASAP (also run from head snippet for FOUC prevention)
   applyTheme(currentTheme());
 
   function toggle() {
