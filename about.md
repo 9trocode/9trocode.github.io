@@ -60,6 +60,10 @@ image: /assets/images/nitrocode-og-v2.png
 
     <p><a href="/blog/">All writing →</a></p>
 
+    <h2>Off the clock</h2>
+
+    <p>When I'm not in production logs, I'm usually somewhere in the Grand Line. <em>One Piece</em> is comfort food. It has nothing to do with multi-tenant isolation. Or everything, if you squint.</p>
+
     <h2>Connect</h2>
 
     <ul>

@@ -11,6 +11,9 @@
 <!-- Primary SEO (complements jekyll-seo-tag) -->
 <meta name="description" content="{{ page_desc | xml_escape }}">
 <meta name="author" content="Alex Idowu">
+{% if page.robots %}
+<meta name="robots" content="{{ page.robots }}">
+{% endif %}
 <meta name="keywords" content="Alex Idowu, nitrocode, PipeOps, Co-founder CTO, platform engineering, cloud-native security, multi-tenant Kubernetes, multi-tenancy, NetworkPolicy, gVisor, Firecracker, agent sandboxes, Rexec, firecracker-shim, Aeon security, BuildKit, Terraform, BYOS Kubernetes agent, DevOps, SRE, Go, AWS, GCP, Azure, Lagos">
 <link rel="canonical" href="{{ page_url }}">
 

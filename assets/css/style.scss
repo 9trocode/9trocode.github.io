@@ -1200,6 +1200,18 @@ img {
   color: var(--ink-3);
 }
 
+.site-footer__wink {
+  color: var(--ink-4) !important;
+  text-decoration: none !important;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-style: italic;
+}
+
+.site-footer__wink:hover {
+  color: var(--ink-3) !important;
+}
+
 .site-footer nav {
   display: flex;
   flex-wrap: wrap;
