@@ -16,7 +16,7 @@ image: /assets/images/nitrocode-og-v2.png
   <span class="hero__title-fixed">systems.</span>
   <span class="visually-hidden">I build, operate, and ship systems.</span>
  </h1>
- <p class="hero__lede">Platforms, isolation, production. I write down what actually happened.</p>
+ <p class="hero__lede">I build platforms and isolation tools. Then I write down what actually happened.</p>
  <ul class="hero__meta">
  <li>PipeOps</li>
  <li>Igris</li>

@@ -17,7 +17,7 @@ image: /assets/images/nitrocode-og-v2.png
     <img src="/assets/images/alex-idowu.png" width="440" height="550" alt="Portrait of Alex Idowu" />
   </div>
   <div class="about-content">
-    <p>I build deployment platforms and isolation tools. I write about what actually works in production.</p>
+    <p>I build platforms and isolation tools. Then I write down what actually happened in production.</p>
 
     <h2>Work</h2>
 
