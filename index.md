@@ -16,7 +16,7 @@ image: /assets/images/nitrocode-og-v2.png
   <span class="hero__title-fixed">systems.</span>
   <span class="visually-hidden">I build, operate, and ship systems.</span>
  </h1>
- <p class="hero__lede">Hi. If you care how Kubernetes actually works - operators, shims, CSI, agents, multi-tenant isolation, sandboxes, self-hosted gateways with no public IP - pull up a chair. Field notes from production.</p>
+ <p class="hero__lede">Hi. If you care how Kubernetes actually works - operators, shims, CSI, agents, multi-tenant isolation, sandboxes, self-hosted gateways - pull up a chair. Field notes from production.</p>
  <ul class="hero__meta">
  <li>PipeOps</li>
  <li>K8s Agent</li>
