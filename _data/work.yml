@@ -14,6 +14,9 @@
   tags: [platform, kubernetes, multi-cloud]
 
 # --- Senior / lead roles (not early-career) ---
+# Timeline refined from public aggregators (RocketReach/F6S snippets) + user confirm.
+# LinkedIn guest view remains login-walled for full JD bullets.
+
 - name: PipeOps
   kind: Roles
   home: false
@@ -26,17 +29,29 @@
     control plane, runners, multi-tenant isolation, agents, and production Go services.
   tags: [founder, platform, kubernetes]
 
-- name: OnePipe
+- name: Flux
   kind: Roles
   home: false
-  role: Senior Software Engineer / DevOps Engineer
-  period: ~1 year
-  url: https://www.onepipe.io
+  role: Founding Member & Head of Security & SRE
+  period: 2020 - 2022
+  url: ""
+  link_label: Role
+  summary: >-
+    Founding member; Head of Security and SRE at Flux (fintech). Security posture,
+    reliability, and production operations - the DevOps surface for a financial product.
+  tags: [fintech, security, sre, founding]
+
+- name: Mkobo
+  kind: Roles
+  home: false
+  role: Engineering Manager
+  period: 2020 - 2021
+  url: https://mkobobank.com
   link_label: Company
   summary: >-
-    Senior engineering and DevOps on open-banking / fintech infrastructure
-    (platform reliability, support-facing systems, cloud operations).
-  tags: [fintech, devops, senior]
+    Engineering Manager at Mkobo Microfinance Bank: digital banking product and
+    infrastructure for a CBN-licensed MFB (app, payments, production systems).
+  tags: [fintech, banking, eng-manager]
 
 - name: Deepview
   kind: Roles
@@ -50,53 +65,41 @@
     capture across digital channels). Led engineering delivery and platform direction.
   tags: [head-of-engineering, regtech, saas]
 
-- name: Freyda
-  kind: Roles
-  home: false
-  role: Engineering / DevOps
-  period: ""
-  url: https://freyda.io
-  link_label: Company
-  summary: >-
-    Engineering and DevOps on Freyda (AI document intelligence / data automation
-    for private capital markets). Company has since been acquired by Lantern.
-  tags: [fintech, saas, acquired]
-
-- name: Mkobo
-  kind: Roles
-  home: false
-  role: Engineering / DevOps
-  period: ""
-  url: https://mkobobank.com
-  link_label: Company
-  summary: >-
-    Engineering and DevOps for Mkobo Microfinance Bank: digital banking product
-    and infrastructure for a CBN-licensed MFB (app, payments, production systems).
-  tags: [fintech, banking, devops]
-
-- name: Flux
-  kind: Roles
-  home: false
-  role: Head of Security & SRE
-  period: ""
-  url: ""
-  link_label: Role
-  summary: >-
-    Head of Security and SRE at Flux (fintech): security posture, reliability,
-    and production operations - the DevOps surface for a financial product.
-  tags: [fintech, security, sre, head-of]
-
 - name: Demz Analytics
   kind: Roles
   home: false
   role: Technical Team Lead & DevOps Engineer
-  period: Mar 2019 - Feb 2020
+  period: 2019 - 2020
   url: ""
   link_label: Role
   summary: >-
     Technical team lead and DevOps: owned delivery, infrastructure, and
     engineering practices for product work at Demz Analytics.
   tags: [team-lead, devops]
+
+- name: Freyda
+  kind: Roles
+  home: false
+  role: Technical Team Lead
+  period: 2019
+  url: https://freyda.io
+  link_label: Company
+  summary: >-
+    Technical team lead on Freyda (AI document intelligence / data automation for
+    private capital markets). Company has since been acquired by Lantern.
+  tags: [fintech, saas, team-lead, acquired]
+
+- name: OnePipe
+  kind: Roles
+  home: false
+  role: Senior Software Engineer / Tech Support / DevOps Engineer
+  period: 2018 - 2019
+  url: https://www.onepipe.io
+  link_label: Company
+  summary: >-
+    Senior engineering, tech support, and DevOps on open-banking / fintech
+    infrastructure (platform reliability, support-facing systems, cloud operations).
+  tags: [fintech, devops, senior]
 
 - name: PipeOps Kubernetes Agent
   kind: Company
