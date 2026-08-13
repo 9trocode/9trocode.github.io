@@ -16,6 +16,7 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends build-essential \
   && rm -rf /var/lib/apt/lists/*
 
+# Gemfile.lock is committed for reproducible builds (required for Docker/Railpack CI)
 COPY Gemfile Gemfile.lock ./
 RUN bundle config set --local path 'vendor/bundle' \
   && bundle config set --local without 'development test' \
