@@ -1,5 +1,7 @@
 # Work catalogue - add rows here; set home: true for homepage preview.
-# Order = display order on /work/. link_label defaults to "Link" if omitted.
+# kind: Company | Roles | Open source | Dream project | Security
+# Roles = senior/lead employment (companies as projects you shipped inside).
+# Order within each kind follows file order. link_label defaults to "Link".
 
 - name: PipeOps
   kind: Company
@@ -10,6 +12,43 @@
     Code-to-cloud deployment platform. Multi-cloud provisioning, BuildKit builds,
     Kubernetes runtime, and BYOS agents, with Go services in production.
   tags: [platform, kubernetes, multi-cloud]
+
+# --- Senior / lead roles (not early-career) ---
+- name: PipeOps
+  kind: Roles
+  home: false
+  role: Founder & CTO
+  period: 2022 - present
+  url: https://pipeops.io
+  link_label: Visit
+  summary: >-
+    Founded and lead product and engineering for a multi-cloud deployment platform:
+    control plane, runners, multi-tenant isolation, agents, and production Go services.
+  tags: [founder, platform, kubernetes]
+
+- name: OnePipe
+  kind: Roles
+  home: false
+  role: Senior Software Engineer / DevOps Engineer
+  period: ~1 year
+  url: https://www.onepipe.io
+  link_label: Company
+  summary: >-
+    Senior engineering and DevOps on open-banking / fintech infrastructure
+    (platform reliability, support-facing systems, cloud operations).
+  tags: [fintech, devops, senior]
+
+- name: Demz Analytics
+  kind: Roles
+  home: false
+  role: Technical Team Lead & DevOps Engineer
+  period: Mar 2019 - Feb 2020
+  url: ""
+  link_label: Role
+  summary: >-
+    Technical team lead and DevOps: owned delivery, infrastructure, and
+    engineering practices for product work at Demz Analytics.
+  tags: [team-lead, devops]
 
 - name: PipeOps Kubernetes Agent
   kind: Company

@@ -9,10 +9,10 @@ image: /assets/images/nitrocode-og-v2.png
 <header class="page-hero">
   <p class="eyebrow">Work</p>
   <h1>Catalogue</h1>
-  <p>Things I’ve built or shipped: company platforms, Kubernetes surface area, isolation, and open source. Growing list - not exhaustive.</p>
+  <p>Things I’ve built or shipped: products, senior/lead roles (companies as projects), Kubernetes tooling, isolation, and open source. Growing list - not exhaustive.</p>
 </header>
 
-{% assign kinds = "Company,Open source,Dream project,Security" | split: "," %}
+{% assign kinds = "Company,Roles,Open source,Dream project,Security" | split: "," %}
 {% for kind in kinds %}
   {% assign group = site.data.work | where: "kind", kind %}
   {% if group.size > 0 %}
@@ -20,15 +20,19 @@ image: /assets/images/nitrocode-og-v2.png
     <div class="block__head">
       <p class="block__num">{{ forloop.index | prepend: "0" | slice: -2, 2 }}</p>
       <div>
-        <h2 class="block__title">{{ kind }}</h2>
+        <h2 class="block__title">{% if kind == "Roles" %}Roles (senior &amp; lead){% else %}{{ kind }}{% endif %}</h2>
+        {% if kind == "Roles" %}
+        <p class="block__sub">Employers where the work was senior or lead-level. Each company is also a project context.</p>
+        {% endif %}
       </div>
     </div>
     <ul class="project-list project-list--full">
       {% for item in group %}
       <li class="project">
-        <span class="project__kind">{{ item.kind }}</span>
+        <span class="project__kind">{% if item.role %}{{ item.role }}{% else %}{{ item.kind }}{% endif %}</span>
         <div class="project__body">
           <h3>{% if item.url and item.url != "" %}<a href="{{ item.url }}"{% if item.url contains "http" %} target="_blank" rel="noopener"{% endif %}>{{ item.name }}</a>{% else %}{{ item.name }}{% endif %}</h3>
+          {% if item.period %}<p class="project__period">{{ item.period }}</p>{% endif %}
           <p>{{ item.summary }}</p>
           {% if item.tags %}
           <div class="write-tags">
