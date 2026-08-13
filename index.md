@@ -94,8 +94,8 @@ image: /assets/images/nitrocode-og-v2.png
  <a href="/blog/2024/10/31/how-pipeops-deploys">Deep dive →</a>
  </div>
  <div class="pattern">
- <strong>Multi-cloud runners</strong>
- <span>Terraform provisioning across AWS, GCP, Azure. </span>
+ <strong>Terraform multi-cloud</strong>
+ <span>One Runner: Terraform multi-cloud Kubernetes on AWS, GCP, Azure. </span>
  <a href="/blog/2024/10/31/runner-terraform-provisioning">The Runner →</a>
  </div>
  <div class="pattern">

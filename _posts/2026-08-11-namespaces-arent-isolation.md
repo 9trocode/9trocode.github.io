@@ -2,7 +2,7 @@
 layout: post
 title: "Namespaces Aren't Isolation"
 date: 2026-08-11
-description: "We tried shared Kubernetes with a namespace per customer and killed it in two weeks. This is the isolation stack that survived: Capsule, NetworkPolicy, quotas, an API proxy, and gVisor."
+description: "Multi-tenant Kubernetes isolation beyond namespaces: Capsule, default-deny NetworkPolicy, quotas, an API proxy, and gVisor. What we shipped after the first shared-cluster design failed."
 tags:
 - Kubernetes
 - Multi-tenancy
@@ -10,6 +10,7 @@ tags:
 - Platform Engineering
 - Capsule
 - gVisor
+- Multi-tenant Kubernetes
 image: /assets/images/nitrocode-og-v2.png
 ---
 
@@ -226,3 +227,10 @@ We tried shared hosts without teeth. It failed. Soft multi-tenancy only became r
 A namespace is a folder label. Isolation is the proxy, the policies, the quotas, and the runtime. If your diagrams only show green boxes labeled “Namespace,” you’re selling colocation.
 
 Write the threat model on one page, name the runtime boundary (gVisor / microVM / dedicated node), and don’t ship tenant create until the checklist above is automated.
+
+## Related writing
+
+- [How Nova Isolates Tenants](/blog/2024/11/01/nova-multitenancy) - product path for cheap shared hosting
+- [How to Safely Give AI Agents a Terminal](/blog/2026/08/11/how-to-safely-give-ai-agents-a-terminal) - same isolation mindset for untrusted agents
+- [Terraform multi-cloud Runner](/blog/2024/10/31/runner-terraform-provisioning) - provisioning clusters before tenancy matters
+- [Work catalogue](/work/)

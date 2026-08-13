@@ -2,7 +2,7 @@
 layout: post
 title: "I Built an Open Source Alternative to Fing Because Privacy Matters"
 date: 2025-11-30
-description: "Fing took the free network CLI and started shipping your home topology to the cloud. So I built OpenFing in Zig: same job, local only, no account and no subscription."
+description: "Looking for a free open source Fing alternative? OpenFing is a local-only LAN scanner in Zig - no account, no subscription, no topology upload. GitHub install in one curl."
 tags:
 - Networking
 - Privacy
@@ -10,6 +10,8 @@ tags:
 - Zig
 - CLI
 - Security
+- Fing Alternative
+image: /assets/images/nitrocode-og-v2.png
 ---
 
 **TL;DR:** Fing's CLI tool is gone, their new products require subscriptions and upload your network data to their servers. I built [OpenFing](https://github.com/9trocode/OpenFing) - a fast, privacy-first network scanner that runs entirely on your machine. No accounts, no subscriptions, no data collection.
@@ -205,9 +207,35 @@ Things I'm considering for future versions:
 - [ ] Historical tracking (see new devices since last scan)
 - [ ] Web UI option
 
+## FAQ: open source Fing alternative
+
+### Is OpenFing a free Fing alternative?
+
+Yes. OpenFing is free and open source. It does the job most people wanted from the old Fing CLI: list devices on your LAN (IP, MAC, vendor) without a paid plan.
+
+### Does OpenFing upload my network topology?
+
+No. Scans stay on your machine. No account, no cloud dashboard, no topology sync.
+
+### Where is OpenFing on GitHub?
+
+**[github.com/9trocode/OpenFing](https://github.com/9trocode/OpenFing)** - releases for macOS and Linux (x86_64 and arm64).
+
+### Is this the same as Fing Desktop / Fing Premium?
+
+No. Those products are account-based and oriented around continuous monitoring in the cloud. OpenFing is a local CLI for discovery when you need a map of *your* network, not a subscription service.
+
 ## Try It Out
 
 The code is on GitHub: **[github.com/9trocode/OpenFing](https://github.com/9trocode/OpenFing)**
 
 Star it if you find it useful. Open issues if you find bugs. PRs welcome.
+
+## Related writing
+
+If you care about **local-first** tools and isolation in general (not just home LAN maps):
+
+- [Namespaces Aren't Isolation](/blog/2026/08/11/namespaces-arent-isolation) - multi-tenant Kubernetes that actually enforces boundaries
+- [How to Safely Give AI Agents a Terminal](/blog/2026/08/11/how-to-safely-give-ai-agents-a-terminal) - sandboxes for untrusted automation
+- [Work catalogue](/work/) - other platforms and open source I ship
 

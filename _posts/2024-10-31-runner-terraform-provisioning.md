@@ -1,21 +1,25 @@
 ---
 layout: post
-title: "How the Runner Provisions Multi-Cloud Kubernetes"
+title: "Terraform Multi-Cloud Provisioning: How the Runner Builds Kubernetes on AWS, GCP, and Azure"
 date: 2024-10-31
-description: "When someone clicks Create Server, the Runner is what makes multi-cloud Kubernetes real. Terraform across AWS, GCP, and Azure, with the state fights, failures, and concurrency we hit in production."
+description: "Terraform multi-cloud in production: one Go Runner provisions Kubernetes across AWS, GCP, and Azure - state locking, concurrency, provider quirks, and failures we hit shipping real clusters."
 tags:
 - Terraform
+- Multi-cloud
 - Infrastructure
 - PipeOps
 - AWS
 - GCP
 - Azure
 - Kubernetes
+image: /assets/images/nitrocode-og-v2.png
 ---
 
-The Runner is the workhorse of PipeOps. When someone clicks "Create Server," the Runner is what actually makes it happen.
+**Terraform multi-cloud** sounds clean on a slide. In production it is provider APIs, state races, and 10-15 minute cluster creates that still have to feel reliable to the user.
 
-It's a Go service that provisions infrastructure across multiple cloud providers, manages state, handles failures, and streams logs back in real-time. The same Runner also handles [application deployments](/2024/10/31/how-pipeops-deploys.html) once infrastructure is provisioned.
+The Runner is the workhorse of PipeOps. When someone clicks "Create Server," the Runner is what actually makes multi-cloud Kubernetes real: Terraform across AWS, GCP, Azure (and lighter paths for DO/Linode), managed state, failures, and live logs.
+
+It's a Go service that provisions infrastructure across multiple cloud providers, manages state, handles failures, and streams logs back in real-time. The same Runner also handles [application deployments](/blog/2024/10/31/how-pipeops-deploys) once infrastructure is provisioned.
 
 ## The Flow
 
@@ -179,3 +183,20 @@ Working on:
 The Runner evolved from "provision clusters" to handling all infrastructure operations. Updates, scaling, configuration changes, teardowns - all go through the Runner now.
 
 These infrastructure patterns represent two years of production learnings, edge cases, and optimizations across multiple cloud providers.
+
+## FAQ: Terraform multi-cloud
+
+### How do you do Terraform multi-cloud for Kubernetes?
+
+One Runner service executes provider-specific Terraform modules (EKS, GKE, AKS, etc.) with a shared job queue, remote state, and the same API surface for “create / update / destroy cluster.” Customers do not write the Terraform; the platform injects validated variables.
+
+### Why not one giant multi-cloud module?
+
+Provider quirks win. AWS, GCP, and Azure disagree on networking, IAM, and timing. Separate modules behind one orchestrator keep failures local and logs readable.
+
+### Related writing
+
+- [How PipeOps Deploys](/blog/2024/10/31/how-pipeops-deploys) - BuildKit to Kubernetes after the cluster exists
+- [The PipeOps Agent](/blog/2024/11/01/pipeops-agent-installer) - BYOS path onto metal or a VM
+- [Namespaces Aren't Isolation](/blog/2026/08/11/namespaces-arent-isolation) - multi-tenant isolation once many customers share a pool
+

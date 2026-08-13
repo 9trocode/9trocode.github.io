@@ -2,7 +2,7 @@
 layout: post
 title: "How to Safely Give AI Agents a Terminal"
 date: 2026-08-11
-description: "AI agents need a shell to be useful. Giving them yours is a bad idea. Here is how I isolate untrusted tool calls in disposable, gVisor-backed terminals with Rexec."
+description: "Sandbox AI coding agents: disposable Linux terminals with gVisor (runsc), network isolation, and hard resource limits - not system prompts. Practical isolation with Rexec."
 tags:
 - Agents
 - Security
@@ -10,6 +10,7 @@ tags:
 - Rexec
 - Open Source
 - Platform Engineering
+- gVisor
 image: /assets/images/nitrocode-og-v2.png
 ---
 
@@ -218,3 +219,11 @@ If you’re wiring agents into your company this quarter:
 Agent sandboxes fail when teams treat them as a prompt-engineering problem. They’re an isolation and lifecycle problem.
 
 I built Rexec because I needed real multi-machine CLI testing, then watched agent workflows force the security model into the open. Disposable, network-isolated, **gVisor-backed** terminals with hard limits and API-driven create/delete are a better default than trusting the model on a precious machine. Copy the pattern even if you never run our compose file. You can wire the same idea with Kubernetes Jobs, RuntimeClass, Firecracker, or a cloud sandbox API, as long as `local shell == trusted` is off the table.
+
+## Related writing
+
+- [Rexec: The Terminal Control Room](/blog/2026/02/27/rexec-terminal-control-room) - how the product started
+- [Namespaces Aren't Isolation](/blog/2026/08/11/namespaces-arent-isolation) - multi-tenant Kubernetes with gVisor, not folder labels
+- [firecracker-shim](https://github.com/PipeOpsHQ/firecracker-shim) - when you want microVMs under Kubernetes pods
+- [Work catalogue](/work/) - platforms and isolation work in one place
+
