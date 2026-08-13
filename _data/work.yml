@@ -34,8 +34,8 @@
   home: false
   role: Founding Member & Head of Security & SRE
   period: 2020 - 2022
-  url: ""
-  link_label: Role
+  url: https://iflux.app/
+  link_label: Company
   summary: >-
     Founding member; Head of Security and SRE at Flux (fintech). Security posture,
     reliability, and production operations - the DevOps surface for a financial product.
