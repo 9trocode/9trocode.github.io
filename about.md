@@ -17,7 +17,7 @@ image: /assets/images/nitrocode-og-v2.png
     <img src="/assets/images/alex-idowu.png" width="440" height="550" alt="Portrait of Alex Idowu" />
   </div>
   <div class="about-content">
-    <p>Hi. If you care how platforms, sandboxes, and multi-tenant isolation actually work - pull up a chair. Field notes from production.</p>
+    <p>Hi. If you care how Kubernetes actually works - operators, shims, CSI, agents, multi-tenant isolation, sandboxes, self-hosted gateways with no public IP - pull up a chair. Field notes from production.</p>
 
     <h2>Work</h2>
 

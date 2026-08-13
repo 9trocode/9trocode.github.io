@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Alex Idowu
-description: Founder & CTO at PipeOps in Lagos. Platforms, multi-tenant isolation, agent sandboxes, and notes from production.
+description: Founder & CTO at PipeOps in Lagos. Kubernetes platforms, operators, agents, shims, and field notes from production.
 image: /assets/images/nitrocode-og-v2.png
 ---
 
@@ -16,7 +16,7 @@ image: /assets/images/nitrocode-og-v2.png
   <span class="hero__title-fixed">systems.</span>
   <span class="visually-hidden">I build, operate, and ship systems.</span>
  </h1>
- <p class="hero__lede">Hi. If you care how platforms, sandboxes, and multi-tenant isolation actually work - pull up a chair. Field notes from production.</p>
+ <p class="hero__lede">Hi. If you care how Kubernetes actually works - operators, shims, CSI, agents, multi-tenant isolation, sandboxes, self-hosted gateways with no public IP - pull up a chair. Field notes from production.</p>
  <ul class="hero__meta">
  <li>PipeOps</li>
  <li>K8s Agent</li>
@@ -45,10 +45,10 @@ image: /assets/images/nitrocode-og-v2.png
  <p class="block__num">01 - Work</p>
  <div>
  <h2 class="block__title">What I’m building</h2>
- <p class="block__sub">Company product, a long-running personal agent dream, security systems, and isolation tooling.</p>
+ <p class="block__sub">Platforms, Kubernetes runtime surface, isolation, and the longer personal builds.</p>
  </div>
  </div>
- <ul class="project-list">
+ <ul class="project-list" id="project-list" data-preview="4">
  <li class="project">
  <span class="project__kind">Company</span>
  <div class="project__body">
@@ -106,6 +106,11 @@ image: /assets/images/nitrocode-og-v2.png
  <a class="project__go" href="https://github.com/9trocode/OpenFing" target="_blank" rel="noopener">Repo ↗</a>
  </li>
  </ul>
+ <p class="project-list__more">
+ <button type="button" class="btn btn--ghost" id="project-list-toggle" aria-expanded="false" aria-controls="project-list" hidden>
+  Show more
+ </button>
+ </p>
 </section>
 
 <section class="block">
