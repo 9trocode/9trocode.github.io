@@ -50,6 +50,18 @@
     capture across digital channels). Led engineering delivery and platform direction.
   tags: [head-of-engineering, regtech, saas]
 
+- name: Freyda
+  kind: Roles
+  home: false
+  role: Engineering / DevOps
+  period: ""
+  url: https://freyda.io
+  link_label: Company
+  summary: >-
+    Engineering and DevOps on Freyda (AI document intelligence / data automation
+    for private capital markets). Company has since been acquired by Lantern.
+  tags: [fintech, saas, acquired]
+
 - name: Mkobo
   kind: Roles
   home: false
