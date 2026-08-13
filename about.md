@@ -17,7 +17,7 @@ image: /assets/images/nitrocode-og-v2.png
     <img src="/assets/images/alex-idowu.png" width="440" height="550" alt="Portrait of Alex Idowu" />
   </div>
   <div class="about-content">
-    <p>I build platforms and isolation tools for production: multi-tenant systems, agent sandboxes, deploy infrastructure that has to stay up. When something is worth documenting, I write it down here.</p>
+    <p>Hi. I build platforms and isolation tools for production: multi-tenant systems, agent sandboxes, deploy infrastructure that has to stay up. If that sounds like your kind of problem, pull up a chair - I write down what actually happened.</p>
 
     <h2>Work</h2>
 
