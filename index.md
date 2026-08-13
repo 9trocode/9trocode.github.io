@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Alex Idowu - Build, secure, and run systems
-description: Founder & CTO at PipeOps. Platforms, agent sandboxes, and production isolation - plus notes on what actually worked.
+title: Alex Idowu - Platforms, isolation, production systems
+description: Founder & CTO at PipeOps. Deploy platforms, agent sandboxes, multi-tenant isolation - and field notes from production.
 image: /assets/images/nitrocode-og-v2.png
 ---
 
@@ -16,7 +16,7 @@ image: /assets/images/nitrocode-og-v2.png
   <span class="hero__title-fixed">systems.</span>
   <span class="visually-hidden">I build, operate, and ship systems.</span>
  </h1>
- <p class="hero__lede">Platforms and isolation tools for production. Then notes on what held up.</p>
+ <p class="hero__lede">Deploy platforms, agent sandboxes, multi-tenant isolation. Field notes from production.</p>
  <ul class="hero__meta">
  <li>PipeOps</li>
  <li>Igris</li>

@@ -9,7 +9,7 @@ image: /assets/images/nitrocode-og-v2.png
 <header class="page-hero">
   <p class="eyebrow">About</p>
   <h1>Alex Idowu</h1>
-  <p>Engineer and founder across development, security, and operations. I build systems that have to ship, stay secure, and stay up.</p>
+  <p>Founder &amp; CTO at PipeOps. Deploy platforms, isolation tooling, and field notes from production.</p>
 </header>
 
 <div class="about-layout">

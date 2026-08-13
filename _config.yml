@@ -1,7 +1,7 @@
 title: Alex Idowu
 description: >-
-  Founder & CTO at PipeOps. Software, security, and operations: products,
-  open source, and production systems. Writing by Alex Idowu.
+  Founder & CTO at PipeOps. Deploy platforms, agent sandboxes, multi-tenant
+  isolation, and field notes from production.
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
@@ -17,7 +17,7 @@ baseurl: ""
 
 # SEO
 lang: en-US
-tagline: Build · Secure · Operate
+tagline: Build · Operate · Ship
 logo: /assets/images/nitrocode-og-v2.png
 
 twitter:
