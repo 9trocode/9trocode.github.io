@@ -19,6 +19,7 @@ image: /assets/images/nitrocode-og-v2.png
  <p class="hero__lede">Hi. If you care how platforms, sandboxes, and multi-tenant isolation actually work - pull up a chair. Field notes from production.</p>
  <ul class="hero__meta">
  <li>PipeOps</li>
+ <li>K8s Agent</li>
  <li>Rexec</li>
  <li>firecracker-shim</li>
  <li>Igris</li>

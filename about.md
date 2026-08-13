@@ -33,7 +33,8 @@ image: /assets/images/nitrocode-og-v2.png
       <li>Cloud infrastructure (AWS, Azure, GCP)</li>
       <li>Infrastructure as code (Terraform, CloudFormation)</li>
       <li>Container orchestration (Kubernetes, Docker, K3s, BuildKit)</li>
-      <li>CI/CD pipelines, platform engineering, and multi-tenant isolation</li>
+      <li>Runtime isolation (gVisor, Firecracker microVMs, multi-tenant control planes)</li>
+      <li>CI/CD pipelines, platform engineering, and BYOS agents</li>
       <li>Systems and tooling in Go, Python, TypeScript, and Zig</li>
     </ul>
 
@@ -42,9 +43,10 @@ image: /assets/images/nitrocode-og-v2.png
     <p>Active builder across 160+ public repositories. Selected work:</p>
 
     <ul>
-      <li><a href="https://github.com/9trocode/Igris">Igris</a> - voice-only personal agent (Go brain, SwiftUI bodies); OAU 2014/15 lineage</li>
+      <li><a href="https://agents.pipeops.io/">PipeOps Kubernetes Agent</a> - BYOS agent: VM to managed K8s deploy target (<a href="https://github.com/PipeOpsHQ/pipeops-k8-agent">pipeops-k8-agent</a>)</li>
       <li><a href="https://github.com/PipeOpsHQ/Rexec">Rexec</a> - terminal control room / Terminal-as-a-Service</li>
       <li><a href="https://github.com/PipeOpsHQ/firecracker-shim">firecracker-shim</a> - containerd shim v2 for Kubernetes pods in Firecracker microVMs</li>
+      <li><a href="https://github.com/9trocode/Igris">Igris</a> - voice-only personal agent (Go brain, SwiftUI bodies); OAU 2014/15 lineage</li>
       <li><a href="https://github.com/9trocode/OpenFing">OpenFing</a> - privacy-first network scanner in Zig</li>
       <li>Self-hosted observability experiments and other infra utilities</li>
     </ul>
@@ -62,6 +64,7 @@ image: /assets/images/nitrocode-og-v2.png
       <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/nitrocode/">linkedin.com/in/nitrocode</a></li>
       <li><strong>GitHub</strong>: <a href="https://github.com/9trocode">@9trocode</a></li>
       <li><strong>Company</strong>: <a href="https://pipeops.io">pipeops.io</a></li>
+      <li><strong>Agent docs</strong>: <a href="https://agents.pipeops.io/">agents.pipeops.io</a></li>
     </ul>
   </div>
 </div>
