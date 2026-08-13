@@ -20,14 +20,14 @@
 - name: PipeOps
   kind: Roles
   home: false
-  role: Founder & CTO
+  role: Co-founder & CTO
   period: 2022 - present
   url: https://pipeops.io
   link_label: Visit
   summary: >-
-    Founded and lead product and engineering for a multi-cloud deployment platform:
+    Co-founded and lead product and engineering for a multi-cloud deployment platform:
     control plane, runners, multi-tenant isolation, agents, and production Go services.
-  tags: [founder, platform, kubernetes]
+  tags: [co-founder, platform, kubernetes]
 
 - name: Flux
   kind: Roles

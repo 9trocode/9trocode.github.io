@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Alex Idowu
-description: Founder & CTO at PipeOps in Lagos. Kubernetes platforms, operators, agents, shims, and field notes from production.
+description: Co-founder & CTO at PipeOps in Lagos. Kubernetes platforms, operators, agents, shims, and field notes from production.
 image: /assets/images/nitrocode-og-v2.png
 ---
 
 <section class="hero">
  <div class="hero__copy">
- <p class="hero__index">Founder &amp; CTO · Lagos</p>
+ <p class="hero__index">Co-founder &amp; CTO · Lagos</p>
  <h1 class="hero__title">
   <span class="hero__title-fixed">I</span>
   <span class="hero__verb-slot" aria-hidden="true">

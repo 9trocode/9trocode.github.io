@@ -2,14 +2,14 @@
 layout: default
 title: About
 permalink: /about/
-description: Founder & CTO at PipeOps in Lagos. Platforms, multi-tenant isolation, agent sandboxes, open source, and notes from production.
+description: Co-founder & CTO at PipeOps in Lagos. Platforms, multi-tenant isolation, agent sandboxes, open source, and notes from production.
 image: /assets/images/nitrocode-og-v2.png
 ---
 
 <header class="page-hero">
   <p class="eyebrow">About</p>
   <h1>Alex Idowu</h1>
-  <p>Founder &amp; CTO at PipeOps. Lagos.</p>
+  <p>Co-founder &amp; CTO at PipeOps. Lagos.</p>
 </header>
 
 <div class="about-layout">
@@ -21,7 +21,7 @@ image: /assets/images/nitrocode-og-v2.png
 
     <h2>Work</h2>
 
-    <p>I'm <strong>Founder &amp; CTO at <a href="https://pipeops.io">PipeOps</a></strong> (<a href="https://github.com/PipeOpsHQ">PipeOpsHQ</a>), a cloud deployment platform that abstracts DevOps complexity so teams can go from code to cloud in minutes. We focus on multi-cloud provisioning, Kubernetes-based runtime, and making platform engineering usable for startups and engineers who shouldn't need a full DevOps team. Part of that surface is the <strong><a href="https://agents.pipeops.io/">PipeOps Kubernetes Agent</a></strong> - BYOS install that turns a VM into a managed deploy target over an outbound tunnel.</p>
+    <p>I'm <strong>Co-founder &amp; CTO at <a href="https://pipeops.io">PipeOps</a></strong> (<a href="https://github.com/PipeOpsHQ">PipeOpsHQ</a>), a cloud deployment platform that abstracts DevOps complexity so teams can go from code to cloud in minutes. We focus on multi-cloud provisioning, Kubernetes-based runtime, and making platform engineering usable for startups and engineers who shouldn't need a full DevOps team. Part of that surface is the <strong><a href="https://agents.pipeops.io/">PipeOps Kubernetes Agent</a></strong> - BYOS install that turns a VM into a managed deploy target over an outbound tunnel.</p>
 
     <p>Before PipeOps I held senior and lead roles (not early-career titles): <strong>Founding Member &amp; Head of Security &amp; SRE</strong> at Flux (fintech, 2020-2022), <strong>Engineering Manager</strong> at <a href="https://mkobobank.com">Mkobo</a> (2020-2021), <strong>Head of Engineering</strong> at Deepview, <strong>Technical Team Lead &amp; DevOps</strong> at Demz Analytics, <strong>Technical Team Lead</strong> at <a href="https://freyda.io">Freyda</a> (acquired by Lantern), and <strong>Senior Software Engineer / DevOps</strong> at <a href="https://www.onepipe.io">OnePipe</a>. Full catalogue on <a href="/work/">Work</a>.</p>
 

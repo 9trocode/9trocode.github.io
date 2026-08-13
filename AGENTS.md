@@ -48,7 +48,7 @@ Private agent prompts and author dossiers live under local `agents/` (gitignored
 |---|---|
 | Who | Alex Idowu - Cloud Infrastructure & Software Engineer, Lagos |
 | Handles | X/LinkedIn `@nitrocode` · GitHub `@9trocode` |
-| Work | Founder & CTO, [PipeOps](https://pipeops.io); building **Aeon** (security) |
+| Work | Co-founder & CTO, [PipeOps](https://pipeops.io); building **Aeon** (security) |
 | Stack | AWS/Azure/GCP, Terraform, Kubernetes/K3s, BuildKit, Go, Python, TypeScript, Zig |
 | Themes | Platform engineering, multi-tenant K8s, deploy pipelines, BYOS agents, OSS tools, privacy/security |
 | Voice | First person, engineer-to-engineer, problem→fix, dry humor, no hype |
