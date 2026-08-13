@@ -739,18 +739,26 @@ img {
   border-top: 1px solid var(--line);
 }
 
-/* Collapsed preview: first N rows visible (N from data-preview, default 4) */
-.project-list:not(.is-expanded) .project:nth-child(n + 5) {
-  display: none;
-}
-
 .project-list__more {
   margin: 1.25rem 0 0 !important;
   padding: 0 !important;
 }
 
-.project-list__more .btn {
-  min-width: 10rem;
+.project-list--full .project__body .write-tags {
+  margin-top: 0.65rem;
+}
+
+.work-group {
+  margin-bottom: 2.5rem;
+}
+
+.work-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 2rem 0 0 !important;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
 }
 
 .project {

@@ -1,0 +1,124 @@
+# Work catalogue - add rows here; set home: true for homepage preview.
+# Order = display order on /work/. link_label defaults to "Link" if omitted.
+
+- name: PipeOps
+  kind: Company
+  home: true
+  url: https://pipeops.io
+  link_label: Visit
+  summary: >-
+    Code-to-cloud deployment platform. Multi-cloud provisioning, BuildKit builds,
+    Kubernetes runtime, and BYOS agents, with Go services in production.
+  tags: [platform, kubernetes, multi-cloud]
+
+- name: PipeOps Kubernetes Agent
+  kind: Company
+  home: true
+  url: https://agents.pipeops.io/
+  link_label: Docs
+  repo: https://github.com/PipeOpsHQ/pipeops-k8-agent
+  summary: >-
+    BYOS agent that turns a VM into a managed Kubernetes deploy target. K3s setup,
+    outbound WebSocket tunnel, yamux TCP/UDP, and gateway proxy without opening
+    inbound admin ports.
+  tags: [kubernetes, agents, byos]
+
+- name: Rexec
+  kind: Open source
+  home: true
+  url: https://github.com/PipeOpsHQ/Rexec
+  link_label: Repo
+  summary: >-
+    Terminal control room for disposable cloud terminals, outbound BYOS agents,
+    session recording, and agent sandboxes for CLIs and AI tools.
+  tags: [sandboxes, terminals, gVisor]
+
+- name: firecracker-shim
+  kind: Open source
+  home: true
+  url: https://github.com/PipeOpsHQ/firecracker-shim
+  link_label: Repo
+  summary: >-
+    containerd shim v2 that runs Kubernetes pod sandboxes inside Firecracker
+    microVMs. RuntimeClass path, VM pooling, standard OCI images and CNI.
+  tags: [kubernetes, firecracker, runtime]
+
+- name: Igris
+  kind: Dream project
+  home: false
+  url: https://github.com/9trocode/Igris
+  link_label: Repo
+  summary: >-
+    Voice-only personal AI agent (Go brain, Apple clients). Grown-up return of a
+    2014/15 OAU prototype: sci-fi UI, wake word, desktop actions.
+  tags: [agents, voice, go]
+
+- name: Aeon
+  kind: Security
+  home: false
+  url: ""
+  link_label: In progress
+  summary: >-
+    Security software for high-trust orgs: discovery, remediation, policy,
+    compliance across cloud, on-prem, and hybrid.
+  tags: [security, compliance]
+
+- name: OpenFing
+  kind: Open source
+  home: false
+  url: https://github.com/9trocode/OpenFing
+  link_label: Repo
+  summary: >-
+    Privacy-first network scanner in Zig. Scans stay on your machine: no accounts
+    and no topology upload.
+  tags: [zig, privacy, networking]
+
+- name: Pulse
+  kind: Open source
+  home: false
+  url: https://github.com/9trocode/Pulse
+  link_label: Repo
+  summary: >-
+    Self-hosted error monitoring (Go + Svelte + SQLite). Own your error data
+    without a SaaS tax.
+  tags: [observability, go, self-hosted]
+
+- name: pipehook
+  kind: Open source
+  home: false
+  url: https://github.com/PipeOpsHQ/pipehook
+  link_label: Repo
+  summary: >-
+    Webhook inspector (Go + SQLite). Capture, inspect, and replay webhook traffic
+    while debugging integrations.
+  tags: [webhooks, go, tooling]
+
+- name: releaseboard
+  kind: Open source
+  home: false
+  url: https://github.com/9trocode/releaseboard
+  link_label: Repo
+  summary: >-
+    Multi-repo changelog aggregator. One place to see what shipped across
+    related repositories.
+  tags: [devtools, releases]
+
+- name: copyit
+  kind: Open source
+  home: false
+  url: https://github.com/9trocode/copyit
+  link_label: Repo
+  summary: >-
+    Paste once, retrieve via curl. Optional secret lock for quick share-and-fetch
+    snippets.
+  tags: [cli, tooling]
+
+- name: node_storage_manager
+  kind: Open source
+  home: false
+  url: https://github.com/9trocode/node_storage_manager
+  link_label: Repo
+  summary: >-
+    One API for object storage and filesystem across S3, GCS, and local disk
+    for Node projects.
+  tags: [node, storage]

@@ -45,71 +45,28 @@ image: /assets/images/nitrocode-og-v2.png
  <p class="block__num">01 - Work</p>
  <div>
  <h2 class="block__title">What I’m building</h2>
- <p class="block__sub">Platforms, Kubernetes runtime surface, isolation, and the longer personal builds.</p>
+ <p class="block__sub">A short cut of the catalogue. Full list on <a href="/work/">Work</a>.</p>
  </div>
  </div>
- <ul class="project-list" id="project-list" data-preview="4">
+ <ul class="project-list">
+ {% assign home_work = site.data.work | where: "home", true %}
+ {% for item in home_work %}
  <li class="project">
- <span class="project__kind">Company</span>
+ <span class="project__kind">{{ item.kind }}</span>
  <div class="project__body">
- <h3><a href="https://pipeops.io">PipeOps</a></h3>
- <p>Code-to-cloud deployment platform. Multi-cloud provisioning, BuildKit builds, Kubernetes runtime, and BYOS agents, with Go services in production.</p>
+ <h3>{% if item.url and item.url != "" %}<a href="{{ item.url }}"{% if item.url contains "http" %} target="_blank" rel="noopener"{% endif %}>{{ item.name }}</a>{% else %}{{ item.name }}{% endif %}</h3>
+ <p>{{ item.summary }}</p>
  </div>
- <a class="project__go" href="https://pipeops.io" target="_blank" rel="noopener">Visit ↗</a>
+ {% if item.url and item.url != "" %}
+ <a class="project__go" href="{{ item.url }}"{% if item.url contains "http" %} target="_blank" rel="noopener"{% endif %}>{{ item.link_label | default: "Link" }} ↗</a>
+ {% else %}
+ <span class="project__go">{{ item.link_label | default: "In progress" }}</span>
+ {% endif %}
  </li>
- <li class="project">
- <span class="project__kind">Company</span>
- <div class="project__body">
- <h3><a href="https://agents.pipeops.io/">PipeOps Kubernetes Agent</a></h3>
- <p>BYOS agent that turns a VM into a managed Kubernetes deploy target. K3s setup, outbound WebSocket tunnel, yamux TCP/UDP, and gateway proxy without opening inbound admin ports.</p>
- </div>
- <a class="project__go" href="https://agents.pipeops.io/" target="_blank" rel="noopener">Docs ↗</a>
- </li>
- <li class="project">
- <span class="project__kind">Open source</span>
- <div class="project__body">
- <h3><a href="https://github.com/PipeOpsHQ/Rexec">Rexec</a></h3>
- <p>Terminal control room for disposable cloud terminals, outbound BYOS agents, session recording, and agent sandboxes for CLIs and AI tools.</p>
- </div>
- <a class="project__go" href="https://github.com/PipeOpsHQ/Rexec" target="_blank" rel="noopener">Repo ↗</a>
- </li>
- <li class="project">
- <span class="project__kind">Open source</span>
- <div class="project__body">
- <h3><a href="https://github.com/PipeOpsHQ/firecracker-shim">firecracker-shim</a></h3>
- <p>containerd shim v2 that runs Kubernetes pod sandboxes inside Firecracker microVMs. RuntimeClass path, VM pooling, standard OCI images and CNI - stronger isolation without Kata-sized complexity.</p>
- </div>
- <a class="project__go" href="https://github.com/PipeOpsHQ/firecracker-shim" target="_blank" rel="noopener">Repo ↗</a>
- </li>
- <li class="project">
- <span class="project__kind">Dream project</span>
- <div class="project__body">
- <h3><a href="https://github.com/9trocode/Igris">Igris</a></h3>
- <p>Voice-only personal AI agent (Go brain, Apple clients, arc-reactor UI). Grown-up return of a 2014/15 OAU prototype: custom sci-fi UI, a “hey Jarvis” wake word, and desktop actions like open app or shut down PC.</p>
- </div>
- <a class="project__go" href="https://github.com/9trocode/Igris" target="_blank" rel="noopener">Repo ↗</a>
- </li>
- <li class="project">
- <span class="project__kind">Security</span>
- <div class="project__body">
- <h3>Aeon</h3>
- <p>Security software for high-trust orgs: discovery, remediation, policy, compliance across cloud, on-prem, and hybrid.</p>
- </div>
- <span class="project__go">In progress</span>
- </li>
- <li class="project">
- <span class="project__kind">Open source</span>
- <div class="project__body">
- <h3><a href="https://github.com/9trocode/OpenFing">OpenFing</a></h3>
- <p>Privacy-first network scanner in Zig. Scans stay on your machine: no accounts and no topology upload.</p>
- </div>
- <a class="project__go" href="https://github.com/9trocode/OpenFing" target="_blank" rel="noopener">Repo ↗</a>
- </li>
+ {% endfor %}
  </ul>
  <p class="project-list__more">
- <button type="button" class="btn btn--ghost" id="project-list-toggle" aria-expanded="false" aria-controls="project-list" hidden>
-  Show more
- </button>
+ <a class="btn btn--ghost" href="{{ '/work/' | relative_url }}">See full catalogue →</a>
  </p>
 </section>
 

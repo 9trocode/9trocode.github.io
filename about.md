@@ -38,18 +38,19 @@ image: /assets/images/nitrocode-og-v2.png
       <li>Systems and tooling in Go, Python, TypeScript, and Zig</li>
     </ul>
 
-    <h2>Open source</h2>
+    <h2>Open source &amp; catalogue</h2>
 
-    <p>Active builder across 160+ public repositories. Selected work:</p>
+    <p>Active builder across 160+ public repositories. Selected highlights below. Full growing list on <a href="/work/">Work</a>.</p>
 
     <ul>
-      <li><a href="https://agents.pipeops.io/">PipeOps Kubernetes Agent</a> - BYOS agent: VM to managed K8s deploy target (<a href="https://github.com/PipeOpsHQ/pipeops-k8-agent">pipeops-k8-agent</a>)</li>
+      <li><a href="https://agents.pipeops.io/">PipeOps Kubernetes Agent</a> - BYOS agent: VM to managed K8s deploy target</li>
       <li><a href="https://github.com/PipeOpsHQ/Rexec">Rexec</a> - terminal control room / Terminal-as-a-Service</li>
       <li><a href="https://github.com/PipeOpsHQ/firecracker-shim">firecracker-shim</a> - containerd shim v2 for Kubernetes pods in Firecracker microVMs</li>
-      <li><a href="https://github.com/9trocode/Igris">Igris</a> - voice-only personal agent (Go brain, SwiftUI bodies); OAU 2014/15 lineage</li>
+      <li><a href="https://github.com/9trocode/Igris">Igris</a> - voice-only personal agent (Go brain, SwiftUI bodies)</li>
       <li><a href="https://github.com/9trocode/OpenFing">OpenFing</a> - privacy-first network scanner in Zig</li>
-      <li>Self-hosted observability experiments and other infra utilities</li>
     </ul>
+
+    <p><a href="/work/">See full catalogue →</a></p>
 
     <h2>Writing</h2>
 
