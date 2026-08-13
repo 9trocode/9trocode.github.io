@@ -1,7 +1,7 @@
 title: Alex Idowu
 description: >-
-  Founder & CTO at PipeOps. Deploy platforms, agent sandboxes, multi-tenant
-  isolation, and field notes from production.
+  Field notes for systems nerds: platforms, isolation, sandboxes, and
+  production. Writing by Alex Idowu in Lagos.
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
