@@ -9,7 +9,7 @@ image: /assets/images/nitrocode-og-v2.png
 <header class="page-hero">
   <p class="eyebrow">Work</p>
   <h1>Catalogue</h1>
-  <p>Things I’ve built or shipped: products, senior/lead roles (companies as projects), Kubernetes tooling, isolation, and open source. Growing list - not exhaustive.</p>
+  <p>Products, teams I’ve led, Kubernetes tooling, isolation, and open source. Growing list - not exhaustive.</p>
 </header>
 
 {% assign kinds = "Company,Roles,Open source,Dream project,Security" | split: "," %}
@@ -20,9 +20,9 @@ image: /assets/images/nitrocode-og-v2.png
     <div class="block__head">
       <p class="block__num">{{ forloop.index | prepend: "0" | slice: -2, 2 }}</p>
       <div>
-        <h2 class="block__title">{% if kind == "Roles" %}Roles (senior &amp; lead){% else %}{{ kind }}{% endif %}</h2>
+        <h2 class="block__title">{% if kind == "Roles" %}Roles{% else %}{{ kind }}{% endif %}</h2>
         {% if kind == "Roles" %}
-        <p class="block__sub">Employers where the work was senior or lead-level. Each company is also a project context.</p>
+        <p class="block__sub">Places I’ve worked - what I owned and shipped.</p>
         {% endif %}
       </div>
     </div>
