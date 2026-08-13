@@ -9,7 +9,7 @@ image: /assets/images/nitrocode-og-v2.png
 <header class="page-hero">
   <p class="eyebrow">Work</p>
   <h1>Catalogue</h1>
-  <p>Products, teams I’ve led, Kubernetes tooling, isolation, and open source. Growing list - not exhaustive.</p>
+  <p>Things I’ve built or shipped: products, companies I’ve worked at, Kubernetes tooling, isolation, and open source. Growing list - not exhaustive.</p>
 </header>
 
 {% assign kinds = "Company,Roles,Open source,Dream project,Security" | split: "," %}
