@@ -16,7 +16,7 @@ image: /assets/images/nitrocode-og-v2.png
   <span class="hero__title-fixed">systems.</span>
   <span class="visually-hidden">I build, operate, and ship systems.</span>
  </h1>
- <p class="hero__lede">Platforms, multi-tenant isolation, agent sandboxes, deploy paths that have to stay up. If that sounds like your kind of problem, pull up a chair - I write down what actually happened.</p>
+ <p class="hero__lede">If platforms, multi-tenant isolation, agent sandboxes, and Kubernetes that has to stay up sound like your kind of problem - pull up a chair. I write down what actually happened.</p>
  <ul class="hero__meta">
  <li>PipeOps</li>
  <li>Igris</li>
