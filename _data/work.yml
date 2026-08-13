@@ -38,6 +38,41 @@
     (platform reliability, support-facing systems, cloud operations).
   tags: [fintech, devops, senior]
 
+- name: Deepview
+  kind: Roles
+  home: false
+  role: Head of Engineering
+  period: 2019 - 2020
+  url: https://deepview.com
+  link_label: Company
+  summary: >-
+    Head of Engineering for a RegTech SaaS platform (work messaging / compliance
+    capture across digital channels). Led engineering delivery and platform direction.
+  tags: [head-of-engineering, regtech, saas]
+
+- name: Mkobo
+  kind: Roles
+  home: false
+  role: Engineering / DevOps
+  period: ""
+  url: https://mkobobank.com
+  link_label: Company
+  summary: >-
+    Engineering and DevOps for Mkobo Microfinance Bank: digital banking product
+    and infrastructure for a CBN-licensed MFB (app, payments, production systems).
+  tags: [fintech, banking, devops]
+
+- name: Flux
+  kind: Roles
+  home: false
+  role: Engineering / DevOps
+  period: ""
+  url: ""
+  link_label: Role
+  summary: >-
+    Engineering and DevOps work at Flux (product and infrastructure delivery).
+  tags: [engineering, devops]
+
 - name: Demz Analytics
   kind: Roles
   home: false
