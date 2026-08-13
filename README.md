@@ -94,13 +94,16 @@ Multi-stage image: **Ruby builds Jekyll → nginx serves `_site`**. Works on Doc
 
 ### Railpack / Railway
 
-[`railpack.json`](railpack.json) configures install → `jekyll build` → serve `_site` on `$PORT`.
+[`railpack.json`](railpack.json) lets the Ruby provider install gems (with `Gemfile` present), then runs `jekyll build` and serves `_site` on `$PORT`.
+
+**Important:** Do not replace the install step with bare `bundle install` only - that drops the auto copy of `Gemfile` into `/app` and fails with `No such file or directory @ rb_sysopen - /app/Gemfile`. Keep install as `"..."` (provider defaults) or copy source before `bundle install`.
 
 ```bash
 # With Railpack CLI (optional local check)
 railpack build .
 
 # On Railway: connect this repo; Railpack reads railpack.json automatically.
+# If a Dockerfile is present, Railway may prefer it over Railpack - pick one builder per service.
 # Custom domain: set in Railway (CNAME file is for GitHub Pages only).
 ```
 
