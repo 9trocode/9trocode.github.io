@@ -19,8 +19,9 @@ image: /assets/images/nitrocode-og-v2.png
  <p class="hero__lede">Hi. If you care how platforms, sandboxes, and multi-tenant isolation actually work - pull up a chair. Field notes from production.</p>
  <ul class="hero__meta">
  <li>PipeOps</li>
- <li>Igris</li>
  <li>Rexec</li>
+ <li>firecracker-shim</li>
+ <li>Igris</li>
  <li>Aeon</li>
  </ul>
  <p class="hero__actions">
@@ -56,12 +57,12 @@ image: /assets/images/nitrocode-og-v2.png
  <a class="project__go" href="https://pipeops.io" target="_blank" rel="noopener">Visit ↗</a>
  </li>
  <li class="project">
- <span class="project__kind">Dream project</span>
+ <span class="project__kind">Company</span>
  <div class="project__body">
- <h3><a href="https://github.com/9trocode/Igris">Igris</a></h3>
- <p>Voice-only personal AI agent (Go brain, Apple clients, arc-reactor UI). Grown-up return of a 2014/15 OAU prototype: custom sci-fi UI, a “hey Jarvis” wake word, and desktop actions like open app or shut down PC.</p>
+ <h3><a href="https://agents.pipeops.io/">PipeOps Kubernetes Agent</a></h3>
+ <p>BYOS agent that turns a VM into a managed Kubernetes deploy target. K3s setup, outbound WebSocket tunnel, yamux TCP/UDP, and gateway proxy without opening inbound admin ports.</p>
  </div>
- <a class="project__go" href="https://github.com/9trocode/Igris" target="_blank" rel="noopener">Repo ↗</a>
+ <a class="project__go" href="https://agents.pipeops.io/" target="_blank" rel="noopener">Docs ↗</a>
  </li>
  <li class="project">
  <span class="project__kind">Open source</span>
@@ -70,6 +71,22 @@ image: /assets/images/nitrocode-og-v2.png
  <p>Terminal control room for disposable cloud terminals, outbound BYOS agents, session recording, and agent sandboxes for CLIs and AI tools.</p>
  </div>
  <a class="project__go" href="https://github.com/PipeOpsHQ/Rexec" target="_blank" rel="noopener">Repo ↗</a>
+ </li>
+ <li class="project">
+ <span class="project__kind">Open source</span>
+ <div class="project__body">
+ <h3><a href="https://github.com/PipeOpsHQ/firecracker-shim">firecracker-shim</a></h3>
+ <p>containerd shim v2 that runs Kubernetes pod sandboxes inside Firecracker microVMs. RuntimeClass path, VM pooling, standard OCI images and CNI - stronger isolation without Kata-sized complexity.</p>
+ </div>
+ <a class="project__go" href="https://github.com/PipeOpsHQ/firecracker-shim" target="_blank" rel="noopener">Repo ↗</a>
+ </li>
+ <li class="project">
+ <span class="project__kind">Dream project</span>
+ <div class="project__body">
+ <h3><a href="https://github.com/9trocode/Igris">Igris</a></h3>
+ <p>Voice-only personal AI agent (Go brain, Apple clients, arc-reactor UI). Grown-up return of a 2014/15 OAU prototype: custom sci-fi UI, a “hey Jarvis” wake word, and desktop actions like open app or shut down PC.</p>
+ </div>
+ <a class="project__go" href="https://github.com/9trocode/Igris" target="_blank" rel="noopener">Repo ↗</a>
  </li>
  <li class="project">
  <span class="project__kind">Security</span>

@@ -21,7 +21,7 @@ image: /assets/images/nitrocode-og-v2.png
 
     <h2>Work</h2>
 
-    <p>I'm <strong>Founder &amp; CTO at <a href="https://pipeops.io">PipeOps</a></strong> (<a href="https://github.com/PipeOpsHQ">PipeOpsHQ</a>), a cloud deployment platform that abstracts DevOps complexity so teams can go from code to cloud in minutes. We focus on multi-cloud provisioning, Kubernetes-based runtime, and making platform engineering usable for startups and engineers who shouldn't need a full DevOps team.</p>
+    <p>I'm <strong>Founder &amp; CTO at <a href="https://pipeops.io">PipeOps</a></strong> (<a href="https://github.com/PipeOpsHQ">PipeOpsHQ</a>), a cloud deployment platform that abstracts DevOps complexity so teams can go from code to cloud in minutes. We focus on multi-cloud provisioning, Kubernetes-based runtime, and making platform engineering usable for startups and engineers who shouldn't need a full DevOps team. Part of that surface is the <strong><a href="https://agents.pipeops.io/">PipeOps Kubernetes Agent</a></strong> - BYOS install that turns a VM into a managed deploy target over an outbound tunnel.</p>
 
     <p>I'm also building <strong>Aeon</strong> - security software for high-trust organizations across cloud, on-prem, and hybrid environments.</p>
 
@@ -44,8 +44,9 @@ image: /assets/images/nitrocode-og-v2.png
     <ul>
       <li><a href="https://github.com/9trocode/Igris">Igris</a> - voice-only personal agent (Go brain, SwiftUI bodies); OAU 2014/15 lineage</li>
       <li><a href="https://github.com/PipeOpsHQ/Rexec">Rexec</a> - terminal control room / Terminal-as-a-Service</li>
+      <li><a href="https://github.com/PipeOpsHQ/firecracker-shim">firecracker-shim</a> - containerd shim v2 for Kubernetes pods in Firecracker microVMs</li>
       <li><a href="https://github.com/9trocode/OpenFing">OpenFing</a> - privacy-first network scanner in Zig</li>
-      <li>Firecracker and sandbox tooling, self-hosted observability experiments, and infra utilities</li>
+      <li>Self-hosted observability experiments and other infra utilities</li>
     </ul>
 
     <h2>Writing</h2>
