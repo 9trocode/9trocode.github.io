@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Alex Idowu - Field notes on systems
-description: A quiet corner for systems nerds. Platforms, isolation, sandboxes, and notes from production - by Alex Idowu in Lagos.
+title: Alex Idowu
+description: Founder & CTO at PipeOps. Platforms, isolation, and notes from production. Lagos.
 image: /assets/images/nitrocode-og-v2.png
 ---
 
 <section class="hero">
  <div class="hero__copy">
- <p class="hero__index">Lagos · systems · open source</p>
+ <p class="hero__index">Founder &amp; CTO · Lagos</p>
  <h1 class="hero__title">
   <span class="hero__title-fixed">I</span>
   <span class="hero__verb-slot" aria-hidden="true">
@@ -16,7 +16,7 @@ image: /assets/images/nitrocode-og-v2.png
   <span class="hero__title-fixed">systems.</span>
   <span class="visually-hidden">I build, operate, and ship systems.</span>
  </h1>
- <p class="hero__lede">Hi. If you care how platforms, sandboxes, and multi-tenant isolation actually work - pull up a chair. Field notes from production, no pitch deck.</p>
+ <p class="hero__lede">Platforms, isolation, production. I write down what actually happened.</p>
  <ul class="hero__meta">
  <li>PipeOps</li>
  <li>Igris</li>
