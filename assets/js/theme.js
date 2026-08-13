@@ -68,5 +68,36 @@
           }
         });
     }
+
+    // Mobile nav
+    var header = document.querySelector(".site-header");
+    var navToggle = document.getElementById("nav-toggle");
+    var nav = document.getElementById("site-nav");
+    if (header && navToggle && nav) {
+      function setNavOpen(open) {
+        header.classList.toggle("is-nav-open", open);
+        navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+        navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        document.body.classList.toggle("nav-open", open);
+      }
+
+      navToggle.addEventListener("click", function () {
+        setNavOpen(!header.classList.contains("is-nav-open"));
+      });
+
+      nav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          setNavOpen(false);
+        });
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") setNavOpen(false);
+      });
+
+      window.addEventListener("resize", function () {
+        if (window.matchMedia("(min-width: 769px)").matches) setNavOpen(false);
+      });
+    }
   });
 })();
