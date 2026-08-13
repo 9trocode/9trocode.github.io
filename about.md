@@ -27,8 +27,6 @@ image: /assets/images/nitrocode-og-v2.png
 
     <p>I'm also building <strong>Aeon</strong> - security software for high-trust organizations across cloud, on-prem, and hybrid environments.</p>
 
-    <p>And <strong><a href="https://github.com/9trocode/Igris">Igris</a></strong> - a voice-only personal AI agent (Go server + Apple clients). It's a dream project from <strong>2014/2015 at OAU</strong>: Iron Man-inspired UI, a separate "hey Jarvis" wake word, and desktop actions (open/close apps, shut down the machine). It was ahead of what we could resource then. The stack finally caught up; I'm building the real version now.</p>
-
     <p>I've been working in technology since 2012, with a decade-plus focus on:</p>
 
     <ul>
