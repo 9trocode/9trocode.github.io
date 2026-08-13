@@ -77,13 +77,14 @@
 - name: Flux
   kind: Roles
   home: false
-  role: Engineering / DevOps
+  role: Head of Security & SRE
   period: ""
   url: ""
   link_label: Role
   summary: >-
-    Engineering and DevOps work at Flux (product and infrastructure delivery).
-  tags: [engineering, devops]
+    Head of Security and SRE at Flux (fintech): security posture, reliability,
+    and production operations - the DevOps surface for a financial product.
+  tags: [fintech, security, sre, head-of]
 
 - name: Demz Analytics
   kind: Roles
