@@ -574,11 +574,11 @@ img {
 }
 
 .hero__lede {
-  font-size: 1.08rem;
-  line-height: 1.55;
+  font-size: clamp(1.08rem, 1.5vw, 1.2rem);
+  line-height: 1.65;
   color: var(--ink-2) !important;
-  max-width: 34rem;
-  margin: 0 0 1.5rem !important;
+  max-width: 38rem;
+  margin: 0 0 1.65rem !important;
 }
 
 .hero__meta {

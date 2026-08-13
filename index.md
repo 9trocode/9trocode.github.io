@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Alex Idowu
-description: Founder & CTO at PipeOps. Platforms, isolation, and notes from production. Lagos.
+description: Founder & CTO at PipeOps in Lagos. Platforms, multi-tenant isolation, agent sandboxes, and notes from production.
 image: /assets/images/nitrocode-og-v2.png
 ---
 
@@ -16,7 +16,7 @@ image: /assets/images/nitrocode-og-v2.png
   <span class="hero__title-fixed">systems.</span>
   <span class="visually-hidden">I build, operate, and ship systems.</span>
  </h1>
- <p class="hero__lede">I build platforms and isolation tools. Then I write down what actually happened.</p>
+ <p class="hero__lede">I build platforms and isolation tools for production: multi-tenant systems, agent sandboxes, deploy infrastructure that has to stay up. When something is worth documenting, I write it down here.</p>
  <ul class="hero__meta">
  <li>PipeOps</li>
  <li>Igris</li>

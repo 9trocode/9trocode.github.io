@@ -1,7 +1,7 @@
 title: Alex Idowu
 description: >-
-  Founder & CTO at PipeOps. Platforms, isolation, and notes from production.
-  Writing by Alex Idowu in Lagos.
+  Founder & CTO at PipeOps in Lagos. Platforms, multi-tenant isolation,
+  agent sandboxes, and notes from production.
 plugins:
   - jekyll-feed
   - jekyll-seo-tag

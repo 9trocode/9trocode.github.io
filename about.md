@@ -2,14 +2,14 @@
 layout: default
 title: About
 permalink: /about/
-description: Alex Idowu, Founder & CTO at PipeOps. Platforms, isolation, open source. Lagos.
+description: Founder & CTO at PipeOps in Lagos. Platforms, multi-tenant isolation, agent sandboxes, open source, and notes from production.
 image: /assets/images/nitrocode-og-v2.png
 ---
 
 <header class="page-hero">
   <p class="eyebrow">About</p>
   <h1>Alex Idowu</h1>
-  <p>Founder &amp; CTO at PipeOps. Lagos.</p>
+  <p>Founder &amp; CTO at PipeOps. Lagos. Platforms, isolation, and production systems.</p>
 </header>
 
 <div class="about-layout">
@@ -17,7 +17,7 @@ image: /assets/images/nitrocode-og-v2.png
     <img src="/assets/images/alex-idowu.png" width="440" height="550" alt="Portrait of Alex Idowu" />
   </div>
   <div class="about-content">
-    <p>I build platforms and isolation tools. Then I write down what actually happened in production.</p>
+    <p>I build platforms and isolation tools for production: multi-tenant systems, agent sandboxes, deploy infrastructure that has to stay up. When something is worth documenting, I write it down here.</p>
 
     <h2>Work</h2>
 
