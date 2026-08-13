@@ -2,13 +2,16 @@
 layout: default
 title: Writing
 permalink: /blog/
-description: Field notes from shipping platforms and open source. Isolation, Kubernetes, deploy pipelines, and production stories written engineer to engineer.
+description: >-
+  Field notes on platform engineering and cloud-native security: multi-tenant
+  Kubernetes, agent sandboxes, gVisor, deploy pipelines, and production failure
+  modes. By Alex Idowu (Co-founder & CTO, PipeOps).
 image: /assets/images/nitrocode-og-v2.png
 ---
 
 <header class="page-hero">
  <p class="eyebrow">Writing</p>
- <h1>Index</h1>
+ <h1>Field notes</h1>
  <p>Platform engineering, cloud-native security, and production systems - architecture, tradeoffs, and failure modes.</p>
 </header>
 

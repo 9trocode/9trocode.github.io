@@ -6,15 +6,17 @@ layout: default
   <header class="post-header">
     <p class="post-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %d, %Y" }}</time>
-      {% if page.author %} · <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}
+      · <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author | default: site.author.name }}</span></span>
     </p>
     <meta itemprop="name headline" content="{{ page.title }}">
     <meta itemprop="dateModified" content="{{ page.date | date_to_xmlschema }}">
     <meta itemprop="description" content="{{ page.description | default: page.excerpt | strip_html | truncate: 160 }}">
+    <link itemprop="mainEntityOfPage" href="{{ site.url }}{{ page.url }}">
+    <link itemprop="image" href="{{ site.url }}{{ page.image | default: '/assets/images/nitrocode-og-v2.png' }}">
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <h1>{{ page.title }}</h1>
+    <h1 itemprop="headline">{{ page.title }}</h1>
     {{ content }}
   </div>
 
@@ -29,7 +31,7 @@ layout: default
 
   <div class="post-panel">
     <h3>Newsletter</h3>
-    <p>Deep dives on platform engineering, Kubernetes, and production systems. No fluff.</p>
+    <p>Platform engineering, multi-tenant isolation, and cloud-native security. No fluff.</p>
     <form
       action="https://buttondown.com/api/emails/embed-subscribe/nitrocode"
       method="post"
@@ -72,6 +74,8 @@ layout: default
     </div>
     <p class="post-nav-links">
       <a href="{{ '/blog/' | relative_url }}">← Writing index</a>
+      ·
+      <a href="{{ '/work/' | relative_url }}">Work</a>
       ·
       <a href="{{ '/' | relative_url }}">Home</a>
       ·

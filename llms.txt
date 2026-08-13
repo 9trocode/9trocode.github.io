@@ -1,0 +1,32 @@
+# Alex Idowu (nitrocode.sh)
+
+> Co-founder & CTO at PipeOps. Platform engineering, multi-tenant Kubernetes isolation, agent sandboxes, cloud-native security. Building Aeon. Field notes from production. Lagos.
+
+## Site
+
+- Home: https://nitrocode.sh/
+- Writing: https://nitrocode.sh/blog/
+- Work catalogue: https://nitrocode.sh/work/
+- About: https://nitrocode.sh/about/
+
+## Products & projects
+
+- PipeOps (deploy platform): https://pipeops.io
+- PipeOps Kubernetes Agent (BYOS): https://agents.pipeops.io/
+- Rexec (terminal / agent sandboxes): https://github.com/PipeOpsHQ/Rexec
+- firecracker-shim (K8s pods in Firecracker): https://github.com/PipeOpsHQ/firecracker-shim
+- Aeon (security for high-trust orgs): in progress
+- OpenFing (privacy-first network scanner): https://github.com/9trocode/OpenFing
+
+## Topics written about
+
+- Multi-tenant Kubernetes isolation (namespaces, Capsule, NetworkPolicy, gVisor)
+- Safely giving AI agents a terminal (sandboxes, gVisor, disposable runtimes)
+- Deploy pipelines (BuildKit, runners, multi-cloud)
+- Terminal-as-a-Service / BYOS agents
+
+## Profiles
+
+- X: https://twitter.com/nitrocode
+- GitHub: https://github.com/9trocode
+- LinkedIn: https://www.linkedin.com/in/nitrocode/

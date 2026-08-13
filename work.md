@@ -1,15 +1,18 @@
 ---
 layout: default
-title: Work
+title: Work catalogue
 permalink: /work/
-description: Catalogue of platforms, Kubernetes tooling, isolation work, and open source by Alex Idowu.
+description: >-
+  Catalogue of work by Alex Idowu: PipeOps, multi-tenant isolation, Kubernetes
+  agents and shims, Rexec sandboxes, firecracker-shim, Aeon security, and
+  companies worked at. Growing list of platforms and open source.
 image: /assets/images/nitrocode-og-v2.png
 ---
 
 <header class="page-hero">
   <p class="eyebrow">Work</p>
   <h1>Catalogue</h1>
-  <p>Things I’ve built or shipped: products, companies I’ve worked at, Kubernetes tooling, isolation, and open source. Growing list - not exhaustive.</p>
+  <p>Products, companies I’ve worked at, Kubernetes tooling, isolation, and open source. Growing list - not exhaustive.</p>
 </header>
 
 {% assign kinds = "Company,Roles,Open source,Dream project,Security" | split: "," %}

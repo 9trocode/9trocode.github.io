@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+# Primary content for crawlers
+Allow: /blog/
+Allow: /work/
+Allow: /about/
+
 Sitemap: https://nitrocode.sh/sitemap.xml

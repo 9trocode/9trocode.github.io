@@ -1,8 +1,11 @@
 ---
 layout: default
-title: About
+title: About Alex Idowu
 permalink: /about/
-description: Co-founder & CTO at PipeOps in Lagos. Platforms, multi-tenant isolation, agent sandboxes, open source, and notes from production.
+description: >-
+  Alex Idowu is Co-founder & CTO at PipeOps in Lagos. Platform engineering,
+  multi-tenant Kubernetes isolation, agent sandboxes, and Aeon for cloud-native
+  security. Open source: Rexec, firecracker-shim.
 image: /assets/images/nitrocode-og-v2.png
 ---
 

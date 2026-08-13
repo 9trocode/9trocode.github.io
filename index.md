@@ -1,7 +1,10 @@
 ---
 layout: default
-title: Alex Idowu
-description: Co-founder & CTO at PipeOps in Lagos. Kubernetes platforms, operators, agents, shims, and field notes from production.
+title: Platform engineering, multi-tenant isolation & cloud-native security
+description: >-
+  Co-founder & CTO at PipeOps. Field notes on Kubernetes platforms, multi-tenant
+  isolation, agent sandboxes, gVisor, and cloud-native security. Building Aeon.
+  Lagos.
 image: /assets/images/nitrocode-og-v2.png
 ---
 
@@ -27,6 +30,7 @@ image: /assets/images/nitrocode-og-v2.png
  </ul>
  <p class="hero__actions">
  <a class="btn btn--solid" href="/blog/">Read writing</a>
+ <a class="btn btn--ghost" href="/work/">Work</a>
  <a class="btn btn--ghost" href="/about/">About</a>
  <a class="btn btn--ghost" href="https://github.com/9trocode" target="_blank" rel="noopener">GitHub</a>
  </p>
@@ -134,6 +138,7 @@ image: /assets/images/nitrocode-og-v2.png
  <li><a href="https://www.linkedin.com/in/nitrocode/" target="_blank" rel="noopener">LinkedIn</a></li>
  <li><a href="https://github.com/9trocode" target="_blank" rel="noopener">GitHub</a></li>
  <li><a href="https://pipeops.io" target="_blank" rel="noopener">PipeOps</a></li>
+ <li><a href="/work/">Work catalogue</a></li>
  <li><a href="/blog/">Writing</a></li>
  </ul>
 </section>
