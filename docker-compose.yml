@@ -1,0 +1,8 @@
+# Local portable serve (same image shape as production containers)
+services:
+  site:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: "8080"

@@ -67,7 +67,49 @@ Post content here...
 
 ## 📦 Deployment
 
-The site automatically deploys to GitHub Pages when you push to the `main` branch via GitHub Actions.
+### GitHub Pages (default)
+
+The site deploys to GitHub Pages on push to `main` via GitHub Actions. Live: [nitrocode.sh](https://nitrocode.sh).
+
+### Portable artifact
+
+```bash
+bundle install
+JEKYLL_ENV=production bundle exec jekyll build
+# → _site/ is the full static website (serve with any static host or nginx)
+```
+
+### Docker (anywhere with a container runtime)
+
+```bash
+docker compose up --build
+# http://localhost:8080
+
+# or
+docker build -t nitrocode-site .
+docker run --rm -p 8080:8080 -e PORT=8080 nitrocode-site
+```
+
+Multi-stage image: **Ruby builds Jekyll → nginx serves `_site`**. Works on Docker, Railway, Fly, K8s, a VPS, etc.
+
+### Railpack / Railway
+
+[`railpack.json`](railpack.json) configures install → `jekyll build` → serve `_site` on `$PORT`.
+
+```bash
+# With Railpack CLI (optional local check)
+railpack build .
+
+# On Railway: connect this repo; Railpack reads railpack.json automatically.
+# Custom domain: set in Railway (CNAME file is for GitHub Pages only).
+```
+
+| Target | How |
+|---|---|
+| GitHub Pages | Existing `.github/workflows/deploy.yml` |
+| Docker / K8s | `Dockerfile` |
+| Railway | `railpack.json` (or Dockerfile if present - prefer one builder) |
+| Netlify / Cloudflare Pages | Build: `bundle exec jekyll build`, publish: `_site` |
 
 ## 📄 License
 

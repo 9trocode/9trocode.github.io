@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schema.railpack.com",
+  "provider": "ruby",
+  "packages": {
+    "ruby": "3.1"
+  },
+  "steps": {
+    "install": {
+      "commands": [
+        "bundle config set --local path 'vendor/bundle'",
+        "bundle install"
+      ]
+    },
+    "build": {
+      "inputs": [{ "step": "install" }],
+      "commands": [
+        "JEKYLL_ENV=production bundle exec jekyll build"
+      ]
+    }
+  },
+  "deploy": {
+    "startCommand": "bundle exec ruby -run -e httpd _site -p ${PORT:-8080} -b 0.0.0.0",
+    "variables": {
+      "JEKYLL_ENV": "production",
+      "LANG": "en_US.UTF-8",
+      "LC_ALL": "en_US.UTF-8"
+    }
+  }
+}
