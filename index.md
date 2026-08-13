@@ -8,7 +8,14 @@ image: /assets/images/nitrocode-og-v2.png
 <section class="hero">
  <div class="hero__copy">
  <p class="hero__index">Founder &amp; CTO · Lagos</p>
- <h1 class="hero__title">I build systems.</h1>
+ <h1 class="hero__title">
+  <span class="hero__title-fixed">I</span>
+  <span class="hero__verb-slot" aria-hidden="true">
+   <span class="hero__verb" id="hero-verb" data-words="build,operate,ship">build</span>
+  </span>
+  <span class="hero__title-fixed">systems.</span>
+  <span class="visually-hidden">I build, operate, and ship systems.</span>
+ </h1>
  <p class="hero__lede">Platforms and isolation tools for production. Then notes on what held up.</p>
  <ul class="hero__meta">
  <li>PipeOps</li>
