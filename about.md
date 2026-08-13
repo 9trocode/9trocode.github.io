@@ -46,7 +46,6 @@ image: /assets/images/nitrocode-og-v2.png
       <li><a href="https://agents.pipeops.io/">PipeOps Kubernetes Agent</a> - BYOS agent: VM to managed K8s deploy target</li>
       <li><a href="https://github.com/PipeOpsHQ/Rexec">Rexec</a> - terminal control room / Terminal-as-a-Service</li>
       <li><a href="https://github.com/PipeOpsHQ/firecracker-shim">firecracker-shim</a> - containerd shim v2 for Kubernetes pods in Firecracker microVMs</li>
-      <li><a href="https://github.com/9trocode/Igris">Igris</a> - voice-only personal agent (Go brain, SwiftUI bodies)</li>
       <li><a href="https://github.com/9trocode/OpenFing">OpenFing</a> - privacy-first network scanner in Zig</li>
     </ul>
 
