@@ -1,22 +1,15 @@
 ---
 layout: default
 title: Alex Idowu - Build, secure, and run systems
-description: Founder & CTO at PipeOps. I work across software, security, and operations: products, open source agents and sandboxes, and notes from production.
+description: Founder & CTO at PipeOps. Platforms, agent sandboxes, and production isolation - plus notes on what actually worked.
 image: /assets/images/nitrocode-og-v2.png
 ---
 
 <section class="hero">
  <div class="hero__copy">
  <p class="hero__index">Founder &amp; CTO · Lagos</p>
- <h1 class="hero__title">
-  <span class="hero__title-fixed">I</span>
-  <span class="hero__verb-slot" aria-hidden="true">
-   <span class="hero__verb" id="hero-verb" data-words="build,secure,run,ship,defend">build</span>
-  </span>
-  <span class="hero__title-fixed">systems.</span>
-  <span class="visually-hidden" id="hero-title-full">I build, secure, run, ship, and defend systems.</span>
- </h1>
- <p class="hero__lede">I’m Alex Idowu. Developer, security-minded operator, and founder. Platforms and products, open source agents and sandboxes, and the unglamorous work of keeping software alive in production. Then I write down what actually worked.</p>
+ <h1 class="hero__title">I build systems.</h1>
+ <p class="hero__lede">Platforms and isolation tools for production. Then notes on what held up.</p>
  <ul class="hero__meta">
  <li>PipeOps</li>
  <li>Igris</li>

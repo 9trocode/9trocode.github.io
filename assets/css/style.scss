@@ -466,111 +466,7 @@ img {
   letter-spacing: -0.035em;
   margin: 0 0 1.35rem !important;
   color: var(--ink) !important;
-  max-width: 14ch;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  column-gap: 0.28em;
-  row-gap: 0.08em;
-}
-
-.hero__title-fixed {
-  display: inline-block;
-}
-
-.hero__verb-slot {
-  display: inline-grid;
-  position: relative;
-  min-width: 4.6em;
-  overflow: hidden;
-  vertical-align: baseline;
-  /* reserve one line so layout does not jump */
-  line-height: 1.05;
-}
-
-.hero__verb-slot::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0.08em;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
-  transform-origin: left center;
-  opacity: 0.9;
-}
-
-.hero__verb {
-  display: inline-block;
-  font-style: italic;
-  color: var(--ink-2);
-  will-change: transform, opacity;
-}
-
-.hero__verb.is-out {
-  opacity: 0;
-  transform: translateY(-55%);
-  transition: transform 0.32s var(--ease), opacity 0.28s var(--ease);
-}
-
-.hero__verb.is-in {
-  animation: hero-verb-in 0.45s var(--ease) both;
-}
-
-.hero__verb.is-static {
-  font-style: italic;
-}
-
-.visually-hidden {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
-
-@keyframes hero-verb-in {
-  from {
-    opacity: 0;
-    transform: translateY(55%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .hero__verb-slot::after {
-    animation: hero-underline 2.8s var(--ease) infinite;
-  }
-}
-
-@keyframes hero-underline {
-  0% {
-    transform: scaleX(0);
-    transform-origin: left center;
-    opacity: 0.4;
-  }
-  18% {
-    transform: scaleX(1);
-    transform-origin: left center;
-    opacity: 1;
-  }
-  70% {
-    transform: scaleX(1);
-    transform-origin: right center;
-    opacity: 1;
-  }
-  100% {
-    transform: scaleX(0);
-    transform-origin: right center;
-    opacity: 0.4;
-  }
+  max-width: 12ch;
 }
 
 .hero__lede {
@@ -1213,18 +1109,6 @@ img {
   *::after {
     animation: none !important;
     transition: none !important;
-  }
-
-  .hero__verb-slot::after {
-    animation: none !important;
-    transform: scaleX(1);
-    opacity: 0.7;
-  }
-
-  .hero__verb.is-out,
-  .hero__verb.is-in {
-    opacity: 1 !important;
-    transform: none !important;
   }
 }
 
