@@ -6,4 +6,7 @@ Allow: /blog/
 Allow: /work/
 Allow: /about/
 
+# Agent-oriented content (markdown negotiation + site map for LLMs)
+Allow: /llms.txt
+
 Sitemap: https://nitrocode.sh/sitemap.xml

@@ -70,6 +70,7 @@ exclude:
   - docker
   - docker-compose.yml
   - railpack.json
+  - cloudflare
   - .github
   - .ruby-version
   - .dockerignore
@@ -78,7 +79,7 @@ exclude:
   - CLAUDE.md
   - README.md
   - SETUP_COMMENTS.md
-  - llms.txt
+  # llms.txt is published on purpose (agent discovery)
 
 github:
   repository_url: https://github.com/9trocode/9trocode.github.io

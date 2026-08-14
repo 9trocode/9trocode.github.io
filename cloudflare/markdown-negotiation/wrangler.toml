@@ -1,0 +1,11 @@
+name = "nitrocode-markdown-negotiation"
+main = "worker.js"
+compatibility_date = "2026-02-01"
+
+# Routes: attach this worker to the zone in the Cloudflare dashboard, or:
+# routes = [
+#   { pattern = "nitrocode.sh/*", zone_name = "nitrocode.sh" }
+# ]
+
+# Workers free tier is enough for Accept negotiation traffic.
+# Pro alternative: AI Crawl Control → Markdown for Agents (no worker).

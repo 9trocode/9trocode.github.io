@@ -79,6 +79,44 @@ JEKYLL_ENV=production bundle exec jekyll build
 # → _site/ is the full static website (serve with any static host or nginx)
 ```
 
+### Docker / nginx
+
+```bash
+docker build -t nitrocode-site .
+docker run --rm -p 8080:8080 nitrocode-site
+# HTML:  curl -sI http://127.0.0.1:8080/
+# MD:    curl -sI -H 'Accept: text/markdown' http://127.0.0.1:8080/
+```
+
+## 🤖 Markdown for Agents
+
+Requests with `Accept: text/markdown` get a clean Markdown representation of the same URL. HTML stays the default for browsers.
+
+| Layer | What it does |
+|---|---|
+| `_plugins/markdown_for_agents.rb` | Build-time: emit `.md` siblings next to every HTML page/post |
+| `docker/nginx.conf` | Origin negotiation for Docker/portable deploys |
+| `cloudflare/markdown-negotiation/` | Worker for GitHub Pages (Accept → fetch `.md`, set `Content-Type` + `x-markdown-tokens`) |
+| Cloudflare Pro+ | Optional: AI Crawl Control → **Markdown for Agents** (edge HTML→MD, no worker) |
+
+```bash
+# After deploy + worker (or CF Markdown for Agents) is on:
+curl -sI -H 'Accept: text/markdown' https://nitrocode.sh/
+# expect: content-type: text/markdown
+
+curl -s -H 'Accept: text/markdown' https://nitrocode.sh/blog/2026/08/11/namespaces-arent-isolation | head
+```
+
+Deploy the Worker (once per account/zone):
+
+```bash
+cd cloudflare/markdown-negotiation
+npx wrangler deploy
+# then attach route nitrocode.sh/* in the Cloudflare dashboard
+```
+
+Also published: [`/llms.txt`](https://nitrocode.sh/llms.txt).
+
 ### Docker (anywhere with a container runtime)
 
 ```bash
