@@ -1,9 +1,7 @@
-# Portable static site image: build with Jekyll, serve with nginx.
+# Portable static site: Jekyll build → nginx serves _site.
 # Works on Docker, Railway, Fly, K8s, any container host.
 #
-# Note: Railway prefers Dockerfile when present (over railpack.json).
-# Use railpack.json on platforms that run Railpack without a Dockerfile,
-# or delete/rename Dockerfile if you want Railway to use Railpack only.
+# Railway uses Dockerfile when present (overrides Railpack).
 
 # -----------------------------------------------------------------------------
 # Build
@@ -16,31 +14,35 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends build-essential \
   && rm -rf /var/lib/apt/lists/*
 
-# Gemfile.lock is committed for reproducible builds (required for Docker/Railpack CI)
 COPY Gemfile Gemfile.lock ./
-RUN bundle config set --local path 'vendor/bundle' \
-  && bundle config set --local without 'development test' \
-  && bundle install --jobs 4 --retry 3
+RUN bundle install --jobs 4 --retry 3
 
 COPY . .
 
 ENV JEKYLL_ENV=production
-RUN bundle exec jekyll build
+ENV PAGES_REPO_NWO=9trocode/9trocode.github.io
+
+RUN bundle exec jekyll build \
+  && test -f _site/index.html \
+  && test -d _site/blog \
+  && test -d _site/work
 
 # -----------------------------------------------------------------------------
-# Runtime (static only - no Ruby required)
+# Runtime
 # -----------------------------------------------------------------------------
 FROM nginx:1.27-alpine
 
-# Cloud hosts (Railway, etc.) inject PORT. Local default: 8080.
 ENV PORT=8080
 
-# Official nginx image runs envsubst on /etc/nginx/templates/*.template
 COPY docker/nginx.conf /etc/nginx/templates/default.conf.template
+COPY docker/docker-entrypoint.sh /docker-entrypoint-custom.sh
 COPY --from=build /app/_site /usr/share/nginx/html
 
-RUN chown -R nginx:nginx /usr/share/nginx/html
+RUN chmod +x /docker-entrypoint-custom.sh \
+  && chown -R nginx:nginx /usr/share/nginx/html \
+  && rm -f /etc/nginx/conf.d/default.conf
 
 EXPOSE 8080
 
-CMD ["nginx", "-g", "daemon off;"]
+# Bypass stock envsubst entrypoint (breaks $uri). Our script only swaps PORT.
+ENTRYPOINT ["/docker-entrypoint-custom.sh"]

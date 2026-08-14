@@ -60,8 +60,29 @@ defaults:
 
 show_downloads: false
 
+# Keep portable deploy / private agent files out of the public site
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - Dockerfile
+  - docker
+  - docker-compose.yml
+  - railpack.json
+  - .github
+  - .ruby-version
+  - .dockerignore
+  - agents
+  - AGENTS.md
+  - CLAUDE.md
+  - README.md
+  - SETUP_COMMENTS.md
+  - llms.txt
+
 github:
   repository_url: https://github.com/9trocode/9trocode.github.io
+  repository_nwo: 9trocode/9trocode.github.io
 
 # Analytics
 # Sign up for Google Analytics 4 at https://analytics.google.com

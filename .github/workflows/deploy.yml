@@ -20,24 +20,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1'
+          ruby-version: "3.1"
           bundler-cache: true
-      
+
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v4
-      
+
+      # Use repo Gemfile (Jekyll 4) instead of the old github-pages-only action image
       - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
-      
+        env:
+          JEKYLL_ENV: production
+          PAGES_REPO_NWO: 9trocode/9trocode.github.io
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
 
   deploy:
     environment:
