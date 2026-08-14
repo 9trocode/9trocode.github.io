@@ -14,7 +14,10 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends build-essential \
   && rm -rf /var/lib/apt/lists/*
 
-COPY Gemfile Gemfile.lock ./
+# Prefer lockfile when present (committed). Optional glob so a missing lock
+# does not fail COPY on remote clones that never received Gemfile.lock.
+COPY Gemfile ./
+COPY Gemfile.loc[k] ./
 RUN bundle install --jobs 4 --retry 3
 
 COPY . .
