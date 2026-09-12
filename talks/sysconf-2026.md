@@ -9,6 +9,7 @@ event: SysConf 2026
 slot: "Sat 3 Oct · 12:25–12:55 WAT · Room 1 · Standard 30m"
 talk_date: 2026-10-03
 blog: /blog/2026/08/11/how-to-safely-give-ai-agents-a-terminal
+repo: https://github.com/PipeOpsHQ/Rexec
 image: /assets/images/nitrocode-og-v2.png
 ---
 
