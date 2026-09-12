@@ -22,13 +22,9 @@
     {% seo %}
     {% include head-custom.html %}
   </head>
-  {% comment %}
-    Upcoming talks stay locked on the public site: teaser only, no slide HTML.
-    Unlock when talk_date <= today, or set locked: false (e.g. morning of the talk).
-  {% endcomment %}
   {% assign today = site.time | date: "%Y-%m-%d" %}
   {% assign talk_day = page.talk_date | date: "%Y-%m-%d" %}
-  {% comment %} Future talk_date → locked. locked: false forces open (stage day). {% endcomment %}
+  {% comment %} Future talk_date → locked for public. Speaker unlocks with ?key= or form. {% endcomment %}
   {% assign talk_locked = false %}
   {% if page.locked == false %}
     {% assign talk_locked = false %}
@@ -37,16 +33,19 @@
   {% elsif page.locked == true %}
     {% assign talk_locked = true %}
   {% endif %}
-  <body class="talk-page{% if page.present %} is-presenting{% endif %}{% if talk_locked %} talk-locked{% endif %}">
+  {% assign talk_id = page.permalink | default: page.url | slugify %}
+  <body
+    class="talk-page{% if page.present %} is-presenting{% endif %}{% if talk_locked %} talk-locked{% endif %}"
+    data-talk-id="{{ talk_id }}"
+    {% if talk_locked and page.speaker_key %}data-speaker-key="{{ page.speaker_key }}"{% endif %}
+  >
     <div class="site-shell talk-shell">
       <header class="talk-chrome" id="talk-chrome">
         <div class="talk-chrome__inner">
           <a class="talk-chrome__home" href="{{ '/' | relative_url }}">nitrocode</a>
           <p class="talk-chrome__meta">{{ page.event | default: 'Talk' }}{% if page.slot %} · {{ page.slot }}{% endif %}</p>
           <div class="talk-chrome__actions">
-            {% unless talk_locked %}
-            <button type="button" class="btn btn--solid talk-btn" id="talk-present-toggle">Present</button>
-            {% endunless %}
+            <button type="button" class="btn btn--solid talk-btn" id="talk-present-toggle" {% if talk_locked %}hidden{% endif %}>Present</button>
             <a class="btn btn--ghost talk-btn" href="{{ '/talks/' | relative_url }}">All talks</a>
           </div>
         </div>
@@ -54,14 +53,14 @@
 
       <main class="talk-main" id="main_content">
         {% if talk_locked %}
-        <div class="talk-intro">
+        <div class="talk-intro" id="talk-lock-panel">
           <p class="eyebrow">{{ page.event | default: "Upcoming" }} · Locked</p>
           <h1>{{ page.title }}</h1>
           <div class="talk-intro__meta">
             <p>Alex Idowu · Co-founder &amp; CTO, PipeOps · Lagos</p>
             {% if page.slot %}<p><strong>{{ page.slot }}</strong></p>{% endif %}
             {% if page.description %}<p>{{ page.description }}</p>{% endif %}
-            <p class="talk-lock-banner">Deck unlocks after the session ({{ talk_day }}). Field notes stay public.</p>
+            <p class="talk-lock-banner">Public deck unlocks after the session ({{ talk_day }}). Field notes stay public.</p>
             <p>
               {% if page.blog %}
               <a href="{{ page.blog | relative_url }}">Field notes</a>
@@ -73,26 +72,34 @@
               ·
               <a href="{{ '/talks/' | relative_url }}">All talks</a>
             </p>
+            {% if page.speaker_key %}
+            <form class="talk-unlock" id="talk-unlock-form" autocomplete="off">
+              <label for="talk-unlock-input">Speaker unlock</label>
+              <div class="talk-unlock__row">
+                <input id="talk-unlock-input" name="key" type="password" placeholder="Speaker code" required />
+                <button type="submit" class="btn btn--solid talk-btn">Unlock</button>
+              </div>
+              <p class="talk-unlock__hint" id="talk-unlock-hint" hidden>Wrong code.</p>
+            </form>
+            {% endif %}
           </div>
         </div>
+        <div id="talk-deck-mount" hidden></div>
+        <template id="talk-speaker-deck">{{ content }}</template>
         {% else %}
         {{ content }}
         {% endif %}
       </main>
 
-      {% unless talk_locked %}
       <footer class="talk-hud" id="talk-hud" hidden>
         <button type="button" class="talk-hud__btn" id="talk-prev" aria-label="Previous slide">←</button>
         <p class="talk-hud__progress" id="talk-progress" aria-live="polite">1 / 1</p>
         <button type="button" class="talk-hud__btn" id="talk-next" aria-label="Next slide">→</button>
         <button type="button" class="talk-hud__btn talk-hud__exit" id="talk-exit" aria-label="Exit present mode">Esc</button>
       </footer>
-      {% endunless %}
     </div>
 
     <script src="{{ '/assets/js/theme.js?v=' | append: site.github.build_revision | relative_url }}" defer></script>
-    {% unless talk_locked %}
     <script src="{{ '/assets/js/talk-present.js?v=' | append: site.github.build_revision | relative_url }}" defer></script>
-    {% endunless %}
   </body>
 </html>

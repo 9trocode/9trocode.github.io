@@ -8,7 +8,9 @@ permalink: /talks/sysconf-2026/
 event: SysConf 2026
 slot: "Sat 3 Oct · 12:25-12:55 WAT · Room 1 · Standard 30m"
 talk_date: 2026-10-03
-# Deck locked while talk_date is in the future. Set locked: false to open early (e.g. stage morning).
+# Public teaser while talk_date is in the future. Speaker: ?key= or unlock form.
+# Set locked: false to make the deck public early.
+speaker_key: sysconf-2026-rexec
 blog: /blog/2026/08/11/how-to-safely-give-ai-agents-a-terminal
 repo: https://github.com/PipeOpsHQ/Rexec
 image: /assets/images/nitrocode-og-v2.png

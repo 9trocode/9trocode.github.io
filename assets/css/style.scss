@@ -1886,3 +1886,46 @@ body.nav-open {
 .talk-page.talk-locked .talk-chrome__meta {
   color: var(--accent-2);
 }
+
+.talk-unlock {
+  margin-top: 1.5rem;
+  max-width: 22rem;
+}
+
+.talk-unlock label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 0.5rem;
+}
+
+.talk-unlock__row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.talk-unlock input {
+  flex: 1;
+  min-height: 36px;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg-2);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.9rem;
+}
+
+.talk-unlock input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.talk-unlock__hint {
+  margin: 0.5rem 0 0;
+  color: var(--accent-2);
+  font-size: 0.85rem;
+}
