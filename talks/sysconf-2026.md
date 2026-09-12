@@ -26,7 +26,7 @@ image: /assets/images/nitrocode-og-v2.png
       <a href="https://github.com/PipeOpsHQ/Rexec" target="_blank" rel="noopener">Rexec</a>
     </p>
   </div>
-  <p class="talk-keys">Present · <kbd>P</kbd> or button · Navigate <kbd>→</kbd> <kbd>←</kbd> · Notes <kbd>N</kbd> · Esc exits · Deep link <code>?present=1</code></p>
+  <p class="talk-keys">Present · <kbd>P</kbd> or button · Navigate <kbd>→</kbd> <kbd>←</kbd> · Esc exits · Deep link <code>?present=1</code></p>
 </div>
 
 <section class="talk-slide is-active" id="s01" data-slide="1">
@@ -34,7 +34,6 @@ image: /assets/images/nitrocode-og-v2.png
   <h2>How to Safely Give AI Agents a Terminal</h2>
   <p>Alex Idowu · PipeOps · Lagos</p>
   <p class="ok">SysConf 2026 · Room 1</p>
-  <aside class="talk-notes">One line. Agents need shells. Giving them yours is a bad idea. Don’t pitch.</aside>
 </section>
 
 <section class="talk-slide" id="s02" data-slide="2">
@@ -42,7 +41,6 @@ image: /assets/images/nitrocode-og-v2.png
   <h2>AI agents need a terminal to be useful.<br>Giving them yours is a bad idea.</h2>
   <p>Isolation problem. Not a prompt problem.</p>
   <p>Rexec is one shape. Jobs + RuntimeClass works too.</p>
-  <aside class="talk-notes">Thesis before story. Preempt “is this a vendor talk?”</aside>
 </section>
 
 <section class="talk-slide" id="s03" data-slide="3">
@@ -52,7 +50,6 @@ image: /assets/images/nitrocode-og-v2.png
 secrets in the environment
 kubeconfig in ~/.kube</div>
   <p class="punch">You’re not doing chat. You’re doing untrusted RCE with a friendly UI.</p>
-  <aside class="talk-notes">One concrete scene. Let friendly UI land.</aside>
 </section>
 
 <section class="talk-slide" id="s04" data-slide="4">
@@ -65,7 +62,6 @@ kubeconfig in ~/.kube</div>
     <li>Hope system prompts and “approve tool use” are enough</li>
   </ol>
   <p class="punch">Hope is not a control.</p>
-  <aside class="talk-notes">Walk the four steps dry. Punch the last line.</aside>
 </section>
 
 <section class="talk-slide" id="s05" data-slide="5">
@@ -78,7 +74,6 @@ kubeconfig in ~/.kube</div>
     <div class="talk-card"><strong>Phone home</strong><span>Packages + thrash</span></div>
   </div>
   <p>Blast radius = the machine you care about.</p>
-  <aside class="talk-notes">Speak 3–4 cards. Sloppy operators, not movie villains.</aside>
 </section>
 
 <section class="talk-slide" id="s06" data-slide="6">
@@ -96,7 +91,6 @@ kubeconfig in ~/.kube</div>
       <tr><td>Lifecycle</td><td>Hours to days</td><td>Minutes, then delete</td></tr>
     </tbody>
   </table>
-  <aside class="talk-notes">Don’t read the table. Call the delta. Human SSH hygiene isn’t enough.</aside>
 </section>
 
 <section class="talk-slide" id="s07" data-slide="7">
@@ -105,7 +99,6 @@ kubeconfig in ~/.kube</div>
   <p>Not a prompt problem.</p>
   <p><strong>Sandbox = create / delete + quotas + network policy + audit.</strong><br>Not a system prompt.</p>
   <p class="punch">“Approve tool use” on a machine you care about is still RCE with a dialog.</p>
-  <aside class="talk-notes">Thesis hinge. Slow down.</aside>
 </section>
 
 <section class="talk-slide" id="s08" data-slide="8">
@@ -119,7 +112,6 @@ kubeconfig in ~/.kube</div>
     <li>Audit when it matters</li>
     <li>Outbound tunnels for real metal — not open 22</li>
   </ol>
-  <aside class="talk-notes">Shopping list. Terminals become infrastructure primitives.</aside>
 </section>
 
 <section class="talk-slide" id="s09" data-slide="9">
@@ -133,7 +125,6 @@ Control plane  —  create / exec / delete
         ├── Cloud terminal  (container + gVisor + limits + isolated net)
         └── BYOS agent      (outbound WebSocket → real hardware)</div>
   <p>Strong isolation ≠ strong access to weird iron. Don’t confuse them.</p>
-  <aside class="talk-notes">Cloud = isolation. BYOS = mediated access, not a jail.</aside>
 </section>
 
 <section class="talk-slide" id="s10" data-slide="10">
@@ -147,7 +138,6 @@ Control plane  —  create / exec / delete
     <li>Attach via API / WebSocket — not published SSH</li>
   </ul>
   <p class="ok">That model is what I designed into Rexec. Steal the shape.</p>
-  <aside class="talk-notes">Concrete knobs. Sets up the live demo.</aside>
 </section>
 
 <section class="talk-slide" id="s11" data-slide="11">
@@ -164,7 +154,6 @@ rexec sandbox create --network none
 # …attempt / show block…
 rexec sandbox delete</div>
   <p class="punch">If AV fights you: screenshots. Don’t fight conference wifi.</p>
-  <aside class="talk-notes">~3–4 min. Rehearse offline. Fallback: static shots of create → block → delete. Same story as the checklist.</aside>
 </section>
 
 <section class="talk-slide" id="s12" data-slide="12">
@@ -177,7 +166,6 @@ rexec sandbox delete</div>
     <li>Dedicated nodes / accounts — compliance, not cosplay</li>
   </ol>
   <p>Containers alone aren’t a hostile multi-tenant boundary. Name the rung you’re buying.</p>
-  <aside class="talk-notes">Honesty slide. Don’t derail into Nova.</aside>
 </section>
 
 <section class="talk-slide" id="s13" data-slide="13">
@@ -193,7 +181,6 @@ rexec sandbox delete</div>
   </div>
   <p>Egress: <strong>none</strong> · <strong>allowlist</strong> · <strong>full</strong> (you accepted the leak).</p>
   <p class="punch">ICC off ≠ no internet. Say it out loud.</p>
-  <aside class="talk-notes">Tie back to what the demo just showed.</aside>
 </section>
 
 <section class="talk-slide" id="s14" data-slide="14">
@@ -206,7 +193,6 @@ rexec sandbox delete</div>
     <div class="talk-card"><strong>4 · Attach</strong><span>Human if needed</span></div>
     <div class="talk-card"><strong>5 · Delete</strong><span>Disk + memory gone</span></div>
   </div>
-  <aside class="talk-notes">Delete is the security feature.</aside>
 </section>
 
 <section class="talk-slide" id="s15" data-slide="15">
@@ -221,7 +207,6 @@ rexec sandbox delete</div>
       <tr><td>Shared expensive machine</td><td>BYOS + identity + recording</td></tr>
     </tbody>
   </table>
-  <aside class="talk-notes">Keep short after the demo. One minute max.</aside>
 </section>
 
 <section class="talk-slide" id="s16" data-slide="16">
@@ -234,7 +219,6 @@ rexec sandbox delete</div>
     <li><strong>Prompt as security</strong> — UX, not a boundary</li>
     <li><strong>Runtime theater</strong> — gVisor on paper, runc in prod</li>
   </ul>
-  <aside class="talk-notes">Speak three if short on time.</aside>
 </section>
 
 <section class="talk-slide" id="s17" data-slide="17">
@@ -249,7 +233,6 @@ rexec sandbox delete</div>
     <li>Prefer outbound agents over inbound SSH</li>
     <li>Assume breakout; escalate when the threat model says so</li>
   </ol>
-  <aside class="talk-notes">Photo slide. Don’t rush.</aside>
 </section>
 
 <section class="talk-slide" id="s18" data-slide="18">
@@ -262,15 +245,13 @@ rexec sandbox delete</div>
     <li>Prefer outbound tunnels over inbound SSH</li>
     <li>TTL and concurrency caps are security features</li>
   </ol>
-  <aside class="talk-notes">Slow. Portable slogans.</aside>
 </section>
 
 <section class="talk-slide" id="s19" data-slide="19">
   <p class="talk-slide__label">19 · Close</p>
   <h2>Questions?</h2>
-  <div class="talk-code">nitrocode.sh/blog/2026/08/11/how-to-safely-give-ai-agents-a-terminal
-nitrocode.sh/talks/sysconf-2026
+  <div class="talk-code">/blog/2026/08/11/how-to-safely-give-ai-agents-a-terminal
+/talks/sysconf-2026
 github.com/PipeOpsHQ/Rexec</div>
   <p>Alex Idowu · @nitrocode · Lagos</p>
-  <aside class="talk-notes">Stop. 5 min Q&amp;A. Pattern &gt; product. Approve-tool-use still isn’t enough for secrets/prod.</aside>
 </section>

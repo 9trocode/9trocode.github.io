@@ -1765,19 +1765,7 @@ body.nav-open {
   font-weight: 600;
 }
 
-.talk-notes {
-  display: none;
-  margin-top: 1rem;
-  padding-top: 0.85rem;
-  border-top: 1px dashed var(--line);
-  font-size: 0.88rem;
-  color: var(--ink-3);
-  line-height: 1.45;
-}
 
-.talk-page.show-notes .talk-notes {
-  display: block;
-}
 
 .talk-hud {
   position: fixed;
@@ -1874,11 +1862,6 @@ body.nav-open {
   color: var(--accent);
 }
 
-.talk-page.is-presenting.show-notes .talk-notes {
-  max-width: 42rem;
-  font-size: 1rem;
-  color: var(--ink-2);
-}
 
 @media (max-width: 640px) {
   .talk-chrome__meta {

@@ -26,10 +26,9 @@
     <div class="site-shell talk-shell">
       <header class="talk-chrome" id="talk-chrome">
         <div class="talk-chrome__inner">
-          <a class="talk-chrome__home" href="{{ '/' | relative_url }}">nitrocode.sh</a>
+          <a class="talk-chrome__home" href="{{ '/' | relative_url }}">nitrocode</a>
           <p class="talk-chrome__meta">{{ page.event | default: 'Talk' }}{% if page.slot %} · {{ page.slot }}{% endif %}</p>
           <div class="talk-chrome__actions">
-            <button type="button" class="btn btn--ghost talk-btn" id="talk-notes-toggle" aria-pressed="false">Notes</button>
             <button type="button" class="btn btn--solid talk-btn" id="talk-present-toggle">Present</button>
           </div>
         </div>

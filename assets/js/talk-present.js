@@ -8,13 +8,11 @@
   var progress = document.getElementById("talk-progress");
   var hud = document.getElementById("talk-hud");
   var presentBtn = document.getElementById("talk-present-toggle");
-  var notesBtn = document.getElementById("talk-notes-toggle");
   var prevBtn = document.getElementById("talk-prev");
   var nextBtn = document.getElementById("talk-next");
   var exitBtn = document.getElementById("talk-exit");
 
   var index = 0;
-  var notesOn = false;
 
   function clamp(i) {
     return Math.max(0, Math.min(slides.length - 1, i));
@@ -38,7 +36,10 @@
       slide.classList.toggle("is-active", on);
       slide.setAttribute("aria-hidden", on ? "false" : "true");
       if (on && isPresenting()) {
-        slide.scrollIntoView({ block: "start", behavior: (opts && opts.instant) ? "auto" : "smooth" });
+        slide.scrollIntoView({
+          block: "start",
+          behavior: opts && opts.instant ? "auto" : "smooth",
+        });
       }
     });
     if (progress) {
@@ -75,14 +76,6 @@
     else enterPresent();
   }
 
-  function toggleNotes() {
-    notesOn = !notesOn;
-    body.classList.toggle("show-notes", notesOn);
-    if (notesBtn) {
-      notesBtn.setAttribute("aria-pressed", notesOn ? "true" : "false");
-    }
-  }
-
   function next() {
     show(index + 1);
   }
@@ -91,7 +84,6 @@
     show(index - 1);
   }
 
-  // Start from hash if present
   var hash = (location.hash || "").replace(/^#/, "");
   if (hash) {
     var fromHash = slides.findIndex(function (s) {
@@ -100,14 +92,12 @@
     if (fromHash >= 0) index = fromHash;
   }
 
-  // Browse mode: all slides visible; present mode: one at a time
   slides.forEach(function (slide, n) {
     slide.classList.toggle("is-active", n === index);
   });
   if (progress) progress.textContent = index + 1 + " / " + slides.length;
 
   if (presentBtn) presentBtn.addEventListener("click", togglePresent);
-  if (notesBtn) notesBtn.addEventListener("click", toggleNotes);
   if (prevBtn) prevBtn.addEventListener("click", prev);
   if (nextBtn) nextBtn.addEventListener("click", next);
   if (exitBtn) exitBtn.addEventListener("click", exitPresent);
@@ -115,12 +105,6 @@
   document.addEventListener("keydown", function (e) {
     var tag = (e.target && e.target.tagName) || "";
     if (tag === "INPUT" || tag === "TEXTAREA" || e.target.isContentEditable) return;
-
-    if (e.key === "n" || e.key === "N") {
-      e.preventDefault();
-      toggleNotes();
-      return;
-    }
 
     if (e.key === "p" || e.key === "P" || e.key === "f" || e.key === "F") {
       e.preventDefault();
@@ -148,7 +132,6 @@
     }
   });
 
-  // Deep-link ?present=1
   var params = new URLSearchParams(location.search);
   if (params.get("present") === "1") {
     enterPresent();
