@@ -2,7 +2,7 @@
 layout: default
 title: Infrastructure as Code with Python
 description: >-
-  AWS CDK, Terraform, CDKTF, and Pulumi — when to use which. PyCon Nigeria 2024
+  AWS CDK, Terraform, CDKTF, and Pulumi - when to use which. PyCon Nigeria 2024
   talk with deck and demo repo.
 permalink: /talks/pycon-ng-2024-iac/
 event: PyCon Nigeria 2024
@@ -24,7 +24,7 @@ image: /assets/images/nitrocode-og-v2.png
 <div class="about-content" style="max-width: 42rem;">
   <p><strong>{{ page.event }}</strong> · Alex Idowu</p>
   <p>
-    IaC without learning a new dialect for every cloud click-path — CDK, Terraform,
+    IaC without learning a new dialect for every cloud click-path - CDK, Terraform,
     CDKTF, and Pulumi, with demos in the companion repo.
   </p>
   <p class="hero__actions" style="display:flex;flex-wrap:wrap;gap:0.75rem;">

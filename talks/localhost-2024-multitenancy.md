@@ -2,7 +2,7 @@
 layout: default
 title: Multi-Tenancy in Kubernetes (Localhost)
 description: >-
-  Soft vs virtual multi-tenancy on localhost — Capsule, vCluster, and friends.
+  Soft vs virtual multi-tenancy on localhost - Capsule, vCluster, and friends.
   Localhost Conference 2024 deck and lab repo.
 permalink: /talks/localhost-2024-multitenancy/
 event: Localhost Conference 2024
@@ -22,8 +22,8 @@ image: /assets/images/nitrocode-og-v2.png
 <div class="about-content" style="max-width: 42rem;">
   <p><strong>{{ page.slot }}</strong> · Alex Idowu</p>
   <p>
-    Namespace-based soft multi-tenancy and virtual / multi-cluster approaches —
-    Capsule, Kiosk, KubeZoo, Capsule Proxy, Gardener, Kamaji, vCluster — with a
+    Namespace-based soft multi-tenancy and virtual / multi-cluster approaches - 
+    Capsule, Kiosk, KubeZoo, Capsule Proxy, Gardener, Kamaji, vCluster - with a
     localhost lab you can run on kind / k3s.
   </p>
   <p class="hero__actions" style="display:flex;flex-wrap:wrap;gap:0.75rem;">

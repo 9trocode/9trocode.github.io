@@ -2,11 +2,11 @@
 layout: talk
 title: How to Safely Give AI Agents a Terminal
 description: >-
-  Agents with a shell are untrusted RCE — isolation and lifecycle, not prompts.
+  Agents with a shell are untrusted RCE - isolation and lifecycle, not prompts.
   Live Rexec sandbox demo. Standard 30m (25 + 5 Q&A).
 permalink: /talks/sysconf-2026/
 event: SysConf 2026
-slot: "Sat 3 Oct · 12:25–12:55 WAT · Room 1 · Standard 30m"
+slot: "Sat 3 Oct · 12:25-12:55 WAT · Room 1 · Standard 30m"
 talk_date: 2026-10-03
 # Deck locked while talk_date is in the future. Set locked: false to open early (e.g. stage morning).
 blog: /blog/2026/08/11/how-to-safely-give-ai-agents-a-terminal
@@ -19,7 +19,7 @@ image: /assets/images/nitrocode-og-v2.png
   <h1>How to Safely Give AI Agents a Terminal</h1>
   <div class="talk-intro__meta">
     <p>Alex Idowu · Co-founder &amp; CTO, PipeOps · Lagos</p>
-    <p><strong>Sat 3 Oct 2026 · 12:25–12:55 WAT · Room 1</strong><br>
+    <p><strong>Sat 3 Oct 2026 · 12:25-12:55 WAT · Room 1</strong><br>
     25 min talk + 5 min Q&amp;A · live Rexec sandbox demo</p>
     <p>
       Field notes:
@@ -112,7 +112,7 @@ kubeconfig in ~/.kube</div>
     <li>Network isolation as a first-class switch</li>
     <li>API / headless entry</li>
     <li>Audit when it matters</li>
-    <li>Outbound tunnels for real metal — not open 22</li>
+    <li>Outbound tunnels for real metal - not open 22</li>
   </ol>
 </section>
 
@@ -122,7 +122,7 @@ kubeconfig in ~/.kube</div>
   <div class="talk-code">Agent / CLI / UI
         │  API or WebSocket
         ▼
-Control plane  —  create / exec / delete
+Control plane - create / exec / delete
         │
         ├── Cloud terminal  (container + gVisor + limits + isolated net)
         └── BYOS agent      (outbound WebSocket → real hardware)</div>
@@ -137,7 +137,7 @@ Control plane  —  create / exec / delete
     <li>Cap drop + <code>no-new-privileges</code></li>
     <li>Isolated bridge, ICC off</li>
     <li>OCI runtime <code>runsc</code> (gVisor)</li>
-    <li>Attach via API / WebSocket — not published SSH</li>
+    <li>Attach via API / WebSocket - not published SSH</li>
   </ul>
   <p class="ok">That model is what I designed into Rexec. Steal the shape.</p>
 </section>
@@ -151,7 +151,7 @@ Control plane  —  create / exec / delete
     <li>Run something agent-shaped</li>
     <li><strong>Delete.</strong> Assume disk is gone.</li>
   </ol>
-  <div class="talk-code"># shape, not scripture — use your real Rexec flow
+  <div class="talk-code"># shape, not scripture - use your real Rexec flow
 rexec sandbox create --network none
 # …attempt / show block…
 rexec sandbox delete</div>
@@ -162,10 +162,10 @@ rexec sandbox delete</div>
   <p class="talk-slide__label">12 · Ladder</p>
   <h2>Isolation ladder</h2>
   <ol>
-    <li>cgroup + caps + network — baseline</li>
-    <li>gVisor (<code>runsc</code>) — smaller host syscall surface</li>
-    <li>MicroVMs (Firecracker) — when the threat model demands it</li>
-    <li>Dedicated nodes / accounts — compliance, not cosplay</li>
+    <li>cgroup + caps + network - baseline</li>
+    <li>gVisor (<code>runsc</code>) - smaller host syscall surface</li>
+    <li>MicroVMs (Firecracker) - when the threat model demands it</li>
+    <li>Dedicated nodes / accounts - compliance, not cosplay</li>
   </ol>
   <p>Containers alone aren’t a hostile multi-tenant boundary. Name the rung you’re buying.</p>
 </section>
@@ -205,7 +205,7 @@ rexec sandbox delete</div>
     <thead><tr><th>Need</th><th>Prefer</th></tr></thead>
     <tbody>
       <tr><td>Untrusted model code</td><td>Cloud terminal + gVisor</td></tr>
-      <tr><td>Real GPU / lab box</td><td>BYOS — treat like prod access</td></tr>
+      <tr><td>Real GPU / lab box</td><td>BYOS - treat like prod access</td></tr>
       <tr><td>Shared expensive machine</td><td>BYOS + identity + recording</td></tr>
     </tbody>
   </table>
@@ -215,11 +215,11 @@ rexec sandbox delete</div>
   <p class="talk-slide__label">16 · Failures</p>
   <h2>Failure modes I’ve hit</h2>
   <ul>
-    <li><strong>Docker socket</strong> — relocates the gate</li>
-    <li><strong>Open egress</strong> — agents phone home</li>
-    <li><strong>Thrash</strong> — quotas / TTLs are security features</li>
-    <li><strong>Prompt as security</strong> — UX, not a boundary</li>
-    <li><strong>Runtime theater</strong> — gVisor on paper, runc in prod</li>
+    <li><strong>Docker socket</strong> - relocates the gate</li>
+    <li><strong>Open egress</strong> - agents phone home</li>
+    <li><strong>Thrash</strong> - quotas / TTLs are security features</li>
+    <li><strong>Prompt as security</strong> - UX, not a boundary</li>
+    <li><strong>Runtime theater</strong> - gVisor on paper, runc in prod</li>
   </ul>
 </section>
 

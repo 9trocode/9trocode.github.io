@@ -3,7 +3,7 @@ layout: default
 title: Talks
 permalink: /talks/
 description: >-
-  Conference talks by Alex Idowu — agent sandboxes, isolation, IaC, and
+  Conference talks by Alex Idowu - agent sandboxes, isolation, IaC, and
   production systems. Decks, PDFs, and field notes.
 image: /assets/images/nitrocode-og-v2.png
 ---
@@ -11,7 +11,7 @@ image: /assets/images/nitrocode-og-v2.png
 <header class="page-hero">
   <p class="eyebrow">Talks</p>
   <h1>On stage</h1>
-  <p>Isolation, agent sandboxes, IaC, and production systems — decks and PDFs.</p>
+  <p>Isolation, agent sandboxes, IaC, and production systems - decks and PDFs.</p>
 </header>
 
 {% assign today = site.time | date: "%Y-%m-%d" %}
