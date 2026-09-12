@@ -72,6 +72,8 @@ exclude:
   - railpack.json
   - cloudflare
   - docs/sysconf-2026-agents-terminal-deck.js
+  # Keep upcoming SysConf deck out of the public _site until after the talk
+  - docs/SysConf-2026-Safely-Give-AI-Agents-a-Terminal.pptx
   - .github
   - .ruby-version
   - .dockerignore
