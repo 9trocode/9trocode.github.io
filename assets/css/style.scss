@@ -1550,3 +1550,342 @@ body.nav-open {
     font-size: 10px;
   }
 }
+
+/* -------------------------------------------------------------------------- */
+/* Talk / present mode                                                        */
+/* -------------------------------------------------------------------------- */
+
+.talk-page .site-shell.talk-shell {
+  min-height: 100vh;
+}
+
+.talk-chrome {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.talk-chrome__inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.75rem var(--pad);
+}
+
+.talk-chrome__home {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--ink-2);
+  text-decoration: none;
+}
+
+.talk-chrome__home:hover {
+  color: var(--accent);
+}
+
+.talk-chrome__meta {
+  margin: 0;
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--ink-3);
+}
+
+.talk-chrome__actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.talk-btn {
+  min-height: 36px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.85rem;
+}
+
+.talk-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem var(--pad) 4rem;
+}
+
+.talk-intro {
+  margin-bottom: 2.5rem;
+  max-width: 40rem;
+}
+
+.talk-intro .eyebrow {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.talk-intro h1 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0.5rem 0 1rem;
+}
+
+.talk-intro__meta {
+  color: var(--ink-2);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.talk-intro__meta a {
+  color: var(--ink);
+}
+
+.talk-keys {
+  margin-top: 1rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink-3);
+}
+
+.talk-slide {
+  position: relative;
+  margin: 0 0 1.25rem;
+  padding: 1.5rem 1.5rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  scroll-margin-top: 5rem;
+}
+
+.talk-slide__label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0 0 0.75rem;
+}
+
+.talk-slide h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 0 1rem;
+  color: var(--ink);
+}
+
+.talk-slide p,
+.talk-slide li {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.talk-slide ul,
+.talk-slide ol {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.talk-slide li + li {
+  margin-top: 0.35rem;
+}
+
+.talk-slide .punch {
+  color: var(--accent-2);
+  font-weight: 600;
+}
+
+.talk-slide .ok {
+  color: var(--accent);
+}
+
+.talk-slide pre,
+.talk-slide .talk-code {
+  margin: 1rem 0 0;
+  padding: 1rem 1.1rem;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--ink);
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+
+.talk-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  margin-top: 0.75rem;
+}
+
+.talk-card {
+  padding: 0.9rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+}
+
+.talk-card strong {
+  display: block;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+}
+
+.talk-card span {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+}
+
+.talk-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.talk-table th,
+.talk-table td {
+  border: 1px solid var(--line);
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.talk-table th {
+  background: var(--bg-2);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.talk-notes {
+  display: none;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed var(--line);
+  font-size: 0.88rem;
+  color: var(--ink-3);
+  line-height: 1.45;
+}
+
+.talk-page.show-notes .talk-notes {
+  display: block;
+}
+
+.talk-hud {
+  position: fixed;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow);
+}
+
+.talk-hud__btn {
+  min-width: 2.4rem;
+  min-height: 2.4rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+.talk-hud__btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.talk-hud__progress {
+  margin: 0;
+  min-width: 4.5rem;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--ink-2);
+}
+
+.talk-hud__exit {
+  margin-left: 0.25rem;
+}
+
+/* Present mode: one slide fills the viewport */
+.talk-page.is-presenting .talk-chrome {
+  display: none;
+}
+
+.talk-page.is-presenting .talk-intro {
+  display: none;
+}
+
+.talk-page.is-presenting .talk-main {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.talk-page.is-presenting .talk-slide {
+  display: none;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  min-height: 100vh;
+  padding: clamp(2rem, 6vh, 4rem) clamp(1.5rem, 6vw, 5rem) 5rem;
+  background: var(--bg);
+  box-sizing: border-box;
+}
+
+.talk-page.is-presenting .talk-slide.is-active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.talk-page.is-presenting .talk-slide h2 {
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  max-width: 18ch;
+}
+
+.talk-page.is-presenting .talk-slide p,
+.talk-page.is-presenting .talk-slide li {
+  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+}
+
+.talk-page.is-presenting .talk-slide__label {
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+
+.talk-page.is-presenting.show-notes .talk-notes {
+  max-width: 42rem;
+  font-size: 1rem;
+  color: var(--ink-2);
+}
+
+@media (max-width: 640px) {
+  .talk-chrome__meta {
+    display: none;
+  }
+
+  .talk-slide {
+    padding: 1.15rem;
+  }
+}

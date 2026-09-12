@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en-US' }}" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0c0b0a">
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("nitrocode-theme");
+          if (t !== "light" && t !== "dark") {
+            t = window.matchMedia("(prefers-color-scheme: light)").matches
+              ? "light"
+              : "dark";
+          }
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    {% seo %}
+    {% include head-custom.html %}
+  </head>
+  <body class="talk-page{% if page.present %} is-presenting{% endif %}">
+    <div class="site-shell talk-shell">
+      <header class="talk-chrome" id="talk-chrome">
+        <div class="talk-chrome__inner">
+          <a class="talk-chrome__home" href="{{ '/' | relative_url }}">nitrocode.sh</a>
+          <p class="talk-chrome__meta">{{ page.event | default: 'Talk' }}{% if page.slot %} · {{ page.slot }}{% endif %}</p>
+          <div class="talk-chrome__actions">
+            <button type="button" class="btn btn--ghost talk-btn" id="talk-notes-toggle" aria-pressed="false">Notes</button>
+            <button type="button" class="btn btn--solid talk-btn" id="talk-present-toggle">Present</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="talk-main" id="main_content">
+        {{ content }}
+      </main>
+
+      <footer class="talk-hud" id="talk-hud" hidden>
+        <button type="button" class="talk-hud__btn" id="talk-prev" aria-label="Previous slide">←</button>
+        <p class="talk-hud__progress" id="talk-progress" aria-live="polite">1 / 1</p>
+        <button type="button" class="talk-hud__btn" id="talk-next" aria-label="Next slide">→</button>
+        <button type="button" class="talk-hud__btn talk-hud__exit" id="talk-exit" aria-label="Exit present mode">Esc</button>
+      </footer>
+    </div>
+
+    <script src="{{ '/assets/js/theme.js?v=' | append: site.github.build_revision | relative_url }}" defer></script>
+    <script src="{{ '/assets/js/talk-present.js?v=' | append: site.github.build_revision | relative_url }}" defer></script>
+  </body>
+</html>

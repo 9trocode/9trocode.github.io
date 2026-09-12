@@ -71,6 +71,7 @@ exclude:
   - docker-compose.yml
   - railpack.json
   - cloudflare
+  - docs/sysconf-2026-agents-terminal-deck.js
   - .github
   - .ruby-version
   - .dockerignore
