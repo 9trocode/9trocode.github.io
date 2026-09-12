@@ -2,11 +2,13 @@
 layout: talk
 title: How to Safely Give AI Agents a Terminal
 description: >-
-  SysConf 2026 talk page. Agents with a shell are untrusted RCE — isolation and
-  lifecycle, not prompts. Includes a live Rexec sandbox demo beat.
+  Agents with a shell are untrusted RCE — isolation and lifecycle, not prompts.
+  Live Rexec sandbox demo. Standard 30m (25 + 5 Q&A).
 permalink: /talks/sysconf-2026/
 event: SysConf 2026
 slot: "Sat 3 Oct · 12:25–12:55 WAT · Room 1 · Standard 30m"
+talk_date: 2026-10-03
+blog: /blog/2026/08/11/how-to-safely-give-ai-agents-a-terminal
 image: /assets/images/nitrocode-og-v2.png
 ---
 
