@@ -1872,3 +1872,17 @@ body.nav-open {
     padding: 1.15rem;
   }
 }
+
+.talk-lock-banner {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg-2);
+  color: var(--ink-2);
+  font-size: 0.95rem;
+}
+
+.talk-page.talk-locked .talk-chrome__meta {
+  color: var(--accent-2);
+}
