@@ -2,11 +2,30 @@
 layout: default
 ---
 
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+{% assign today = site.time | date: "%Y-%m-%d" %}
+{% assign unlock_day = page.unlock_after | default: page.talk_date | date: "%Y-%m-%d" %}
+{% assign post_locked = false %}
+{% if page.locked == false %}
+  {% assign post_locked = false %}
+{% elsif page.locked == true %}
+  {% assign post_locked = true %}
+{% elsif unlock_day != blank and unlock_day > today %}
+  {% assign post_locked = true %}
+{% endif %}
+{% assign post_id = page.url | slugify %}
+
+<article
+  class="post{% if post_locked %} post-locked{% endif %}"
+  itemscope
+  itemtype="http://schema.org/BlogPosting"
+  data-post-id="{{ post_id }}"
+  {% if post_locked and page.speaker_key %}data-speaker-key="{{ page.speaker_key }}"{% endif %}
+>
   <header class="post-header">
     <p class="post-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %d, %Y" }}</time>
       · <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author | default: site.author.name }}</span></span>
+      {% if post_locked %} · <span class="tag">Locked</span>{% endif %}
     </p>
     <meta itemprop="name headline" content="{{ page.title }}">
     <meta itemprop="dateModified" content="{{ page.date | date_to_xmlschema }}">
@@ -17,9 +36,41 @@ layout: default
 
   <div class="post-content" itemprop="articleBody">
     <h1 itemprop="headline">{{ page.title }}</h1>
+
+    {% if post_locked %}
+    <div id="post-lock-panel">
+      <p class="talk-lock-banner">
+        Field notes for the SysConf talk stay locked until after the session
+        ({% if unlock_day %}{{ unlock_day }}{% else %}soon{% endif %}).
+        Speaker unlock uses the same code as the talk deck.
+      </p>
+      <p>{{ page.description }}</p>
+      <p>
+        <a href="{{ '/talks/sysconf-2026/' | relative_url }}">SysConf talk page</a>
+        ·
+        <a href="https://github.com/PipeOpsHQ/Rexec" target="_blank" rel="noopener">Rexec</a>
+        ·
+        <a href="{{ '/blog/' | relative_url }}">Writing index</a>
+      </p>
+      {% if page.speaker_key %}
+      <form class="talk-unlock" id="post-unlock-form" autocomplete="off">
+        <label for="post-unlock-input">Speaker unlock</label>
+        <div class="talk-unlock__row">
+          <input id="post-unlock-input" name="key" type="password" placeholder="Speaker code" required />
+          <button type="submit" class="btn btn--solid talk-btn">Unlock</button>
+        </div>
+        <p class="talk-unlock__hint" id="post-unlock-hint" hidden>Wrong code.</p>
+      </form>
+      {% endif %}
+    </div>
+    <div id="post-body-mount" hidden></div>
+    <template id="post-locked-body">{{ content }}</template>
+    {% else %}
     {{ content }}
+    {% endif %}
   </div>
 
+  {% unless post_locked %}
   <div class="post-panel">
     <h3>Share</h3>
     <div class="share-links">
@@ -66,6 +117,7 @@ layout: default
         async>
     </script>
   </div>
+  {% endunless %}
 
   <footer class="post-footer">
     <div class="post-panel post-sponsor">
@@ -83,3 +135,7 @@ layout: default
     </p>
   </footer>
 </article>
+
+{% if post_locked %}
+<script src="{{ '/assets/js/post-unlock.js?v=' | append: site.github.build_revision | relative_url }}" defer></script>
+{% endif %}

@@ -60,10 +60,10 @@
             <p>Alex Idowu · Co-founder &amp; CTO, PipeOps · Lagos</p>
             {% if page.slot %}<p><strong>{{ page.slot }}</strong></p>{% endif %}
             {% if page.description %}<p>{{ page.description }}</p>{% endif %}
-            <p class="talk-lock-banner">Public deck unlocks after the session ({{ talk_day }}). Field notes stay public.</p>
+            <p class="talk-lock-banner">Public deck unlocks after the session ({{ talk_day }}). Field notes use the same speaker unlock.</p>
             <p>
               {% if page.blog %}
-              <a href="{{ page.blog | relative_url }}">Field notes</a>
+              <a href="{{ page.blog | relative_url }}">Field notes</a> (locked)
               {% endif %}
               {% if page.blog and page.repo %} · {% endif %}
               {% if page.repo %}

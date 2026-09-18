@@ -101,7 +101,7 @@ image: /assets/images/nitrocode-og-v2.png
  <div class="pattern">
  <strong>BYOS + gVisor sandboxes</strong>
  <span>Outbound agents; disposable terminals isolated with runsc. </span>
- <a href="/blog/2026/08/11/how-to-safely-give-ai-agents-a-terminal">Safe agent terminals →</a>
+ <a href="/talks/sysconf-2026/">SysConf talk →</a>
  </div>
  </div>
 </section>
@@ -114,8 +114,20 @@ image: /assets/images/nitrocode-og-v2.png
  <p class="block__sub">Engineer-to-engineer notes: architecture, failure modes, production lessons.</p>
  </div>
  </div>
+ {% assign today = site.time | date: "%Y-%m-%d" %}
+ {% assign shown = 0 %}
  <ul class="write-list">
- {% for post in site.posts limit:5 %}
+ {% for post in site.posts %}
+  {% if shown >= 5 %}{% break %}{% endif %}
+  {% assign unlock_day = post.unlock_after | default: post.talk_date | date: "%Y-%m-%d" %}
+  {% assign hide_post = false %}
+  {% if post.locked == true %}
+    {% assign hide_post = true %}
+  {% elsif post.locked != false and unlock_day != blank and unlock_day > today %}
+    {% assign hide_post = true %}
+  {% endif %}
+  {% unless hide_post %}
+  {% assign shown = shown | plus: 1 %}
  <li class="write-item">
  <time class="write-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %Y" }}</time>
  <div>
@@ -123,6 +135,7 @@ image: /assets/images/nitrocode-og-v2.png
  {% if post.description %}<p class="write-desc">{{ post.description }}</p>{% endif %}
  </div>
  </li>
+  {% endunless %}
  {% endfor %}
  </ul>
  <p class="block__more"><a href="/blog/">Full index of writing →</a></p>

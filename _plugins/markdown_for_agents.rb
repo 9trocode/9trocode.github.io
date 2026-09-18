@@ -19,12 +19,29 @@ module MarkdownForAgents
   module_function
 
   def write_all(site)
-    site.posts.docs.each { |doc| write_document(site, doc, :post) }
+    site.posts.docs.each do |doc|
+      next if locked_doc?(site, doc)
+
+      write_document(site, doc, :post)
+    end
     site.pages.each do |page|
       next if skip_page?(page)
+      next if locked_doc?(site, page)
 
       write_document(site, page, :page)
     end
+  end
+
+  def locked_doc?(site, doc)
+    return false if doc.data["locked"] == false
+    return true if doc.data["locked"] == true
+
+    unlock = doc.data["unlock_after"] || doc.data["talk_date"]
+    return false if unlock.nil?
+
+    unlock_day = unlock.respond_to?(:strftime) ? unlock.strftime("%Y-%m-%d") : unlock.to_s[0, 10]
+    today = site.time.strftime("%Y-%m-%d")
+    unlock_day > today
   end
 
   def skip_page?(page)

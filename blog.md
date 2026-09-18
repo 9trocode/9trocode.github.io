@@ -15,8 +15,17 @@ image: /assets/images/nitrocode-og-v2.png
  <p>Platform engineering, cloud-native security, and production systems - architecture, tradeoffs, and failure modes.</p>
 </header>
 
+{% assign today = site.time | date: "%Y-%m-%d" %}
 <ul class="write-list">
 {% for post in site.posts %}
+  {% assign unlock_day = post.unlock_after | default: post.talk_date | date: "%Y-%m-%d" %}
+  {% assign hide_post = false %}
+  {% if post.locked == true %}
+    {% assign hide_post = true %}
+  {% elsif post.locked != false and unlock_day != blank and unlock_day > today %}
+    {% assign hide_post = true %}
+  {% endif %}
+  {% unless hide_post %}
  <li class="write-item">
  <time class="write-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %Y" }}</time>
  <div>
@@ -29,5 +38,6 @@ image: /assets/images/nitrocode-og-v2.png
  {% endif %}
  </div>
  </li>
+  {% endunless %}
 {% endfor %}
 </ul>
