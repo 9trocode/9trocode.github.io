@@ -42,7 +42,7 @@ image: /assets/images/nitrocode-og-v2.png
 
 <section class="talk-slide" id="s02" data-slide="2">
   <p class="talk-slide__label">02 · The problem</p>
-  <h2>Agents that run commands are common.<br>Unfettered shell access is still the default.</h2>
+  <h2>Agents that run commands are common.<br>Unrestricted shell access is still the default.</h2>
   <p>Laptop. Bastion. Shared CI runner.</p>
   <p>Most setups still hand the model a real shell on a machine you care about - and call system prompts + “approve tool use” the control plane.</p>
 </section>

@@ -23,7 +23,7 @@ sitemap: false
 
 Giving an agent a shell is useful. Giving it your machine is not.
 
-AI coding agents that execute commands are common. Most setups still hand them **unfettered shell access** on a laptop, bastion, or shared runner - then call system prompts and “approve tool use” a control plane.
+AI coding agents that execute commands are common. Most setups still hand them **unrestricted shell access** on a laptop, bastion, or shared runner - then call system prompts and “approve tool use” a control plane.
 
 That’s the wrong default.
 
