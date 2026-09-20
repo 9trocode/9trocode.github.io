@@ -64,7 +64,8 @@ layout: default
       {% endif %}
     </div>
     <div id="post-body-mount" hidden></div>
-    <template id="post-locked-body">{{ content }}</template>
+    {% comment %} Full body only after speaker unlock; feed sees teaser via locked_posts plugin. {% endcomment %}
+    <template id="post-locked-body">{{ page.locked_raw | markdownify }}</template>
     {% else %}
     {{ content }}
     {% endif %}
