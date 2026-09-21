@@ -2,9 +2,9 @@
 layout: talk
 title: How to Safely Give AI Agents a Terminal
 description: >-
-  Giving an agent a shell is useful. Giving it your machine is not. Isolation,
-  lifecycle, network control, and resource limits for disposable Linux
-  terminals - lessons from building Rexec. Live demo.
+  Giving an agent a shell is useful. Giving it your machine is not. How to
+  reason about security, enforce limits, control network access, and build
+  disposable terminals - lessons from Rexec. Live demo.
 permalink: /talks/sysconf-2026/
 event: SysConf 2026
 slot: "Sat 3 Oct · 12:25-12:55 WAT · Room 1 · Standard 30m"
@@ -56,7 +56,7 @@ image: /assets/images/nitrocode-og-v2.png
     <li>Creative <code>rm</code> / path expansion</li>
     <li>Env leaves over HTTPS or DNS</li>
     <li>Packages phone home</li>
-    <li><code>~/.kube</code> and other prod creds sit next to the agent</li>
+    <li><code>~/.kube</code> (Kubernetes credentials) and other prod creds sit next to the agent</li>
   </ul>
   <p>No jailbreak required. Models thrash. Hope is not a control.</p>
 </section>
@@ -64,7 +64,7 @@ image: /assets/images/nitrocode-og-v2.png
 <section class="talk-slide" id="s04" data-slide="4">
   <p class="talk-slide__label">04 · What this talk answers</p>
   <h2>What this talk answers</h2>
-  <p>From building <strong>Rexec</strong> - disposable, network-isolated Linux terminals (cloud or your own machines):</p>
+  <p>From building <strong>Rexec</strong> - an open-source control plane for disposable, network-isolated Linux terminals (cloud or your own machines):</p>
   <ol>
     <li>How do you <strong>reason about security</strong>?</li>
     <li>How do you <strong>enforce resource limits</strong>?</li>
@@ -80,13 +80,18 @@ image: /assets/images/nitrocode-og-v2.png
   <div class="talk-grid">
     <div class="talk-card">
       <strong>Reason about isolation</strong>
-      <span>cgroup + caps → gVisor (<code>runsc</code>, my default) → Firecracker → dedicated. Stock containers share the host kernel. Name the rung.</span>
+      <span>
+        <strong>cgroup</strong> = Linux resource controls. <strong>caps</strong> = Linux capabilities (what root-like powers a process keeps).<br><br>
+        Ladder: cgroup + caps → <strong>gVisor</strong> (<code>runsc</code> = its OCI runtime; user-space kernel between container and host - my default) → <strong>Firecracker</strong> (microVM, own guest kernel) → dedicated node.<br><br>
+        Stock containers share the host kernel. Name the rung.
+      </span>
     </div>
     <div class="talk-card">
       <strong>Enforce limits</strong>
-      <span>Hard CPU / memory / PIDs. Concurrency caps + TTL. Thrashing agents are a DoS on yourself. Limits = security, not just FinOps.</span>
+      <span>Hard CPU / memory / PID caps. Concurrency caps + <strong>TTL</strong> (time-to-live - kill the sandbox on a timer). Thrashing agents are a DoS on yourself. Limits = security, not just FinOps.</span>
     </div>
   </div>
+  <p class="punch">Trade-off I made in Rexec: needed density on shared hosts and hosts without KVM → gVisor default. Pay syscall/compat tax. Escalate to Firecracker when the threat model says so.</p>
 </section>
 
 <section class="talk-slide" id="s06" data-slide="6">
@@ -95,7 +100,11 @@ image: /assets/images/nitrocode-og-v2.png
   <div class="talk-grid">
     <div class="talk-card">
       <strong>Control the network</strong>
-      <span>A shell is a network endpoint. Peer, metadata, HTTPS, DNS, demo ports. Pick at create: <strong>none</strong> · <strong>allowlist</strong> · <strong>full</strong>. ICC off ≠ no internet.</span>
+      <span>
+        A shell is a network endpoint. Peer traffic, cloud metadata, HTTPS, DNS, demo ports.<br><br>
+        Pick at create: <strong>none</strong> · <strong>allowlist</strong> · <strong>full</strong> (you accepted the leak).<br><br>
+        <strong>ICC</strong> = inter-container communication on a Docker bridge. ICC off ≠ “no internet” - it only stops sandbox-to-sandbox on that bridge.
+      </span>
     </div>
     <div class="talk-card">
       <strong>Lifecycle</strong>
@@ -107,18 +116,16 @@ image: /assets/images/nitrocode-og-v2.png
 <section class="talk-slide" id="s07" data-slide="7">
   <p class="talk-slide__label">07 · Building Rexec</p>
   <h2>How you build something like Rexec</h2>
-  <div class="talk-grid">
-    <div class="talk-card">
-      <strong>Cloud terminal</strong>
-      <span>Disposable Linux. Caps, ICC off, <code>runsc</code>. Attach via API/WebSocket - not published SSH.</span>
-    </div>
-    <div class="talk-card">
-      <strong>BYOS</strong>
-      <span>Outbound WebSocket from your machine. Real GPU/lab. Mediated access - not a jail. No open 22 for the demo.</span>
-    </div>
-  </div>
-  <p>Steal the shape with Jobs + RuntimeClass + NetworkPolicy if you never run our code.</p>
-  <p class="punch">Failures I’ve hit (say out loud): Docker socket, full egress, no TTL, prompt-as-boundary, gVisor in README / runc in prod.</p>
+  <div class="talk-code">Agent / CLI / UI
+        │  API or WebSocket
+        ▼
+   Control plane   (create / exec / delete · quotas · network mode)
+        │
+        ├── Cloud terminal → container + gVisor + caps + isolated bridge
+        └── BYOS           → outbound agent on your machine (no inbound SSH)</div>
+  <p><strong>BYOS</strong> = bring your own server - real GPU/lab box; mediated access, not a jail.</p>
+  <p>Steal the shape without our code: Kubernetes <strong>Jobs</strong> + <strong>RuntimeClass</strong> (pick <code>runsc</code> / Firecracker per pod) + <strong>NetworkPolicy</strong>.</p>
+  <p class="punch">Failures I’ve hit: Docker socket in the sandbox, full egress by default, no TTL, prompt-as-boundary, gVisor in README / runc in prod.</p>
 </section>
 
 <section class="talk-slide" id="s08" data-slide="8">

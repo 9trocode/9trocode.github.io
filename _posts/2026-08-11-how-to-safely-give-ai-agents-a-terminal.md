@@ -62,6 +62,8 @@ Same questions the SysConf editors called out - and what I actually had to solve
 
 ## How you reason about security (and enforce limits)
 
+Terms once: **cgroup** = Linux resource controls; **capabilities (caps)** = which root-like powers a process keeps; **gVisor** (`runsc` = its OCI runtime) = user-space kernel between the container and the host; **Firecracker** = microVM with its own guest kernel; **TTL** = time-to-live - kill the sandbox on a timer.
+
 **Isolation ladder** I use:
 
 1. **cgroup + caps + network** - baseline
@@ -70,6 +72,8 @@ Same questions the SysConf editors called out - and what I actually had to solve
 4. **Dedicated node / account** - real budget, not cosplay
 
 Stock containers share the host kernel. Name the rung you’re buying.
+
+**Trade-off in Rexec:** I needed density on shared hosts, including environments without KVM. So the default is gVisor - still a container UX, smaller host syscall surface. Cost: syscall overhead and some compatibility gaps. When the threat model needs a real guest kernel, escalate to Firecracker. That’s a shipping choice, not a generic pros/cons list.
 
 **Resource limits** on every sandbox:
 
@@ -85,7 +89,9 @@ Limits are a **security control**, not just FinOps.
 
 A shell is a network endpoint. Watch for peer traffic, host/cloud metadata, HTTPS exfil, DNS exfil, and “just for the demo” published ports.
 
-Pick at create time: **none** · **allowlist** · **full** (you accepted the leak). ICC off is not “no internet.”
+Pick at create time: **none** · **allowlist** · **full** (you accepted the leak).
+
+**ICC** (inter-container communication) on a Docker bridge only gates sandbox-to-sandbox on that bridge. ICC off is not “no internet.”
 
 **Lifecycle** is the other half:
 
@@ -101,14 +107,24 @@ Long-lived “dev sandboxes” become bastions with worse accountability. Delete
 
 ## How you build something like Rexec
 
-Two shapes:
+```
+Agent / CLI / UI
+        │  API or WebSocket
+        ▼
+   Control plane   (create / exec / delete · quotas · network mode)
+        │
+        ├── Cloud terminal → container + gVisor + caps + isolated bridge
+        └── BYOS           → outbound agent on your machine (no inbound SSH)
+```
+
+**BYOS** = bring your own server. Mediated access - not a jail. No open 22 for the demo.
 
 | Shape | What it is |
 |---|---|
 | **Cloud terminal** | Disposable Linux. Caps, ICC off, `runsc`. Attach via API/WebSocket - not published SSH. |
-| **BYOS** | Outbound WebSocket from your machine. Real GPU/lab. Mediated access - not a jail. No open 22 for the demo. |
+| **BYOS** | Outbound WebSocket from your machine. Real GPU/lab box. |
 
-Steal the shape with Jobs + RuntimeClass + NetworkPolicy if you never run our code.
+Steal the shape without our code: Kubernetes **Jobs** + **RuntimeClass** (pick `runsc` / Firecracker per pod) + **NetworkPolicy**.
 
 Self-host sketch:
 
