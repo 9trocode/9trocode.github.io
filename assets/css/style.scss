@@ -2109,3 +2109,67 @@ body.nav-open {
   max-width: min(56rem, 82vw);
   margin: 0.5rem 0 0.85rem;
 }
+
+.talk-hook {
+  margin: 0 0 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+.talk-goals {
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.talk-goals li {
+  margin: 0.55rem 0;
+  font-size: 1.1rem;
+  color: var(--ink);
+}
+
+.talk-goals__next {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--ink-3);
+}
+
+.talk-oneliners {
+  margin: 0.75rem 0 0;
+  padding-left: 1.15rem;
+  max-width: 44rem;
+}
+
+.talk-oneliners li {
+  margin: 0.55rem 0;
+  color: var(--ink-2);
+}
+
+.talk-oneliners strong {
+  color: var(--ink);
+}
+
+.talk-diagram--flow svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 56rem;
+  color: var(--ink);
+  background: transparent;
+}
+
+.talk-page.is-presenting .talk-diagram--flow svg {
+  max-width: min(58rem, 88vw);
+}
+
+/* Present mode: respect theme (white/light allowed) */
+.talk-page.is-presenting .talk-slide {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.talk-page.is-presenting[data-theme="light"] .talk-slide,
+html[data-theme="light"] .talk-page.is-presenting .talk-slide {
+  background: var(--bg);
+}

