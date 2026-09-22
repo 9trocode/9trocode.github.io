@@ -2065,25 +2065,12 @@ body.nav-open {
   max-width: min(34rem, 46%);
 }
 
-.talk-elbaph__welcome {
-  margin: 0 0 0.65rem;
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
-
 .talk-page.is-presenting .talk-elbaph__art {
   opacity: 0.68;
 }
 
 .talk-page.is-presenting .talk-slide__fore {
   max-width: min(38rem, 44%);
-}
-
-.talk-page.is-presenting .talk-elbaph__welcome {
-  font-size: 0.9rem;
 }
 
 @media (max-width: 800px) {

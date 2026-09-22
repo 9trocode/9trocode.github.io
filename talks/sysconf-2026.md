@@ -47,7 +47,6 @@ image: /assets/images/nitrocode-og-v2.png
   </div>
   <div class="talk-slide__fore">
     <p class="talk-slide__label">01 · Title</p>
-    <p class="talk-elbaph__welcome">Welcome to Elbaph</p>
     <h2>How to Safely Give AI Agents a Terminal</h2>
     <p>Alex Idowu · PipeOps · Lagos</p>
     <p class="ok">SysConf 2026 · Room 1</p>
