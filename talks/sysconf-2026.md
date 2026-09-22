@@ -182,17 +182,18 @@ Approve tool use?  →  Always allow ✓</pre>
 <section class="talk-slide" id="s07" data-slide="7">
   <p class="talk-slide__label">07 · Building Rexec</p>
   <h2>How you build something like Rexec</h2>
-  <figure class="talk-diagram">
+  <figure class="talk-diagram talk-diagram--flow">
     <img
-      src="{{ '/assets/talks/rexec-architecture.jpg?v=' | append: site.asset_version | relative_url }}"
-      alt="Rexec architecture: Agent or CLI to control plane via API or WebSocket, then Cloud terminal or BYOS"
-      width="1280"
-      height="720"
+      src="{{ '/assets/talks/rexec-architecture.svg?v=' | append: site.asset_version | relative_url }}"
+      alt="Rexec flow: Browser UI over WebSocket to Rexec API and PostgreSQL, then Container Manager to Docker for cloud sandboxes, or Agent Handler outbound WebSocket to remote BYOS agents"
+      width="920"
+      height="420"
       loading="lazy"
       decoding="async"
     />
   </figure>
-  <p><strong>BYOS</strong> = bring your own server. Mediated access, not a jail. Steal the shape: Kubernetes <strong>Jobs</strong> + <strong>RuntimeClass</strong> + <strong>NetworkPolicy</strong>.</p>
+  <p>From the real stack: UI ↔ API (WebSocket) ↔ Postgres, then <strong>Container Manager → Docker</strong> or <strong>Agent Handler → remote agents</strong> (outbound only).</p>
+  <p><strong>BYOS</strong> = bring your own server. Steal the shape: Kubernetes <strong>Jobs</strong> + <strong>RuntimeClass</strong> + <strong>NetworkPolicy</strong>.</p>
   <p class="punch">Failures I’ve hit (say out loud): Docker socket, full egress, no TTL, prompt-as-boundary, gVisor in README / runc in prod.</p>
 </section>
 

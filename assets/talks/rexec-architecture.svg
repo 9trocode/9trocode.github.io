@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 420" fill="none" role="img" aria-labelledby="rexecArchTitle rexecArchDesc">
+  <title id="rexecArchTitle">Rexec architecture</title>
+  <desc id="rexecArchDesc">Browser UI connects over WebSocket to Rexec API and PostgreSQL. API fans out to Container Manager into Docker Engine for cloud sandboxes, and Agent Handler over outbound WebSocket to remote BYOS agents.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#86EFAC"/>
+    </marker>
+  </defs>
+
+  <!-- Agent / Browser -->
+  <rect x="40" y="28" width="200" height="64" rx="10" stroke="#00FF41" stroke-width="1.5" fill="rgba(0,255,65,0.06)"/>
+  <text x="140" y="56" text-anchor="middle" fill="#F5F7FA" font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="600">Agent / Browser UI</text>
+  <text x="140" y="76" text-anchor="middle" fill="#8B9BB0" font-family="ui-monospace, monospace" font-size="11">xterm.js · CLI · API clients</text>
+
+  <!-- WS up -->
+  <line x1="140" y1="92" x2="140" y2="128" stroke="#86EFAC" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="156" y="116" fill="#8B9BB0" font-family="ui-monospace, monospace" font-size="11">WebSocket / API</text>
+
+  <!-- Rexec API -->
+  <rect x="40" y="132" width="200" height="72" rx="10" stroke="#00FF41" stroke-width="1.75" fill="rgba(0,255,65,0.1)"/>
+  <text x="140" y="162" text-anchor="middle" fill="#F5F7FA" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="700">Rexec API</text>
+  <text x="140" y="182" text-anchor="middle" fill="#8B9BB0" font-family="ui-monospace, monospace" font-size="11">auth · create/exec/delete</text>
+
+  <!-- to Postgres -->
+  <line x1="240" y1="168" x2="310" y2="168" stroke="#86EFAC" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="318" y="140" width="150" height="56" rx="10" stroke="#243041" stroke-width="1.25" fill="rgba(21,27,36,0.35)"/>
+  <text x="393" y="164" text-anchor="middle" fill="#F5F7FA" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="600">PostgreSQL</text>
+  <text x="393" y="182" text-anchor="middle" fill="#8B9BB0" font-family="ui-monospace, monospace" font-size="11">users · sessions</text>
+
+  <!-- branch down from API -->
+  <line x1="140" y1="204" x2="140" y2="236" stroke="#86EFAC" stroke-width="1.5"/>
+  <line x1="140" y1="236" x2="280" y2="236" stroke="#86EFAC" stroke-width="1.5"/>
+  <line x1="140" y1="236" x2="640" y2="236" stroke="#86EFAC" stroke-width="1.5"/>
+  <line x1="280" y1="236" x2="280" y2="258" stroke="#86EFAC" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="640" y1="236" x2="640" y2="258" stroke="#86EFAC" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Left path: cloud sandboxes -->
+  <rect x="170" y="262" width="220" height="56" rx="10" stroke="#00FF41" stroke-width="1.35" fill="rgba(0,255,65,0.06)"/>
+  <text x="280" y="286" text-anchor="middle" fill="#F5F7FA" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="600">Container Manager</text>
+  <text x="280" y="304" text-anchor="middle" fill="#8B9BB0" font-family="ui-monospace, monospace" font-size="11">limits · network · runtime</text>
+
+  <line x1="280" y1="318" x2="280" y2="348" stroke="#86EFAC" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="170" y="352" width="220" height="56" rx="10" stroke="#243041" stroke-width="1.25" fill="rgba(21,27,36,0.35)"/>
+  <text x="280" y="376" text-anchor="middle" fill="#F5F7FA" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="600">Docker Engine</text>
+  <text x="280" y="394" text-anchor="middle" fill="#8B9BB0" font-family="ui-monospace, monospace" font-size="11">disposable cloud sandboxes</text>
+
+  <!-- Right path: BYOS -->
+  <rect x="530" y="262" width="220" height="56" rx="10" stroke="#00FF41" stroke-width="1.35" fill="rgba(0,255,65,0.06)"/>
+  <text x="640" y="286" text-anchor="middle" fill="#F5F7FA" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="600">Agent Handler</text>
+  <text x="640" y="304" text-anchor="middle" fill="#8B9BB0" font-family="ui-monospace, monospace" font-size="11">session relay</text>
+
+  <line x1="640" y1="318" x2="640" y2="348" stroke="#86EFAC" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="656" y="338" fill="#8B9BB0" font-family="ui-monospace, monospace" font-size="11">outbound WebSocket</text>
+
+  <rect x="530" y="352" width="220" height="56" rx="10" stroke="#243041" stroke-width="1.25" fill="rgba(21,27,36,0.35)"/>
+  <text x="640" y="376" text-anchor="middle" fill="#F5F7FA" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="600">Remote Agents (BYOS)</text>
+  <text x="640" y="394" text-anchor="middle" fill="#8B9BB0" font-family="ui-monospace, monospace" font-size="11">laptop · server · no inbound SSH</text>
+</svg>
