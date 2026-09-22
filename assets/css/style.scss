@@ -2034,25 +2034,27 @@ body.nav-open {
   position: absolute;
   top: 0;
   right: 0;
-  width: min(52%, 30rem);
+  width: 92%;
   height: 100%;
   object-fit: cover;
-  object-position: 60% 40%;
-  opacity: 0.55;
+  object-position: 55% 38%;
+  opacity: 0.72;
   /* Dissolve into the dark slide instead of looking pasted */
   mix-blend-mode: lighten;
   -webkit-mask-image: linear-gradient(
     to left,
     #000 0%,
-    #000 35%,
-    rgba(0, 0, 0, 0.45) 65%,
+    #000 48%,
+    rgba(0, 0, 0, 0.7) 68%,
+    rgba(0, 0, 0, 0.28) 84%,
     transparent 100%
   );
   mask-image: linear-gradient(
     to left,
     #000 0%,
-    #000 35%,
-    rgba(0, 0, 0, 0.45) 65%,
+    #000 48%,
+    rgba(0, 0, 0, 0.7) 68%,
+    rgba(0, 0, 0, 0.28) 84%,
     transparent 100%
   );
 }
@@ -2060,7 +2062,16 @@ body.nav-open {
 .talk-slide__fore {
   position: relative;
   z-index: 1;
-  max-width: min(34rem, 56%);
+  max-width: min(36rem, 52%);
+  /* Soft local scrim so type stays crisp over almost-full art */
+  padding: 0.35rem 0.75rem 0.75rem 0;
+  margin-left: -0.25rem;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--bg) 78%, transparent) 0%,
+    color-mix(in srgb, var(--bg) 45%, transparent) 70%,
+    transparent 100%
+  );
 }
 
 .talk-elbaph__welcome {
@@ -2073,12 +2084,12 @@ body.nav-open {
 }
 
 .talk-page.is-presenting .talk-elbaph__art {
-  width: min(48%, 34rem);
-  opacity: 0.5;
+  width: 94%;
+  opacity: 0.7;
 }
 
 .talk-page.is-presenting .talk-slide__fore {
-  max-width: min(38rem, 52%);
+  max-width: min(40rem, 48%);
 }
 
 .talk-page.is-presenting .talk-elbaph__welcome {
@@ -2087,8 +2098,8 @@ body.nav-open {
 
 @media (max-width: 800px) {
   .talk-elbaph__art {
-    width: 70%;
-    opacity: 0.35;
+    width: 100%;
+    opacity: 0.55;
   }
 
   .talk-slide__fore {
