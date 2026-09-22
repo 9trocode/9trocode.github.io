@@ -2016,7 +2016,7 @@ body.nav-open {
   }
 }
 
-/* Title slide: quiet Elbaph wink (One Piece / Ghibli-inspired atmosphere) */
+/* Title slide: quiet Elbaph wink — dark art, soft blend, no harsh mask */
 .talk-slide--elbaph {
   position: relative;
   overflow: hidden;
@@ -2027,55 +2027,71 @@ body.nav-open {
   inset: 0;
   pointer-events: none;
   z-index: 0;
+  overflow: hidden;
 }
 
 .talk-elbaph__art {
   position: absolute;
-  top: 0;
-  right: -4%;
-  width: min(58%, 34rem);
-  height: 100%;
+  top: 50%;
+  right: 0;
+  width: min(48%, 28rem);
+  height: 115%;
+  transform: translateY(-50%);
   object-fit: cover;
-  object-position: 62% 40%;
-  opacity: 0.22;
-  filter: saturate(0.75) contrast(0.92) brightness(0.85);
-  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.55) 28%, #000 55%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.55) 28%, #000 55%);
+  object-position: center 35%;
+  opacity: 0.35;
+  filter: saturate(0.7) contrast(1.05);
+  mix-blend-mode: soft-light;
+  /* Soft left fade only — avoid broken mask artifacts */
+  -webkit-mask-image: linear-gradient(to left, #000 40%, transparent 100%);
+  mask-image: linear-gradient(to left, #000 40%, transparent 100%);
+}
+
+.talk-elbaph::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    var(--bg) 0%,
+    transparent 42%,
+    color-mix(in srgb, var(--bg) 35%, transparent) 100%
+  );
+  z-index: 1;
 }
 
 .talk-slide__fore {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .talk-elbaph__welcome {
   margin: 0 0 0.65rem;
   font-family: var(--mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-3);
 }
 
 .talk-page.is-presenting .talk-elbaph__art {
-  opacity: 0.18;
-  width: min(52%, 40rem);
+  opacity: 0.28;
+  width: min(42%, 32rem);
 }
 
 .talk-page.is-presenting .talk-elbaph__welcome {
-  font-size: 0.95rem;
-  color: var(--ink-3);
+  font-size: 0.9rem;
 }
 
 @media (max-width: 800px) {
   .talk-elbaph__art {
-    width: 70%;
-    opacity: 0.14;
+    width: 55%;
+    opacity: 0.2;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .talk-elbaph__art {
-    opacity: 0.12;
+    opacity: 0.16;
   }
 }
