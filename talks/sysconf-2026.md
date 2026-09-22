@@ -42,10 +42,31 @@ image: /assets/images/nitrocode-og-v2.png
 
 <section class="talk-slide" id="s02" data-slide="2">
   <p class="talk-slide__label">02 · Problem</p>
-  <h2>Giving an agent a shell is useful.<br>Giving it your machine is not.</h2>
-  <p>Agents that run commands are common. <strong>Unrestricted shell access</strong> on a laptop, bastion, or shared runner is still the default.</p>
-  <p>System prompts + “approve tool use” are not a control plane.</p>
-  <p class="punch">The mistake is the blast radius - not the shell.</p>
+  <div class="talk-split">
+    <div class="talk-split__main">
+      <h2>Giving an agent a shell is useful.<br>Giving it your machine is not.</h2>
+      <p>Agents that run commands are common. <strong>Unrestricted shell access</strong> on a laptop, bastion, or shared runner is still the default.</p>
+      <p class="punch">The mistake is the blast radius - not the shell.</p>
+    </div>
+    <aside class="talk-prompt-joke" aria-label="Joke: the usual control plane">
+      <p class="talk-prompt-joke__tag">system prompt</p>
+      <pre class="talk-prompt-joke__body">You are a careful coding agent.
+
+NEVER delete files.
+NEVER read ~/.ssh or ~/.kube.
+NEVER exfiltrate secrets.
+NEVER curl | bash.
+NEVER phone home.
+Always ask before anything scary.
+
+(You have full shell access.)</pre>
+      <p class="talk-prompt-joke__footer">
+        <span class="talk-prompt-joke__dialog">Dialog:</span> Approve tool use?
+        <span class="talk-prompt-joke__btns">[ Allow once ] [ Always allow ]</span>
+      </p>
+      <p class="talk-prompt-joke__caption">This is not a control plane.</p>
+    </aside>
+  </div>
 </section>
 
 <section class="talk-slide" id="s03" data-slide="3">
