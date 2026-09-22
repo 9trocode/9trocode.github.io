@@ -33,11 +33,25 @@ image: /assets/images/nitrocode-og-v2.png
   <p class="talk-keys">Present · <kbd>P</kbd> or button · Navigate <kbd>→</kbd> <kbd>←</kbd> · Esc exits · Deep link <code>?present=1</code></p>
 </div>
 
-<section class="talk-slide is-active" id="s01" data-slide="1">
-  <p class="talk-slide__label">01 · Title</p>
-  <h2>How to Safely Give AI Agents a Terminal</h2>
-  <p>Alex Idowu · PipeOps · Lagos</p>
-  <p class="ok">SysConf 2026 · Room 1</p>
+<section class="talk-slide talk-slide--elbaph is-active" id="s01" data-slide="1">
+  <div class="talk-elbaph" aria-hidden="true">
+    <img
+      class="talk-elbaph__art"
+      src="{{ '/assets/talks/elbaph-ghibli.jpg' | relative_url }}"
+      alt=""
+      width="1280"
+      height="720"
+      loading="eager"
+      decoding="async"
+    />
+  </div>
+  <div class="talk-slide__fore">
+    <p class="talk-slide__label">01 · Title</p>
+    <p class="talk-elbaph__welcome">Welcome to Elbaph</p>
+    <h2>How to Safely Give AI Agents a Terminal</h2>
+    <p>Alex Idowu · PipeOps · Lagos</p>
+    <p class="ok">SysConf 2026 · Room 1</p>
+  </div>
 </section>
 
 <section class="talk-slide" id="s02" data-slide="2">

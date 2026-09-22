@@ -2015,3 +2015,67 @@ body.nav-open {
     transform: none;
   }
 }
+
+/* Title slide: quiet Elbaph wink (One Piece / Ghibli-inspired atmosphere) */
+.talk-slide--elbaph {
+  position: relative;
+  overflow: hidden;
+}
+
+.talk-elbaph {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.talk-elbaph__art {
+  position: absolute;
+  top: 0;
+  right: -4%;
+  width: min(58%, 34rem);
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 40%;
+  opacity: 0.22;
+  filter: saturate(0.75) contrast(0.92) brightness(0.85);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.55) 28%, #000 55%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.55) 28%, #000 55%);
+}
+
+.talk-slide__fore {
+  position: relative;
+  z-index: 1;
+}
+
+.talk-elbaph__welcome {
+  margin: 0 0 0.65rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.talk-page.is-presenting .talk-elbaph__art {
+  opacity: 0.18;
+  width: min(52%, 40rem);
+}
+
+.talk-page.is-presenting .talk-elbaph__welcome {
+  font-size: 0.95rem;
+  color: var(--ink-3);
+}
+
+@media (max-width: 800px) {
+  .talk-elbaph__art {
+    width: 70%;
+    opacity: 0.14;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .talk-elbaph__art {
+    opacity: 0.12;
+  }
+}
