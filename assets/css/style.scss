@@ -2016,53 +2016,36 @@ body.nav-open {
   }
 }
 
-/* Title slide: quiet Elbaph wink — dark art, soft blend, no harsh mask */
+/* Title slide: full-bleed Elbaph background, text on a left scrim */
 .talk-slide--elbaph {
   position: relative;
   overflow: hidden;
+  background-color: var(--bg);
+  background-image: var(--elbaph-art);
+  background-size: cover;
+  background-position: 58% 40%;
+  background-repeat: no-repeat;
 }
 
-.talk-elbaph {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.talk-elbaph__art {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  width: min(48%, 28rem);
-  height: 115%;
-  transform: translateY(-50%);
-  object-fit: cover;
-  object-position: center 35%;
-  opacity: 0.35;
-  filter: saturate(0.7) contrast(1.05);
-  mix-blend-mode: soft-light;
-  /* Soft left fade only — avoid broken mask artifacts */
-  -webkit-mask-image: linear-gradient(to left, #000 40%, transparent 100%);
-  mask-image: linear-gradient(to left, #000 40%, transparent 100%);
-}
-
-.talk-elbaph::after {
+.talk-slide--elbaph::before {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 0;
+  /* Keep type readable; let the right side of the art show through */
   background: linear-gradient(
-    90deg,
+    105deg,
     var(--bg) 0%,
-    transparent 42%,
-    color-mix(in srgb, var(--bg) 35%, transparent) 100%
+    color-mix(in srgb, var(--bg) 92%, transparent) 38%,
+    color-mix(in srgb, var(--bg) 55%, transparent) 62%,
+    color-mix(in srgb, var(--bg) 28%, transparent) 100%
   );
-  z-index: 1;
 }
 
 .talk-slide__fore {
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  max-width: min(36rem, 58%);
 }
 
 .talk-elbaph__welcome {
@@ -2074,9 +2057,12 @@ body.nav-open {
   color: var(--ink-3);
 }
 
-.talk-page.is-presenting .talk-elbaph__art {
-  opacity: 0.28;
-  width: min(42%, 32rem);
+.talk-page.is-presenting .talk-slide--elbaph {
+  background-position: 62% 38%;
+}
+
+.talk-page.is-presenting .talk-slide__fore {
+  max-width: min(40rem, 55%);
 }
 
 .talk-page.is-presenting .talk-elbaph__welcome {
@@ -2084,14 +2070,16 @@ body.nav-open {
 }
 
 @media (max-width: 800px) {
-  .talk-elbaph__art {
-    width: 55%;
-    opacity: 0.2;
+  .talk-slide__fore {
+    max-width: 100%;
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .talk-elbaph__art {
-    opacity: 0.16;
+  .talk-slide--elbaph::before {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--bg) 88%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 72%, transparent) 55%,
+      color-mix(in srgb, var(--bg) 45%, transparent) 100%
+    );
   }
 }
