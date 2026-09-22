@@ -37,7 +37,7 @@ image: /assets/images/nitrocode-og-v2.png
   <div class="talk-elbaph" aria-hidden="true">
     <img
       class="talk-elbaph__art"
-      src="{{ '/assets/talks/elbaph-ghibli.jpg?v=' | append: site.asset_version | relative_url }}"
+      src="{{ '/assets/talks/agent-terminal-title.jpg?v=' | append: site.asset_version | relative_url }}"
       alt=""
       width="1280"
       height="720"
