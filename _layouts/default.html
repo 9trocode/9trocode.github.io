@@ -20,7 +20,7 @@
         } catch (e) {}
       })();
     </script>
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.asset_version | relative_url }}">
     {% seo %}
     {% comment %} Override jekyll-seo-tag image with cache-busted absolute URL (Slack/LinkedIn cache aggressively). {% endcomment %}
     {% include head-custom.html %}
@@ -35,7 +35,7 @@
       </main>
       {% include footer.html %}
     </div>
-    <script src="{{ '/assets/js/theme.js?v=' | append: site.github.build_revision | relative_url }}" defer></script>
-    <script src="{{ '/assets/js/hero-rotate.js?v=' | append: site.github.build_revision | relative_url }}" defer></script>
+    <script src="{{ '/assets/js/theme.js?v=' | append: site.asset_version | relative_url }}" defer></script>
+    <script src="{{ '/assets/js/hero-rotate.js?v=' | append: site.asset_version | relative_url }}" defer></script>
   </body>
 </html>

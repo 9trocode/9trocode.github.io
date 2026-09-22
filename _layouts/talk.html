@@ -18,7 +18,7 @@
         } catch (e) {}
       })();
     </script>
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.asset_version | relative_url }}">
     {% seo %}
     {% include head-custom.html %}
   </head>
@@ -99,7 +99,7 @@
       </footer>
     </div>
 
-    <script src="{{ '/assets/js/theme.js?v=' | append: site.github.build_revision | relative_url }}" defer></script>
-    <script src="{{ '/assets/js/talk-present.js?v=' | append: site.github.build_revision | relative_url }}" defer></script>
+    <script src="{{ '/assets/js/theme.js?v=' | append: site.asset_version | relative_url }}" defer></script>
+    <script src="{{ '/assets/js/talk-present.js?v=' | append: site.asset_version | relative_url }}" defer></script>
   </body>
 </html>
