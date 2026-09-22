@@ -2082,3 +2082,25 @@ body.nav-open {
     max-width: 100%;
   }
 }
+
+.talk-diagram {
+  margin: 0.5rem 0 0.75rem;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #0b0f14;
+  max-width: 42rem;
+}
+
+.talk-diagram img {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.talk-page.is-presenting .talk-diagram {
+  max-width: min(52rem, 78vw);
+  margin: 0.75rem 0 1rem;
+}

@@ -182,16 +182,18 @@ Approve tool use?  →  Always allow ✓</pre>
 <section class="talk-slide" id="s07" data-slide="7">
   <p class="talk-slide__label">07 · Building Rexec</p>
   <h2>How you build something like Rexec</h2>
-  <div class="talk-code">Agent / CLI / UI
-        │  API or WebSocket
-        ▼
-   Control plane   (create / exec / delete · quotas · network mode)
-        │
-        ├── Cloud terminal → container + gVisor + caps + isolated bridge
-        └── BYOS           → outbound agent on your machine (no inbound SSH)</div>
-  <p><strong>BYOS</strong> = bring your own server - real GPU/lab box; mediated access, not a jail.</p>
-  <p>Steal the shape without our code: Kubernetes <strong>Jobs</strong> + <strong>RuntimeClass</strong> (pick <code>runsc</code> / Firecracker per pod) + <strong>NetworkPolicy</strong>.</p>
-  <p class="punch">Failures I’ve hit: Docker socket in the sandbox, full egress by default, no TTL, prompt-as-boundary, gVisor in README / runc in prod.</p>
+  <figure class="talk-diagram">
+    <img
+      src="{{ '/assets/talks/rexec-architecture.jpg?v=' | append: site.asset_version | relative_url }}"
+      alt="Rexec architecture: Agent or CLI to control plane via API or WebSocket, then Cloud terminal or BYOS"
+      width="1280"
+      height="720"
+      loading="lazy"
+      decoding="async"
+    />
+  </figure>
+  <p><strong>BYOS</strong> = bring your own server. Mediated access, not a jail. Steal the shape: Kubernetes <strong>Jobs</strong> + <strong>RuntimeClass</strong> + <strong>NetworkPolicy</strong>.</p>
+  <p class="punch">Failures I’ve hit (say out loud): Docker socket, full egress, no TTL, prompt-as-boundary, gVisor in README / runc in prod.</p>
 </section>
 
 <section class="talk-slide" id="s08" data-slide="8">
