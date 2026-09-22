@@ -2016,46 +2016,44 @@ body.nav-open {
   }
 }
 
-/* Title slide: Elbaph on the right, blended into the slide bg (no hard photo edge) */
+/* Title slide: Elbaph strictly in the RIGHT HALF only */
 .talk-slide--elbaph {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
+/* Wrapper itself is only the right half — nothing can paint left of 50% */
 .talk-elbaph {
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 50%;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
 }
 
 .talk-elbaph__art {
-  position: absolute;
-  top: 0;
-  /* Exactly the right half of the slide */
-  left: 50%;
-  right: 0;
-  width: 50%;
+  display: block;
+  width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 45% 38%;
-  opacity: 0.78;
-  mix-blend-mode: lighten;
-  /* Soft dissolve only at the center seam */
+  object-position: 40% 38%;
+  opacity: 0.7;
+  /* Soft seam at the center — no mix-blend (that was washing across the slide) */
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
-    rgba(0, 0, 0, 0.4) 6%,
-    rgba(0, 0, 0, 0.9) 16%,
+    rgba(0, 0, 0, 0.45) 10%,
     #000 28%,
     #000 100%
   );
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    rgba(0, 0, 0, 0.4) 6%,
-    rgba(0, 0, 0, 0.9) 16%,
+    rgba(0, 0, 0, 0.45) 10%,
     #000 28%,
     #000 100%
   );
@@ -2077,7 +2075,7 @@ body.nav-open {
 }
 
 .talk-page.is-presenting .talk-elbaph__art {
-  opacity: 0.75;
+  opacity: 0.68;
 }
 
 .talk-page.is-presenting .talk-slide__fore {
@@ -2089,10 +2087,8 @@ body.nav-open {
 }
 
 @media (max-width: 800px) {
-  .talk-elbaph__art {
-    left: 35%;
-    width: 65%;
-    opacity: 0.5;
+  .talk-elbaph {
+    left: 40%;
   }
 
   .talk-slide__fore {
