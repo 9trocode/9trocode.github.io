@@ -76,7 +76,7 @@ Models thrash. Hope is not a control.
 3. Firecracker / microVM - when the threat model demands it  
 4. Dedicated node / account - real budget, not cosplay  
 
-Stock containers share the host kernel. Name the rung.
+Default Docker (`runc`) shares the host kernel - say so if that’s all you’re using.
 
 **Limits:** hard CPU / memory / PIDs; concurrency + **TTL** (kill on a timer). Thrash is a DoS on yourself. Limits = security, not just FinOps.
 
