@@ -156,7 +156,22 @@ Build the agent a terminal. Don’t share the one you live in.
 
 ## Resources
 
+### This talk
 - **Talk deck:** [Rexec: How to Safely Give AI Agents a Terminal](/talks/sysconf-2026/) (SysConf 2026)  
 - **Rexec:** [github.com/PipeOpsHQ/Rexec](https://github.com/PipeOpsHQ/Rexec)  
 - **Docs:** [rexec.sh/docs](https://rexec.sh/docs)  
 - **Related:** [Rexec control room](/blog/2026/02/27/rexec-terminal-control-room) · [Namespaces aren't isolation](/blog/2026/08/11/namespaces-arent-isolation) · [Work](/work/)
+
+### Isolation & runtimes
+- **gVisor:** [gvisor.dev](https://gvisor.dev/) · [github.com/google/gvisor](https://github.com/google/gvisor)  
+- **Firecracker:** [firecracker-microvm.github.io](https://firecracker-microvm.github.io/) · [github.com/firecracker-microvm/firecracker](https://github.com/firecracker-microvm/firecracker)  
+- **runc:** [github.com/opencontainers/runc](https://github.com/opencontainers/runc)  
+- **cgroup v2:** [kernel docs](https://docs.kernel.org/admin-guide/cgroup-v2.html)  
+- **Linux capabilities:** [capabilities(7)](https://man7.org/linux/man-pages/man7/capabilities.7.html)
+
+### Platform building blocks
+- **Docker:** [docs.docker.com](https://docs.docker.com/)  
+- **PostgreSQL:** [postgresql.org/docs](https://www.postgresql.org/docs/)  
+- **Kubernetes Jobs:** [docs](https://kubernetes.io/docs/concepts/workloads/controllers/job/)  
+- **RuntimeClass:** [docs](https://kubernetes.io/docs/concepts/containers/runtime-class/)  
+- **NetworkPolicy:** [docs](https://kubernetes.io/docs/concepts/services-networking/network-policies/)

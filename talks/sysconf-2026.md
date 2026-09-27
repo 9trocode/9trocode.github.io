@@ -251,11 +251,36 @@ rexec sandbox delete</div>
 <section class="talk-slide" id="s11" data-slide="11">
   <p class="talk-slide__label">11 · Resources</p>
   <h2>Resources</h2>
-  <ul class="talk-oneliners">
-    <li><strong>Rexec</strong> - <a href="https://github.com/PipeOpsHQ/Rexec">github.com/PipeOpsHQ/Rexec</a></li>
-    <li><strong>Docs</strong> - <a href="https://rexec.sh/docs">rexec.sh/docs</a></li>
-    <li><strong>Field notes</strong> - <a href="/blog/2026/08/11/how-to-safely-give-ai-agents-a-terminal">nitrocode.sh/blog/…/how-to-safely-give-ai-agents-a-terminal</a></li>
-    <li><strong>This deck</strong> - <a href="/talks/sysconf-2026/">nitrocode.sh/talks/sysconf-2026</a></li>
-  </ul>
+  <div class="talk-resources">
+    <div>
+      <p class="talk-resources__heading">This talk</p>
+      <ul class="talk-oneliners talk-oneliners--compact">
+        <li><strong>Rexec</strong> - <a href="https://github.com/PipeOpsHQ/Rexec">github.com/PipeOpsHQ/Rexec</a></li>
+        <li><strong>Docs</strong> - <a href="https://rexec.sh/docs">rexec.sh/docs</a></li>
+        <li><strong>Field notes</strong> - <a href="/blog/2026/08/11/how-to-safely-give-ai-agents-a-terminal">nitrocode.sh/blog/…</a></li>
+        <li><strong>Deck</strong> - <a href="/talks/sysconf-2026/">nitrocode.sh/talks/sysconf-2026</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="talk-resources__heading">Isolation &amp; runtimes</p>
+      <ul class="talk-oneliners talk-oneliners--compact">
+        <li><strong>gVisor</strong> - <a href="https://gvisor.dev/">gvisor.dev</a> · <a href="https://github.com/google/gvisor">github.com/google/gvisor</a></li>
+        <li><strong>Firecracker</strong> - <a href="https://firecracker-microvm.github.io/">firecracker-microvm.github.io</a></li>
+        <li><strong>runc</strong> - <a href="https://github.com/opencontainers/runc">github.com/opencontainers/runc</a></li>
+        <li><strong>cgroup v2</strong> - <a href="https://docs.kernel.org/admin-guide/cgroup-v2.html">kernel docs</a></li>
+        <li><strong>capabilities</strong> - <a href="https://man7.org/linux/man-pages/man7/capabilities.7.html">capabilities(7)</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="talk-resources__heading">Platform building blocks</p>
+      <ul class="talk-oneliners talk-oneliners--compact">
+        <li><strong>Docker</strong> - <a href="https://docs.docker.com/">docs.docker.com</a></li>
+        <li><strong>PostgreSQL</strong> - <a href="https://www.postgresql.org/docs/">postgresql.org/docs</a></li>
+        <li><strong>Jobs</strong> - <a href="https://kubernetes.io/docs/concepts/workloads/controllers/job/">Kubernetes Jobs</a></li>
+        <li><strong>RuntimeClass</strong> - <a href="https://kubernetes.io/docs/concepts/containers/runtime-class/">RuntimeClass</a></li>
+        <li><strong>NetworkPolicy</strong> - <a href="https://kubernetes.io/docs/concepts/services-networking/network-policies/">NetworkPolicy</a></li>
+      </ul>
+    </div>
+  </div>
   <p>Questions? · @nitrocode · Lagos</p>
 </section>
