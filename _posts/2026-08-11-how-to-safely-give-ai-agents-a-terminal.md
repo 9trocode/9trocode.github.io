@@ -3,8 +3,9 @@ layout: post
 title: "Rexec: How to Safely Give AI Agents a Terminal"
 date: 2026-08-11
 description: >-
-  How to safely give AI agents a terminal using Rexec. The default today is
-  your login session - not a sandbox. Isolation, limits, network, lifecycle.
+  How to safely give AI agents a terminal using Rexec. They still get a
+  terminal - a disposable sandbox, not your workstation. Isolation, limits,
+  network, lifecycle.
 tags:
 - Agents
 - Security
@@ -22,17 +23,13 @@ sitemap: false
 
 **How to safely give AI agents a terminal - using Rexec.**
 
-The default isn’t “agent gets a terminal.” It’s “agent gets yours.”
+Agents still get a terminal. It just shouldn’t be your workstation.
 
-What most teams ship today:
+They need to run commands - that’s the product. The shortcut everyone takes is running those commands *as you* on a laptop, bastion, or shared runner, held together by system prompts and “approve tool use.”
 
-1. Install an agent CLI on a laptop, bastion, or shared runner  
-2. Leave shell, network, and package install on  
-3. Rely on system prompts and “approve tool use”  
+This is **not** “harden your personal shell for AI.”
 
-Same user. Same files. Same credentials. Same blast radius. That isn’t isolation - it’s hope.
-
-**Rexec** exists so the agent still gets a real terminal - a disposable, network-isolated Linux sandbox (cloud or BYOS) - not your login session.
+It’s **give the agent its own disposable terminal** - isolated, capped, networked on purpose, then deleted. That’s what **Rexec** is for (cloud sandboxes or BYOS).
 
 **TL;DR:** Isolation + lifecycle. How Rexec reasons about security, enforces limits, controls network access, what the pieces are, and what happens when you send a request. Steal the checklist even if you never run our compose file.
 
@@ -44,7 +41,7 @@ Talk deck: [Rexec: How to Safely Give AI Agents a Terminal](/talks/sysconf-2026/
 
 How to safely give AI agents a terminal **using Rexec** - and which controls you can steal even if you never run our code:
 
-1. **The problem** - unrestricted shells on machines you care about  
+1. **The problem** - agent exec on your workstation, not a sandbox terminal  
 2. **Security & limits** - isolation ladder, CPU / memory / TTL  
 3. **Network & lifecycle** - egress modes, create → delete  
 4. **Rexec build** - components, then request dataflow  
@@ -153,7 +150,7 @@ Docs: [rexec.sh/docs](https://rexec.sh/docs)
 4. Egress on purpose; DNS is data  
 5. Hard caps + TTL; outbound over inbound SSH for real boxes  
 
-Agents need a terminal. They don’t need your login session.
+Build the agent a terminal. Don’t share the one you live in.
 
 ---
 

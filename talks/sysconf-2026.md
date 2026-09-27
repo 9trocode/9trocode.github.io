@@ -85,7 +85,7 @@ image: /assets/images/nitrocode-og-v2.png
   <h2>What this talk covers</h2>
   <p>How to safely give AI agents a terminal <strong>using Rexec</strong> - and which controls you can steal even if you never run our code.</p>
   <ol class="talk-goals">
-    <li><strong>The problem</strong> - unrestricted shells on machines you care about <span class="talk-goals__next">→ next</span></li>
+    <li><strong>The problem</strong> - agent exec on your workstation, not a sandbox terminal <span class="talk-goals__next">→ next</span></li>
     <li><strong>Security &amp; limits</strong> - isolation ladder, CPU / memory / TTL</li>
     <li><strong>Network &amp; lifecycle</strong> - egress modes, create → delete</li>
     <li><strong>Rexec build</strong> - components, then request dataflow</li>
@@ -210,7 +210,7 @@ rexec sandbox delete</div>
     <li>Egress on purpose; DNS is data</li>
     <li>Hard caps + TTL; outbound over inbound SSH</li>
   </ol>
-  <p class="punch">Agents need a terminal. They don’t need your login session.</p>
+  <p class="punch">Build the agent a terminal. Don’t share the one you live in.</p>
 </section>
 
 <!-- 10 Resources -->
