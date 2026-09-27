@@ -50,9 +50,22 @@ image: /assets/images/nitrocode-og-v2.png
   </div>
 </section>
 
-<!-- 02 Intro / problem -->
+<!-- 02 About -->
 <section class="talk-slide" id="s02" data-slide="2">
-  <p class="talk-slide__label">02 · Intro</p>
+  <p class="talk-slide__label">02 · Intro · about</p>
+  <h2>Quick intro</h2>
+  <p>I’m <strong>Alex Idowu</strong> - Co-founder &amp; CTO at <strong>PipeOps</strong>, based in Lagos.</p>
+  <ul class="talk-oneliners">
+    <li>I build platforms, sandboxes, and isolation for a living - Rexec, agents, multi-tenant Kubernetes.</li>
+    <li>Decade-plus in cloud infra, IaC, and runtime security (gVisor, Firecracker, the messy middle).</li>
+    <li>When I’m not in production logs: <em>One Piece</em>, open source for fun, and shipping small tools that scratch my own itch.</li>
+  </ul>
+  <p class="ok">That’s enough about me - let’s talk terminals.</p>
+</section>
+
+<!-- 03 Intro / problem -->
+<section class="talk-slide" id="s03" data-slide="3">
+  <p class="talk-slide__label">03 · Intro · problem</p>
   <div class="talk-split">
     <div class="talk-split__main">
       <h2>Shell is useful.<br>Your machine is not.</h2>
@@ -75,9 +88,9 @@ Approve tool use?
   </div>
 </section>
 
-<!-- 03 Goals -->
-<section class="talk-slide" id="s03" data-slide="3">
-  <p class="talk-slide__label">03 · Goals</p>
+<!-- 04 Goals -->
+<section class="talk-slide" id="s04" data-slide="4">
+  <p class="talk-slide__label">04 · Goals</p>
   <h2>What we’ll cover</h2>
   <p>How to give an AI agent a terminal <strong>using Rexec</strong> - and which controls matter even if you copy the pattern elsewhere.</p>
   <ol class="talk-goals">
@@ -92,8 +105,8 @@ Approve tool use?
 </section>
 
 <!-- 04 Content: security + limits -->
-<section class="talk-slide" id="s04" data-slide="4">
-  <p class="talk-slide__label">04 · Content · security &amp; limits</p>
+<section class="talk-slide" id="s05" data-slide="5">
+  <p class="talk-slide__label">05 · Content · security &amp; limits</p>
   <h2>Isolation and resource limits</h2>
   <div class="talk-grid">
     <div class="talk-card">
@@ -109,8 +122,8 @@ Approve tool use?
 </section>
 
 <!-- 05 Content: network + lifecycle -->
-<section class="talk-slide" id="s05" data-slide="5">
-  <p class="talk-slide__label">05 · Content · network &amp; lifecycle</p>
+<section class="talk-slide" id="s06" data-slide="6">
+  <p class="talk-slide__label">06 · Content · network &amp; lifecycle</p>
   <h2>Network and lifecycle</h2>
   <div class="talk-grid">
     <div class="talk-card">
@@ -125,8 +138,8 @@ Approve tool use?
 </section>
 
 <!-- 06 Content: components one-liners (was part of 07) -->
-<section class="talk-slide" id="s06" data-slide="6">
-  <p class="talk-slide__label">06 · Content · components</p>
+<section class="talk-slide" id="s07" data-slide="7">
+  <p class="talk-slide__label">07 · Content · components</p>
   <h2>Rexec pieces - one line each</h2>
   <ul class="talk-oneliners">
     <li><strong>Browser / CLI</strong> - where humans and agents attach (xterm.js, API clients).</li>
@@ -140,8 +153,8 @@ Approve tool use?
 </section>
 
 <!-- 07 Content: architecture dataflow -->
-<section class="talk-slide" id="s07" data-slide="7">
-  <p class="talk-slide__label">07 · Content · dataflow</p>
+<section class="talk-slide" id="s08" data-slide="8">
+  <p class="talk-slide__label">08 · Content · dataflow</p>
   <h2>What happens when you send a request</h2>
   <figure class="talk-diagram talk-diagram--flow">
     {% include talk-rexec-dataflow.svg %}
@@ -150,8 +163,8 @@ Approve tool use?
 </section>
 
 <!-- 08 Demo -->
-<section class="talk-slide" id="s08" data-slide="8">
-  <p class="talk-slide__label">08 · Content · demo</p>
+<section class="talk-slide" id="s09" data-slide="9">
+  <p class="talk-slide__label">09 · Content · demo</p>
   <h2>Live: create → prove → delete</h2>
   <ol>
     <li>Create sandbox (limits + network)</li>
@@ -165,8 +178,8 @@ rexec sandbox delete</div>
 </section>
 
 <!-- 09 Conclusion -->
-<section class="talk-slide" id="s09" data-slide="9">
-  <p class="talk-slide__label">09 · Conclusion</p>
+<section class="talk-slide" id="s10" data-slide="10">
+  <p class="talk-slide__label">10 · Conclusion</p>
   <h2>Steal this</h2>
   <ol>
     <li>No agent shell on laptops for secrets / prod</li>
@@ -179,8 +192,8 @@ rexec sandbox delete</div>
 </section>
 
 <!-- 10 Resources -->
-<section class="talk-slide" id="s10" data-slide="10">
-  <p class="talk-slide__label">10 · Resources</p>
+<section class="talk-slide" id="s11" data-slide="11">
+  <p class="talk-slide__label">11 · Resources</p>
   <h2>Resources</h2>
   <ul class="talk-oneliners">
     <li><strong>Rexec</strong> - <a href="https://github.com/PipeOpsHQ/Rexec">github.com/PipeOpsHQ/Rexec</a></li>

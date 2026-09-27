@@ -2173,3 +2173,61 @@ body.nav-open {
 html[data-theme="light"] .talk-page.is-presenting .talk-slide {
   background: var(--bg);
 }
+
+.talk-float-card {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 70;
+  width: min(11.5rem, calc(100vw - 2rem));
+  padding: 0.85rem 0.9rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow);
+}
+
+.talk-float-card__label {
+  margin: 0 0 0.45rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.talk-float-card .talk-btn {
+  width: 100%;
+}
+
+.talk-float-card__hint {
+  margin: 0.45rem 0 0;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: var(--ink-3);
+}
+
+.talk-page.is-presenting .talk-float-card {
+  bottom: 4.25rem; /* sit above present HUD */
+  right: 1rem;
+  opacity: 0.92;
+}
+
+.talk-page.is-presenting .talk-float-card:hover,
+.talk-page.is-presenting .talk-float-card:focus-within {
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .talk-float-card {
+    right: 0.65rem;
+    bottom: 0.65rem;
+    width: 9.5rem;
+    padding: 0.65rem 0.7rem;
+  }
+
+  .talk-float-card__hint {
+    display: none;
+  }
+}

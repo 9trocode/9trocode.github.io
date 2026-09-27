@@ -22,13 +22,15 @@
     if (meta) {
       meta.setAttribute("content", theme === "light" ? "#f3efe6" : "#0c0b0a");
     }
-    var btn = document.getElementById("theme-toggle");
-    if (btn) {
-      btn.setAttribute(
-        "aria-label",
-        theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
-      );
-    }
+    var label = theme === "dark" ? "White mode" : "Dark mode";
+    var aria =
+      theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
+    document.querySelectorAll(".js-theme-toggle").forEach(function (btn) {
+      btn.setAttribute("aria-label", aria);
+      if (btn.dataset.labelMode !== "icon") {
+        btn.textContent = label;
+      }
+    });
     var iframe = document.querySelector("iframe.giscus-frame");
     if (iframe && iframe.contentWindow) {
       iframe.contentWindow.postMessage(
@@ -54,8 +56,9 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     applyTheme(currentTheme());
-    var btn = document.getElementById("theme-toggle");
-    if (btn) btn.addEventListener("click", toggle);
+    document.querySelectorAll(".js-theme-toggle").forEach(function (btn) {
+      btn.addEventListener("click", toggle);
+    });
 
     if (window.matchMedia) {
       window

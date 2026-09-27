@@ -45,12 +45,17 @@
           <a class="talk-chrome__home" href="{{ '/' | relative_url }}">nitrocode</a>
           <p class="talk-chrome__meta">{{ page.event | default: 'Talk' }}{% if page.slot %} · {{ page.slot }}{% endif %}</p>
           <div class="talk-chrome__actions">
-            <button type="button" class="btn btn--ghost talk-btn" id="theme-toggle" aria-label="Toggle light and dark">Theme</button>
             <button type="button" class="btn btn--solid talk-btn" id="talk-present-toggle" {% if talk_locked %}hidden{% endif %}>Present</button>
             <a class="btn btn--ghost talk-btn" href="{{ '/talks/' | relative_url }}">All talks</a>
           </div>
         </div>
       </header>
+
+      <aside class="talk-float-card" aria-label="Display options">
+        <p class="talk-float-card__label">Display</p>
+        <button type="button" class="btn btn--solid talk-btn js-theme-toggle" aria-label="Switch to light mode">White mode</button>
+        <p class="talk-float-card__hint">Light slides for camera / projector</p>
+      </aside>
 
       <main class="talk-main" id="main_content">
         {% if talk_locked %}
