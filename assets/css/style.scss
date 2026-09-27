@@ -2231,3 +2231,41 @@ html[data-theme="light"] .talk-page.is-presenting .talk-slide {
     display: none;
   }
 }
+
+.talk-split--about {
+  align-items: center;
+}
+
+.talk-portrait {
+  margin: 0;
+  justify-self: end;
+  width: min(16rem, 34vw);
+}
+
+.talk-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  object-fit: cover;
+  aspect-ratio: 1;
+  background: var(--bg-2);
+}
+
+.talk-page.is-presenting .talk-portrait {
+  width: min(18rem, 28vw);
+}
+
+@media (max-width: 800px) {
+  .talk-split--about {
+    grid-template-columns: 1fr;
+  }
+
+  .talk-portrait {
+    justify-self: start;
+    width: min(12rem, 55vw);
+    order: -1;
+  }
+}
