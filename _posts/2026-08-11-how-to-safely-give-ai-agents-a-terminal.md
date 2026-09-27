@@ -35,7 +35,21 @@ Talk deck: [Rexec: How to Safely Give AI Agents a Terminal](/talks/sysconf-2026/
 
 ---
 
-## Intro - why the default fails
+## Goals - what this talk covers
+
+How to safely give AI agents a terminal **using Rexec** - and which controls you can steal even if you never run our code:
+
+1. **The problem** - unrestricted shells on machines you care about  
+2. **Security & limits** - isolation ladder, CPU / memory / TTL  
+3. **Network & lifecycle** - egress modes, create → delete  
+4. **Rexec build** - components, then request dataflow  
+5. **Practice** - create → prove → delete  
+
+Rexec is the through-line. The controls are what you steal.
+
+---
+
+## Content - the problem
 
 Useful agents shell out. You’re doing untrusted remote code execution with a friendly UI.
 
@@ -48,21 +62,6 @@ What breaks without a jailbreak:
 - `~/.kube` and other prod creds sit next to the agent  
 
 Models thrash. Hope is not a control.
-
----
-
-## Goals
-
-How to give an AI agent a terminal **using Rexec** - and which controls matter if you copy the pattern elsewhere:
-
-1. **Security** - how Rexec reasons about isolation  
-2. **Limits** - how we enforce CPU / memory / TTL  
-3. **Network** - how we control egress and peers  
-4. **Lifecycle** - create → run → delete  
-5. **Build** - Rexec components, then how a request flows  
-6. **Practice** - prove it live in Rexec (create → block → delete)  
-
-Rexec is the through-line. The controls are what you steal.
 
 ---
 
