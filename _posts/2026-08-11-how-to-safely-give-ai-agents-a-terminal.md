@@ -3,9 +3,8 @@ layout: post
 title: "Rexec: How to Safely Give AI Agents a Terminal"
 date: 2026-08-11
 description: >-
-  How to safely give AI agents a terminal using Rexec. A shell is useful; your
-  laptop is not. Isolation, limits, network, lifecycle - and how a request
-  flows.
+  How to safely give AI agents a terminal using Rexec. The default today is
+  your login session - not a sandbox. Isolation, limits, network, lifecycle.
 tags:
 - Agents
 - Security
@@ -23,11 +22,17 @@ sitemap: false
 
 **How to safely give AI agents a terminal - using Rexec.**
 
-Giving an agent a shell is useful. Giving it your laptop is not.
+The default isn’t “agent gets a terminal.” It’s “agent gets yours.”
 
-Agents need to run commands - install packages, run tests, edit files. That’s the point. What’s broken is unrestricted shell on the same box as your secrets, `~/.kube`, and prod access - laptop, bastion, or shared runner - held together by system prompts and “approve tool use.”
+What most teams ship today:
 
-**Rexec** is how I give them a terminal without giving them *that* machine: disposable, network-isolated Linux sandboxes - cloud or your own machines (BYOS).
+1. Install an agent CLI on a laptop, bastion, or shared runner  
+2. Leave shell, network, and package install on  
+3. Rely on system prompts and “approve tool use”  
+
+Same user. Same files. Same credentials. Same blast radius. That isn’t isolation - it’s hope.
+
+**Rexec** exists so the agent still gets a real terminal - a disposable, network-isolated Linux sandbox (cloud or BYOS) - not your login session.
 
 **TL;DR:** Isolation + lifecycle. How Rexec reasons about security, enforces limits, controls network access, what the pieces are, and what happens when you send a request. Steal the checklist even if you never run our compose file.
 
@@ -148,7 +153,7 @@ Docs: [rexec.sh/docs](https://rexec.sh/docs)
 4. Egress on purpose; DNS is data  
 5. Hard caps + TTL; outbound over inbound SSH for real boxes  
 
-Give them a terminal. Don’t give them your laptop.
+Agents need a terminal. They don’t need your login session.
 
 ---
 

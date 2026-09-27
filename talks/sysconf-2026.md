@@ -86,10 +86,15 @@ image: /assets/images/nitrocode-og-v2.png
   <p class="talk-slide__label">04 · Content · problem</p>
   <div class="talk-split">
     <div class="talk-split__main">
-      <h2>Giving an agent a shell is useful.<br>Giving it your laptop is not.</h2>
-      <p>Agents need to run commands - <code>npm install</code>, tests, “fix the Dockerfile.” That’s fine.</p>
-      <p>What’s not fine: unrestricted shell on the same machine as your secrets, <code>~/.kube</code>, and prod access - laptop, bastion, or shared runner.</p>
-      <p><strong>Rexec</strong> is how I give them a terminal without giving them <em>that</em> machine: disposable, network-isolated Linux sandboxes.</p>
+      <h2>The default isn’t “agent gets a terminal.”<br>It’s “agent gets yours.”</h2>
+      <p>What most teams ship today:</p>
+      <ol>
+        <li>Install an agent CLI on a laptop, bastion, or shared runner</li>
+        <li>Leave shell, network, and package install on</li>
+        <li>Rely on system prompts and “approve tool use”</li>
+      </ol>
+      <p>Same user. Same files. Same credentials. Same blast radius.</p>
+      <p><strong>Rexec</strong> exists so the agent still gets a real terminal - just a disposable, network-isolated one, not your login session.</p>
     </div>
     <aside class="talk-prompt-joke" aria-label="Joke: system prompt control plane">
       <p class="talk-prompt-joke__tag">system prompt</p>
@@ -191,7 +196,7 @@ rexec sandbox delete</div>
     <li>Egress on purpose; DNS is data</li>
     <li>Hard caps + TTL; outbound over inbound SSH</li>
   </ol>
-  <p class="punch">Give them a terminal. Don’t give them your laptop.</p>
+  <p class="punch">Agents need a terminal. They don’t need your login session.</p>
 </section>
 
 <!-- 10 Resources -->
