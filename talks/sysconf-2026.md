@@ -100,15 +100,10 @@ image: /assets/images/nitrocode-og-v2.png
   <p class="talk-slide__label">04 · Content · problem</p>
   <div class="talk-split">
     <div class="talk-split__main">
-      <h2>The default isn’t “agent gets a terminal.”<br>It’s “agent gets yours.”</h2>
-      <p>What most teams ship today:</p>
-      <ol>
-        <li>Install an agent CLI on a laptop, bastion, or shared runner</li>
-        <li>Leave shell, network, and package install on</li>
-        <li>Rely on system prompts and “approve tool use”</li>
-      </ol>
-      <p>Same user. Same files. Same credentials. Same blast radius.</p>
-      <p><strong>Rexec</strong> exists so the agent still gets a real terminal - just a disposable, network-isolated one, not your login session.</p>
+      <h2>Agents still get a terminal.<br>It just shouldn’t be your workstation.</h2>
+      <p>They need to run commands - that’s the product. The shortcut is running those commands <em>as you</em> on a laptop, bastion, or shared runner.</p>
+      <p>This talk is <strong>not</strong> “harden your personal shell for AI.”</p>
+      <p>It’s <strong>give the agent its own disposable terminal</strong> - isolated, capped, networked on purpose, then deleted. That’s what <strong>Rexec</strong> is for.</p>
     </div>
     <aside class="talk-prompt-joke" aria-label="Joke: system prompt control plane">
       <p class="talk-prompt-joke__tag">system prompt</p>
@@ -120,7 +115,7 @@ NEVER curl | bash.
 
 Approve tool use?
 [ Always allow ] ✓</pre>
-      <p class="talk-prompt-joke__caption">Not a control plane.</p>
+      <p class="talk-prompt-joke__caption">Fake fix when you share the workstation.</p>
     </aside>
   </div>
 </section>
