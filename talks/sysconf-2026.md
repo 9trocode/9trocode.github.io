@@ -86,10 +86,10 @@ image: /assets/images/nitrocode-og-v2.png
   <p class="talk-slide__label">04 · Content · problem</p>
   <div class="talk-split">
     <div class="talk-split__main">
-      <h2>Shell is useful.<br>Your machine is not.</h2>
-      <p>Coding agents that run commands are common. Unrestricted shell on a laptop, bastion, or shared runner is still the default.</p>
-      <p><strong>Rexec</strong> is how I ship the other shape: disposable, network-isolated Linux terminals - cloud or your own machines.</p>
-      <p class="punch">Blast radius is the problem - not the shell.</p>
+      <h2>Giving an agent a shell is useful.<br>Giving it your laptop is not.</h2>
+      <p>Agents need to run commands - <code>npm install</code>, tests, “fix the Dockerfile.” That’s fine.</p>
+      <p>What’s not fine: unrestricted shell on the same machine as your secrets, <code>~/.kube</code>, and prod access - laptop, bastion, or shared runner.</p>
+      <p><strong>Rexec</strong> is how I give them a terminal without giving them <em>that</em> machine: disposable, network-isolated Linux sandboxes.</p>
     </div>
     <aside class="talk-prompt-joke" aria-label="Joke: system prompt control plane">
       <p class="talk-prompt-joke__tag">system prompt</p>
@@ -191,7 +191,7 @@ rexec sandbox delete</div>
     <li>Egress on purpose; DNS is data</li>
     <li>Hard caps + TTL; outbound over inbound SSH</li>
   </ol>
-  <p class="punch">Shell is useful. Your machine is not.</p>
+  <p class="punch">Give them a terminal. Don’t give them your laptop.</p>
 </section>
 
 <!-- 10 Resources -->
