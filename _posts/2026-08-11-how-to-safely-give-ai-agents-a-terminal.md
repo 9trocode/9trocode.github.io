@@ -106,8 +106,6 @@ Default Docker (`runc`) shares the host kernel - say so if that’s all you’re
 
 **BYOS** = bring your own server. Mediated access, not a jail.
 
-Steal the shape without our code: Kubernetes **Jobs** + **RuntimeClass** + **NetworkPolicy**.
-
 ---
 
 ## Content - what happens when you send a request
@@ -149,6 +147,8 @@ Docs: [rexec.sh/docs](https://rexec.sh/docs)
 3. gVisor or stronger for untrusted agent code  
 4. Egress on purpose; DNS is data  
 5. Hard caps + TTL; outbound over inbound SSH for real boxes  
+
+Don’t run Rexec? Steal the shape with Kubernetes **Jobs** + **RuntimeClass** + **NetworkPolicy**.
 
 Build the agent a terminal. Don’t share the one you live in.
 

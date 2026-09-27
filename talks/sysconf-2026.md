@@ -201,10 +201,6 @@ Approve tool use?
       <img class="talk-logo" src="{{ '/assets/talks/logos/websocket.svg' | relative_url }}" alt="" width="28" height="28" />
       <span><strong>Agent Handler → BYOS</strong> - outbound WebSocket to your machine; no inbound SSH.</span>
     </li>
-    <li>
-      <img class="talk-logo" src="{{ '/assets/talks/logos/kubernetes.svg' | relative_url }}" alt="" width="28" height="28" />
-      <span><strong>Jobs + RuntimeClass + NetworkPolicy</strong> - steal the shape without our code.</span>
-    </li>
   </ul>
 </section>
 
@@ -244,6 +240,7 @@ rexec sandbox delete</div>
     <li>Egress on purpose; DNS is data</li>
     <li>Hard caps + TTL; outbound over inbound SSH</li>
   </ol>
+  <p>Don’t run Rexec? Steal the shape with Kubernetes <strong>Jobs</strong> + <strong>RuntimeClass</strong> + <strong>NetworkPolicy</strong>.</p>
   <p class="punch">Build the agent a terminal. Don’t share the one you live in.</p>
 </section>
 
