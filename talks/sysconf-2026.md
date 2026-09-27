@@ -67,10 +67,10 @@ image: /assets/images/nitrocode-og-v2.png
     </div>
     <figure class="talk-portrait">
       <img
-        src="{{ '/assets/images/alex-idowu.png?v=' | append: site.asset_version | relative_url }}"
+        src="{{ '/assets/images/alex-idowu-talk.jpg?v=' | append: site.asset_version | relative_url }}"
         alt="Alex Idowu"
-        width="460"
-        height="460"
+        width="400"
+        height="400"
         loading="eager"
         decoding="async"
       />
