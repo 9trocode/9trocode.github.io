@@ -50,6 +50,7 @@ image: /assets/images/nitrocode-og-v2.png
   </div>
 </section>
 
+
 <!-- 02 About -->
 <section class="talk-slide" id="s02" data-slide="2">
   <p class="talk-slide__label">02 · Intro · about</p>
@@ -63,9 +64,26 @@ image: /assets/images/nitrocode-og-v2.png
   <p class="ok">That’s enough about me - let’s talk terminals.</p>
 </section>
 
-<!-- 03 Intro / problem -->
+
+<!-- 03 Goals -->
 <section class="talk-slide" id="s03" data-slide="3">
-  <p class="talk-slide__label">03 · Intro · problem</p>
+  <p class="talk-slide__label">03 · Goals</p>
+  <h2>What this talk covers</h2>
+  <p>How to safely give AI agents a terminal <strong>using Rexec</strong> - and which controls you can steal even if you never run our code.</p>
+  <ol class="talk-goals">
+    <li><strong>The problem</strong> - unrestricted shells on machines you care about <span class="talk-goals__next">→ next</span></li>
+    <li><strong>Security &amp; limits</strong> - isolation ladder, CPU / memory / TTL</li>
+    <li><strong>Network &amp; lifecycle</strong> - egress modes, create → delete</li>
+    <li><strong>Rexec build</strong> - components, then request dataflow</li>
+    <li><strong>Demo</strong> - create → prove → delete</li>
+  </ol>
+  <p class="ok">Rexec is the through-line. The controls are what you steal.</p>
+</section>
+
+
+<!-- 04 Content · problem -->
+<section class="talk-slide" id="s04" data-slide="4">
+  <p class="talk-slide__label">04 · Content · problem</p>
   <div class="talk-split">
     <div class="talk-split__main">
       <h2>Shell is useful.<br>Your machine is not.</h2>
@@ -88,21 +106,6 @@ Approve tool use?
   </div>
 </section>
 
-<!-- 04 Goals -->
-<section class="talk-slide" id="s04" data-slide="4">
-  <p class="talk-slide__label">04 · Goals</p>
-  <h2>What we’ll cover</h2>
-  <p>How to give an AI agent a terminal <strong>using Rexec</strong> - and which controls matter even if you copy the pattern elsewhere.</p>
-  <ol class="talk-goals">
-    <li><strong>Security</strong> - how Rexec reasons about isolation <span class="talk-goals__next">→ next</span></li>
-    <li><strong>Limits</strong> - how we enforce CPU / memory / TTL</li>
-    <li><strong>Network</strong> - how we control egress and peers</li>
-    <li><strong>Lifecycle</strong> - create → run → delete</li>
-    <li><strong>Build</strong> - Rexec components, then how a request flows</li>
-    <li><strong>Demo</strong> - prove it live in Rexec</li>
-  </ol>
-  <p class="ok">Rexec is the through-line. The controls are what you steal.</p>
-</section>
 
 <!-- 04 Content: security + limits -->
 <section class="talk-slide" id="s05" data-slide="5">
