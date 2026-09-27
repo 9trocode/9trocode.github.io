@@ -2269,3 +2269,47 @@ html[data-theme="light"] .talk-page.is-presenting .talk-slide {
     order: -1;
   }
 }
+
+.talk-oneliners--logos {
+  list-style: none;
+  padding-left: 0;
+  max-width: 48rem;
+}
+
+.talk-oneliners--logos li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin: 0.7rem 0;
+}
+
+.talk-logo {
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  margin-top: 0.1rem;
+  border-radius: 6px;
+}
+
+.talk-logo--text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.talk-page.is-presenting .talk-logo {
+  width: 32px;
+  height: 32px;
+  flex-basis: 32px;
+}
+
+.talk-page.is-presenting .talk-logo--text {
+  font-size: 0.7rem;
+}

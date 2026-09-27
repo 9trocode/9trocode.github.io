@@ -124,48 +124,87 @@ Approve tool use?
 <!-- 04 Content: security + limits -->
 <section class="talk-slide" id="s05" data-slide="5">
   <p class="talk-slide__label">05 · Content · security &amp; limits</p>
-  <h2>Isolation and resource limits</h2>
-  <div class="talk-grid">
-    <div class="talk-card">
-      <strong>Security</strong>
-      <span>Ladder: cgroup + caps → <strong>gVisor</strong> (<code>runsc</code>, user-space kernel - my default) → Firecracker → dedicated. Stock containers share the host kernel.</span>
-    </div>
-    <div class="talk-card">
-      <strong>Limits</strong>
-      <span>Hard CPU / memory / PIDs. Concurrency + <strong>TTL</strong> (kill on a timer). Thrash is a DoS on yourself. Limits = security.</span>
-    </div>
-  </div>
-  <p class="punch">Rexec trade-off: density + hosts without KVM → gVisor default. Escalate to Firecracker when the threat model says so.</p>
+  <h2>Security &amp; limits - one line each</h2>
+  <ul class="talk-oneliners talk-oneliners--logos">
+    <li>
+      <img class="talk-logo" src="{{ '/assets/talks/logos/cgroup.svg' | relative_url }}" alt="" width="28" height="28" />
+      <span><strong>cgroup + caps</strong> - baseline Linux resource and privilege controls.</span>
+    </li>
+    <li>
+      <img class="talk-logo" src="{{ '/assets/talks/logos/gvisor.svg' | relative_url }}" alt="" width="28" height="28" />
+      <span><strong>gVisor (<code>runsc</code>)</strong> - user-space kernel; my default for agent sandboxes.</span>
+    </li>
+    <li>
+      <img class="talk-logo" src="{{ '/assets/talks/logos/firecracker.svg' | relative_url }}" alt="" width="28" height="28" />
+      <span><strong>Firecracker</strong> - microVM when you need a guest kernel / harder boundary.</span>
+    </li>
+    <li>
+      <img class="talk-logo" src="{{ '/assets/talks/logos/linux.svg' | relative_url }}" alt="" width="28" height="28" />
+      <span><strong>Stock containers</strong> - share the host kernel; name the rung you’re buying.</span>
+    </li>
+    <li>
+      <span class="talk-logo talk-logo--text">TTL</span>
+      <span><strong>CPU / mem / PID + TTL</strong> - hard caps; thrash is a DoS on yourself. Limits = security.</span>
+    </li>
+  </ul>
+  <p class="punch">Trade-off: density + no KVM → gVisor default; escalate to Firecracker when the threat model says so.</p>
 </section>
 
-<!-- 05 Content: network + lifecycle -->
 <section class="talk-slide" id="s06" data-slide="6">
   <p class="talk-slide__label">06 · Content · network &amp; lifecycle</p>
-  <h2>Network and lifecycle</h2>
-  <div class="talk-grid">
-    <div class="talk-card">
-      <strong>Network</strong>
-      <span>A shell is a network endpoint. Pick at create: <strong>none</strong> · <strong>allowlist</strong> · <strong>full</strong>. <strong>ICC</strong> off only stops sandbox-to-sandbox on a Docker bridge - not “no internet.”</span>
-    </div>
-    <div class="talk-card">
-      <strong>Lifecycle</strong>
-      <span>Create → short-lived secrets → run → attach if needed → <strong>delete</strong>. Long-lived sandboxes become bastions.</span>
-    </div>
-  </div>
+  <h2>Network &amp; lifecycle - one line each</h2>
+  <ul class="talk-oneliners talk-oneliners--logos">
+    <li>
+      <img class="talk-logo" src="{{ '/assets/talks/logos/docker.svg' | relative_url }}" alt="" width="28" height="28" />
+      <span><strong>Shell = network endpoint</strong> - peer traffic, metadata, HTTPS, DNS, demo ports.</span>
+    </li>
+    <li>
+      <span class="talk-logo talk-logo--text">NET</span>
+      <span><strong>Egress modes</strong> - none · allowlist · full (you accepted the leak).</span>
+    </li>
+    <li>
+      <img class="talk-logo" src="{{ '/assets/talks/logos/docker.svg' | relative_url }}" alt="" width="28" height="28" />
+      <span><strong>ICC off</strong> - stops sandbox-to-sandbox on a Docker bridge; not “no internet.”</span>
+    </li>
+    <li>
+      <span class="talk-logo talk-logo--text">TTL</span>
+      <span><strong>Lifecycle</strong> - create → short-lived secrets → run → attach → <strong>delete</strong>.</span>
+    </li>
+    <li>
+      <img class="talk-logo" src="{{ '/assets/talks/logos/linux.svg' | relative_url }}" alt="" width="28" height="28" />
+      <span><strong>Long-lived sandboxes</strong> - become bastions with worse accountability.</span>
+    </li>
+  </ul>
 </section>
 
-<!-- 06 Content: components one-liners (was part of 07) -->
 <section class="talk-slide" id="s07" data-slide="7">
   <p class="talk-slide__label">07 · Content · components</p>
-  <h2>Rexec pieces - one line each</h2>
-  <ul class="talk-oneliners">
-    <li><strong>Browser / CLI</strong> - where humans and agents attach (xterm.js, API clients).</li>
-    <li><strong>Rexec API</strong> - auth, policy, create / exec / delete, WebSocket sessions.</li>
-    <li><strong>PostgreSQL</strong> - users, agents, session metadata.</li>
-    <li><strong>Container Manager</strong> - talks to Docker for disposable cloud sandboxes (limits, network, runtime).</li>
-    <li><strong>Docker Engine</strong> - where cloud sandboxes actually run.</li>
-    <li><strong>Agent Handler</strong> - relays sessions to machines you connect.</li>
-    <li><strong>BYOS agent</strong> - outbound WebSocket from your laptop/server; no inbound SSH.</li>
+  <h2>Stack - one line each</h2>
+  <ul class="talk-oneliners talk-oneliners--logos">
+    <li>
+      <span class="talk-logo talk-logo--text">UI</span>
+      <span><strong>Browser / CLI</strong> - where humans and agents attach (xterm.js, API clients).</span>
+    </li>
+    <li>
+      <span class="talk-logo talk-logo--text">API</span>
+      <span><strong>Control API</strong> - auth, policy, create / exec / delete, WebSocket sessions.</span>
+    </li>
+    <li>
+      <img class="talk-logo" src="{{ '/assets/talks/logos/postgresql.svg' | relative_url }}" alt="" width="28" height="28" />
+      <span><strong>PostgreSQL</strong> - users, agents, session metadata.</span>
+    </li>
+    <li>
+      <img class="talk-logo" src="{{ '/assets/talks/logos/docker.svg' | relative_url }}" alt="" width="28" height="28" />
+      <span><strong>Container Manager → Docker</strong> - disposable cloud sandboxes (limits, network, runtime).</span>
+    </li>
+    <li>
+      <img class="talk-logo" src="{{ '/assets/talks/logos/websocket.svg' | relative_url }}" alt="" width="28" height="28" />
+      <span><strong>Agent Handler → BYOS</strong> - outbound WebSocket to your machine; no inbound SSH.</span>
+    </li>
+    <li>
+      <img class="talk-logo" src="{{ '/assets/talks/logos/kubernetes.svg' | relative_url }}" alt="" width="28" height="28" />
+      <span><strong>Jobs + RuntimeClass + NetworkPolicy</strong> - steal the shape without our code.</span>
+    </li>
   </ul>
 </section>
 
