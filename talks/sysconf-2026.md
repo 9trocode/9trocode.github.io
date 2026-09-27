@@ -140,7 +140,7 @@ Approve tool use?
     </li>
     <li>
       <img class="talk-logo" src="{{ '/assets/talks/logos/linux.svg' | relative_url }}" alt="" width="28" height="28" />
-      <span><strong>Stock containers</strong> - share the host kernel; name the rung you’re buying.</span>
+      <span><strong>Default Docker (<code>runc</code>)</strong> - shares the host kernel; say so if that’s all you’re using.</span>
     </li>
     <li>
       <span class="talk-logo talk-logo--text">TTL</span>
