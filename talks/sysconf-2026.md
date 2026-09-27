@@ -1,9 +1,9 @@
 ---
 layout: talk
-title: How to Safely Give AI Agents a Terminal
+title: "Rexec: How to Safely Give AI Agents a Terminal"
 description: >-
-  Rexec: how to safely give AI agents a terminal. Isolation, limits, network,
-  and lifecycle for disposable Linux sandboxes - from building Rexec. Live demo.
+  How to safely give AI agents a terminal using Rexec - isolation, limits,
+  network, and lifecycle for disposable Linux sandboxes. Live demo.
 permalink: /talks/sysconf-2026/
 event: SysConf 2026
 slot: "Sat 3 Oct · 12:25-12:55 WAT · Room 1 · Standard 30m"
@@ -16,7 +16,7 @@ image: /assets/images/nitrocode-og-v2.png
 
 <div class="talk-intro">
   <p class="eyebrow">SysConf 2026 · Standard · 25 + 5</p>
-  <h1>How to Safely Give AI Agents a Terminal</h1>
+  <h1>Rexec: How to Safely Give AI Agents a Terminal</h1>
   <div class="talk-intro__meta">
     <p>Alex Idowu · PipeOps · Lagos</p>
     <p><strong>Sat 3 Oct 2026 · 12:25-12:55 WAT · Room 1</strong></p>
@@ -44,8 +44,8 @@ image: /assets/images/nitrocode-og-v2.png
   </div>
   <div class="talk-slide__fore">
     <p class="talk-slide__label">01 · Intro</p>
-    <p class="talk-hook">Rexec: how to safely give AI agents a terminal</p>
-    <h2>How to Safely Give AI Agents a Terminal</h2>
+    <p class="talk-hook">How to safely give AI agents a terminal - using Rexec</p>
+    <h2>Rexec: How to Safely Give AI Agents a Terminal</h2>
     <p>Alex Idowu · PipeOps · Lagos · SysConf 2026</p>
   </div>
 </section>
@@ -57,6 +57,7 @@ image: /assets/images/nitrocode-og-v2.png
     <div class="talk-split__main">
       <h2>Shell is useful.<br>Your machine is not.</h2>
       <p>Coding agents that run commands are common. Unrestricted shell on a laptop, bastion, or shared runner is still the default.</p>
+      <p><strong>Rexec</strong> is how I ship the other shape: disposable, network-isolated Linux terminals - cloud or your own machines.</p>
       <p class="punch">Blast radius is the problem - not the shell.</p>
     </div>
     <aside class="talk-prompt-joke" aria-label="Joke: system prompt control plane">
@@ -78,16 +79,16 @@ Approve tool use?
 <section class="talk-slide" id="s03" data-slide="3">
   <p class="talk-slide__label">03 · Goals</p>
   <h2>What we’ll cover</h2>
-  <p>Lessons from building <strong>Rexec</strong> - disposable, network-isolated Linux terminals (cloud or your own machines).</p>
+  <p>How to give an AI agent a terminal <strong>using Rexec</strong> - and which controls matter even if you copy the pattern elsewhere.</p>
   <ol class="talk-goals">
-    <li><strong>Security</strong> - how to reason about isolation <span class="talk-goals__next">→ next</span></li>
-    <li><strong>Limits</strong> - how to enforce CPU / memory / TTL</li>
-    <li><strong>Network</strong> - how to control egress and peers</li>
+    <li><strong>Security</strong> - how Rexec reasons about isolation <span class="talk-goals__next">→ next</span></li>
+    <li><strong>Limits</strong> - how we enforce CPU / memory / TTL</li>
+    <li><strong>Network</strong> - how we control egress and peers</li>
     <li><strong>Lifecycle</strong> - create → run → delete</li>
     <li><strong>Build</strong> - Rexec components, then how a request flows</li>
-    <li><strong>Demo</strong> - prove it live</li>
+    <li><strong>Demo</strong> - prove it live in Rexec</li>
   </ol>
-  <p class="ok">Authoritative on the controls. Relaxed on the delivery.</p>
+  <p class="ok">Rexec is the through-line. The controls are what you steal.</p>
 </section>
 
 <!-- 04 Content: security + limits -->

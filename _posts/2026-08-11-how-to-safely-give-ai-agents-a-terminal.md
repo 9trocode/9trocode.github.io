@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "How to Safely Give AI Agents a Terminal"
+title: "Rexec: How to Safely Give AI Agents a Terminal"
 date: 2026-08-11
 description: >-
-  Rexec: how to safely give AI agents a terminal. Shell is useful; your machine
-  is not. Isolation, limits, network, lifecycle - and how a request flows
-  through Rexec.
+  How to safely give AI agents a terminal using Rexec. Shell is useful; your
+  machine is not. Isolation, limits, network, lifecycle - and how a request
+  flows.
 tags:
 - Agents
 - Security
@@ -21,15 +21,17 @@ speaker_key: sysconf-2026-rexec
 sitemap: false
 ---
 
-**Rexec: how to safely give AI agents a terminal.**
+**How to safely give AI agents a terminal - using Rexec.**
 
 Shell is useful. Your machine is not.
 
 Coding agents that run commands are common. Unrestricted shell on a laptop, bastion, or shared runner is still the default. System prompts and “approve tool use” are not a control plane. The mistake is the **blast radius** - not the shell.
 
-**TL;DR:** Isolation + lifecycle. From building [Rexec](https://github.com/PipeOpsHQ/Rexec): how to reason about security, enforce limits, control network access, what the pieces are, and what happens when you send a request. Then steal a short checklist.
+**Rexec** is the through-line: an open-source control plane for disposable, network-isolated Linux terminals - cloud sandboxes or your own machines (BYOS).
 
-Talk deck: [SysConf 2026](/talks/sysconf-2026/)
+**TL;DR:** Isolation + lifecycle. How Rexec reasons about security, enforces limits, controls network access, what the pieces are, and what happens when you send a request. Steal the checklist even if you never run our compose file.
+
+Talk deck: [Rexec: How to Safely Give AI Agents a Terminal](/talks/sysconf-2026/) (SysConf 2026)
 
 ---
 
@@ -51,16 +53,16 @@ Models thrash. Hope is not a control.
 
 ## Goals
 
-Lessons from building **Rexec** - disposable, network-isolated Linux terminals (cloud or your own machines):
+How to give an AI agent a terminal **using Rexec** - and which controls matter if you copy the pattern elsewhere:
 
-1. **Security** - how to reason about isolation  
-2. **Limits** - how to enforce CPU / memory / TTL  
-3. **Network** - how to control egress and peers  
+1. **Security** - how Rexec reasons about isolation  
+2. **Limits** - how we enforce CPU / memory / TTL  
+3. **Network** - how we control egress and peers  
 4. **Lifecycle** - create → run → delete  
-5. **Build** - components, then how a request flows  
-6. **Practice** - prove it (create → block → delete)  
+5. **Build** - Rexec components, then how a request flows  
+6. **Practice** - prove it live in Rexec (create → block → delete)  
 
-Not a prompting essay. Controls you can ship.
+Rexec is the through-line. The controls are what you steal.
 
 ---
 
@@ -153,7 +155,7 @@ Shell is useful. Your machine is not.
 
 ## Resources
 
-- **Talk deck:** [How to Safely Give AI Agents a Terminal](/talks/sysconf-2026/) (SysConf 2026)  
+- **Talk deck:** [Rexec: How to Safely Give AI Agents a Terminal](/talks/sysconf-2026/) (SysConf 2026)  
 - **Rexec:** [github.com/PipeOpsHQ/Rexec](https://github.com/PipeOpsHQ/Rexec)  
 - **Docs:** [rexec.sh/docs](https://rexec.sh/docs)  
 - **Related:** [Rexec control room](/blog/2026/02/27/rexec-terminal-control-room) · [Namespaces aren't isolation](/blog/2026/08/11/namespaces-arent-isolation) · [Work](/work/)
