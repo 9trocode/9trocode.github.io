@@ -124,7 +124,7 @@ Approve tool use?
 <!-- 04 Content: security + limits -->
 <section class="talk-slide" id="s05" data-slide="5">
   <p class="talk-slide__label">05 · Content · security &amp; limits</p>
-  <h2>Security &amp; limits - one line each</h2>
+  <h2>Security &amp; limits</h2>
   <ul class="talk-oneliners talk-oneliners--logos">
     <li>
       <img class="talk-logo" src="{{ '/assets/talks/logos/cgroup.svg' | relative_url }}" alt="" width="28" height="28" />
@@ -152,7 +152,7 @@ Approve tool use?
 
 <section class="talk-slide" id="s06" data-slide="6">
   <p class="talk-slide__label">06 · Content · network &amp; lifecycle</p>
-  <h2>Network &amp; lifecycle - one line each</h2>
+  <h2>Network &amp; lifecycle</h2>
   <ul class="talk-oneliners talk-oneliners--logos">
     <li>
       <img class="talk-logo" src="{{ '/assets/talks/logos/docker.svg' | relative_url }}" alt="" width="28" height="28" />
@@ -179,7 +179,7 @@ Approve tool use?
 
 <section class="talk-slide" id="s07" data-slide="7">
   <p class="talk-slide__label">07 · Content · components</p>
-  <h2>Stack - one line each</h2>
+  <h2>Stack</h2>
   <ul class="talk-oneliners talk-oneliners--logos">
     <li>
       <span class="talk-logo talk-logo--text">UI</span>
