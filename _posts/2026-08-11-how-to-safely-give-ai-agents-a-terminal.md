@@ -43,7 +43,7 @@ How to safely give AI agents a terminal **using Rexec** - and which controls you
 
 1. **The problem** - agent exec on your workstation, not a sandbox terminal  
 2. **Security & limits** - isolation ladder, CPU / memory / TTL  
-3. **Network & lifecycle** - egress modes, create → delete  
+3. **Reach & disposal** - what the terminal can talk to, and when it dies  
 4. **Rexec build** - components, then request dataflow  
 5. **Practice** - create → prove → delete  
 
@@ -84,7 +84,7 @@ Default Docker (`runc`) shares the host kernel - say so if that’s all you’re
 
 ---
 
-## Content - network and lifecycle
+## Content - what the terminal can reach, and when it dies
 
 **Network:** a shell is a network endpoint. Pick at create: **none** · **allowlist** · **full** (you accepted the leak). **ICC** (inter-container communication on a Docker bridge) off only stops sandbox-to-sandbox on that bridge - not “no internet.”
 

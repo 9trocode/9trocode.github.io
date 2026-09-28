@@ -87,7 +87,7 @@ image: /assets/images/nitrocode-og-v2.png
   <ol class="talk-goals">
     <li><strong>The problem</strong> - agent exec on your workstation, not a sandbox terminal <span class="talk-goals__next">→ next</span></li>
     <li><strong>Security &amp; limits</strong> - isolation ladder, CPU / memory / TTL</li>
-    <li><strong>Network &amp; lifecycle</strong> - egress modes, create → delete</li>
+    <li><strong>Reach &amp; disposal</strong> - what the terminal can talk to, and when it dies</li>
     <li><strong>Rexec build</strong> - components, then request dataflow</li>
     <li><strong>Demo</strong> - create → prove → delete</li>
   </ol>
@@ -151,8 +151,8 @@ Approve tool use?
 </section>
 
 <section class="talk-slide" id="s06" data-slide="6">
-  <p class="talk-slide__label">06 · Content · network &amp; lifecycle</p>
-  <h2>Network &amp; lifecycle</h2>
+  <p class="talk-slide__label">06 · Content · reach &amp; disposal</p>
+  <h2>What the terminal can reach, and when it dies</h2>
   <ul class="talk-oneliners talk-oneliners--logos">
     <li>
       <img class="talk-logo" src="{{ '/assets/talks/logos/docker.svg' | relative_url }}" alt="" width="28" height="28" />
