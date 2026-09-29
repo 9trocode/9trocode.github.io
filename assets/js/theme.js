@@ -1,19 +1,28 @@
 (function () {
-  var STORAGE_KEY = "nitrocode-theme";
-
-  function systemTheme() {
-    return window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: light)").matches
-      ? "light"
-      : "dark";
-  }
+  var isTalk =
+    document.body && document.body.classList.contains("talk-page");
+  var STORAGE_KEY = isTalk ? "nitrocode-talk-theme" : "nitrocode-theme";
+  var DEFAULT_THEME = isTalk ? "light" : "dark";
 
   function currentTheme() {
     try {
       var stored = localStorage.getItem(STORAGE_KEY);
       if (stored === "light" || stored === "dark") return stored;
     } catch (e) {}
-    return systemTheme();
+    return DEFAULT_THEME;
+  }
+
+  function themeButtons() {
+    // Site nav uses .theme-toggle; talk chrome uses .js-theme-toggle.
+    // Comma selector returns each element once even if it matches both.
+    return document.querySelectorAll(".js-theme-toggle, .theme-toggle");
+  }
+
+  function isIconToggle(btn) {
+    return (
+      btn.dataset.labelMode === "icon" ||
+      btn.classList.contains("theme-toggle")
+    );
   }
 
   function applyTheme(theme) {
@@ -25,9 +34,10 @@
     var label = theme === "dark" ? "White mode" : "Dark mode";
     var aria =
       theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
-    document.querySelectorAll(".js-theme-toggle").forEach(function (btn) {
+    themeButtons().forEach(function (btn) {
       btn.setAttribute("aria-label", aria);
-      if (btn.dataset.labelMode !== "icon") {
+      // Never wipe SVG moon/sun icons with text labels.
+      if (!isIconToggle(btn)) {
         btn.textContent = label;
       }
     });
@@ -56,21 +66,9 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     applyTheme(currentTheme());
-    document.querySelectorAll(".js-theme-toggle").forEach(function (btn) {
+    themeButtons().forEach(function (btn) {
       btn.addEventListener("click", toggle);
     });
-
-    if (window.matchMedia) {
-      window
-        .matchMedia("(prefers-color-scheme: light)")
-        .addEventListener("change", function () {
-          try {
-            if (!localStorage.getItem(STORAGE_KEY)) applyTheme(systemTheme());
-          } catch (e) {
-            applyTheme(systemTheme());
-          }
-        });
-    }
 
     // Mobile nav
     var header = document.querySelector(".site-header");

@@ -1,20 +1,18 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: 'en-US' }}" data-theme="dark">
+<html lang="{{ site.lang | default: 'en-US' }}" data-theme="light">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0c0b0a">
+    <meta name="theme-color" content="#f3efe6">
     <script>
       (function () {
         try {
-          var t = localStorage.getItem("nitrocode-theme");
-          if (t !== "light" && t !== "dark") {
-            t = window.matchMedia("(prefers-color-scheme: light)").matches
-              ? "light"
-              : "dark";
-          }
+          var t = localStorage.getItem("nitrocode-talk-theme");
+          if (t !== "light" && t !== "dark") t = "light";
           document.documentElement.setAttribute("data-theme", t);
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute("content", t === "light" ? "#f3efe6" : "#0c0b0a");
         } catch (e) {}
       })();
     </script>
@@ -53,8 +51,8 @@
 
       <aside class="talk-float-card" aria-label="Display options">
         <p class="talk-float-card__label">Display</p>
-        <button type="button" class="btn btn--solid talk-btn js-theme-toggle" aria-label="Switch to light mode">White mode</button>
-        <p class="talk-float-card__hint">Light slides for camera / projector</p>
+        <button type="button" class="btn btn--solid talk-btn js-theme-toggle" aria-label="Switch to dark mode">Dark mode</button>
+        <p class="talk-float-card__hint">Defaults to white for camera / projector</p>
       </aside>
 
       <main class="talk-main" id="main_content">
