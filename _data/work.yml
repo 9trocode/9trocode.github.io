@@ -16,6 +16,19 @@
 # --- Senior / lead roles (not early-career) ---
 # Timeline refined from public aggregators (RocketReach/F6S snippets) + user confirm.
 # LinkedIn guest view remains login-walled for full JD bullets.
+# Aeon title/dates: TechCabal + Lucidity (Co-founder & CTO; founded Feb 2026) + LinkedIn top experience.
+
+- name: Aeon Cyber Defense
+  kind: Roles
+  home: false
+  role: Co-founder & CTO
+  period: 2026 - present
+  url: https://aeon.pipeops.io/
+  link_label: Visit
+  summary: >-
+    Co-founder & CTO of Aeon: cyber defence and compliance for high-trust orgs
+    (Aeon Console + Aeon Edge). Built from PipeOps; $1M pre-seed led by Terra Industries.
+  tags: [co-founder, security, cyber-defense]
 
 - name: PipeOps
   kind: Roles
@@ -145,13 +158,14 @@
 
 - name: Aeon
   kind: Security
-  home: false
-  url: ""
-  link_label: In progress
+  home: true
+  url: https://aeon.pipeops.io/
+  link_label: Visit
   summary: >-
-    Security software for high-trust orgs: discovery, remediation, policy,
-    compliance across cloud, on-prem, and hybrid.
-  tags: [security, compliance]
+    Cyber defence and compliance for high-trust orgs across Africa and the Global
+    South: Aeon Console (risk, vuln, policy, response) and Aeon Edge (on-site network
+    protection). Co-founded; $1M pre-seed (Terra Industries).
+  tags: [security, compliance, cyber-defense]
 
 - name: OpenFing
   kind: Open source

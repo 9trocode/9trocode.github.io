@@ -3,16 +3,16 @@ layout: default
 title: About Alex Idowu
 permalink: /about/
 description: >-
-  Alex Idowu is Co-founder & CTO at PipeOps in Lagos. Platform engineering,
-  multi-tenant Kubernetes isolation, agent sandboxes, and Aeon for cloud-native
-  security. Open source: Rexec, firecracker-shim.
+  Alex Idowu is Co-founder & CTO at PipeOps and Aeon Cyber Defense in Lagos.
+  Platform engineering, multi-tenant Kubernetes isolation, agent sandboxes, and
+  cyber defence. Open source: Rexec, firecracker-shim.
 image: /assets/images/nitrocode-og-v2.png
 ---
 
 <header class="page-hero">
   <p class="eyebrow">About</p>
   <h1>Alex Idowu</h1>
-  <p>Co-founder &amp; CTO at PipeOps. Lagos.</p>
+  <p>Co-founder &amp; CTO at PipeOps and Aeon. Lagos.</p>
 </header>
 
 <div class="about-layout">
@@ -26,9 +26,9 @@ image: /assets/images/nitrocode-og-v2.png
 
     <p>I'm <strong>Co-founder &amp; CTO at <a href="https://pipeops.io">PipeOps</a></strong> (<a href="https://github.com/PipeOpsHQ">PipeOpsHQ</a>), a cloud deployment platform that abstracts DevOps complexity so teams can go from code to cloud in minutes. We focus on multi-cloud provisioning, Kubernetes-based runtime, and making platform engineering usable for startups and engineers who shouldn't need a full DevOps team. Part of that surface is the <strong><a href="https://agents.pipeops.io/">PipeOps Kubernetes Agent</a></strong> - BYOS install that turns a VM into a managed deploy target over an outbound tunnel.</p>
 
-    <p>Before PipeOps I held senior and lead roles: <strong>Founding Member &amp; Head of Security &amp; SRE</strong> at <a href="https://iflux.app/">Flux</a> (fintech, 2020-2022), <strong>Engineering Manager</strong> at <a href="https://mkobobank.com">Mkobo</a> (2020-2021), <strong>Head of Engineering</strong> at Deepview, <strong>Technical Team Lead &amp; DevOps</strong> at Demz Analytics, and <strong>Senior Software Engineer / DevOps</strong> at <a href="https://www.onepipe.io">OnePipe</a>. Full catalogue on <a href="/work/">Work</a>.</p>
+    <p>I'm also <strong>Co-founder &amp; CTO at <a href="https://aeon.pipeops.io/">Aeon Cyber Defense</a></strong> - cyber defence and compliance for high-trust organizations (Aeon Console + Aeon Edge), built from PipeOps starting in 2026.</p>
 
-    <p>I'm also building <strong>Aeon</strong> - security software for high-trust organizations across cloud, on-prem, and hybrid environments.</p>
+    <p>Before PipeOps I held senior and lead roles: <strong>Founding Member &amp; Head of Security &amp; SRE</strong> at <a href="https://iflux.app/">Flux</a> (fintech, 2020-2022), <strong>Engineering Manager</strong> at <a href="https://mkobobank.com">Mkobo</a> (2020-2021), <strong>Head of Engineering</strong> at Deepview, <strong>Technical Team Lead &amp; DevOps</strong> at Demz Analytics, and <strong>Senior Software Engineer / DevOps</strong> at <a href="https://www.onepipe.io">OnePipe</a>. Full catalogue on <a href="/work/">Work</a>.</p>
 
     <p>I've been working in technology since 2012, with a decade-plus focus on:</p>
 
@@ -70,7 +70,8 @@ image: /assets/images/nitrocode-og-v2.png
       <li><strong>X / Twitter</strong>: <a href="https://twitter.com/nitrocode">@nitrocode</a></li>
       <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/nitrocode/">linkedin.com/in/nitrocode</a></li>
       <li><strong>GitHub</strong>: <a href="https://github.com/9trocode">@9trocode</a></li>
-      <li><strong>Company</strong>: <a href="https://pipeops.io">pipeops.io</a></li>
+      <li><strong>PipeOps</strong>: <a href="https://pipeops.io">pipeops.io</a></li>
+      <li><strong>Aeon</strong>: <a href="https://aeon.pipeops.io/">aeon.pipeops.io</a></li>
       <li><strong>Agent docs</strong>: <a href="https://agents.pipeops.io/">agents.pipeops.io</a></li>
     </ul>
   </div>

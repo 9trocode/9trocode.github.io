@@ -1,9 +1,9 @@
 asset_version: "20260929-theme-toggle"
 title: Alex Idowu
 description: >-
-  Co-founder & CTO at PipeOps. Platform engineering, multi-tenant Kubernetes
-  isolation, agent sandboxes, cloud-native security, and production field notes
-  from Lagos. Building Aeon.
+  Co-founder & CTO at PipeOps and Aeon Cyber Defense. Platform engineering,
+  multi-tenant Kubernetes isolation, agent sandboxes, cyber defence, and
+  production field notes from Lagos.
 plugins:
   - jekyll-feed
   - jekyll-seo-tag

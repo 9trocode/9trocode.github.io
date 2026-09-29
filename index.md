@@ -22,11 +22,11 @@ image: /assets/images/nitrocode-og-v2.png
  <p class="hero__lede">Hi. If you care how Kubernetes actually works - operators, shims, CSI, agents, multi-tenant isolation, sandboxes, self-hosted gateways - pull up a chair. Field notes from production.</p>
  <ul class="hero__meta">
  <li>PipeOps</li>
+ <li>Aeon</li>
  <li>K8s Agent</li>
  <li>Rexec</li>
  <li>firecracker-shim</li>
  <li>Igris</li>
- <li>Aeon</li>
  </ul>
  <p class="hero__actions">
  <a class="btn btn--solid" href="/blog/">Read writing</a>

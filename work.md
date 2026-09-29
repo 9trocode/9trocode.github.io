@@ -59,4 +59,6 @@ image: /assets/images/nitrocode-og-v2.png
   <a class="btn btn--ghost" href="{{ '/about/' | relative_url }}">About</a>
   <a class="btn btn--ghost" href="https://github.com/9trocode" target="_blank" rel="noopener">GitHub</a>
   <a class="btn btn--ghost" href="https://github.com/PipeOpsHQ" target="_blank" rel="noopener">PipeOpsHQ</a>
+  <a class="btn btn--ghost" href="https://aeon.pipeops.io/" target="_blank" rel="noopener">Aeon</a>
+  <a class="btn btn--ghost" href="https://www.linkedin.com/in/nitrocode/" target="_blank" rel="noopener">LinkedIn</a>
 </p>
