@@ -83,7 +83,7 @@ image: /assets/images/nitrocode-og-v2.png
 <section class="talk-slide" id="s03" data-slide="3">
   <p class="talk-slide__label">03 · Goals</p>
   <h2>What this talk covers</h2>
-  <p>How to safely give AI agents a terminal <strong>using Rexec</strong> - and which controls you can steal even if you never run our code.</p>
+  <p>How to safely give AI agents a terminal <strong>using Rexec</strong> - and the controls that still matter if you wire your own stack.</p>
   <ol class="talk-goals">
     <li><strong>The problem</strong> - agent exec on your workstation, not a sandbox terminal <span class="talk-goals__next">→ next</span></li>
     <li><strong>Security &amp; limits</strong> - isolation ladder, CPU / memory / TTL</li>
@@ -91,7 +91,7 @@ image: /assets/images/nitrocode-og-v2.png
     <li><strong>Rexec build</strong> - components, then request dataflow</li>
     <li><strong>Demo</strong> - create → prove → delete</li>
   </ol>
-  <p class="ok">Rexec is the through-line. The controls are what you steal.</p>
+  <p class="ok">Rexec is the through-line. The controls travel without it.</p>
 </section>
 
 
@@ -232,16 +232,15 @@ rexec sandbox delete</div>
 <!-- 09 Conclusion -->
 <section class="talk-slide" id="s10" data-slide="10">
   <p class="talk-slide__label">10 · Conclusion</p>
-  <h2>Steal this</h2>
+  <h2>Build the agent a terminal.<br>Don’t share the one you live in.</h2>
   <ol>
-    <li>No agent shell on laptops for secrets / prod</li>
-    <li>One sandbox per task - then delete</li>
-    <li>gVisor or stronger for untrusted agent code</li>
-    <li>Egress on purpose; DNS is data</li>
-    <li>Hard caps + TTL; outbound over inbound SSH</li>
+    <li>Secrets and prod never meet an agent on your laptop</li>
+    <li>One sandbox per task. Then delete it</li>
+    <li>Untrusted agent code → gVisor or stronger</li>
+    <li>Egress is a decision. DNS is data</li>
+    <li>Hard caps + TTL. Outbound agents, not inbound SSH</li>
   </ol>
-  <p>Don’t run Rexec? Steal the shape with Kubernetes <strong>Jobs</strong> + <strong>RuntimeClass</strong> + <strong>NetworkPolicy</strong>.</p>
-  <p class="punch">Build the agent a terminal. Don’t share the one you live in.</p>
+  <p class="ok">No Rexec? Same controls with Kubernetes <strong>Jobs</strong> + <strong>RuntimeClass</strong> + <strong>NetworkPolicy</strong>.</p>
 </section>
 
 <!-- 10 Resources -->

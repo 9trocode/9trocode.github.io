@@ -31,7 +31,7 @@ This is **not** “harden your personal shell for AI.”
 
 It’s **give the agent its own disposable terminal** - isolated, capped, networked on purpose, then deleted. That’s what **Rexec** is for (cloud sandboxes or BYOS).
 
-**TL;DR:** Isolation + lifecycle. How Rexec reasons about security, enforces limits, controls network access, what the pieces are, and what happens when you send a request. Steal the checklist even if you never run our compose file.
+**TL;DR:** Isolation + lifecycle. How Rexec reasons about security, enforces limits, controls network access, what the pieces are, and what happens when you send a request. The checklist still applies if you wire your own stack.
 
 Talk deck: [Rexec: How to Safely Give AI Agents a Terminal](/talks/sysconf-2026/) (SysConf 2026)
 
@@ -140,17 +140,17 @@ Docs: [rexec.sh/docs](https://rexec.sh/docs)
 
 ---
 
-## Conclusion - steal this
+## Conclusion
 
-1. No agent shell on laptops for secrets / prod  
-2. One sandbox per task - then delete  
-3. gVisor or stronger for untrusted agent code  
-4. Egress on purpose; DNS is data  
-5. Hard caps + TTL; outbound over inbound SSH for real boxes  
+**Build the agent a terminal. Don’t share the one you live in.**
 
-Don’t run Rexec? Steal the shape with Kubernetes **Jobs** + **RuntimeClass** + **NetworkPolicy**.
+1. Secrets and prod never meet an agent on your laptop  
+2. One sandbox per task. Then delete it  
+3. Untrusted agent code → gVisor or stronger  
+4. Egress is a decision. DNS is data  
+5. Hard caps + TTL. Outbound agents, not inbound SSH  
 
-Build the agent a terminal. Don’t share the one you live in.
+No Rexec? Same controls with Kubernetes **Jobs** + **RuntimeClass** + **NetworkPolicy**.
 
 ---
 
