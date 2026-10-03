@@ -233,16 +233,28 @@ rexec sandbox delete</div>
 <!-- 09 Conclusion -->
 <section class="talk-slide" id="s10" data-slide="10">
   <p class="talk-slide__label">10 · Conclusion</p>
-  <h2>Build the agent a terminal.<br>Don’t share the one you live in.</h2>
-  <ol>
-    <li>Secrets and prod never meet an agent on your laptop</li>
-    <li>One sandbox per task. Then delete it</li>
-    <li>Untrusted agent code → gVisor or stronger</li>
-    <li>Egress is a decision. DNS is data</li>
-    <li>Hard caps + TTL. Outbound agents, not inbound SSH</li>
-  </ol>
-  <p class="ok">No Rexec? Same controls with Kubernetes <strong>Jobs</strong> + <strong>RuntimeClass</strong> + <strong>NetworkPolicy</strong>.</p>
-  <p class="punch">Luffy’s crew says: <strong>arigatou gozaimasu</strong>.</p>
+  <div class="talk-close">
+    <div class="talk-close__copy">
+      <h2>Build the agent a terminal.<br>Don’t share the one you live in.</h2>
+      <ol>
+        <li>Secrets and prod never meet an agent on your laptop</li>
+        <li>One sandbox per task. Then delete it</li>
+        <li>Untrusted agent code → gVisor or stronger</li>
+        <li>Egress is a decision. DNS is data</li>
+        <li>Hard caps + TTL. Outbound agents, not inbound SSH</li>
+      </ol>
+      <p class="ok">No Rexec? Same controls with Kubernetes <strong>Jobs</strong> + <strong>RuntimeClass</strong> + <strong>NetworkPolicy</strong>.</p>
+    </div>
+    <figure class="talk-close__art">
+      <img
+        src="{{ '/assets/talks/luffy-crew-arigatou.jpg?v=' | append: site.asset_version | relative_url }}"
+        alt="Straw Hat crew in a Ghibli-style thank-you scene"
+        width="768"
+        height="1152"
+      />
+      <figcaption>Luffy’s crew: <strong>arigatou gozaimasu</strong></figcaption>
+    </figure>
+  </div>
 </section>
 
 <!-- 10 Resources -->

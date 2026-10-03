@@ -1,0 +1,77 @@
+/* Conclusion: takeaways left, Ghibli crew thank-you art right with caption under. */
+
+#s10.talk-slide::before {
+  display: none !important;
+  content: none !important;
+}
+
+#s10 .talk-close {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(12rem, 18rem);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: center;
+  width: 100%;
+  max-width: 64rem;
+}
+
+#s10 .talk-close__copy {
+  min-width: 0;
+}
+
+#s10 .talk-close__copy h2 {
+  max-width: 16ch;
+}
+
+#s10 .talk-close__art {
+  margin: 0;
+  justify-self: end;
+  width: min(18rem, 100%);
+  text-align: center;
+}
+
+#s10 .talk-close__art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--line, rgba(0, 0, 0, 0.12));
+  box-shadow: 0 12px 40px rgba(0, 44, 51, 0.16);
+  object-fit: cover;
+  aspect-ratio: 2 / 3;
+  background: var(--bg-2, #eee);
+}
+
+#s10 .talk-close__art figcaption {
+  margin: 0.65rem 0 0;
+  font-family: var(--display, inherit);
+  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+  font-weight: 600;
+  color: var(--ink-2, #333);
+  letter-spacing: 0.01em;
+}
+
+.talk-page.is-presenting #s10 .talk-close {
+  max-width: none;
+  grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.talk-page.is-presenting #s10 .talk-close__art {
+  width: min(22rem, 32vw);
+}
+
+.talk-page.is-presenting #s10 .talk-close__art figcaption {
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+}
+
+@media (max-width: 800px) {
+  #s10 .talk-close {
+    grid-template-columns: 1fr;
+  }
+
+  #s10 .talk-close__art {
+    justify-self: start;
+    width: min(14rem, 70vw);
+    order: -1;
+  }
+}
