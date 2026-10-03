@@ -242,6 +242,7 @@ rexec sandbox delete</div>
     <li>Hard caps + TTL. Outbound agents, not inbound SSH</li>
   </ol>
   <p class="ok">No Rexec? Same controls with Kubernetes <strong>Jobs</strong> + <strong>RuntimeClass</strong> + <strong>NetworkPolicy</strong>.</p>
+  <p class="punch">Luffy’s crew says: <strong>arigatou gozaimasu</strong>.</p>
 </section>
 
 <!-- 10 Resources -->
