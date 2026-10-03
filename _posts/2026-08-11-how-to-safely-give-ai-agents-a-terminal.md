@@ -65,11 +65,17 @@ What breaks without a jailbreak:
 
 Models thrash. Hope is not a control.
 
+Give the agent its own disposable terminal. That’s what Rexec is for.
+
+Disposable terminal. Now make the walls real.
+
 ---
 
-## Content - isolation and limits
+## Content - what walls does that terminal get?
 
-**Security ladder**
+A delete button is not a boundary. Pick a rung - then hard-cap it.
+
+**Isolation ladder**
 
 1. cgroup + caps + network - baseline  
 2. **gVisor** (`runsc` = its OCI runtime; user-space kernel between container and host) - my default  
