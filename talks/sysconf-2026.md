@@ -83,7 +83,7 @@ image: /assets/talks/agent-terminal-title.jpg
   <p>How to safely give AI agents a terminal <strong>using Rexec</strong> - and the controls that still matter if you wire your own stack.</p>
   <ol class="talk-goals">
     <li><strong>The problem</strong> - agent exec on your workstation, not a sandbox terminal <span class="talk-goals__next">→ next</span></li>
-    <li><strong>Security &amp; limits</strong> - isolation ladder, CPU / memory / TTL</li>
+    <li><strong>Security &amp; limits</strong> - what walls that terminal gets; CPU / memory / TTL</li>
     <li><strong>Reach &amp; disposal</strong> - what the terminal can talk to, and when it dies</li>
     <li><strong>Rexec build</strong> - components, then request dataflow</li>
     <li><strong>Demo</strong> - create → prove → delete</li>
@@ -100,7 +100,8 @@ image: /assets/talks/agent-terminal-title.jpg
       <h2>Agents still get a terminal.<br>It just shouldn’t be your workstation.</h2>
       <p>They need to run commands - that’s the product. The shortcut is running those commands <em>as you</em> on a laptop, bastion, or shared runner.</p>
       <p>This talk is <strong>not</strong> “harden your personal shell for AI.”</p>
-      <p>It’s <strong>give the agent its own disposable terminal</strong> - isolated, capped, networked on purpose, then deleted. That’s what <strong>Rexec</strong> is for.</p>
+      <p>It’s <strong>give the agent its own disposable terminal</strong>. That’s what <strong>Rexec</strong> is for.</p>
+      <p class="punch">Disposable terminal. Now make the walls real.</p>
     </div>
     <aside class="talk-prompt-joke" aria-label="Joke: system prompt control plane">
       <p class="talk-prompt-joke__tag">system prompt</p>
@@ -118,10 +119,11 @@ Approve tool use?
 </section>
 
 
-<!-- 04 Content: security + limits -->
+<!-- 05 Content: security + limits -->
 <section class="talk-slide" id="s05" data-slide="5">
   <p class="talk-slide__label">05 · Content · security &amp; limits</p>
-  <h2>Security &amp; limits</h2>
+  <h2>What walls does that terminal get?</h2>
+  <p>A delete button is not a boundary. Pick a rung - then hard-cap it.</p>
   <ul class="talk-oneliners talk-oneliners--logos">
     <li>
       <img class="talk-logo" src="{{ '/assets/talks/logos/cgroup.svg' | relative_url }}" alt="" width="28" height="28" />
