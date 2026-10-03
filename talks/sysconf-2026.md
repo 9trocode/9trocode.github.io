@@ -252,7 +252,7 @@ rexec sandbox delete</div>
         width="768"
         height="1152"
       />
-      <figcaption>Luffy’s crew: <strong>arigatou gozaimasu</strong></figcaption>
+      <figcaption><strong>arigatou gozaimasu</strong></figcaption>
     </figure>
   </div>
 </section>
