@@ -18,7 +18,7 @@
     </script>
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.asset_version | relative_url }}">
     {% seo %}
-    {% comment %} Override jekyll-seo-tag image with cache-busted absolute URL (Slack/LinkedIn cache aggressively). {% endcomment %}
+    {% comment %} head-custom must not emit a second og:image - WhatsApp stacks duplicates. {% endcomment %}
     {% include head-custom.html %}
   </head>
   <body>

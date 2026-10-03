@@ -11,7 +11,7 @@ talk_date: 2026-10-03
 speaker_key: sysconf-2026-rexec
 blog: /blog/2026/08/11/how-to-safely-give-ai-agents-a-terminal
 repo: https://github.com/PipeOpsHQ/Rexec
-image: /assets/images/nitrocode-og-v2.png
+image: /assets/talks/agent-terminal-title.jpg
 ---
 
 <div class="talk-intro">
