@@ -16,18 +16,18 @@
   {% assign og_type = 'website' %}
 {% endif %}
 
-<!--
-  jekyll-seo-tag already emits title, description, canonical, og:*, twitter:*, and a WebPage JSON-LD.
-  Do NOT emit a second og:image / twitter:image here - WhatsApp stacks every og:image into the preview.
-  Only add dimensions/alt (no second image URL) plus site extras.
--->
+{% comment %}
+  jekyll-seo-tag already emits title, description, canonical, og/twitter tags, and WebPage JSON-LD.
+  Do not emit another og:image or twitter:image here. WhatsApp stacks every og:image.
+  Never put the seo tag in an HTML comment - Liquid still runs tags inside <!-- -->.
+{% endcomment %}
 <meta name="author" content="Alex Idowu">
 {% if page.robots %}
 <meta name="robots" content="{{ page.robots }}">
 {% endif %}
 <meta name="keywords" content="Alex Idowu, nitrocode, PipeOps, Co-founder CTO, platform engineering, cloud-native security, multi-tenant Kubernetes, multi-tenancy, NetworkPolicy, gVisor, Firecracker, agent sandboxes, Rexec, firecracker-shim, Aeon security, BuildKit, Terraform, BYOS Kubernetes agent, DevOps, SRE, Go, AWS, GCP, Azure, Lagos">
 
-<!-- Supplement the single og:image from {% seo %} (no extra og:image URL) -->
+{% comment %} Dimensions/alt only - no second image URL. {% endcomment %}
 <meta property="og:image:type" content="{{ og_image_type }}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
