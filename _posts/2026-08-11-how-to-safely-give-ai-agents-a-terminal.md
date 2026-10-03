@@ -39,15 +39,15 @@ Talk deck: [Rexec: How to Safely Give AI Agents a Terminal](/talks/sysconf-2026/
 
 ## Goals - what this talk covers
 
-How to safely give AI agents a terminal **using Rexec** - and which controls you can steal even if you never run our code:
+How to safely give AI agents a terminal **using Rexec** - and the controls that still matter if you wire your own stack:
 
 1. **The problem** - agent exec on your workstation, not a sandbox terminal  
-2. **Security & limits** - isolation ladder, CPU / memory / TTL  
+2. **Security & limits** - what walls that terminal gets; CPU / memory / TTL  
 3. **Reach & disposal** - what the terminal can talk to, and when it dies  
 4. **Rexec build** - components, then request dataflow  
 5. **Practice** - create → prove → delete  
 
-Rexec is the through-line. The controls are what you steal.
+Rexec is the through-line. The controls travel without it.
 
 ---
 
