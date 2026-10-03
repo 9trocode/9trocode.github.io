@@ -2507,51 +2507,10 @@ html[data-theme="dark"] .talk-page--sysconf {
   bottom: 0.85rem;
 }
 
-/* Soft brand blob behind content slides (template geometry) */
+/* No decorative blob in present mode — it was stacking under photos/text. */
 .talk-page--sysconf.is-presenting .talk-slide::before {
-  content: "";
-  position: absolute;
-  right: -8%;
-  bottom: -18%;
-  width: min(42vw, 28rem);
-  height: min(42vw, 28rem);
-  border-radius: 42% 58% 52% 48% / 48% 42% 58% 52%;
-  background: color-mix(in srgb, var(--sysconf-green-bright) 55%, transparent);
-  opacity: 0.22;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.talk-page--sysconf.is-presenting .talk-slide > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Portrait + blob fight for the right side — drop the blob on about */
-.talk-page--sysconf.is-presenting .talk-slide:has(.talk-portrait)::before,
-.talk-page--sysconf.is-presenting .talk-slide--elbaph::before {
-  display: none;
-}
-
-.talk-page--sysconf.is-presenting .talk-split--about {
-  position: relative;
-  z-index: 1;
-  display: flex;
-}
-
-.talk-page--sysconf.is-presenting .talk-split--about .talk-split__main {
-  position: relative;
-  z-index: 2;
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.talk-page--sysconf.is-presenting .talk-portrait {
-  position: relative;
-  z-index: 1;
-  flex: 0 0 15rem;
-  width: 15rem;
-  max-width: 15rem;
+  display: none !important;
+  content: none !important;
 }
 
 .talk-page--sysconf .btn--solid,
@@ -2577,68 +2536,16 @@ html[data-theme="dark"] .talk-page--sysconf {
   background: var(--bg-2);
 }
 
-/* About slide (#s02): hard layout so the photo cannot cover the bio */
-#s02.talk-slide::before {
-  display: none !important;
-  content: none !important;
-}
-
-#s02 .talk-about {
-  display: grid !important;
-  grid-template-columns: minmax(0, 1fr) 220px !important;
-  gap: 2rem !important;
-  align-items: center !important;
-  width: 100% !important;
-  max-width: 64rem !important;
-}
-
-#s02 .talk-about__copy {
-  min-width: 0 !important;
-  max-width: 38rem !important;
-  position: relative !important;
-  z-index: 2 !important;
-}
-
-#s02 .talk-about__photo {
-  margin: 0 !important;
-  width: 220px !important;
-  height: 220px !important;
-  max-width: 220px !important;
-  overflow: hidden !important;
-  border-radius: 14px !important;
-  position: relative !important;
-  z-index: 1 !important;
-  justify-self: end !important;
-  flex: none !important;
-}
-
-#s02 .talk-about__photo img {
-  width: 220px !important;
-  height: 220px !important;
-  max-width: 220px !important;
-  object-fit: cover !important;
-  object-position: center top !important;
-  display: block !important;
-  border-radius: 14px !important;
-}
-
-.talk-page.is-presenting #s02.talk-slide {
-  overflow: hidden !important;
-}
-
-@media (max-width: 800px) {
-  #s02 .talk-about {
-    grid-template-columns: 1fr !important;
-  }
-
-  #s02 .talk-about__photo {
-    justify-self: start !important;
-    width: 160px !important;
-    height: 160px !important;
-  }
-
-  #s02 .talk-about__photo img {
-    width: 160px !important;
-    height: 160px !important;
-  }
+/* Title slide: keep copy readable over the art */
+.talk-page--sysconf.is-presenting .talk-slide--elbaph .talk-slide__fore {
+  position: relative;
+  z-index: 2;
+  max-width: min(38rem, 48%);
+  padding: 0.75rem 1rem 0.75rem 0;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--bg) 92%, transparent) 0%,
+    color-mix(in srgb, var(--bg) 78%, transparent) 70%,
+    transparent 100%
+  );
 }

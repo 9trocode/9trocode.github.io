@@ -4,7 +4,7 @@ title: "Rexec: How to Safely Give AI Agents a Terminal"
 description: >-
   How to safely give AI agents a terminal using Rexec - isolation, limits,
   network, and lifecycle for disposable Linux sandboxes. Live demo.
-permalink: /talks/sysconf-2026/
+permalink: /talks/sysconf-2026/live/
 event: SysConf 2026
 slot: "Sat 3 Oct · 12:25-12:55 WAT · Room 1 · Standard 30m"
 talk_date: 2026-10-03
@@ -54,29 +54,14 @@ image: /assets/talks/agent-terminal-title.jpg
 <!-- 02 About -->
 <section class="talk-slide" id="s02" data-slide="2">
   <p class="talk-slide__label">02 · Intro · about</p>
-  <div class="talk-about">
-    <div class="talk-about__copy">
-      <h2>Quick intro</h2>
-      <p>I’m <strong>Alex Idowu</strong> - Co-founder &amp; CTO at <strong>PipeOps</strong>, based in Lagos.</p>
-      <ul class="talk-oneliners">
-        <li>I build platforms, sandboxes, and isolation for a living - Rexec, agents, multi-tenant Kubernetes.</li>
-        <li>Decade-plus in cloud infra, IaC, and runtime security (gVisor, Firecracker, the messy middle).</li>
-        <li>When I’m not in production logs: <em>One Piece</em>, open source for fun, and shipping small tools that scratch my own itch.</li>
-      </ul>
-      <p class="ok">That’s enough about me - let’s talk terminals.</p>
-    </div>
-    <figure class="talk-about__photo">
-      <img
-        src="{{ '/assets/images/alex-idowu-talk.jpg?v=' | append: site.asset_version | relative_url }}"
-        alt="Alex Idowu"
-        width="220"
-        height="220"
-        style="width:220px;height:220px;object-fit:cover;border-radius:14px;display:block;"
-        loading="eager"
-        decoding="async"
-      />
-    </figure>
-  </div>
+  <h2>Quick intro</h2>
+  <p>I’m <strong>Alex Idowu</strong> - Co-founder &amp; CTO at <strong>PipeOps</strong>, based in Lagos.</p>
+  <ul class="talk-oneliners">
+    <li>I build platforms, sandboxes, and isolation for a living - Rexec, agents, multi-tenant Kubernetes.</li>
+    <li>Decade-plus in cloud infra, IaC, and runtime security (gVisor, Firecracker, the messy middle).</li>
+    <li>When I’m not in production logs: <em>One Piece</em>, open source for fun, and shipping small tools that scratch my own itch.</li>
+  </ul>
+  <p class="ok">That’s enough about me - let’s talk terminals.</p>
 </section>
 
 
@@ -255,7 +240,7 @@ rexec sandbox delete</div>
         <li><strong>Rexec</strong> - <a href="https://github.com/PipeOpsHQ/Rexec">github.com/PipeOpsHQ/Rexec</a></li>
         <li><strong>Docs</strong> - <a href="https://rexec.sh/docs">rexec.sh/docs</a></li>
         <li><strong>Field notes</strong> - <a href="/blog/2026/08/11/how-to-safely-give-ai-agents-a-terminal">nitrocode.sh/blog/…</a></li>
-        <li><strong>Deck</strong> - <a href="/talks/sysconf-2026/">nitrocode.sh/talks/sysconf-2026</a></li>
+        <li><strong>Deck</strong> - <a href="/talks/sysconf-2026/live/">nitrocode.sh/talks/sysconf-2026</a></li>
       </ul>
     </div>
     <div>

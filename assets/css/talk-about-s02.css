@@ -1,65 +1,16 @@
-/* Dedicated About-slide fix. Separate filename so stubborn caches cannot keep the old layout. */
+/* About slide is text-only now. Keep this file so old cached HTML that still
+   links it does not 404; also hide any leftover photo markup. */
+#s02 .talk-about__photo,
+#s02 .talk-portrait {
+  display: none !important;
+}
+
 #s02.talk-slide::before {
   display: none !important;
   content: none !important;
 }
 
-#s02 .talk-about {
-  display: grid !important;
-  grid-template-columns: minmax(0, 1fr) 220px !important;
-  gap: 2rem !important;
-  align-items: center !important;
-  width: 100% !important;
-  max-width: 64rem !important;
-}
-
-#s02 .talk-about__copy {
-  min-width: 0 !important;
-  max-width: 38rem !important;
-  position: relative !important;
-  z-index: 2 !important;
-}
-
-#s02 .talk-about__photo {
-  margin: 0 !important;
-  width: 220px !important;
-  height: 220px !important;
-  max-width: 220px !important;
-  overflow: hidden !important;
-  border-radius: 14px !important;
-  position: relative !important;
-  z-index: 1 !important;
-  justify-self: end !important;
-  flex: none !important;
-}
-
-#s02 .talk-about__photo img {
-  width: 220px !important;
-  height: 220px !important;
-  max-width: 220px !important;
-  object-fit: cover !important;
-  object-position: center top !important;
-  display: block !important;
-  border-radius: 14px !important;
-}
-
-.talk-page.is-presenting #s02.talk-slide {
-  overflow: hidden !important;
-}
-
-@media (max-width: 800px) {
-  #s02 .talk-about {
-    grid-template-columns: 1fr !important;
-  }
-
-  #s02 .talk-about__photo {
-    justify-self: start !important;
-    width: 160px !important;
-    height: 160px !important;
-  }
-
-  #s02 .talk-about__photo img {
-    width: 160px !important;
-    height: 160px !important;
-  }
+.talk-page--sysconf.is-presenting .talk-slide::before {
+  display: none !important;
+  content: none !important;
 }
