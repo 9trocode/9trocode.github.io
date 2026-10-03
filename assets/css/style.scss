@@ -2234,28 +2234,52 @@ html[data-theme="light"] .talk-page.is-presenting .talk-slide {
 
 .talk-split--about {
   align-items: center;
+  grid-template-columns: minmax(0, 1.2fr) minmax(10rem, 16rem);
+}
+
+.talk-split--about .talk-split__main {
+  min-width: 0;
 }
 
 .talk-portrait {
   margin: 0;
   justify-self: end;
+  align-self: center;
   width: min(16rem, 34vw);
+  max-width: 16rem;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .talk-portrait img {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
   border-radius: 14px;
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
   object-fit: cover;
-  aspect-ratio: 1;
+  aspect-ratio: 1 / 1;
   background: var(--bg-2);
 }
 
+.talk-page.is-presenting .talk-split--about {
+  width: 100%;
+  max-width: 64rem;
+  grid-template-columns: minmax(0, 1fr) minmax(12rem, 16rem);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+
+.talk-page.is-presenting .talk-split--about .talk-split__main {
+  min-width: 0;
+  max-width: 38rem;
+}
+
 .talk-page.is-presenting .talk-portrait {
-  width: min(18rem, 28vw);
+  width: min(16rem, 26vw);
+  max-width: 16rem;
 }
 
 @media (max-width: 800px) {
@@ -2263,9 +2287,14 @@ html[data-theme="light"] .talk-page.is-presenting .talk-slide {
     grid-template-columns: 1fr;
   }
 
+  .talk-page.is-presenting .talk-split--about {
+    grid-template-columns: 1fr;
+  }
+
   .talk-portrait {
     justify-self: start;
     width: min(12rem, 55vw);
+    max-width: 12rem;
     order: -1;
   }
 }
@@ -2487,8 +2516,25 @@ html[data-theme="dark"] .talk-page--sysconf {
   z-index: 1;
 }
 
+/* Portrait + blob fight for the right side — drop the blob on about */
+.talk-page--sysconf.is-presenting .talk-slide:has(.talk-portrait)::before,
 .talk-page--sysconf.is-presenting .talk-slide--elbaph::before {
   display: none;
+}
+
+.talk-page--sysconf.is-presenting .talk-split--about {
+  position: relative;
+  z-index: 1;
+}
+
+.talk-page--sysconf.is-presenting .talk-split--about .talk-split__main {
+  position: relative;
+  z-index: 2;
+}
+
+.talk-page--sysconf.is-presenting .talk-portrait {
+  position: relative;
+  z-index: 1;
 }
 
 .talk-page--sysconf .btn--solid,
