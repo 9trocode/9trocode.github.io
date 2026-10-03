@@ -73,28 +73,32 @@ Disposable terminal. Now make the walls real.
 
 ## Content - what walls does that terminal get?
 
-A delete button is not a boundary. Pick a rung - then hard-cap it.
+Before Docker I ran **Proxmox at home** - one VM per agent. Heat, maxed box, nowhere to scale. That dead end is why Rexec exists.
+
+Two approaches when I built it: **shared host** with runtime + kernel protection, or **VM / node per agent** when the threat model pays for a harder boundary. A delete button is not a boundary - pick a path, then a rung, then hard-cap it.
 
 **Isolation ladder**
 
-1. cgroup + caps + network - baseline  
-2. **gVisor** (`runsc` = its OCI runtime; user-space kernel between container and host) - my default  
-3. Firecracker / microVM - when the threat model demands it  
+1. cgroup + caps + network - baseline on any shared host  
+2. **gVisor** (`runsc` = its OCI runtime; user-space kernel between container and host) - shared-host default  
+3. Firecracker / microVM - when one sandbox must not share fate with the next  
 4. Dedicated node / account - real budget, not cosplay  
 
 Default Docker (`runc`) shares the host kernel - say so if that’s all you’re using.
 
-**Limits:** hard CPU / memory / PIDs; concurrency + **TTL** (kill on a timer). Thrash is a DoS on yourself. Limits = security, not just FinOps.
+**Limits:** hard CPU / memory / PIDs; concurrency + **TTL** (kill on a timer) on *both* paths. Thrash is a DoS on yourself. Limits = security, not just FinOps.
 
-**Trade-off in Rexec:** needed density on shared hosts, including hosts without KVM → gVisor default. Pay syscall/compat tax. Escalate to Firecracker when the threat model says so.
+**Trade-off in Rexec:** Proxmox taught density. Needed density on shared hosts, including hosts without KVM → gVisor default. Pay syscall/compat tax. Escalate to Firecracker / a node when the threat model says so.
 
 ---
 
 ## Content - what the terminal can reach, and when it dies
 
+Shared host or VM-per-agent - neither is safe if the shell can phone home forever.
+
 **Network:** a shell is a network endpoint. Pick at create: **none** · **allowlist** · **full** (you accepted the leak). **ICC** (inter-container communication on a Docker bridge) off only stops sandbox-to-sandbox on that bridge - not “no internet.”
 
-**Lifecycle:** create → short-lived secrets → run → attach if needed → **delete**. Long-lived sandboxes become bastions with worse accountability.
+**Lifecycle:** create → short-lived secrets → run → attach if needed → **delete**. Long-lived sandboxes become bastions with worse accountability (Proxmox pets included).
 
 ---
 

@@ -83,8 +83,8 @@ image: /assets/talks/agent-terminal-title.jpg
   <p>How to safely give AI agents a terminal <strong>using Rexec</strong> - and the controls that still matter if you wire your own stack.</p>
   <ol class="talk-goals">
     <li><strong>The problem</strong> - agent exec on your workstation, not a sandbox terminal <span class="talk-goals__next">→ next</span></li>
-    <li><strong>Security &amp; limits</strong> - what walls that terminal gets; CPU / memory / TTL</li>
-    <li><strong>Reach &amp; disposal</strong> - what the terminal can talk to, and when it dies</li>
+    <li><strong>Security &amp; limits</strong> - Proxmox lesson → shared host vs VM/node; then the ladder</li>
+    <li><strong>Reach &amp; disposal</strong> - egress + lifecycle on either path</li>
     <li><strong>Rexec build</strong> - components, then request dataflow</li>
     <li><strong>Demo</strong> - create → prove → delete</li>
   </ol>
@@ -123,19 +123,20 @@ Approve tool use?
 <section class="talk-slide" id="s05" data-slide="5">
   <p class="talk-slide__label">05 · Content · security &amp; limits</p>
   <h2>What walls does that terminal get?</h2>
-  <p>A delete button is not a boundary. Pick a rung - then hard-cap it.</p>
+  <p>Before Docker I ran <strong>Proxmox at home</strong> - one VM per agent. Heat, maxed box, nowhere to scale. That dead end is why Rexec exists.</p>
+  <p>Two approaches when I built it: <strong>shared host</strong> with runtime + kernel protection, or <strong>VM / node per agent</strong> when the threat model pays for a harder boundary. A delete button is not a boundary - pick a path, then a rung, then hard-cap it.</p>
   <ul class="talk-oneliners talk-oneliners--logos">
     <li>
       <img class="talk-logo" src="{{ '/assets/talks/logos/cgroup.svg' | relative_url }}" alt="" width="28" height="28" />
-      <span><strong>cgroup + caps</strong> - baseline Linux resource and privilege controls.</span>
+      <span><strong>cgroup + caps</strong> - baseline on any shared host.</span>
     </li>
     <li>
       <img class="talk-logo" src="{{ '/assets/talks/logos/gvisor.svg' | relative_url }}" alt="" width="28" height="28" />
-      <span><strong>gVisor (<code>runsc</code>)</strong> - user-space kernel; my default for agent sandboxes.</span>
+      <span><strong>gVisor (<code>runsc</code>)</strong> - shared-host default; user-space kernel between sandbox and host.</span>
     </li>
     <li>
       <img class="talk-logo" src="{{ '/assets/talks/logos/firecracker.svg' | relative_url }}" alt="" width="28" height="28" />
-      <span><strong>Firecracker</strong> - microVM when you need a guest kernel / harder boundary.</span>
+      <span><strong>Firecracker</strong> - guest kernel when one sandbox must not share fate with the next.</span>
     </li>
     <li>
       <img class="talk-logo" src="{{ '/assets/talks/logos/linux.svg' | relative_url }}" alt="" width="28" height="28" />
@@ -143,15 +144,16 @@ Approve tool use?
     </li>
     <li>
       <span class="talk-logo talk-logo--text">TTL</span>
-      <span><strong>CPU / mem / PID + TTL</strong> - hard caps; thrash is a DoS on yourself. Limits = security.</span>
+      <span><strong>CPU / mem / PID + TTL</strong> - hard caps on <em>both</em> paths; thrash is a DoS on yourself.</span>
     </li>
   </ul>
-  <p class="punch">Trade-off: density + no KVM → gVisor default; escalate to Firecracker when the threat model says so.</p>
+  <p class="punch">Proxmox taught density. Rexec default: shared host + gVisor; escalate to Firecracker / a node when the threat model says so.</p>
 </section>
 
 <section class="talk-slide" id="s06" data-slide="6">
   <p class="talk-slide__label">06 · Content · reach &amp; disposal</p>
   <h2>What the terminal can reach, and when it dies</h2>
+  <p>Shared host or VM-per-agent - neither is safe if the shell can phone home forever.</p>
   <ul class="talk-oneliners talk-oneliners--logos">
     <li>
       <img class="talk-logo" src="{{ '/assets/talks/logos/docker.svg' | relative_url }}" alt="" width="28" height="28" />
@@ -171,7 +173,7 @@ Approve tool use?
     </li>
     <li>
       <img class="talk-logo" src="{{ '/assets/talks/logos/linux.svg' | relative_url }}" alt="" width="28" height="28" />
-      <span><strong>Long-lived sandboxes</strong> - become bastions with worse accountability.</span>
+      <span><strong>Long-lived sandboxes</strong> - become bastions with worse accountability (Proxmox pets included).</span>
     </li>
   </ul>
 </section>
