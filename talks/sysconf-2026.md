@@ -54,14 +54,25 @@ image: /assets/talks/agent-terminal-title.jpg
 <!-- 02 About -->
 <section class="talk-slide" id="s02" data-slide="2">
   <p class="talk-slide__label">02 · Intro · about</p>
-  <h2>Quick intro</h2>
-  <p>I’m <strong>Alex Idowu</strong> - Co-founder &amp; CTO at <strong>PipeOps</strong>, based in Lagos.</p>
-  <ul class="talk-oneliners">
-    <li>I build platforms, sandboxes, and isolation for a living - Rexec, agents, multi-tenant Kubernetes.</li>
-    <li>Decade-plus in cloud infra, IaC, and runtime security (gVisor, Firecracker, the messy middle).</li>
-    <li>When I’m not in production logs: <em>One Piece</em>, open source for fun, and shipping small tools that scratch my own itch.</li>
-  </ul>
-  <p class="ok">That’s enough about me - let’s talk terminals.</p>
+  <div class="talk-about">
+    <div class="talk-about__copy">
+      <h2>Quick intro</h2>
+      <p>I’m <strong>Alex Idowu</strong> - Co-founder &amp; CTO at <strong>PipeOps</strong>, based in Lagos.</p>
+      <ul class="talk-oneliners">
+        <li>I build platforms, sandboxes, and isolation for a living - Rexec, agents, multi-tenant Kubernetes.</li>
+        <li>Decade-plus in cloud infra, IaC, and runtime security (gVisor, Firecracker, the messy middle).</li>
+        <li>When I’m not in production logs: <em>One Piece</em>, open source for fun, and shipping small tools that scratch my own itch.</li>
+      </ul>
+      <p class="ok">That’s enough about me - let’s talk terminals.</p>
+    </div>
+    <img
+      class="talk-about__photo"
+      src="{{ '/assets/images/alex-idowu-talk.jpg?v=' | append: site.asset_version | relative_url }}"
+      alt="Alex Idowu"
+      width="200"
+      height="200"
+    />
+  </div>
 </section>
 
 

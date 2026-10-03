@@ -1,16 +1,85 @@
-/* About slide is text-only now. Keep this file so old cached HTML that still
-   links it does not 404; also hide any leftover photo markup. */
-#s02 .talk-about__photo,
-#s02 .talk-portrait {
-  display: none !important;
-}
+/* About slide: bio left, portrait right. Photo is position:absolute in
+   present mode so it cannot push into / cover the text column. */
 
 #s02.talk-slide::before {
   display: none !important;
   content: none !important;
 }
 
-.talk-page--sysconf.is-presenting .talk-slide::before {
-  display: none !important;
-  content: none !important;
+#s02 .talk-about {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 64rem;
+}
+
+#s02 .talk-about__copy {
+  position: relative;
+  z-index: 2;
+  max-width: 38rem;
+  padding-right: 1rem;
+}
+
+#s02 .talk-about__photo {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin: 1.25rem 0 0;
+  border-radius: 14px;
+  border: 1px solid var(--line, rgba(0, 0, 0, 0.12));
+  object-fit: cover;
+  object-position: center top;
+  background: var(--bg-2, #eee);
+}
+
+/* Present: pin photo to the right middle; text keeps a clear left column */
+.talk-page.is-presenting #s02.talk-slide {
+  position: relative;
+  overflow: hidden;
+}
+
+.talk-page.is-presenting #s02 .talk-about {
+  max-width: none;
+  min-height: 14rem;
+}
+
+.talk-page.is-presenting #s02 .talk-about__copy {
+  max-width: min(40rem, calc(100% - 15rem));
+  padding-right: 1.5rem;
+}
+
+.talk-page.is-presenting #s02 .talk-about__photo {
+  position: absolute;
+  right: clamp(1.5rem, 6vw, 5rem);
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  width: 200px;
+  height: 200px;
+  z-index: 1;
+  box-shadow: 0 12px 40px rgba(0, 44, 51, 0.18);
+}
+
+@media (max-width: 800px) {
+  .talk-page.is-presenting #s02 .talk-about__photo {
+    position: static;
+    transform: none;
+    margin: 0 0 1rem;
+    width: 140px;
+    height: 140px;
+  }
+
+  .talk-page.is-presenting #s02 .talk-about__copy {
+    max-width: 100%;
+    padding-right: 0;
+  }
+
+  .talk-page.is-presenting #s02 .talk-about {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .talk-page.is-presenting #s02 .talk-about__photo {
+    order: -1;
+  }
 }
