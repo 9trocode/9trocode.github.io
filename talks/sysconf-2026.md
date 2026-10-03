@@ -54,8 +54,8 @@ image: /assets/talks/agent-terminal-title.jpg
 <!-- 02 About -->
 <section class="talk-slide" id="s02" data-slide="2">
   <p class="talk-slide__label">02 · Intro · about</p>
-  <div class="talk-split talk-split--about">
-    <div class="talk-split__main">
+  <div class="talk-about">
+    <div class="talk-about__copy">
       <h2>Quick intro</h2>
       <p>I’m <strong>Alex Idowu</strong> - Co-founder &amp; CTO at <strong>PipeOps</strong>, based in Lagos.</p>
       <ul class="talk-oneliners">
@@ -65,12 +65,13 @@ image: /assets/talks/agent-terminal-title.jpg
       </ul>
       <p class="ok">That’s enough about me - let’s talk terminals.</p>
     </div>
-    <figure class="talk-portrait">
+    <figure class="talk-about__photo">
       <img
         src="{{ '/assets/images/alex-idowu-talk.jpg?v=' | append: site.asset_version | relative_url }}"
         alt="Alex Idowu"
-        width="400"
-        height="400"
+        width="220"
+        height="220"
+        style="width:220px;height:220px;object-fit:cover;border-radius:14px;display:block;"
         loading="eager"
         decoding="async"
       />
