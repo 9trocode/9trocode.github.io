@@ -2349,3 +2349,167 @@ html[data-theme="light"] .talk-page.is-presenting .talk-slide {
     grid-template-columns: 1fr;
   }
 }
+
+/* -------------------------------------------------------------------------- */
+/* SysConf official template tokens (teal + green, Bricolage Grotesque)       */
+/* Scoped to .talk-page--sysconf so other talks keep the site aesthetic.      */
+/* -------------------------------------------------------------------------- */
+
+.talk-page--sysconf {
+  --sysconf-teal: #002c33;
+  --sysconf-green: #008945;
+  --sysconf-green-bright: #4fc65e;
+  --sysconf-mist: #f3f3f3;
+  --display: "Bricolage Grotesque", "IBM Plex Sans", system-ui, sans-serif;
+}
+
+html[data-theme="light"] .talk-page--sysconf,
+.talk-page--sysconf {
+  --bg: #f3f3f3;
+  --bg-2: #e8eee9;
+  --bg-3: #dce8df;
+  --surface: #fafafa;
+  --line: rgba(0, 44, 51, 0.1);
+  --line-strong: rgba(0, 44, 51, 0.18);
+  --ink: #002c33;
+  --ink-2: #1f4a50;
+  --ink-3: #5a7378;
+  --ink-4: #8a9ea2;
+  --accent: #008945;
+  --accent-ink: #f3f3f3;
+  --accent-dim: rgba(79, 198, 94, 0.16);
+  --accent-2: #4fc65e;
+  --shadow: 0 18px 48px rgba(0, 44, 51, 0.1);
+  --theme-color: #f3f3f3;
+}
+
+html[data-theme="dark"] .talk-page--sysconf {
+  --bg: #002c33;
+  --bg-2: #01343c;
+  --bg-3: #02404a;
+  --surface: #01343c;
+  --line: rgba(243, 243, 243, 0.12);
+  --line-strong: rgba(243, 243, 243, 0.22);
+  --ink: #f3f3f3;
+  --ink-2: #c5d4d6;
+  --ink-3: #8aa3a7;
+  --ink-4: #5f787c;
+  --accent: #4fc65e;
+  --accent-ink: #002c33;
+  --accent-dim: rgba(79, 198, 94, 0.16);
+  --accent-2: #008945;
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
+  --theme-color: #002c33;
+}
+
+.talk-page--sysconf .talk-intro h1,
+.talk-page--sysconf .talk-slide h2,
+.talk-page--sysconf .talk-chrome__home {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.talk-page--sysconf .talk-chrome__home {
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.talk-page--sysconf .talk-slide__label {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.talk-page--sysconf .talk-slide {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.talk-page--sysconf.is-presenting .talk-slide {
+  background: var(--bg);
+}
+
+.talk-page--sysconf.is-presenting .talk-slide h2 {
+  font-family: var(--display);
+  font-weight: 600;
+  max-width: 16ch;
+  letter-spacing: -0.03em;
+}
+
+.talk-page--sysconf.is-presenting .talk-slide__label::before {
+  content: "#SysConf · ";
+}
+
+.talk-page--sysconf .talk-sysconf-mark {
+  display: none;
+}
+
+.talk-page--sysconf.is-presenting .talk-sysconf-mark {
+  display: block;
+  position: fixed;
+  left: clamp(1.25rem, 4vw, 2.5rem);
+  bottom: 1.15rem;
+  z-index: 55;
+  margin: 0;
+  font-family: var(--display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink-3);
+  pointer-events: none;
+}
+
+.talk-page--sysconf.is-presenting .talk-hud {
+  left: auto;
+  right: clamp(1rem, 4vw, 2rem);
+  transform: none;
+  bottom: 0.85rem;
+}
+
+/* Soft brand blob behind content slides (template geometry) */
+.talk-page--sysconf.is-presenting .talk-slide::before {
+  content: "";
+  position: absolute;
+  right: -8%;
+  bottom: -18%;
+  width: min(42vw, 28rem);
+  height: min(42vw, 28rem);
+  border-radius: 42% 58% 52% 48% / 48% 42% 58% 52%;
+  background: color-mix(in srgb, var(--sysconf-green-bright) 55%, transparent);
+  opacity: 0.22;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.talk-page--sysconf.is-presenting .talk-slide > * {
+  position: relative;
+  z-index: 1;
+}
+
+.talk-page--sysconf.is-presenting .talk-slide--elbaph::before {
+  display: none;
+}
+
+.talk-page--sysconf .btn--solid,
+.talk-page--sysconf .talk-btn.btn--solid {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.talk-page--sysconf .btn--solid:hover,
+.talk-page--sysconf .talk-btn.btn--solid:hover {
+  filter: brightness(1.05);
+}
+
+.talk-page--sysconf .talk-goals li strong,
+.talk-page--sysconf .talk-oneliners strong {
+  color: var(--accent);
+}
+
+.talk-page--sysconf .talk-code,
+.talk-page--sysconf .talk-slide pre {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--line));
+  background: var(--bg-2);
+}

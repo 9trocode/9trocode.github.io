@@ -29,7 +29,11 @@
     document.documentElement.setAttribute("data-theme", theme);
     var meta = document.querySelector('meta[name="theme-color"]');
     if (meta) {
-      meta.setAttribute("content", theme === "light" ? "#f3efe6" : "#0c0b0a");
+      var sysconf =
+        document.body && document.body.classList.contains("talk-page--sysconf");
+      var light = sysconf ? "#f3f3f3" : "#f3efe6";
+      var dark = sysconf ? "#002c33" : "#0c0b0a";
+      meta.setAttribute("content", theme === "light" ? light : dark);
     }
     var label = theme === "dark" ? "White mode" : "Dark mode";
     var aria =

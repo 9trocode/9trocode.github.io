@@ -15,7 +15,7 @@ image: /assets/talks/agent-terminal-title.jpg
 ---
 
 <div class="talk-intro">
-  <p class="eyebrow">SysConf 2026 · Standard · 25 + 5</p>
+  <p class="eyebrow">#SysConf 2026 · Standard · 25 + 5</p>
   <h1>Rexec: How to Safely Give AI Agents a Terminal</h1>
   <div class="talk-intro__meta">
     <p>Alex Idowu · PipeOps · Lagos</p>

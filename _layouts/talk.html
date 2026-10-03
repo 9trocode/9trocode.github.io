@@ -4,18 +4,35 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f3efe6">
+    {% assign is_sysconf = false %}
+    {% if page.event contains 'SysConf' or page.theme == 'sysconf' %}
+      {% assign is_sysconf = true %}
+    {% endif %}
+    <meta name="theme-color" content="{% if is_sysconf %}#f3f3f3{% else %}#f3efe6{% endif %}">
     <script>
       (function () {
         try {
           var t = localStorage.getItem("nitrocode-talk-theme");
           if (t !== "light" && t !== "dark") t = "light";
           document.documentElement.setAttribute("data-theme", t);
+          var sys = {{ is_sysconf | jsonify }};
           var m = document.querySelector('meta[name="theme-color"]');
-          if (m) m.setAttribute("content", t === "light" ? "#f3efe6" : "#0c0b0a");
+          if (m) {
+            m.setAttribute(
+              "content",
+              t === "light"
+                ? sys ? "#f3f3f3" : "#f3efe6"
+                : sys ? "#002c33" : "#0c0b0a"
+            );
+          }
         } catch (e) {}
       })();
     </script>
+    {% if is_sysconf %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&display=swap" rel="stylesheet">
+    {% endif %}
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.asset_version | relative_url }}">
     {% seo %}
     {% include head-custom.html %}
@@ -33,14 +50,14 @@
   {% endif %}
   {% assign talk_id = page.permalink | default: page.url | slugify %}
   <body
-    class="talk-page{% if page.present %} is-presenting{% endif %}{% if talk_locked %} talk-locked{% endif %}"
+    class="talk-page{% if is_sysconf %} talk-page--sysconf{% endif %}{% if page.present %} is-presenting{% endif %}{% if talk_locked %} talk-locked{% endif %}"
     data-talk-id="{{ talk_id }}"
     {% if talk_locked and page.speaker_key %}data-speaker-key="{{ page.speaker_key }}"{% endif %}
   >
     <div class="site-shell talk-shell">
       <header class="talk-chrome" id="talk-chrome">
         <div class="talk-chrome__inner">
-          <a class="talk-chrome__home" href="{{ '/' | relative_url }}">nitrocode</a>
+          <a class="talk-chrome__home" href="{{ '/' | relative_url }}">{% if is_sysconf %}#SysConf{% else %}nitrocode{% endif %}</a>
           <p class="talk-chrome__meta">{{ page.event | default: 'Talk' }}{% if page.slot %} · {{ page.slot }}{% endif %}</p>
           <div class="talk-chrome__actions">
             <button type="button" class="btn btn--solid talk-btn" id="talk-present-toggle" {% if talk_locked %}hidden{% endif %}>Present</button>
@@ -94,6 +111,10 @@
         {{ content }}
         {% endif %}
       </main>
+
+      {% if is_sysconf %}
+      <p class="talk-sysconf-mark" aria-hidden="true">Sysconf</p>
+      {% endif %}
 
       <footer class="talk-hud" id="talk-hud" hidden>
         <button type="button" class="talk-hud__btn" id="talk-prev" aria-label="Previous slide">←</button>
