@@ -2233,69 +2233,80 @@ html[data-theme="light"] .talk-page.is-presenting .talk-slide {
 }
 
 .talk-split--about {
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  grid-template-columns: minmax(0, 1.2fr) minmax(10rem, 16rem);
+  justify-content: space-between;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  width: 100%;
 }
 
 .talk-split--about .talk-split__main {
+  flex: 1 1 auto;
   min-width: 0;
+  max-width: 40rem;
 }
 
 .talk-portrait {
   margin: 0;
-  justify-self: end;
-  align-self: center;
-  width: min(16rem, 34vw);
-  max-width: 16rem;
+  flex: 0 0 auto;
+  width: 14rem;
+  max-width: 14rem;
   overflow: hidden;
-  flex-shrink: 0;
 }
 
 .talk-portrait img {
   display: block;
-  width: 100%;
+  width: 14rem;
   max-width: 100%;
-  height: auto;
+  height: 14rem;
   border-radius: 14px;
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
   object-fit: cover;
+  object-position: center top;
   aspect-ratio: 1 / 1;
   background: var(--bg-2);
 }
 
 .talk-page.is-presenting .talk-split--about {
-  width: 100%;
   max-width: 64rem;
-  grid-template-columns: minmax(0, 1fr) minmax(12rem, 16rem);
-  gap: clamp(1.5rem, 4vw, 3rem);
-  align-items: center;
+  gap: clamp(1.75rem, 4vw, 3rem);
 }
 
 .talk-page.is-presenting .talk-split--about .talk-split__main {
-  min-width: 0;
   max-width: 38rem;
 }
 
 .talk-page.is-presenting .talk-portrait {
-  width: min(16rem, 26vw);
-  max-width: 16rem;
+  width: 15rem;
+  max-width: 15rem;
+}
+
+.talk-page.is-presenting .talk-portrait img {
+  width: 15rem;
+  height: 15rem;
+}
+
+.talk-page.is-presenting .talk-slide:has(.talk-portrait) {
+  overflow: hidden;
 }
 
 @media (max-width: 800px) {
   .talk-split--about {
-    grid-template-columns: 1fr;
-  }
-
-  .talk-page.is-presenting .talk-split--about {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .talk-portrait {
-    justify-self: start;
-    width: min(12rem, 55vw);
-    max-width: 12rem;
+    width: 11rem;
+    max-width: 11rem;
     order: -1;
+  }
+
+  .talk-portrait img {
+    width: 11rem;
+    height: 11rem;
   }
 }
 
@@ -2525,16 +2536,22 @@ html[data-theme="dark"] .talk-page--sysconf {
 .talk-page--sysconf.is-presenting .talk-split--about {
   position: relative;
   z-index: 1;
+  display: flex;
 }
 
 .talk-page--sysconf.is-presenting .talk-split--about .talk-split__main {
   position: relative;
   z-index: 2;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .talk-page--sysconf.is-presenting .talk-portrait {
   position: relative;
   z-index: 1;
+  flex: 0 0 15rem;
+  width: 15rem;
+  max-width: 15rem;
 }
 
 .talk-page--sysconf .btn--solid,
