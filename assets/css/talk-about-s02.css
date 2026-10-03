@@ -1,4 +1,5 @@
-/* About slide: SysConf-sample style — large right-side portrait panel. */
+/* About slide: SysConf-sample style — large right-side portrait panel.
+   Keep alex-idowu-talk.jpg and center the face in the tall crop. */
 
 #s02.talk-slide::before {
   display: none !important;
@@ -27,7 +28,7 @@
   border-radius: 14px;
   border: 1px solid var(--line, rgba(0, 0, 0, 0.12));
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
   background: var(--bg-2, #eee);
 }
 
@@ -60,7 +61,8 @@
   z-index: 1;
   box-shadow: none;
   object-fit: cover;
-  object-position: center top;
+  /* Square source in a tall panel — center the face, don’t pin to top */
+  object-position: center center;
 }
 
 /* Soft blend into the slide so text stays readable at the seam */
@@ -76,6 +78,7 @@
     height: min(100%, 16rem);
     border-radius: 14px;
     margin: 0 0 1rem;
+    object-position: center center;
     -webkit-mask-image: none;
     mask-image: none;
   }
