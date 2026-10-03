@@ -1,5 +1,4 @@
-/* About slide: bio left, portrait right. Photo is position:absolute in
-   present mode so it cannot push into / cover the text column. */
+/* About slide: SysConf-sample style — large right-side portrait panel. */
 
 #s02.talk-slide::before {
   display: none !important;
@@ -22,8 +21,8 @@
 
 #s02 .talk-about__photo {
   display: block;
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   margin: 1.25rem 0 0;
   border-radius: 14px;
   border: 1px solid var(--line, rgba(0, 0, 0, 0.12));
@@ -32,7 +31,7 @@
   background: var(--bg-2, #eee);
 }
 
-/* Present: pin photo to the right middle; text keeps a clear left column */
+/* Present: large right-half portrait like the SysConf template */
 .talk-page.is-presenting #s02.talk-slide {
   position: relative;
   overflow: hidden;
@@ -40,33 +39,45 @@
 
 .talk-page.is-presenting #s02 .talk-about {
   max-width: none;
-  min-height: 14rem;
+  min-height: 70vh;
 }
 
 .talk-page.is-presenting #s02 .talk-about__copy {
-  max-width: min(40rem, calc(100% - 15rem));
-  padding-right: 1.5rem;
+  max-width: min(42rem, 48%);
+  padding-right: 2rem;
 }
 
 .talk-page.is-presenting #s02 .talk-about__photo {
   position: absolute;
-  right: clamp(1.5rem, 6vw, 5rem);
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(42vw, 34rem);
+  height: auto;
   margin: 0;
-  width: 200px;
-  height: 200px;
+  border: 0;
+  border-radius: 0;
   z-index: 1;
-  box-shadow: 0 12px 40px rgba(0, 44, 51, 0.18);
+  box-shadow: none;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Soft blend into the slide so text stays readable at the seam */
+.talk-page.is-presenting #s02 .talk-about__photo {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 100%);
 }
 
 @media (max-width: 800px) {
   .talk-page.is-presenting #s02 .talk-about__photo {
     position: static;
-    transform: none;
+    width: min(100%, 16rem);
+    height: min(100%, 16rem);
+    border-radius: 14px;
     margin: 0 0 1rem;
-    width: 140px;
-    height: 140px;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 
   .talk-page.is-presenting #s02 .talk-about__copy {
@@ -77,6 +88,7 @@
   .talk-page.is-presenting #s02 .talk-about {
     display: flex;
     flex-direction: column;
+    min-height: 0;
   }
 
   .talk-page.is-presenting #s02 .talk-about__photo {
